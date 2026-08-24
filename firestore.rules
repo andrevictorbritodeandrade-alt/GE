@@ -1,0 +1,135 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 0. Global Safety Net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // --- PHASE 3: Primitives ---
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    // --- PHASE 4: Entity Validators ---
+
+    function isValidDashboardCard(data) {
+      return data.keys().hasAll(['id', 'title', 'value', 'type', 'lastUpdated']) &&
+             data.keys().size() <= 8 &&
+             data.id is string && isValidId(data.id) &&
+             data.title is string && data.title.size() <= 100 &&
+             (data.value is string || data.value is int || data.value is float) &&
+             data.type in ['number', 'currency', 'text', 'status'] &&
+             (data.lastUpdated is int || data.lastUpdated is timestamp);
+    }
+
+    function isValidClass(data) {
+      return data.keys().hasAll(['id', 'name', 'grade', 'students']) &&
+             data.id is string && isValidId(data.id) &&
+             data.name is string && data.name.size() <= 100 &&
+             data.grade is string && data.grade.size() <= 20 &&
+             data.students is list && data.students.size() <= 200;
+    }
+
+    function isValidActivityLog(data) {
+      return data.keys().hasAll(['title', 'header', 'log']) &&
+             data.title is string &&
+             data.header is map &&
+             data.log is list && data.log.size() <= 500;
+    }
+
+    function isValidTournament(data) {
+      return data.stage in ['setup', 'groups', 'finals', 'finished'] &&
+             data.players is list &&
+             data.matches is list;
+    }
+
+    function isValidGallery(data) {
+      return data.images is list && data.images.size() <= 500;
+    }
+
+    function isValidOccurrence(data) {
+      return data.keys().hasAll(['id', 'date', 'type', 'classId', 'className', 'school', 'description', 'createdAt']) &&
+             data.id is string && isValidId(data.id) &&
+             data.date is string && data.date.size() <= 20 &&
+             data.type in ['class', 'student'] &&
+             data.classId is string && data.classId.size() <= 50 &&
+             data.className is string && data.className.size() <= 100 &&
+             data.school is string && data.school.size() <= 100 &&
+             data.description is string && data.description.size() <= 6000 &&
+             (data.createdAt is int || data.createdAt is timestamp);
+    }
+
+    function isValidArquivo(data) {
+      return data.keys().hasAll(['title', 'category', 'type', 'dataUrl', 'createdAt']) &&
+             data.title is string && data.title.size() <= 255 &&
+             data.category is string && data.category.size() <= 100 &&
+             (data.type == 'pdf' || data.type == 'ppt') &&
+             data.dataUrl is string && data.dataUrl.size() <= 1000000 &&
+             data.createdAt is int;
+    }
+
+    // --- Collection Rules ---
+
+    match /artifacts/{appId}/users/{userId}/arquivos/{arquivoId} {
+      allow read: if isSignedIn() && request.auth.uid == userId;
+      allow create: if isSignedIn() && request.auth.uid == userId && isValidId(arquivoId) && isValidArquivo(incoming());
+      allow update: if isSignedIn() && request.auth.uid == userId && isValidId(arquivoId) && isValidArquivo(incoming());
+      allow delete: if isSignedIn() && request.auth.uid == userId;
+    }
+
+    match /dashboard/{cardId} {
+      allow read: if true;
+      allow create: if isValidId(cardId) && cardId == incoming().id && isValidDashboardCard(incoming());
+      allow update: if isValidId(cardId) && cardId == incoming().id && isValidDashboardCard(incoming());
+      allow delete: if true;
+    }
+
+    match /classes/{classId} {
+      allow read: if true;
+      allow create: if isValidId(classId) && classId == incoming().id && isValidClass(incoming());
+      allow update: if isValidId(classId) && classId == incoming().id && isValidClass(incoming());
+      allow delete: if true;
+    }
+
+    match /activities/{docId} {
+      allow read: if true;
+      allow write: if docId == 'log' && isValidActivityLog(incoming());
+    }
+
+    match /tournaments/{docId} {
+      allow read: if true;
+      allow write: if docId == 'active' && isValidTournament(incoming());
+    }
+
+    match /gallery/{docId} {
+      allow read: if true;
+      allow write: if docId == 'main' && isValidGallery(incoming());
+    }
+
+    match /occurrences/{occurrenceId} {
+      allow read: if true;
+      allow create: if isValidId(occurrenceId) && occurrenceId == incoming().id && isValidOccurrence(incoming());
+      allow update: if isValidId(occurrenceId) && occurrenceId == incoming().id && isValidOccurrence(incoming());
+      allow delete: if true;
+    }
+
+    // System connection test collection
+    match /_connection_test_/{docId} {
+      allow read, write: if true;
+    }
+  }
+}
