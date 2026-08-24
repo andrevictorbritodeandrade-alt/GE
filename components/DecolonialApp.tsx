@@ -355,7 +355,7 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
   const [selectedAulaData, setSelectedAulaData] = useState<string | null>(() => {
     return safeLocalStorage.getItem('decolonial_selectedAulaData') || null;
   });
-  const [planningSubView, setPlanningSubView] = useState<null | '8ano' | 'ap' | 'ap_sexta' | 'gestao'>(() => {
+  const [planningSubView, setPlanningSubView] = useState<null | '8ano' | 'ap' | 'ap_sexta' | 'gestao' | 'ejanem'>(() => {
     return (safeLocalStorage.getItem('decolonial_planningSubView') as any) || null;
   });
   const [selectedAulaPlan, setSelectedAulaPlan] = useState<any>(() => {
@@ -540,29 +540,66 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
     </div>
   );
 
+  // --- HELPER: DATASHOW HEADER ---
+  const DatashowHeader = ({ title, sub }: { title: string, sub?: string }) => (
+    <header className="w-full mb-10 pb-6 border-b-2 border-slate-200 flex flex-col md:flex-row items-center justify-between gap-6 px-4">
+      {/* Rio de Janeiro Gov Logo */}
+      <div className="flex-shrink-0 w-32 h-16 flex items-center justify-center bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
+        <img 
+          src="https://logodownload.org/wp-content/uploads/2017/02/governo-estado-rio-de-janeiro-logo.png" 
+          alt="Governo RJ" 
+          className="max-w-[90%] max-h-[80%] object-contain"
+        />
+      </div>
+
+      <div className="flex flex-col items-center text-center max-w-2xl">
+        <h2 className="text-3xl md:text-5xl font-black text-slate-900 uppercase tracking-tighter drop-shadow-sm leading-tight">
+          {title}
+        </h2>
+        <p className="text-slate-500 mt-2 font-black uppercase tracking-[0.2em] text-[10px] md:text-xs">
+          {sub || 'Secretaria de Estado de Educação - Rio de Janeiro'}
+        </p>
+      </div>
+
+      {/* SEEDUC Logo */}
+      <div className="flex-shrink-0 w-32 h-16 flex items-center justify-center bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
+        <img 
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Logotipo_da_SEEDUC-RJ.png/1200px-Logotipo_da_SEEDUC-RJ.png" 
+          alt="SEEDUC RJ" 
+          className="max-w-[90%] max-h-[80%] object-contain"
+        />
+      </div>
+    </header>
+  );
+
   const renderPlanejamentoMenu = () => (
-    <div className="p-8 md:p-12 font-sans bg-white/70 backdrop-blur-md rounded-3xl min-h-[500px] border border-slate-300 flex flex-col items-center justify-center">
+    <div className="p-8 md:p-12 font-sans bg-white/70 backdrop-blur-md rounded-3xl min-h-[600px] border border-slate-300 flex flex-col items-center">
       <div className="mb-8 self-start">
         <BackButton onClick={() => { setCurrentView('menu'); setPlanningSubView(null); }} label="Voltar" />
       </div>
 
-      <header className="mb-12 flex flex-col items-center text-center">
-        <h2 className="text-4xl md:text-5xl font-black text-slate-900 uppercase tracking-tighter drop-shadow-[0_4px_4px_rgba(0,0,0,0.15)]">Escolha a Turma</h2>
-      </header>
+      <DatashowHeader title="Escolha a Turma" />
       
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-5xl">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl mt-4">
         {[
           { id: '8ano', label: '801 - 802 - 803', sub: 'EE Profª Cordelia Paiva - 2ª feiras' },
-          { id: 'gestao', label: 'ILGCH 1001 / IFFC 2001 / IFLA 2002', sub: 'CE Dr. Ignacio Bezerra' },
+          { id: 'ap', label: 'AP (SEGUNDAS)', sub: 'CE Dr. Ignacio Bezerra - Educação Física' },
+          { id: 'ap_sexta', label: 'AP (SEXTAS)', sub: 'CE Dr. Ignacio Bezerra - Educação Física' },
+          { id: 'gestao', label: 'ILGCH 1001 / IFFC 2001 / IFLA 2002', sub: 'CE Dr. Ignacio Bezerra - Gestão' },
           { id: 'ejanem', label: 'EJANEM I01', sub: 'CIEP 229 Cândido Portinari - Noturno' }
         ].map((turma, idx) => (
           <button 
             key={idx}
             onClick={() => setPlanningSubView(turma.id as any)}
-            className="p-8 bg-white hover:bg-slate-100 transition-all text-slate-800 rounded-2xl border border-slate-300 hover:border-emerald-500 shadow-sm flex flex-col items-center gap-2 group"
+            className="p-8 bg-white hover:bg-slate-50 transition-all text-slate-800 rounded-3xl border-2 border-slate-200 hover:border-blue-500 shadow-md flex flex-col items-center justify-center text-center gap-4 group hover:scale-[1.02] active:scale-[0.98]"
           >
-            <span className="font-black text-xl group-hover:text-emerald-600 transition-colors uppercase tracking-tighter">{turma.label}</span>
-            <span className="text-sm font-bold text-slate-500">{turma.sub}</span>
+            <div className="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center text-slate-400 group-hover:bg-blue-100 group-hover:text-blue-600 transition-colors">
+              <span className="font-black text-lg">{idx + 1}</span>
+            </div>
+            <div className="flex flex-col gap-1">
+              <span className="font-black text-xl group-hover:text-blue-700 transition-colors uppercase tracking-tighter leading-tight">{turma.label}</span>
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">{turma.sub}</span>
+            </div>
           </button>
         ))}
       </div>
@@ -787,7 +824,7 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
     );
   };
 
-  const renderPlanejamentoClasses = (turma: '8ano' | 'ap' | 'ap_sexta') => {
+  const renderPlanejamentoClasses = (turma: '8ano' | 'ap' | 'ap_sexta' | 'ejanem') => {
     const planos = PE_PLAN[turma] || [];
     const tri1 = planos.filter(aula => aula.tri === '1º Tri');
     const tri2 = planos.filter(aula => aula.tri === '2º Tri');
@@ -796,6 +833,7 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
     let title = 'Planejamento: 8º Ano';
     if (turma === 'ap') title = 'Planejamento: AP (Segundas)';
     if (turma === 'ap_sexta') title = 'Planejamento: AP (Sextas)';
+    if (turma === 'ejanem') title = 'Planejamento: EJANEM I01';
 
     return (
       <div className="p-4 md:p-8 font-sans text-slate-800 relative bg-slate-50 rounded-2xl shadow-2xl">
@@ -803,10 +841,10 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
           <BackButton onClick={() => setPlanningSubView(null)} label="Voltar" />
         </div>
 
-        <header className="mb-12 flex flex-col items-center text-center">
-          <h2 className="text-4xl md:text-5xl font-black text-slate-900 uppercase tracking-tighter drop-shadow-[0_4px_4px_rgba(0,0,0,0.15)]">{title}</h2>
-          <p className="text-slate-500 mt-3 font-black uppercase tracking-widest text-sm">Cronograma de Educação Física e Cultura Corporal</p>
-        </header>
+        <DatashowHeader 
+          title={title} 
+          sub="Cronograma de Educação Física e Cultura Corporal" 
+        />
 
         {turma === '8ano' && (
           <div className="mb-8 p-5 bg-amber-50 border-l-4 border-amber-500 rounded-r-2xl shadow-sm border border-amber-100">
@@ -844,7 +882,7 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
         {renderAulaModal()}
         {!planningSubView && renderPlanejamentoMenu()}
         {planningSubView === 'gestao' && renderPlanejamentoGestao()}
-        {(planningSubView === '8ano' || planningSubView === 'ap' || planningSubView === 'ap_sexta') && renderPlanejamentoClasses(planningSubView)}
+        {(planningSubView === '8ano' || planningSubView === 'ap' || planningSubView === 'ap_sexta' || planningSubView === 'ejanem') && renderPlanejamentoClasses(planningSubView)}
       </div>
     );
   };
@@ -861,10 +899,10 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
           <BackButton onClick={() => setPlanningSubView(null)} label="Voltar" />
         </div>
 
-        <header className="mb-12 flex flex-col items-center text-center">
-          <h2 className="text-4xl md:text-5xl font-black text-slate-900 uppercase tracking-tighter drop-shadow-[0_4px_4px_rgba(0,0,0,0.15)]">Planejamento: ILGCH</h2>
-          <p className="text-slate-500 mt-3 font-black uppercase tracking-widest text-sm">Cultura Corporal e Educação em Direitos Humanos</p>
-        </header>
+        <DatashowHeader 
+          title="Planejamento: ILGCH" 
+          sub="Cultura Corporal e Educação em Direitos Humanos" 
+        />
 
         {/* Conteúdo do Planejamento */}
         <div className={`max-w-7xl mx-auto space-y-8 ${selectedAulaPlan ? 'blur-sm pointer-events-none' : ''} transition-all duration-200`}>
