@@ -81,8 +81,8 @@ export const PE_PLAN: Record<string, AulaPlan[]> = {
             resumo: `🎯 **Objetivo da Aula:** Estudar as lutas como ferramentas de libertação no Brasil.\n\n🗣️ **Dinâmica:**\n• Estudo da Capoeira e da Luta Marajoara.\n\n⚠️ **TRABALHO:** Construção do tabuleiro de Shisima ou Mancala em casa com material reciclável.` 
         },
         { 
-            data: '31/08', tri: '2º Tri', modulo: 'Jogos de Tabuleiro', titulo: 'Torneio de Tabuleiros', desc: 'Torneio de Dama e Xadrez em sala e recuperação paralela.', 
-            resumo: `🎯 **Objetivo da Aula:** Aplicar táticas de jogo em ambiente competitivo de sala.\n\n🗣️ **Dinâmica:**\n• Torneio de tabuleiros nas carteiras e atendimento individual de recuperação.` 
+            data: '31/08', tri: '2º Tri', modulo: 'Lutas', titulo: 'Lutas do Brasil: Luta Marajoara', desc: 'A tradição da Ilha de Marajó e o combate ancestral (Sala).', 
+            resumo: `🎯 **Objetivo da Aula:** Conhecer a história, as regras e a filosofia da Luta Marajoara.\n\n🗣️ **Dinâmica:**\n• Apresentação de slides interativos.\n• Debate sobre a conexão com a cultura do Pará e o manejo do búfalo.\n\n📜 **Reflexão:** Como uma luta pode ser um patrimônio cultural e imaterial?` 
         },
         { 
             data: '14/09', tri: '3º Tri', modulo: 'Jogos de Tabuleiro', titulo: 'Torneio de Shisima', desc: 'Realização de torneio com o jogo de tabuleiro Shisima.', 
@@ -169,8 +169,8 @@ export const PE_PLAN: Record<string, AulaPlan[]> = {
             resumo: `🎯 **Objetivo da Aula:** Sistematizar saberes cognitivos de Futsal, Vôlei e Basquetebol.\n\n🗣️ **Dinâmica:**\n• Aplicação de prova escrita individual em sala.` 
         },
         { 
-            data: '31/08', tri: '2º Tri', modulo: 'Recuperação', titulo: 'Recuperação e Segunda Chamada (SALA - sem prática)', desc: 'Oportunidade para reposição de notas e revisão de diário.', 
-            resumo: `🎯 **Objetivo da Aula:** Oferecer recuperação paralela de notas críticas.\n\n🗣️ **Dinâmica:**\n• Atendimento individual focado e repetição de avaliações.` 
+            data: '31/08', tri: '2º Tri', modulo: 'Lutas', titulo: 'Lutas do Brasil: Luta Marajoara', desc: 'A tradição da Ilha de Marajó e o combate ancestral (Sala).', 
+            resumo: `🎯 **Objetivo da Aula:** Conhecer a história, as regras e a filosofia da Luta Marajoara.\n\n🗣️ **Dinâmica:**\n• Apresentação de slides interativos.\n• Debate sobre a conexão com a cultura do Pará e o manejo do búfalo.\n\n📜 **Reflexão:** Como uma luta pode ser um patrimônio cultural e imaterial?` 
         },
         { 
             data: '14/09', tri: '3º Tri', modulo: 'Esportes de Campo', titulo: 'Futebol: Limites e Regras (Aula 1/4 - TEÓRICA)', desc: 'Marcações de campo e regras básicas (Impedimento tático de forma fácil).', 

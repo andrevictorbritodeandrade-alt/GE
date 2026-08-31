@@ -34,11 +34,26 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({ onBack }) => {
           </div>
           <div className="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-blue-700 font-bold">
             <span>07:00 às 12:15</span>
-            <span className="bg-blue-50 px-1.5 py-0.5 rounded text-[10px]">Manhã</span>
+            <span className="bg-blue-50 px-1.5 py-0.5 rounded text-[10px]">3 Turmas</span>
           </div>
         </div>
 
-        {/* 2. CIEP 229 */}
+        {/* 2. CE Dr. Ignácio Bezerra */}
+        <div className="bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-emerald-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <span className="text-[9px] font-black uppercase px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded-md">
+              Terça / Sexta / AP
+            </span>
+            <h3 className="font-black text-slate-900 text-sm mt-2 leading-tight">CE Dr. Ignácio Bezerra</h3>
+            <p className="text-xs text-slate-600 font-medium mt-1">ILGCH 1001, IFFC 2001, IFLA 2002, AP Seg & AP Sex</p>
+          </div>
+          <div className="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-emerald-700 font-bold">
+            <span>07:00 às 16:00</span>
+            <span className="bg-emerald-50 px-1.5 py-0.5 rounded text-[10px]">5 Turmas</span>
+          </div>
+        </div>
+
+        {/* 3. CIEP 229 Cândido Portinari */}
         <div className="bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-purple-200 shadow-sm flex flex-col justify-between">
           <div>
             <span className="text-[9px] font-black uppercase px-2 py-0.5 bg-purple-100 text-purple-800 rounded-md">
@@ -48,53 +63,8 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({ onBack }) => {
             <p className="text-xs text-slate-600 font-medium mt-1">Turma EJANEM I01 (EJA Médio)</p>
           </div>
           <div className="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-purple-700 font-bold">
-            <span>19:00 às 19:30</span>
-            <span className="bg-purple-50 px-1.5 py-0.5 rounded text-[10px]">Noite</span>
-          </div>
-        </div>
-
-        {/* 3. CE Dr. Ignácio Bezerra */}
-        <div className="bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-emerald-200 shadow-sm flex flex-col justify-between">
-          <div>
-            <span className="text-[9px] font-black uppercase px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded-md">
-              Sexta • Manhã
-            </span>
-            <h3 className="font-black text-slate-900 text-sm mt-2 leading-tight">CE Dr. Ignácio Bezerra</h3>
-            <p className="text-xs text-slate-600 font-medium mt-1">ILGCH 1001, IFFC 2001, IFLA 2002</p>
-          </div>
-          <div className="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-emerald-700 font-bold">
-            <span>07:00 às 12:15</span>
-            <span className="bg-emerald-50 px-1.5 py-0.5 rounded text-[10px]">Manhã</span>
-          </div>
-        </div>
-
-        {/* 4. CIEP 369 */}
-        <div className="bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-amber-200 shadow-sm flex flex-col justify-between">
-          <div>
-            <span className="text-[9px] font-black uppercase px-2 py-0.5 bg-amber-100 text-amber-900 rounded-md">
-              Sexta • Tarde
-            </span>
-            <h3 className="font-black text-slate-900 text-sm mt-2 leading-tight">CIEP 369</h3>
-            <p className="text-xs text-slate-600 font-medium mt-1">Educação Física</p>
-          </div>
-          <div className="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-amber-700 font-bold">
-            <span>14:25 às 16:20</span>
-            <span className="bg-amber-50 px-1.5 py-0.5 rounded text-[10px]">Tarde</span>
-          </div>
-        </div>
-
-        {/* 5. CIEP 476 */}
-        <div className="bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-rose-200 shadow-sm flex flex-col justify-between">
-          <div>
-            <span className="text-[9px] font-black uppercase px-2 py-0.5 bg-rose-100 text-rose-900 rounded-md">
-              Sexta • Noite
-            </span>
-            <h3 className="font-black text-slate-900 text-sm mt-2 leading-tight">CIEP 476</h3>
-            <p className="text-xs text-slate-600 font-medium mt-1">Educação Física</p>
-          </div>
-          <div className="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-rose-700 font-bold">
-            <span>19:30 às 20:30</span>
-            <span className="bg-rose-50 px-1.5 py-0.5 rounded text-[10px]">Noite</span>
+            <span>19:00 às 21:20</span>
+            <span className="bg-purple-50 px-1.5 py-0.5 rounded text-[10px]">1 Turma</span>
           </div>
         </div>
       </div>
@@ -107,12 +77,12 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({ onBack }) => {
               <Clock className="w-6 h-6 text-blue-600" /> Grade Horária Semanal
             </h2>
             <p className="text-xs text-slate-500 font-medium mt-0.5">
-              Dias de regência: Segunda-Feira e Sexta-Feira
+              Cronograma das 3 Escolas e 9 Turmas
             </p>
           </div>
           <div className="flex items-center gap-2">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-50 text-blue-800 text-xs font-bold rounded-lg border border-blue-200">
-              <CheckCircle2 size={14} className="text-blue-600" /> 5 Unidades Escolares
+              <CheckCircle2 size={14} className="text-blue-600" /> 3 Unidades Escolares • 9 Turmas
             </span>
           </div>
         </div>
@@ -126,13 +96,13 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({ onBack }) => {
                   <div className="flex items-center justify-center gap-2 text-base">
                     <span>📅</span> SEGUNDA-FEIRA
                   </div>
-                  <span className="text-[11px] text-blue-200 font-normal normal-case">EE Profª Cordélia Paiva & CIEP 229</span>
+                  <span className="text-[11px] text-blue-200 font-normal normal-case">EE Profª Cordélia Paiva, CE Dr. Ignácio & CIEP 229</span>
                 </th>
                 <th className="border border-slate-800 p-4 text-center font-black uppercase tracking-wider text-xs bg-emerald-900/80 w-1/2">
                   <div className="flex items-center justify-center gap-2 text-base">
-                    <span>📅</span> SEXTA-FEIRA
+                    <span>📅</span> TERÇA & SEXTA-FEIRA
                   </div>
-                  <span className="text-[11px] text-emerald-200 font-normal normal-case">CE Dr. Ignácio Bezerra, CIEP 369 & CIEP 476</span>
+                  <span className="text-[11px] text-emerald-200 font-normal normal-case">CE Dr. Ignácio Bezerra de Menezes</span>
                 </th>
               </tr>
             </thead>
@@ -150,9 +120,9 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({ onBack }) => {
                   }, 
                   fri: { 
                     school: 'CE Dr. Ignácio Bezerra de Menezes', 
-                    class: 'ILGCH 1001', 
-                    code: 'ILG_CH_1001', 
-                    tag: '1ª Série EM', 
+                    class: 'IFFC 2001', 
+                    code: 'IFFC_2001', 
+                    tag: '2ª Série EM', 
                     color: 'emerald' 
                   } 
                 },
@@ -168,8 +138,8 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({ onBack }) => {
                   }, 
                   fri: { 
                     school: 'CE Dr. Ignácio Bezerra de Menezes', 
-                    class: 'IFFC 2001', 
-                    code: 'IF_FC_2001', 
+                    class: 'IFLA 2002', 
+                    code: 'IFLA_2002', 
                     tag: '2ª Série EM', 
                     color: 'emerald' 
                   } 
@@ -186,41 +156,41 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({ onBack }) => {
                   }, 
                   fri: { 
                     school: 'CE Dr. Ignácio Bezerra de Menezes', 
-                    class: 'IFLA 2002', 
-                    code: 'IF_LA_2002', 
-                    tag: '2ª Série EM', 
+                    class: 'ILGCH 1001', 
+                    code: 'ILGCH_1001', 
+                    tag: '1ª Série EM', 
                     color: 'emerald' 
                   } 
                 },
                 { 
                   period: 'Turno da Tarde', 
-                  time: '14:25 – 16:20', 
-                  mon: null, 
+                  time: '14:00 – 16:00', 
+                  mon: { 
+                    school: 'CE Dr. Ignácio Bezerra de Menezes', 
+                    class: 'AP (Segundas)', 
+                    code: 'AP_SEG', 
+                    tag: 'Atividades Práticas', 
+                    color: 'amber' 
+                  }, 
                   fri: { 
-                    school: 'CIEP 369', 
-                    class: 'Educação Física', 
-                    code: '14:25 – 16:20', 
-                    tag: 'Vespertino', 
+                    school: 'CE Dr. Ignácio Bezerra de Menezes', 
+                    class: 'AP (Sextas)', 
+                    code: 'AP_SEX', 
+                    tag: 'Atividades Práticas', 
                     color: 'amber' 
                   } 
                 },
                 { 
                   period: 'Turno Noturno', 
-                  time: '19:00 – 19:30 / 19:30 – 20:30', 
+                  time: '19:00 – 21:20', 
                   mon: { 
                     school: 'CIEP 229 Cândido Portinari', 
                     class: 'EJANEM I01', 
-                    code: '19:00 – 19:30', 
+                    code: 'EJA_I01', 
                     tag: 'EJA Médio', 
                     color: 'purple' 
                   }, 
-                  fri: { 
-                    school: 'CIEP 476', 
-                    class: 'Educação Física', 
-                    code: '19:30 – 20:30', 
-                    tag: 'Noturno', 
-                    color: 'rose' 
-                  } 
+                  fri: null
                 },
               ].map((row, i) => (
                 <tr key={i} className="hover:bg-slate-50/80 transition-colors">

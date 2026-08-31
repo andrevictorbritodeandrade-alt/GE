@@ -39,7 +39,7 @@ const CLASSES = {
     { id: '802', name: 'Turma 802 (EE Cordelia Paiva)', segment: SEGMENTS.FUNDAMENTAL },
     { id: '803', name: 'Turma 803 (EE Cordelia Paiva)', segment: SEGMENTS.FUNDAMENTAL },
     { id: '801', name: 'Turma 801 (EE Cordelia Paiva)', segment: SEGMENTS.FUNDAMENTAL },
-    { id: 'CIEP369', name: 'Turma CIEP 369', segment: SEGMENTS.FUNDAMENTAL },
+    { id: 'CE_IGNACIO_AP_SEG', name: 'AP Segundas (CE Dr. Ignácio)', segment: SEGMENTS.ACELERACAO },
     { id: 'CIEP229_EJA', name: 'EJANEM I01 (CIEP 229)', segment: SEGMENTS.EJA },
   ],
   TUESDAY: [
@@ -51,9 +51,7 @@ const CLASSES = {
     { id: 'CE_IGNACIO_1001_fri', name: 'ILGCH 1001 (CE Dr. Ignácio)', segment: SEGMENTS.MEDIO },
     { id: 'CE_IGNACIO_2001_fri', name: 'IFFC 2001 (CE Dr. Ignácio)', segment: SEGMENTS.MEDIO },
     { id: 'CE_IGNACIO_2002_fri', name: 'IFLA 2002 (CE Dr. Ignácio)', segment: SEGMENTS.MEDIO },
-    { id: 'CIEP476_1001', name: 'Turma 1001 (CIEP 476)', segment: SEGMENTS.MEDIO },
-    { id: 'CIEP476_1002', name: 'Turma 1002 (CIEP 476)', segment: SEGMENTS.MEDIO },
-    { id: 'CIEP476_2001', name: 'Turma 2001 (CIEP 476)', segment: SEGMENTS.MEDIO },
+    { id: 'CE_IGNACIO_AP_SEX', name: 'AP Sextas (CE Dr. Ignácio)', segment: SEGMENTS.ACELERACAO },
   ]
 };
 

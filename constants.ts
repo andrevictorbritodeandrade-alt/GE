@@ -608,6 +608,26 @@ export const initialClassData: ClassDataMap = {
     schedule: "08:40 – 10:20",
     days: ["Terça"]
   },
+  "CE_IGNACIO_AP_SEG": { 
+    id: "CE_IGNACIO_AP_SEG", 
+    name: "AP (Segundas)", 
+    grade: "1ª/2ª Série EM", 
+    school: "CE Doutor Ignacio Bezerra de Menezes",
+    discipline: "Educação Física (Atividades Práticas)",
+    students: [],
+    schedule: "14:00 – 16:00",
+    days: ["Segunda"]
+  },
+  "CE_IGNACIO_AP_SEX": { 
+    id: "CE_IGNACIO_AP_SEX", 
+    name: "AP (Sextas)", 
+    grade: "1ª/2ª Série EM", 
+    school: "CE Doutor Ignacio Bezerra de Menezes",
+    discipline: "Educação Física (Atividades Práticas)",
+    students: [],
+    schedule: "14:00 – 16:00",
+    days: ["Sexta"]
+  },
   "CIEP229_EJA": { 
     id: "CIEP229_EJA", 
     name: "EJANEM I01", 
@@ -616,16 +636,6 @@ export const initialClassData: ClassDataMap = {
     discipline: "Educação Física",
     students: [],
     schedule: "19:40 – 21:20",
-    days: ["Segunda"]
-  },
-  "CIEP369": {
-    id: "CIEP369",
-    name: "Turma CIEP 369",
-    grade: "8",
-    school: "CIEP 369",
-    discipline: "Educação Física",
-    students: [],
-    schedule: "14:25 – 16:20",
     days: ["Segunda"]
   }
 };

@@ -291,6 +291,63 @@ export const SLIDES_POVOS_ORIGINARIOS = [
   }
 ];
 
+export const SLIDES_LUTA_MARAJOARA = [
+  {
+    tipo: 'capa',
+    title: 'LUTA MARAJOARA',
+    subtitle: 'O Combate Tradicional da Ilha de Marajó (Pará)',
+    dicaProfessor: 'Deixe esta capa no telão. Fundo com imagens de búfalos ou da Ilha de Marajó.'
+  },
+  {
+    tipo: 'texto_simples',
+    title: '1. ORIGEM E HISTÓRIA',
+    points: [
+      'NASCIMENTO: Criada por ribeirinhos, indígenas e caboclos da Ilha de Marajó (Pará).',
+      'INSPIRAÇÃO: Fortemente ligada ao manejo do gado e dos búfalos, animais símbolos da ilha.',
+      'FINALIDADE: Originalmente era uma forma de entretenimento em festivais ou para resolver disputas sem violência letal.',
+      'RESISTÊNCIA: Considerada uma das poucas lutas genuinamente brasileiras que mantêm suas raízes ancestrais intocadas.'
+    ],
+    dicaProfessor: 'Destaque que, ao contrário do boxe ou MMA, a Luta Marajoara não busca ferir o oponente, mas sim testar sua força e equilíbrio.'
+  },
+  {
+    tipo: 'texto_simples',
+    title: '2. O CAMPO DE BATALHA',
+    points: [
+      'PISO: Tradicionalmente praticada em campos de grama ou na lama/argila (durante a maré ou em festivais).',
+      'VESTIMENTA: Antigamente lutava-se de bermuda ou calção curto, com o corpo muitas vezes coberto de argila para dificultar a pegada.',
+      'CONTATO COM A TERRA: A luta é uma celebração da conexão do homem com o território marajoara.'
+    ],
+    dicaProfessor: 'Fale sobre a dificuldade de lutar na lama: o corpo fica escorregadio e exige muito mais força de pegada.'
+  },
+  {
+    tipo: 'texto_simples',
+    title: '3. REGRAS FUNDAMENTAIS',
+    points: [
+      'OBJETIVO SUPREMO: Desequilibrar o adversário e fazer com que ele encoste as costas ou os ombros no chão.',
+      'PROIBIÇÕES RÍGIDAS: É estritamente proibido socos, chutes, estrangulamentos ou qualquer golpe traumático.',
+      'SISTEMA DE AGARRE: É uma luta de grappling (agarre). Usa-se a força do tronco, pernas e braços para projetar o oponente.',
+      'CORTESIA: A luta começa e termina com um aperto de mão ou abraço, simbolizando a paz.'
+    ],
+    dicaProfessor: 'Explique que é parecida com o Judô ou o Wrestling (Luta Livre), mas sem o foco em finalizações de articulação.'
+  },
+  {
+    tipo: 'texto_simples',
+    title: '4. CULTURA E FILOSOFIA',
+    points: [
+      'QUEM CAI, LEVANTA: A filosofia do "quem cai, levanta e continua" ensina resiliência aos jovens.',
+      'RESPEITO AO OPONENTE: Não há espaço para ofensas. O oponente é visto como um parceiro de evolução.',
+      'PATRIMÔNIO: Reconhecida como Patrimônio Cultural e Imaterial, protegendo a história dos povos do Norte do Brasil.'
+    ],
+    dicaProfessor: 'Relacione com a Capoeira: ambas são expressões da identidade brasileira e da resistência cultural.'
+  },
+  {
+    tipo: 'destaque_centro',
+    texto: '"A Luta Marajoara é a dança da força e do equilíbrio sobre o solo sagrado de Marajó."',
+    subtexto: 'Educação Física e Identidade Nacional',
+    dicaProfessor: 'Encerre a aula incentivando os alunos a valorizarem os esportes que nasceram no nosso próprio país.'
+  }
+];
+
 export const CORPO_MIDIA_SLIDES = [
   { title: "DEBATE: CORPO E MÍDIA", subtitle: "Desconstruindo estereótipos com Frantz Fanon e Cida Bento.", type: "text", theme: "hero" },
   { title: "O PONTO DE PARTIDA", content: "Uma reflexão sociológica sobre como a TV e a internet limitam as narrativas sobre corpos negros e periféricos.", type: "text", theme: "quote" },
