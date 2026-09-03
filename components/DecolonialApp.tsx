@@ -121,8 +121,6 @@ export const slidesData: Record<string, Slide[]> = {
   'ap_sexta_27/07': SLIDES_PARALIMPICO.map(s => ({...s, tipo: s.category === 'LOUSA_ALUNO' || s.title.includes('QUADRO') ? 'texto_simples' : 'texto'})),
   'ap_sexta_31/07': SLIDES_PARALIMPICO.map(s => ({...s, tipo: s.category === 'LOUSA_ALUNO' || s.title.includes('QUADRO') ? 'texto_simples' : 'texto'})),
   'ciep369_27/07': SLIDES_PARALIMPICO.map(s => ({...s, tipo: s.category === 'LOUSA_ALUNO' || s.title.includes('QUADRO') ? 'texto_simples' : 'texto'})),
-  'ciep198_27/07': SLIDES_PARALIMPICO.map(s => ({...s, tipo: s.category === 'LOUSA_ALUNO' || s.title.includes('QUADRO') ? 'texto_simples' : 'texto'})),
-  'ciep320_27/07': SLIDES_PARALIMPICO.map(s => ({...s, tipo: s.category === 'LOUSA_ALUNO' || s.title.includes('QUADRO') ? 'texto_simples' : 'texto'})),
   'correcao_fluxo_27/07': SLIDES_PARALIMPICO.map(s => ({...s, tipo: s.category === 'LOUSA_ALUNO' || s.title.includes('QUADRO') ? 'texto_simples' : 'texto'})),
   'ilgch_27/07': SLIDES_PARALIMPICO.map(s => ({...s, tipo: s.category === 'LOUSA_ALUNO' || s.title.includes('QUADRO') ? 'texto_simples' : 'texto'})),
   'ilgch_31/07': SLIDES_AULA_INTERATIVA_EM.map(s => ({...s, tipo: s.type || s.tipo || 'texto_simples'})),

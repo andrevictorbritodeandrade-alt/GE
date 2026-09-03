@@ -16,23 +16,23 @@ const SEGMENTS = {
 
 const CLASSES = {
   MONDAY: [
-    { id: '802', name: 'Turma 802 (EE Cordelia Paiva)', segment: SEGMENTS.FUNDAMENTAL },
-    { id: '803', name: 'Turma 803 (EE Cordelia Paiva)', segment: SEGMENTS.FUNDAMENTAL },
-    { id: '801', name: 'Turma 801 (EE Cordelia Paiva)', segment: SEGMENTS.FUNDAMENTAL },
-    { id: 'eja', name: 'EJANEM I01 (CIEP 229)', segment: SEGMENTS.EJA },
+    { id: '802', name: 'Turma 802 (EE PROFESSORA CORDELIA PAIVA)', segment: SEGMENTS.FUNDAMENTAL },
+    { id: '803', name: 'Turma 803 (EE PROFESSORA CORDELIA PAIVA)', segment: SEGMENTS.FUNDAMENTAL },
+    { id: '801', name: 'Turma 801 (EE PROFESSORA CORDELIA PAIVA)', segment: SEGMENTS.FUNDAMENTAL },
+    { id: 'eja', name: 'EJANEM I01 (CIEP 229 CÂNDIDO PORTINARI)', segment: SEGMENTS.EJA },
   ],
   TUESDAY: [
-    { id: '2001', name: 'IFFC 2001 (CE Dr. Ignácio)', segment: SEGMENTS.MEDIO },
-    { id: '2002', name: 'IFLA 2002 (CE Dr. Ignácio)', segment: SEGMENTS.MEDIO },
-    { id: '1001', name: 'ILGCH 1001 (CE Dr. Ignácio)', segment: SEGMENTS.MEDIO },
+    { id: '2001', name: 'IFFC 2001 (CE DOUTOR IGNACIO BEZERRA DE MENEZES)', segment: SEGMENTS.MEDIO },
+    { id: '2002', name: 'IFLA 2002 (CE DOUTOR IGNACIO BEZERRA DE MENEZES)', segment: SEGMENTS.MEDIO },
+    { id: '1001', name: 'ILGCH 1001 (CE DOUTOR IGNACIO BEZERRA DE MENEZES)', segment: SEGMENTS.MEDIO },
   ],
   FRIDAY: [
-    { id: '1001_fri', name: 'ILGCH 1001 (CE Dr. Ignácio)', segment: SEGMENTS.MEDIO },
-    { id: '2001_fri', name: 'IFFC 2001 (CE Dr. Ignácio)', segment: SEGMENTS.MEDIO },
-    { id: '2002_fri', name: 'IFLA 2002 (CE Dr. Ignácio)', segment: SEGMENTS.MEDIO },
-    { id: 'CIEP476_1001', name: 'Turma 1001 (CIEP 476)', segment: SEGMENTS.MEDIO },
-    { id: 'CIEP476_1002', name: 'Turma 1002 (CIEP 476)', segment: SEGMENTS.MEDIO },
-    { id: 'CIEP476_2001', name: 'Turma 2001 (CIEP 476)', segment: SEGMENTS.MEDIO },
+    { id: '1001_fri', name: 'ILGCH 1001 (CE DOUTOR IGNACIO BEZERRA DE MENEZES)', segment: SEGMENTS.MEDIO },
+    { id: '2001_fri', name: 'IFFC 2001 (CE DOUTOR IGNACIO BEZERRA DE MENEZES)', segment: SEGMENTS.MEDIO },
+    { id: '2002_fri', name: 'IFLA 2002 (CE DOUTOR IGNACIO BEZERRA DE MENEZES)', segment: SEGMENTS.MEDIO },
+    { id: 'CIEP476_1001', name: 'Turma 1001 (CIEP 476 ELIAS LAZARONI)', segment: SEGMENTS.MEDIO },
+    { id: 'CIEP476_1002', name: 'Turma 1002 (CIEP 476 ELIAS LAZARONI)', segment: SEGMENTS.MEDIO },
+    { id: 'CIEP476_2001', name: 'Turma 2001 (CIEP 476 ELIAS LAZARONI)', segment: SEGMENTS.MEDIO },
   ]
 };
 

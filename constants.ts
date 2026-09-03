@@ -1,5 +1,66 @@
 import { ClassDataMap, UserProfile } from './types';
 
+export const ALLOWED_SCHOOLS = [
+  "CE DOUTOR IGNACIO BEZERRA DE MENEZES",
+  "CIEP 476 ELIAS LAZARONI",
+  "CIEP 369 JORNALISTA SANDRO MOREYRA",
+  "CIEP 229 CÂNDIDO PORTINARI",
+  "EE PROFESSORA CORDELIA PAIVA"
+] as const;
+
+export type AllowedSchool = typeof ALLOWED_SCHOOLS[number];
+
+export function normalizeSchoolName(school: string | undefined | null): AllowedSchool | null {
+  if (!school) return null;
+  const s = school.trim();
+  const upper = s.toUpperCase();
+  
+  if (upper.includes("IGNACIO") || upper.includes("IGNÁCIO") || upper.includes("BEZERRA")) {
+    return "CE DOUTOR IGNACIO BEZERRA DE MENEZES";
+  }
+  if (upper.includes("CORDELIA") || upper.includes("CORDÉLIA")) {
+    return "EE PROFESSORA CORDELIA PAIVA";
+  }
+  if (upper.includes("229") || upper.includes("PORTINARI")) {
+    return "CIEP 229 CÂNDIDO PORTINARI";
+  }
+  if (upper.includes("369") || upper.includes("SANDRO MOREYRA") || upper.includes("MAURÍCIO AZEDO") || upper.includes("MAURICIO AZEDO")) {
+    return "CIEP 369 JORNALISTA SANDRO MOREYRA";
+  }
+  if (upper.includes("476") || upper.includes("ELIAS LAZARONI") || upper.includes("FLÁVIO RIBEIRO") || upper.includes("FLAVIO RIBEIRO")) {
+    return "CIEP 476 ELIAS LAZARONI";
+  }
+
+  return null;
+}
+
+export function sanitizeAndNormalizeClassData(data: ClassDataMap): { sanitized: ClassDataMap, purgedIds: string[], changed: boolean } {
+  const sanitized: ClassDataMap = {};
+  const purgedIds: string[] = [];
+  let changed = false;
+
+  Object.keys(data || {}).forEach(id => {
+    const cls = data[id];
+    if (!cls) return;
+
+    const normalizedSchool = normalizeSchoolName(cls.school);
+    if (!normalizedSchool) {
+      // School is not in the 5 allowed schools: purge it!
+      purgedIds.push(id);
+      changed = true;
+    } else {
+      if (cls.school !== normalizedSchool) {
+        sanitized[id] = { ...cls, school: normalizedSchool };
+        changed = true;
+      } else {
+        sanitized[id] = cls;
+      }
+    }
+  });
+
+  return { sanitized, purgedIds, changed };
+}
+
 export const BACKGROUND_IMAGES = [
   "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=3870&auto=format&fit=crop", // Gym/Fitness
   "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=3869&auto=format&fit=crop", // Running/Athletics
@@ -258,7 +319,7 @@ export const initialClassData: ClassDataMap = {
     id: "801", 
     name: "801-182106", 
     grade: "8", 
-    school: "EE Professora Cordelia Paiva",
+    school: "EE PROFESSORA CORDELIA PAIVA",
     discipline: "Educação Física",
     students: [
       { id: 80101, name: "Alice Vitória Rosa de Sales Ramos", attendance: { "08/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "F", "01/06 - 2º T": "F", "08/06 - 1º T": "P", "08/06 - 2º T": "P", "27/07": "P" } },
@@ -368,36 +429,40 @@ export const initialClassData: ClassDataMap = {
     id: "802", 
     name: "802-182106", 
     grade: "8", 
-    school: "EE Professora Cordelia Paiva",
+    school: "EE PROFESSORA CORDELIA PAIVA",
     discipline: "Educação Física",
     students: [
-      { id: 802001, name: "Henzo Martins da Silva Evangelista", attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "F", "22/06": "P", "27/07": "P" } },
-      { id: 802002, name: "Isabella Ribeiro Gomes", attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "F", "15/06": "P", "22/06": "P", "27/07": "P" }, grades: { "jogos_do_mundo_802_2026_06_22": 2.5 } },
-      { id: 802003, name: "Isabella Vitoria Correa Pereira", attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "27/07": "F" }, grades: { "jogos_do_mundo_802_2026_06_22": 3.0 } },
-      { id: 802004, name: "Isabelly Lopes do Nascimento", attendance: { "11/05": "P", "18/05": "P", "25/05": "F", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "27/07": "F" }, grades: { "jogos_do_mundo_802_2026_06_22": 3.0 } },
-      { id: 802005, name: "Jhully Victoria C. dos S. de Oliveira", attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "27/07": "P" } },
-      { id: 802006, name: "João Davi Gomes Pereira", attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "27/07": "P" } },
-      { id: 802007, name: "João Gabriel Alves da Costa", attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "27/07": "P" } },
-      { id: 802008, name: "João Marcos Oliveira Ribeiro", attendance: { "11/05": "P", "18/05": "P", "25/05": "F", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "27/07": "P" } },
-      { id: 802009, name: "Julia Oliveira da Silva", attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "27/07": "F" } },
-      { id: 802010, name: "Juliana Arueira Luparelli", attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "F", "15/06": "P", "22/06": "P", "27/07": "F" } },
-      { id: 802011, name: "Kaique Cruz Gonçalves Damião", attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "27/07": "P" } },
-      { id: 802012, name: "Kevin Gabriel Gomes da Silva", attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "27/07": "P" } },
-      { id: 802013, name: "Lara Maria de Sousa Soares", attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "F", "22/06": "P", "27/07": "P" }, grades: { "jogos_do_mundo_802_2026_06_22": 3.0 } },
-      { id: 802015, name: "Lara Vieira de Andrade", attendance: { "11/05": "P", "18/05": "P", "25/05": "F", "01/06": "P", "08/06": "P", "15/06": "F", "22/06": "F", "27/07": "P" } },
-      { id: 802016, name: "Lavinnya de Souza de Araújo", attendance: { "11/05": "F", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "F", "22/06": "P", "27/07": "P" }, grades: { "jogos_do_mundo_802_2026_06_22": 3.0 } },
-      { id: 802017, name: "Laysa Ambrozio Claudio", attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "27/07": "P" } },
-      { id: 802018, name: "Leticia Costa Santos", attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "F", "15/06": "P", "22/06": "P", "27/07": "P" }, grades: { "jogos_do_mundo_802_2026_06_22": 3.0 } },
-      { id: 802019, name: "Lívia Duarte Soares de Lima", attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "27/07": "P" }, grades: { "jogos_do_mundo_802_2026_06_22": 2.5 } },
-      { id: 802020, name: "Lívia Fernandes Gaiani", attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "27/07": "P" } },
-      { id: 802021, name: "Luis Fernando Amorim de Deus", attendance: { "11/05": "F", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "27/07": "P" } },
-      { id: 802023, name: "Manuela Ribeiro dos Santos", attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "F", "15/06": "P", "22/06": "P", "27/07": "P" }, grades: { "jogos_do_mundo_802_2026_06_22": 2.5 } },
-      { id: 802022, name: "Manuella Figueiredo da Silva", attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "27/07": "P" }, grades: { "jogos_do_mundo_802_2026_06_22": 2.2 } },
-      { id: 802024, name: "Manuella Magalhães Martins", attendance: { "11/05": "P", "18/05": "P", "25/05": "F", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "27/07": "P" } },
-      { id: 802025, name: "Maria Rita de Jesus Sergio", attendance: { "11/05": "P", "18/05": "P", "25/05": "F", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "27/07": "P" }, grades: { "jogos_do_mundo_802_2026_06_22": 2.2 } },
-      { id: 802026, name: "Mellyna Santos Spatafora", attendance: { "11/05": "P", "18/05": "P", "25/05": "F", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "F", "27/07": "F" } },
-      { id: 802027, name: "Sophia Oliveira Ribeiro", attendance: { "11/05": "P", "18/05": "P", "25/05": "F", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "27/07": "P" } },
-      { id: 802014, name: "Lara Monteiro dos Santos", attendance: { "11/05": "P", "18/05": "P", "25/05": "F", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "27/07": "P" } }
+      { id: 802001, name: "Henzo Martins da Silva Evangelista", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "F", "22/06": "P", "06/07": "P", "27/07": "P", "03/08": "P", "10/08": "P", "17/08": "P", "24/08": "P", "31/08": "F" }, trimestreGrades: { "1": { participation: 2.0, assignment: 2.0, exam: 2.1 }, "2": { assignment: 0.0, participation: 2.0, exam: 4.0 } } },
+      { id: 802002, name: "Isabella Ribeiro Gomes", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "F", "15/06": "P", "22/06": "P", "06/07": "P", "27/07": "P", "03/08": "P", "10/08": "P", "17/08": "P", "24/08": "P", "31/08": "F" }, grades: { "jogos_do_mundo_802_2026_06_22": 2.5 }, trimestreGrades: { "1": { participation: 2.0, assignment: 2.0, exam: 2.1 }, "2": { assignment: 2.5, participation: 2.0, exam: 3.0 } } },
+      { id: 802003, name: "Isabella Vitoria Correa Pereira", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "06/07": "P", "27/07": "F", "03/08": "P", "10/08": "P", "17/08": "P", "24/08": "P", "31/08": "F" }, grades: { "jogos_do_mundo_802_2026_06_22": 3.0 }, trimestreGrades: { "1": { participation: 2.0, assignment: 2.0, exam: 2.3 }, "2": { assignment: 3.0, participation: 2.0, exam: 3.0 } } },
+      { id: 802004, name: "Isabelly Lopes do Nascimento", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "F", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "06/07": "P", "27/07": "F", "03/08": "P", "10/08": "P", "17/08": "P", "24/08": "P", "31/08": "P" }, grades: { "jogos_do_mundo_802_2026_06_22": 3.0 }, trimestreGrades: { "1": { participation: 2.0, assignment: 2.0, exam: 2.2 }, "2": { assignment: 3.0, participation: 2.0, exam: 3.1 } } },
+      { id: 802005, name: "Jhully Victoria C. dos S. de Oliveira", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "06/07": "P", "27/07": "P", "03/08": "P", "10/08": "P", "17/08": "F", "24/08": "P", "31/08": "F" }, trimestreGrades: { "1": { participation: 2.0, assignment: 2.0, exam: 2.0 }, "2": { assignment: 0.0, participation: 2.0, exam: 4.1 } } },
+      { id: 802006, name: "João Davi Gomes Pereira", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "06/07": "P", "27/07": "P", "03/08": "P", "10/08": "P", "17/08": "P", "24/08": "P", "31/08": "F" }, trimestreGrades: { "1": { participation: 2.0, assignment: 2.0, exam: 2.2 }, "2": { assignment: 0.0, participation: 2.0, exam: 4.2 } } },
+      { id: 802007, name: "João Gabriel Alves da Costa", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "06/07": "P", "27/07": "P", "03/08": "P", "10/08": "P", "17/08": "P", "24/08": "P", "31/08": "F" }, trimestreGrades: { "1": { participation: 2.0, assignment: 2.0, exam: 2.1 }, "2": { assignment: 0.0, participation: 2.0, exam: 4.0 } } },
+      { id: 802008, name: "João Marcos Oliveira Ribeiro", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "F", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "06/07": "P", "27/07": "P", "03/08": "F", "10/08": "P", "17/08": "P", "24/08": "P", "31/08": "P" }, trimestreGrades: { "1": { participation: 2.0, assignment: 2.0, exam: 2.3 }, "2": { assignment: 3.0, participation: 2.0, exam: 3.0 } } },
+      { id: 802009, name: "Julia Oliveira da Silva", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "06/07": "P", "27/07": "F", "03/08": "P", "10/08": "P", "17/08": "P", "24/08": "P", "31/08": "P" }, trimestreGrades: { "1": { participation: 2.0, assignment: 2.0, exam: 2.0 }, "2": { assignment: 0.0, participation: 2.0, exam: 4.0 } } },
+      { id: 802010, name: "Juliana Arueira Luparelli", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "F", "15/06": "P", "22/06": "P", "06/07": "F", "27/07": "F", "03/08": "P", "10/08": "P", "17/08": "P", "24/08": "P", "31/08": "P" }, trimestreGrades: { "1": { participation: 2.0, assignment: 2.0, exam: 2.2 }, "2": { assignment: 1.0, participation: 2.0, exam: 5.0 } } },
+      { id: 802011, name: "Kaique Cruz Gonçalves Damião", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "06/07": "F", "27/07": "P", "03/08": "P", "10/08": "P", "17/08": "F", "24/08": "P", "31/08": "P" }, trimestreGrades: { "1": { participation: 2.0, assignment: 2.0, exam: 2.0 }, "2": { assignment: 0.0, participation: 2.0, exam: 4.0 } } },
+      { id: 802012, name: "Kevin Gabriel Gomes da Silva", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "06/07": "P", "27/07": "P", "03/08": "P", "10/08": "P", "17/08": "P", "24/08": "P", "31/08": "F" }, trimestreGrades: { "1": { participation: 2.0, assignment: 2.0, exam: 2.3 }, "2": { assignment: 0.0, participation: 2.0, exam: 4.0 } } },
+      { id: 802013, name: "Lara Maria de Sousa Soares", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "F", "22/06": "P", "06/07": "F", "27/07": "P", "03/08": "F", "10/08": "F", "17/08": "P", "24/08": "P", "31/08": "P" }, grades: { "jogos_do_mundo_802_2026_06_22": 3.0 }, trimestreGrades: { "1": { participation: 2.0, assignment: 2.0, exam: 2.1 }, "2": { assignment: 3.0, participation: 2.0, exam: 3.1 } } },
+      { id: 802015, name: "Lara Vieira de Andrade", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "F", "01/06": "P", "08/06": "P", "15/06": "F", "22/06": "F", "06/07": "P", "27/07": "P", "03/08": "P", "10/08": "P", "17/08": "P", "24/08": "P", "31/08": "P" }, trimestreGrades: { "1": { participation: 2.0, assignment: 2.0, exam: 2.2 }, "2": { assignment: 3.0, participation: 2.0, exam: 3.9 } } },
+      { id: 802016, name: "Lavinnya de Souza de Araújo", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "F", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "F", "22/06": "P", "06/07": "P", "27/07": "P", "03/08": "P", "10/08": "F", "17/08": "F", "24/08": "F", "31/08": "F" }, grades: { "jogos_do_mundo_802_2026_06_22": 3.0 }, trimestreGrades: { "1": { participation: 2.0, assignment: 2.0, exam: 2.2 }, "2": { assignment: 3.0, participation: 2.0, exam: 2.9 } } },
+      { id: 802017, name: "Laysa Ambrozio Claudio", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "06/07": "P", "27/07": "P", "03/08": "P", "10/08": "P", "17/08": "P", "24/08": "P", "31/08": "P" }, trimestreGrades: { "1": { participation: 2.0, assignment: 2.0, exam: 2.3 }, "2": { assignment: 0.0, participation: 2.0, exam: 5.0 } } },
+      { id: 802018, name: "Leticia Costa Santos", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "F", "15/06": "P", "22/06": "P", "06/07": "P", "27/07": "P", "03/08": "P", "10/08": "P", "17/08": "F", "24/08": "P", "31/08": "P" }, grades: { "jogos_do_mundo_802_2026_06_22": 3.0 }, trimestreGrades: { "1": { participation: 2.0, assignment: 2.0, exam: 2.0 }, "2": { assignment: 3.0, participation: 2.0, exam: 3.0 } } },
+      { id: 802019, name: "Lívia Duarte Soares de Lima", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "06/07": "P", "27/07": "P", "03/08": "P", "10/08": "P", "17/08": "P", "24/08": "P", "31/08": "P" }, grades: { "jogos_do_mundo_802_2026_06_22": 2.5 }, trimestreGrades: { "1": { participation: 2.0, assignment: 2.0, exam: 2.1 }, "2": { assignment: 2.5, participation: 2.0, exam: 5.0 } } },
+      { id: 802020, name: "Lívia Fernandes Gaiani", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "06/07": "P", "27/07": "P", "03/08": "P", "10/08": "P", "17/08": "P", "24/08": "P", "31/08": "F" }, trimestreGrades: { "1": { participation: 2.0, assignment: 2.0, exam: 2.3 }, "2": { assignment: 0.0, participation: 2.0, exam: 4.5 } } },
+      { id: 802021, name: "Luis Fernando Amorim de Deus", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "F", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "06/07": "P", "27/07": "P", "03/08": "P", "10/08": "P", "17/08": "F", "24/08": "F", "31/08": "P" }, trimestreGrades: { "1": { participation: 2.0, assignment: 2.0, exam: 2.2 }, "2": { assignment: 0.0, participation: 2.0, exam: 4.0 } } },
+      { id: 802023, name: "Manuela Ribeiro dos Santos", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "F", "15/06": "P", "22/06": "P", "06/07": "P", "27/07": "P", "03/08": "F", "10/08": "P", "17/08": "P", "24/08": "F", "31/08": "P" }, grades: { "jogos_do_mundo_802_2026_06_22": 2.5 }, trimestreGrades: { "1": { participation: 2.0, assignment: 2.0, exam: 2.1 }, "2": { assignment: 2.5, participation: 2.0, exam: 3.5 } } },
+      { id: 802022, name: "Manuella Figueiredo da Silva", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "06/07": "P", "27/07": "P", "03/08": "P", "10/08": "P", "17/08": "P", "24/08": "F", "31/08": "P" }, grades: { "jogos_do_mundo_802_2026_06_22": 2.2 }, trimestreGrades: { "1": { participation: 2.0, assignment: 2.0, exam: 2.0 }, "2": { assignment: 2.5, participation: 2.0, exam: 3.4 } } },
+      { id: 802024, name: "Manuella Magalhães Martins", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "F", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "06/07": "P", "27/07": "P", "03/08": "F", "10/08": "F", "17/08": "F", "24/08": "F", "31/08": "P" }, trimestreGrades: { "1": { participation: 2.0, assignment: 2.0, exam: 2.2 }, "2": { assignment: 0.0, participation: 2.0, exam: 4.1 } } },
+      { id: 802025, name: "Maria Rita de Jesus Sergio", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "06/07": "F", "27/07": "P", "03/08": "P", "10/08": "P", "17/08": "P", "24/08": "F", "31/08": "P" }, grades: { "jogos_do_mundo_802_2026_06_22": 2.2 }, trimestreGrades: { "1": { participation: 2.0, assignment: 2.0, exam: 2.3 }, "2": { assignment: 2.5, participation: 2.0, exam: 3.3 } } },
+      { id: 802026, name: "Mellyna Santos Spatafora", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "F", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "F", "06/07": "P", "27/07": "F", "03/08": "F", "10/08": "P", "17/08": "P", "24/08": "F", "31/08": "P" }, trimestreGrades: { "1": { participation: 2.0, assignment: 2.0, exam: 2.0 }, "2": { assignment: 0.0, participation: 2.0, exam: 4.0 } } },
+      { id: 802027, name: "Sophia Oliveira Ribeiro", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "F", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "06/07": "P", "27/07": "P", "03/08": "F", "10/08": "P", "17/08": "P", "24/08": "F", "31/08": "P" }, trimestreGrades: { "1": { participation: 2.0, assignment: 2.0, exam: 2.1 }, "2": { assignment: 3.0, participation: 2.0, exam: 3.5 } } },
+      { id: 802014, name: "Lara Monteiro dos Santos", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "F", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "06/07": "F", "27/07": "P", "03/08": "P", "10/08": "F", "17/08": "F", "24/08": "F", "31/08": "P" }, trimestreGrades: { "1": { participation: 2.0, assignment: 2.0, exam: 2.2 }, "2": { assignment: 0.0, participation: 2.0, exam: 4.0 } } },
+      { id: 802028, name: "Kauã Richard Ferreira da Silva", enrolledTrimesters: [2, 3], attendance: { "25/05": "F", "01/06": "P", "08/06": "F", "15/06": "F", "22/06": "P", "06/07": "F", "27/07": "F", "03/08": "F", "10/08": "F", "17/08": "F", "24/08": "F", "31/08": "F" }, trimestreGrades: { "2": { assignment: 0.0, participation: 2.0, exam: 4.0 } } },
+      { id: 802029, name: "Gabriel Miguel da Hora", enrolledTrimesters: [2, 3], attendance: { "25/05": "F", "01/06": "F", "08/06": "F", "15/06": "F", "22/06": "F", "06/07": "F", "27/07": "F", "03/08": "F", "10/08": "F", "17/08": "F", "24/08": "F", "31/08": "F" }, trimestreGrades: { "2": { assignment: 0.0, participation: 2.0, exam: 4.0 } } },
+      { id: 802030, name: "Ana Cristina Silva Pereira", enrolledTrimesters: [2, 3], attendance: { "25/05": "P", "01/06": "P", "08/06": "F", "15/06": "P", "22/06": "F", "06/07": "P", "27/07": "P", "03/08": "F", "10/08": "P", "17/08": "F", "24/08": "P", "31/08": "F" }, trimestreGrades: { "2": { assignment: 3.0, participation: 2.0, exam: 4.1 } } },
+      { id: 802031, name: "Esther Nunes da Costa", enrolledTrimesters: [2, 3], attendance: { "25/05": "F", "01/06": "F", "08/06": "F", "15/06": "F", "22/06": "F", "06/07": "F", "27/07": "F", "03/08": "F", "10/08": "P", "17/08": "F", "24/08": "P", "31/08": "F" }, trimestreGrades: { "2": { assignment: 0.0, participation: 2.0, exam: 4.0 } } }
     ],
     schedule: "07:00 – 08:40",
     days: ["Segunda"],
@@ -475,7 +540,7 @@ export const initialClassData: ClassDataMap = {
     id: "803", 
     name: "803-182106", 
     grade: "8", 
-    school: "EE Professora Cordelia Paiva",
+    school: "EE PROFESSORA CORDELIA PAIVA",
     discipline: "Educação Física",
     students: [
       { id: 80301, name: "Adrieli Vitória dos Santos da Silva", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "F", "01/06 - 2º T": "F", "08/06 - 1º T": "P", "08/06 - 2º T": "P", "27/07": "P" } },
@@ -582,7 +647,7 @@ export const initialClassData: ClassDataMap = {
     id: "CE_IGNACIO_1001", 
     name: "ILGCH 1001", 
     grade: "1ª Série EM", 
-    school: "CE Doutor Ignacio Bezerra de Menezes",
+    school: "CE DOUTOR IGNACIO BEZERRA DE MENEZES",
     discipline: "ILGCH (Linguagens e Ciências Humanas)",
     students: [
       { id: 100101, name: "Allan Gabriel de Castro Soares", enrolledTrimesters: [1, 2, 3], attendance: { "12/05": "P", "19/05": "P", "26/05": "P", "02/06": "P", "09/06": "P", "16/06": "F", "23/06": "P", "28/07": "P" } },
@@ -618,7 +683,7 @@ export const initialClassData: ClassDataMap = {
     id: "CE_IGNACIO_2001", 
     name: "IFFC 2001", 
     grade: "2ª Série EM", 
-    school: "CE Doutor Ignacio Bezerra de Menezes",
+    school: "CE DOUTOR IGNACIO BEZERRA DE MENEZES",
     discipline: "IFFC (Iniciação Filosófico-Científica)",
     students: [
       { id: 200101, name: "Arthur Felipe dos Santos Prado", enrolledTrimesters: [1, 2, 3], attendance: { "12/05": "P", "19/05": "P", "26/05": "P", "02/06": "P", "09/06": "P", "16/06": "P", "23/06": "P", "28/07": "P" } },
@@ -651,7 +716,7 @@ export const initialClassData: ClassDataMap = {
     id: "CE_IGNACIO_2002", 
     name: "IFLA 2002", 
     grade: "2ª Série EM", 
-    school: "CE Doutor Ignacio Bezerra de Menezes",
+    school: "CE DOUTOR IGNACIO BEZERRA DE MENEZES",
     discipline: "IFLA (Iniciação Filosófico-Literária e Artes)",
     students: [
       { id: 200201, name: "Amanda Vitoria Carvalho Diniz", enrolledTrimesters: [1, 2, 3], attendance: { "12/05": "P", "19/05": "P", "26/05": "P", "02/06": "P", "09/06": "P", "16/06": "P", "23/06": "P", "28/07": "P" } },
@@ -682,7 +747,7 @@ export const initialClassData: ClassDataMap = {
     id: "CE_IGNACIO_AP_SEG", 
     name: "AP (Segundas)", 
     grade: "1ª/2ª Série EM", 
-    school: "CE Doutor Ignacio Bezerra de Menezes",
+    school: "CE DOUTOR IGNACIO BEZERRA DE MENEZES",
     discipline: "Educação Física (Atividades Práticas)",
     students: [
       { id: 201101, name: "Alan Victor Duarte Gomes", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "27/07": "P" } },
@@ -710,7 +775,7 @@ export const initialClassData: ClassDataMap = {
     id: "CE_IGNACIO_AP_SEX", 
     name: "AP (Sextas)", 
     grade: "1ª/2ª Série EM", 
-    school: "CE Doutor Ignacio Bezerra de Menezes",
+    school: "CE DOUTOR IGNACIO BEZERRA DE MENEZES",
     discipline: "Educação Física (Atividades Práticas)",
     students: [
       { id: 201201, name: "Arthur Rodrigues Vasconcellos", enrolledTrimesters: [1, 2, 3], attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "05/06": "P", "12/06": "P", "19/06": "P", "26/06": "P" } },
@@ -737,7 +802,7 @@ export const initialClassData: ClassDataMap = {
     id: "CIEP369_AP", 
     name: "AP (Segundas)", 
     grade: "1ª/2ª Série EM", 
-    school: "CIEP 369 Jornalista Maurício Azedo",
+    school: "CIEP 369 JORNALISTA SANDRO MOREYRA",
     discipline: "Educação Física (Atividades Práticas)",
     students: [
       { id: 369001, name: "Álvaro Henrique Santana Vieira", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "27/07": "P" } },
@@ -768,7 +833,7 @@ export const initialClassData: ClassDataMap = {
     id: "CIEP229_EJA", 
     name: "EJANEM I01", 
     grade: "EJA EM", 
-    school: "CIEP 229 Cândido Portinari",
+    school: "CIEP 229 CÂNDIDO PORTINARI",
     discipline: "Educação Física",
     students: [
       { id: 229001, name: "Adenilson Ferreira da Silva", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "27/07": "P" } },
@@ -797,7 +862,7 @@ export const initialClassData: ClassDataMap = {
     id: "CIEP476_1001", 
     name: "Turma 1001", 
     grade: "1ª Série EM", 
-    school: "CIEP 476 Flávio Ribeiro de Rezende",
+    school: "CIEP 476 ELIAS LAZARONI",
     discipline: "Educação Física",
     students: [
       { id: 476101, name: "Alexandre Silva de Oliveira", enrolledTrimesters: [1, 2, 3], attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "05/06": "P", "12/06": "P", "19/06": "P", "26/06": "P" } },
@@ -824,7 +889,7 @@ export const initialClassData: ClassDataMap = {
     id: "CIEP476_1002", 
     name: "Turma 1002", 
     grade: "1ª Série EM", 
-    school: "CIEP 476 Flávio Ribeiro de Rezende",
+    school: "CIEP 476 ELIAS LAZARONI",
     discipline: "Educação Física",
     students: [
       { id: 476201, name: "Alice Maria de Oliveira Ramos", enrolledTrimesters: [1, 2, 3], attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "05/06": "P", "12/06": "P", "19/06": "P", "26/06": "P" } },
@@ -849,7 +914,7 @@ export const initialClassData: ClassDataMap = {
     id: "CIEP476_2001", 
     name: "Turma 2001", 
     grade: "2ª Série EM", 
-    school: "CIEP 476 Flávio Ribeiro de Rezende",
+    school: "CIEP 476 ELIAS LAZARONI",
     discipline: "Educação Física",
     students: [
       { id: 476301, name: "Amanda Vitoria de Souza Meira", enrolledTrimesters: [1, 2, 3], attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "05/06": "P", "12/06": "P", "19/06": "P", "26/06": "P" } },

@@ -20,8 +20,8 @@ import { ProfessorLoginView } from './components/ProfessorLoginView';
 import { AlunosView } from './components/AlunosView';
 import { GradesView } from './components/GradesView';
 import { ViewState, ClassDataMap, ClassData, GalleryData } from './types';
-import { mockUserProfile, initialClassData } from './constants';
-import { initFirebase, subscribeToClasses, saveClassesToFirestore, subscribeToGallery, saveGalleryToFirestore } from './services/firebaseService';
+import { mockUserProfile, initialClassData, sanitizeAndNormalizeClassData } from './constants';
+import { initFirebase, subscribeToClasses, saveClassesToFirestore, deleteClassesBatchFromFirestore, subscribeToGallery, saveGalleryToFirestore } from './services/firebaseService';
 import { AiAssistant } from './components/AiAssistant';
 import { safeLocalStorage } from './utils/storage';
 
@@ -168,14 +168,26 @@ const App: React.FC = () => {
               }
             });
 
-            // Merge attendance records from initialClassData to base students
+            // Merge attendance records and trimester grades from initialClassData to base students
             base[id].students.forEach((baseStud: any) => {
               const initStud = initialClassData[id].students.find((s: any) => String(s.id) === String(baseStud.id));
-              if (initStud && initStud.attendance) {
-                baseStud.attendance = {
-                  ...baseStud.attendance,
-                  ...initStud.attendance
-                };
+              if (initStud) {
+                if (initStud.attendance) {
+                  baseStud.attendance = {
+                    ...baseStud.attendance,
+                    ...initStud.attendance
+                  };
+                }
+                if (initStud.trimestreGrades) {
+                  const mergedTrim: any = { ...initStud.trimestreGrades, ...(baseStud.trimestreGrades || {}) };
+                  Object.keys(initStud.trimestreGrades).forEach((tKey: string) => {
+                    mergedTrim[tKey] = {
+                      ...initStud.trimestreGrades[tKey],
+                      ...(baseStud.trimestreGrades?.[tKey] || {})
+                    };
+                  });
+                  baseStud.trimestreGrades = mergedTrim;
+                }
               }
             });
           }
@@ -221,7 +233,12 @@ const App: React.FC = () => {
         }
       }
     });
-    return base;
+
+    const { sanitized, changed } = sanitizeAndNormalizeClassData(base);
+    if (changed) {
+      safeLocalStorage.setItem('app_classData', JSON.stringify(sanitized));
+    }
+    return sanitized;
   });
   const [galleryData, setGalleryData] = useState<GalleryData>(() => {
     const stored = safeLocalStorage.getItem('app_galleryData');
@@ -684,35 +701,72 @@ const App: React.FC = () => {
                 migratedClasses[id] = { ...initialClassData[id] };
                 needsUpdateRemote = true;
               } else {
-                // If remote class has no students or fewer students than initialClassData, merge students
-                if ((!migratedClasses[id].students || migratedClasses[id].students.length === 0) &&
-                    initialClassData[id].students && initialClassData[id].students.length > 0) {
-                  migratedClasses[id].students = [...initialClassData[id].students];
-                  needsUpdateRemote = true;
+                // If remote class has missing students compared to initialClassData, merge students
+                if (initialClassData[id].students && initialClassData[id].students.length > 0) {
+                  if (!migratedClasses[id].students || migratedClasses[id].students.length === 0) {
+                    migratedClasses[id].students = [...initialClassData[id].students];
+                    needsUpdateRemote = true;
+                  } else {
+                    const existingIds = new Set(migratedClasses[id].students.map((s: any) => String(s.id)));
+                    initialClassData[id].students.forEach((stud: any) => {
+                      if (!existingIds.has(String(stud.id))) {
+                        migratedClasses[id].students.push({ ...stud });
+                        needsUpdateRemote = true;
+                      }
+                    });
+                  }
                 }
               }
 
-              // Ensure enrolledTrimesters is set on all students
+              // Ensure enrolledTrimesters, attendance, and trimesterGrades are synced on all students
               if (migratedClasses[id].students) {
                 migratedClasses[id].students.forEach((s: any) => {
+                  const initStud = initialClassData[id]?.students?.find((item: any) => String(item.id) === String(s.id));
                   if (!s.enrolledTrimesters || !Array.isArray(s.enrolledTrimesters) || s.enrolledTrimesters.length === 0) {
-                    const initStud = initialClassData[id]?.students?.find((item: any) => String(item.id) === String(s.id));
                     s.enrolledTrimesters = initStud?.enrolledTrimesters || [1, 2, 3];
+                  }
+                  if (initStud?.attendance) {
+                    s.attendance = {
+                      ...s.attendance,
+                      ...initStud.attendance
+                    };
+                  }
+                  if (initStud?.trimestreGrades) {
+                    const mergedTrim: any = { ...initStud.trimestreGrades, ...(s.trimestreGrades || {}) };
+                    Object.keys(initStud.trimestreGrades).forEach((tKey: string) => {
+                      mergedTrim[tKey] = {
+                        ...initStud.trimestreGrades[tKey],
+                        ...(s.trimestreGrades?.[tKey] || {})
+                      };
+                    });
+                    s.trimestreGrades = mergedTrim;
                   }
                 });
               }
             });
           
+            // Standardize and sanitize all school names and purge deprecated schools
+            const { sanitized, changed: wasSanitizedChanged, purgedIds } = sanitizeAndNormalizeClassData(migratedClasses);
+            if (purgedIds && purgedIds.length > 0) {
+              deleteClassesBatchFromFirestore(purgedIds);
+              needsUpdateRemote = true;
+            }
+            if (wasSanitizedChanged) {
+              migratedClasses = sanitized;
+              needsUpdateRemote = true;
+            }
+
             if (needsUpdateRemote) {
-            saveClassesToFirestore(migratedClasses);
-          }
-          setClassData(migratedClasses);
+              saveClassesToFirestore(migratedClasses);
+            }
+            setClassData(migratedClasses);
         } else if (!hasLoadedClasses.current) {
           // If Firestore is empty, initialize with local/blueprint data
           const stored = safeLocalStorage.getItem('app_classData');
-          let dataToSave = stored ? JSON.parse(stored) : initialClassData;
-          saveClassesToFirestore(dataToSave);
-          setClassData(dataToSave);
+          let rawData = stored ? JSON.parse(stored) : initialClassData;
+          const { sanitized } = sanitizeAndNormalizeClassData(rawData);
+          saveClassesToFirestore(sanitized);
+          setClassData(sanitized);
         }
         hasLoadedClasses.current = true;
       });

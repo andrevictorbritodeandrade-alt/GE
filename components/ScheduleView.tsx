@@ -23,13 +23,13 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({ onBack }) => {
 
       {/* Visão Geral da Lotação nas Unidades Escolares */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-        {/* 1. EE Cordélia Paiva */}
+        {/* 1. EE PROFESSORA CORDELIA PAIVA */}
         <div className="bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-blue-200 shadow-sm flex flex-col justify-between">
           <div>
             <span className="text-[9px] font-black uppercase px-2 py-0.5 bg-blue-100 text-blue-800 rounded-md">
               Segunda • Manhã
             </span>
-            <h3 className="font-black text-slate-900 text-sm mt-2 leading-tight">EE Profª Cordélia Paiva</h3>
+            <h3 className="font-black text-slate-900 text-sm mt-2 leading-tight">EE PROFESSORA CORDELIA PAIVA</h3>
             <p className="text-xs text-slate-600 font-medium mt-1">Turmas 802, 803, 801 (8º EF)</p>
           </div>
           <div className="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-blue-700 font-bold">
@@ -38,13 +38,13 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({ onBack }) => {
           </div>
         </div>
 
-        {/* 2. CE Dr. Ignácio Bezerra */}
+        {/* 2. CE DOUTOR IGNACIO BEZERRA DE MENEZES */}
         <div className="bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-emerald-200 shadow-sm flex flex-col justify-between">
           <div>
             <span className="text-[9px] font-black uppercase px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded-md">
               Terça / Sexta / AP
             </span>
-            <h3 className="font-black text-slate-900 text-sm mt-2 leading-tight">CE Dr. Ignácio Bezerra</h3>
+            <h3 className="font-black text-slate-900 text-sm mt-2 leading-tight">CE DOUTOR IGNACIO BEZERRA DE MENEZES</h3>
             <p className="text-xs text-slate-600 font-medium mt-1">ILGCH 1001, IFFC 2001, IFLA 2002, AP Seg & AP Sex</p>
           </div>
           <div className="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-emerald-700 font-bold">
@@ -53,13 +53,13 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({ onBack }) => {
           </div>
         </div>
 
-        {/* 3. CIEP 229 Cândido Portinari */}
+        {/* 3. CIEP 229 CÂNDIDO PORTINARI */}
         <div className="bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-purple-200 shadow-sm flex flex-col justify-between">
           <div>
             <span className="text-[9px] font-black uppercase px-2 py-0.5 bg-purple-100 text-purple-800 rounded-md">
               Segunda • Noite
             </span>
-            <h3 className="font-black text-slate-900 text-sm mt-2 leading-tight">CIEP 229 Cândido Portinari</h3>
+            <h3 className="font-black text-slate-900 text-sm mt-2 leading-tight">CIEP 229 CÂNDIDO PORTINARI</h3>
             <p className="text-xs text-slate-600 font-medium mt-1">Turma EJANEM I01 (EJA Médio)</p>
           </div>
           <div className="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-purple-700 font-bold">
@@ -68,13 +68,13 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({ onBack }) => {
           </div>
         </div>
 
-        {/* 4. CIEP 369 Jornalista Maurício Azedo */}
+        {/* 4. CIEP 369 JORNALISTA SANDRO MOREYRA */}
         <div className="bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-amber-200 shadow-sm flex flex-col justify-between">
           <div>
             <span className="text-[9px] font-black uppercase px-2 py-0.5 bg-amber-100 text-amber-800 rounded-md">
               Segunda • Tarde
             </span>
-            <h3 className="font-black text-slate-900 text-sm mt-2 leading-tight">CIEP 369 Jornalista Maurício Azedo</h3>
+            <h3 className="font-black text-slate-900 text-sm mt-2 leading-tight">CIEP 369 JORNALISTA SANDRO MOREYRA</h3>
             <p className="text-xs text-slate-600 font-medium mt-1">AP Segundas (Atividades Práticas)</p>
           </div>
           <div className="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-amber-700 font-bold">
@@ -83,13 +83,13 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({ onBack }) => {
           </div>
         </div>
 
-        {/* 5. CIEP 476 Flávio Ribeiro de Rezende */}
+        {/* 5. CIEP 476 ELIAS LAZARONI */}
         <div className="bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-rose-200 shadow-sm flex flex-col justify-between">
           <div>
             <span className="text-[9px] font-black uppercase px-2 py-0.5 bg-rose-100 text-rose-800 rounded-md">
               Sexta • Manhã
             </span>
-            <h3 className="font-black text-slate-900 text-sm mt-2 leading-tight">CIEP 476 Flávio Ribeiro de Rezende</h3>
+            <h3 className="font-black text-slate-900 text-sm mt-2 leading-tight">CIEP 476 ELIAS LAZARONI</h3>
             <p className="text-xs text-slate-600 font-medium mt-1">Turmas 1001, 1002, 2001 (Ensino Médio)</p>
           </div>
           <div className="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-rose-700 font-bold">
@@ -107,12 +107,12 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({ onBack }) => {
               <Clock className="w-6 h-6 text-blue-600" /> Grade Horária Semanal
             </h2>
             <p className="text-xs text-slate-500 font-medium mt-0.5">
-              Cronograma das 3 Escolas e 9 Turmas
+              Cronograma das Unidades Escolares e Turmas
             </p>
           </div>
           <div className="flex items-center gap-2">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-50 text-blue-800 text-xs font-bold rounded-lg border border-blue-200">
-              <CheckCircle2 size={14} className="text-blue-600" /> 3 Unidades Escolares • 9 Turmas
+              <CheckCircle2 size={14} className="text-blue-600" /> 5 Unidades Escolares
             </span>
           </div>
         </div>
@@ -126,13 +126,13 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({ onBack }) => {
                   <div className="flex items-center justify-center gap-2 text-base">
                     <span>📅</span> SEGUNDA-FEIRA
                   </div>
-                  <span className="text-[11px] text-blue-200 font-normal normal-case">EE Profª Cordélia Paiva, CE Dr. Ignácio & CIEP 229</span>
+                  <span className="text-[11px] text-blue-200 font-normal normal-case">EE PROFESSORA CORDELIA PAIVA, CE DOUTOR IGNACIO, CIEP 369 & CIEP 229</span>
                 </th>
                 <th className="border border-slate-800 p-4 text-center font-black uppercase tracking-wider text-xs bg-emerald-900/80 w-1/2">
                   <div className="flex items-center justify-center gap-2 text-base">
                     <span>📅</span> TERÇA & SEXTA-FEIRA
                   </div>
-                  <span className="text-[11px] text-emerald-200 font-normal normal-case">CE Dr. Ignácio Bezerra de Menezes</span>
+                  <span className="text-[11px] text-emerald-200 font-normal normal-case">CE DOUTOR IGNACIO BEZERRA DE MENEZES & CIEP 476 ELIAS LAZARONI</span>
                 </th>
               </tr>
             </thead>
@@ -142,14 +142,14 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({ onBack }) => {
                   period: '1º e 2º Tempos (Manhã)', 
                   time: '07:00 – 08:40', 
                   mon: { 
-                    school: 'EE Profª Cordélia Paiva', 
+                    school: 'EE PROFESSORA CORDELIA PAIVA', 
                     class: 'Turma 802', 
                     code: '802-182106', 
                     tag: '8º Ano EF', 
                     color: 'blue' 
                   }, 
                   fri: { 
-                    school: 'CE Dr. Ignácio Bezerra de Menezes', 
+                    school: 'CE DOUTOR IGNACIO BEZERRA DE MENEZES', 
                     class: 'IFFC 2001', 
                     code: 'IFFC_2001', 
                     tag: '2ª Série EM', 
@@ -160,14 +160,14 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({ onBack }) => {
                   period: '3º e 4º Tempos (Manhã)', 
                   time: '08:40 – 10:20', 
                   mon: { 
-                    school: 'EE Profª Cordélia Paiva', 
+                    school: 'EE PROFESSORA CORDELIA PAIVA', 
                     class: 'Turma 803', 
                     code: '803-182106', 
                     tag: '8º Ano EF', 
                     color: 'blue' 
                   }, 
                   fri: { 
-                    school: 'CE Dr. Ignácio Bezerra de Menezes', 
+                    school: 'CE DOUTOR IGNACIO BEZERRA DE MENEZES', 
                     class: 'IFLA 2002', 
                     code: 'IFLA_2002', 
                     tag: '2ª Série EM', 
@@ -178,14 +178,14 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({ onBack }) => {
                   period: '5º e 6º Tempos (Manhã)', 
                   time: '10:35 – 12:15', 
                   mon: { 
-                    school: 'EE Profª Cordélia Paiva', 
+                    school: 'EE PROFESSORA CORDELIA PAIVA', 
                     class: 'Turma 801', 
                     code: '801-182106', 
                     tag: '8º Ano EF', 
                     color: 'blue' 
                   }, 
                   fri: { 
-                    school: 'CE Dr. Ignácio Bezerra de Menezes', 
+                    school: 'CE DOUTOR IGNACIO BEZERRA DE MENEZES', 
                     class: 'ILGCH 1001', 
                     code: 'ILGCH_1001', 
                     tag: '1ª Série EM', 
@@ -196,14 +196,14 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({ onBack }) => {
                   period: 'Turno da Tarde', 
                   time: '14:00 – 16:00', 
                   mon: { 
-                    school: 'CE Dr. Ignácio Bezerra de Menezes', 
+                    school: 'CE DOUTOR IGNACIO BEZERRA DE MENEZES', 
                     class: 'AP (Segundas)', 
                     code: 'AP_SEG', 
                     tag: 'Atividades Práticas', 
                     color: 'amber' 
                   }, 
                   fri: { 
-                    school: 'CE Dr. Ignácio Bezerra de Menezes', 
+                    school: 'CE DOUTOR IGNACIO BEZERRA DE MENEZES', 
                     class: 'AP (Sextas)', 
                     code: 'AP_SEX', 
                     tag: 'Atividades Práticas', 
@@ -214,7 +214,7 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({ onBack }) => {
                   period: 'Turno Noturno', 
                   time: '19:00 – 21:20', 
                   mon: { 
-                    school: 'CIEP 229 Cândido Portinari', 
+                    school: 'CIEP 229 CÂNDIDO PORTINARI', 
                     class: 'EJANEM I01', 
                     code: 'EJA_I01', 
                     tag: 'EJA Médio', 

@@ -1,7 +1,10 @@
 {
   "name": "Remix Remix ✍️​🧠​ ​GESTÃO ESCOLAR - ANDRÉ BRITO ⛹️​🤾",
-  "description": "",
+  "description": "Sistema integrado de gestão escolar, diário de classe, planejamento e calendário SEEDUC-RJ 2026.",
   "requestFramePermissions": [
     "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
   ]
 }

@@ -416,6 +416,4 @@ Compreender a Luta Marajoara como patrimônio cultural imaterial brasileiro e pa
 };
 
 PE_PLAN['ciep369'] = PE_PLAN['8ano'];
-PE_PLAN['ciep198'] = PE_PLAN['ap'];
-PE_PLAN['ciep320'] = PE_PLAN['ap_sexta'];
 PE_PLAN['correcao_fluxo'] = PE_PLAN['ap'];

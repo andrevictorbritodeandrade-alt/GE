@@ -1,5 +1,5 @@
 import { initializeApp, getApps, getApp } from 'firebase/app';
-import { getFirestore, initializeFirestore, doc, onSnapshot, updateDoc, setDoc, collection, writeBatch, persistentLocalCache, persistentMultipleTabManager, getDocFromServer } from 'firebase/firestore';
+import { getFirestore, initializeFirestore, doc, onSnapshot, updateDoc, setDoc, collection, writeBatch, deleteDoc, persistentLocalCache, persistentMultipleTabManager, getDocFromServer } from 'firebase/firestore';
 import { getAuth, signInAnonymously, onAuthStateChanged } from 'firebase/auth';
 import { DashboardCardData, ClassDataMap, GalleryData, OccurrenceData } from '../types';
 import firebaseAppletConfig from '../firebase-applet-config.json';
@@ -172,6 +172,31 @@ export const subscribeToClasses = (callback: (data: ClassDataMap) => void) => {
   }, (error) => {
     handleFirestoreError(error, OperationType.GET, path);
   });
+};
+
+export const deleteClassFromFirestore = async (classId: string) => {
+  if (!db) initFirebase();
+  if (!db) return;
+  const path = `classes/${classId}`;
+  try {
+    await deleteDoc(doc(db, 'classes', classId));
+  } catch (error) {
+    handleFirestoreError(error, OperationType.DELETE, path);
+  }
+};
+
+export const deleteClassesBatchFromFirestore = async (classIds: string[]) => {
+  if (!db) initFirebase();
+  if (!db || classIds.length === 0) return;
+  const batch = writeBatch(db);
+  classIds.forEach(id => {
+    batch.delete(doc(db, 'classes', id));
+  });
+  try {
+    await batch.commit();
+  } catch (error) {
+    handleFirestoreError(error, OperationType.DELETE, 'classes');
+  }
 };
 
 export const saveClassesToFirestore = async (data: ClassDataMap) => {

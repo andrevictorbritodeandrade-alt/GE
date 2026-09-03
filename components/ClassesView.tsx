@@ -201,7 +201,15 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
       classWeekdays.push(1); // Default to Monday
     }
 
-    const temp = new Date(trimester.start);
+    // O professor iniciou as atividades letivas a partir de 11/05/2026.
+    // Para o 1º Trimestre, não geramos dias de aula automáticos anteriores a essa data (Fevereiro, Março, Abril e início de Maio),
+    // a menos que haja algum registro explícito de chamada ou atividade lançado.
+    const TEACHER_START_DATE = new Date('2026-05-11T00:00:00');
+    const effectiveStart = (trimesterId === 1 && trimester.start < TEACHER_START_DATE)
+      ? TEACHER_START_DATE
+      : new Date(trimester.start);
+
+    const temp = new Date(effectiveStart);
     while (temp <= trimester.end) {
       if (classWeekdays.includes(temp.getDay())) {
         dates.push(new Date(temp));
