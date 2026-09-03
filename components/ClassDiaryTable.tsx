@@ -10,6 +10,8 @@ interface ClassDiaryTableProps {
   onMove: (student: Student) => void;
   onDelete: (student: Student) => void;
   isCorrectDay: boolean;
+  activeTrimesterId?: number;
+  onToggleTrimester?: (student: Student, trimester: number) => void;
 }
 
 export const ClassDiaryTable: React.FC<ClassDiaryTableProps> = ({
@@ -19,7 +21,9 @@ export const ClassDiaryTable: React.FC<ClassDiaryTableProps> = ({
   onEdit,
   onMove,
   onDelete,
-  isCorrectDay
+  isCorrectDay,
+  activeTrimesterId = 1,
+  onToggleTrimester
 }) => {
   
   const getStats = (student: Student) => {
@@ -70,7 +74,49 @@ export const ClassDiaryTable: React.FC<ClassDiaryTableProps> = ({
                   {index + 1}
                 </td>
                 <td className="py-4 px-4 font-bold text-slate-800 group-hover:text-sky-600 transition-colors">
-                  {student.name}
+                  <div className="flex flex-col gap-1">
+                    <span className="leading-snug">{student.name}</span>
+                    <div className="flex items-center gap-1.5 flex-wrap">
+                      {/* Status badge if not standard ativo */}
+                      {student.status && student.status !== 'ativo' && (
+                        <span className={`text-[9px] font-black uppercase px-1.5 py-0.5 rounded ${
+                          student.status === 'transferido'
+                            ? 'bg-amber-100 text-amber-800 border border-amber-300'
+                            : student.status === 'entrante'
+                            ? 'bg-blue-100 text-blue-800 border border-blue-300'
+                            : 'bg-rose-100 text-rose-800 border border-rose-300'
+                        }`}>
+                          {student.status}
+                        </span>
+                      )}
+                      
+                      {/* Trimester badges */}
+                      <div className="flex items-center gap-1">
+                        {[1, 2, 3].map(tri => {
+                          const isEnrolled = !student.enrolledTrimesters || student.enrolledTrimesters.length === 0 || student.enrolledTrimesters.includes(tri);
+                          const isCurrent = tri === activeTrimesterId;
+                          return (
+                            <span
+                              key={tri}
+                              onClick={() => onToggleTrimester && onToggleTrimester(student, tri)}
+                              className={`text-[9px] font-bold px-1.5 py-0.5 rounded cursor-pointer transition-all ${
+                                isEnrolled
+                                  ? isCurrent
+                                    ? 'bg-emerald-600 text-white font-black shadow-xs'
+                                    : 'bg-emerald-100 text-emerald-800 hover:bg-emerald-200'
+                                  : isCurrent
+                                  ? 'bg-slate-200 text-slate-500 line-through'
+                                  : 'bg-slate-100 text-slate-400 opacity-60'
+                              }`}
+                              title={isEnrolled ? `Matriculado no ${tri}º Trimestre (clique para alternar)` : `Não matriculado no ${tri}º Trimestre (clique para alternar)`}
+                            >
+                              {tri}ºT
+                            </span>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
                 </td>
                 <td className="py-4 px-2 text-center border-r border-slate-200">
                   <div className="flex items-center justify-center gap-1.5">

@@ -111,10 +111,12 @@ export const slidesData: Record<string, Slide[]> = {
   '8ano_03/08': SLIDES_PARALIMPICO.map(s => ({...s, tipo: s.category === 'LOUSA_ALUNO' || s.title.includes('QUADRO') ? 'texto_simples' : 'texto'})),
   '8ano_10/08': SLIDES_GENERICOS['Corpo, Mídia e Padrões'] ? SLIDES_GENERICOS['Corpo, Mídia e Padrões'].map((s: any) => ({...s, tipo: s.type || 'texto'})) : [],
   '8ano_17/08': SLIDES_GENERICOS['Avaliação Teórica / Livre'] ? SLIDES_GENERICOS['Avaliação Teórica / Livre'].map((s: any) => ({...s, tipo: s.type || 'texto'})) : [],
-  '8ano_24/08': SLIDES_CAPOEIRA.map(s => ({...s, tipo: s.type || 'texto'})),
-  '8ano_31/08': SLIDES_LUTA_MARAJOARA.map(s => ({...s, tipo: s.tipo || 'texto_simples'})),
-  'ap_31/08': SLIDES_LUTA_MARAJOARA.map(s => ({...s, tipo: s.tipo || 'texto_simples'})),
-  'ciep369_31/08': SLIDES_LUTA_MARAJOARA.map(s => ({...s, tipo: s.tipo || 'texto_simples'})),
+  '8ano_24/08': SLIDES_CAPOEIRA.map(s => ({...s, tipo: s.type || s.tipo || 'texto_simples'})),
+  '8ano_31/08': SLIDES_LUTA_MARAJOARA.map(s => ({...s, tipo: s.tipo || s.type || 'texto_simples'})),
+  'ciep369_24/08': SLIDES_CAPOEIRA.map(s => ({...s, tipo: s.type || s.tipo || 'texto_simples'})),
+  'ciep369_31/08': SLIDES_LUTA_MARAJOARA.map(s => ({...s, tipo: s.tipo || s.type || 'texto_simples'})),
+  'ap_24/08': SLIDES_CAPOEIRA.map(s => ({...s, tipo: s.type || s.tipo || 'texto_simples'})),
+  'ap_31/08': SLIDES_LUTA_MARAJOARA.map(s => ({...s, tipo: s.tipo || s.type || 'texto_simples'})),
   'ap_27/07': SLIDES_PARALIMPICO.map(s => ({...s, tipo: s.category === 'LOUSA_ALUNO' || s.title.includes('QUADRO') ? 'texto_simples' : 'texto'})),
   'ap_sexta_27/07': SLIDES_PARALIMPICO.map(s => ({...s, tipo: s.category === 'LOUSA_ALUNO' || s.title.includes('QUADRO') ? 'texto_simples' : 'texto'})),
   'ap_sexta_31/07': SLIDES_PARALIMPICO.map(s => ({...s, tipo: s.category === 'LOUSA_ALUNO' || s.title.includes('QUADRO') ? 'texto_simples' : 'texto'})),
@@ -821,7 +823,32 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
             </div>
           </div>
           
-          <div className="px-6 py-4 bg-white border-t border-slate-100 flex justify-end">
+          <div className="px-6 py-4 bg-white border-t border-slate-100 flex items-center justify-between gap-3">
+            {(() => {
+              const currentSubView = planningSubView as string;
+              const directKey = `${currentSubView}_${selectedAulaPlan.data}`;
+              const hasSlides = (slidesData as any)[directKey] !== undefined || 
+                (selectedAulaPlan.data === '31/08') || 
+                (selectedAulaPlan.data === '24/08');
+              const targetSlideKey = (slidesData as any)[directKey] ? directKey : 
+                (selectedAulaPlan.data === '31/08' ? '8ano_31/08' : (selectedAulaPlan.data === '24/08' ? '8ano_24/08' : directKey));
+              
+              if (hasSlides) {
+                return (
+                  <button
+                    onClick={() => {
+                      setSelectedAulaData(targetSlideKey);
+                      setSelectedAulaPlan(null);
+                      setCurrentView('player');
+                    }}
+                    className="px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-extrabold flex items-center gap-2 transition-all shadow-md text-sm"
+                  >
+                    <Presentation size={18} /> Projetar no Datashow
+                  </button>
+                );
+              }
+              return <div />;
+            })()}
             <button 
               onClick={() => setSelectedAulaPlan(null)} 
               className="px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-white rounded-lg font-bold transition-colors shadow-sm"

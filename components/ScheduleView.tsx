@@ -67,6 +67,36 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({ onBack }) => {
             <span className="bg-purple-50 px-1.5 py-0.5 rounded text-[10px]">1 Turma</span>
           </div>
         </div>
+
+        {/* 4. CIEP 369 Jornalista Maurício Azedo */}
+        <div className="bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-amber-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <span className="text-[9px] font-black uppercase px-2 py-0.5 bg-amber-100 text-amber-800 rounded-md">
+              Segunda • Tarde
+            </span>
+            <h3 className="font-black text-slate-900 text-sm mt-2 leading-tight">CIEP 369 Jornalista Maurício Azedo</h3>
+            <p className="text-xs text-slate-600 font-medium mt-1">AP Segundas (Atividades Práticas)</p>
+          </div>
+          <div className="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-amber-700 font-bold">
+            <span>13:30 às 15:30</span>
+            <span className="bg-amber-50 px-1.5 py-0.5 rounded text-[10px]">1 Turma</span>
+          </div>
+        </div>
+
+        {/* 5. CIEP 476 Flávio Ribeiro de Rezende */}
+        <div className="bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-rose-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <span className="text-[9px] font-black uppercase px-2 py-0.5 bg-rose-100 text-rose-800 rounded-md">
+              Sexta • Manhã
+            </span>
+            <h3 className="font-black text-slate-900 text-sm mt-2 leading-tight">CIEP 476 Flávio Ribeiro de Rezende</h3>
+            <p className="text-xs text-slate-600 font-medium mt-1">Turmas 1001, 1002, 2001 (Ensino Médio)</p>
+          </div>
+          <div className="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-rose-700 font-bold">
+            <span>07:00 às 12:15</span>
+            <span className="bg-rose-50 px-1.5 py-0.5 rounded text-[10px]">3 Turmas</span>
+          </div>
+        </div>
       </div>
 
       {/* Matriz Completa do Horário Semanal: Segunda e Sexta */}

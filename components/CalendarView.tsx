@@ -92,19 +92,61 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ onBack }) => {
 
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 pt-10 border-t border-slate-350">
           <div className="bg-white p-6 rounded-3xl border border-slate-250 shadow-sm">
-            <p className="text-emerald-700 font-bold text-[10px] uppercase tracking-widest mb-2">1º Trimestre</p>
+            <div className="flex items-center justify-between mb-2">
+              <p className="text-emerald-700 font-bold text-[10px] uppercase tracking-widest">1º Trimestre</p>
+              <span className="px-2 py-0.5 bg-sky-100 text-sky-800 rounded-md font-black text-[9px] uppercase">
+                27 Aulas Seg/Sex
+              </span>
+            </div>
             <p className="text-slate-800 font-black text-lg tracking-tighter">05/02 a 18/05</p>
-            <p className="text-slate-500 text-[10px] uppercase font-bold mt-1">66 Dias Letivos</p>
+            <p className="text-slate-500 text-[10px] uppercase font-bold mt-1">66 Dias Letivos • COC 1: 19 a 21/05</p>
+            <p className="text-sky-700 text-[10px] font-extrabold mt-2 pt-2 border-t border-slate-100">
+              Diário: 14 Segundas + 13 Sextas
+            </p>
           </div>
           <div className="bg-white p-6 rounded-3xl border border-slate-250 shadow-sm">
-            <p className="text-emerald-700 font-bold text-[10px] uppercase tracking-widest mb-2">2º Trimestre</p>
+            <div className="flex items-center justify-between mb-2">
+              <p className="text-emerald-700 font-bold text-[10px] uppercase tracking-widest">2º Trimestre</p>
+              <span className="px-2 py-0.5 bg-sky-100 text-sky-800 rounded-md font-black text-[9px] uppercase">
+                27 Aulas Seg/Sex
+              </span>
+            </div>
             <p className="text-slate-800 font-black text-lg tracking-tighter">19/05 a 04/09</p>
-            <p className="text-slate-500 text-[10px] uppercase font-bold mt-1">67 Dias Letivos</p>
+            <p className="text-slate-500 text-[10px] uppercase font-bold mt-1">67 Dias Letivos • COC 2: 08 a 10/09</p>
+            <p className="text-sky-700 text-[10px] font-extrabold mt-2 pt-2 border-t border-slate-100">
+              Diário: 13 Segundas + 14 Sextas
+            </p>
           </div>
           <div className="bg-white p-6 rounded-3xl border border-slate-250 shadow-sm">
-            <p className="text-emerald-700 font-bold text-[10px] uppercase tracking-widest mb-2">3º Trimestre</p>
+            <div className="flex items-center justify-between mb-2">
+              <p className="text-emerald-700 font-bold text-[10px] uppercase tracking-widest">3º Trimestre</p>
+              <span className="px-2 py-0.5 bg-sky-100 text-sky-800 rounded-md font-black text-[9px] uppercase">
+                27 Aulas Seg/Sex
+              </span>
+            </div>
             <p className="text-slate-800 font-black text-lg tracking-tighter">08/09 a 22/12</p>
-            <p className="text-slate-500 text-[10px] uppercase font-bold mt-1">73 Dias Letivos</p>
+            <p className="text-slate-500 text-[10px] uppercase font-bold mt-1">73 Dias Letivos • COC 3: 09 a 11/12</p>
+            <p className="text-sky-700 text-[10px] font-extrabold mt-2 pt-2 border-t border-slate-100">
+              Diário: 13 Segundas + 14 Sextas
+            </p>
+          </div>
+        </div>
+
+        {/* Banner para Diários de Classe - Segundas e Sextas */}
+        <div className="mt-6 p-4 bg-white rounded-2xl border border-sky-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xs">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-sky-600 text-white flex items-center justify-center font-black text-sm shrink-0">
+              81
+            </div>
+            <div>
+              <p className="text-xs font-black uppercase text-slate-800">Contabilização Oficial para Diários de Classe (Segundas e Sextas)</p>
+              <p className="text-[11px] text-slate-600 font-medium">
+                Total de <strong>81 aulas previstas</strong> no ano de 2026 (40 Segundas-feiras + 41 Sextas-feiras), descontados feriados e recessos da Resolução SEEDUC Nº 6392/2025.
+              </p>
+            </div>
+          </div>
+          <div className="px-3 py-1.5 bg-sky-50 text-sky-800 font-black text-xs uppercase rounded-xl border border-sky-200 shrink-0">
+            27 Aulas / Trimestre
           </div>
         </div>
       </div>

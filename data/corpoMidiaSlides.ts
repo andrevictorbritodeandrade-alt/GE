@@ -294,57 +294,220 @@ export const SLIDES_POVOS_ORIGINARIOS = [
 export const SLIDES_LUTA_MARAJOARA = [
   {
     tipo: 'capa',
-    title: 'LUTA MARAJOARA',
-    subtitle: 'O Combate Tradicional da Ilha de Marajó (Pará)',
-    dicaProfessor: 'Deixe esta capa no telão. Fundo com imagens de búfalos ou da Ilha de Marajó.'
+    type: 'capa',
+    titulo: 'LUTA MARAJOARA: O COMBATE ANCESTRAL',
+    title: 'LUTA MARAJOARA: O COMBATE ANCESTRAL',
+    subtitulo: 'História, Regras Oficiais, Grappling Caboclo e Filosofia • Ilha de Marajó (PA)',
+    subtitle: 'História, Regras Oficiais, Grappling Caboclo e Filosofia • Ilha de Marajó (PA)',
+    dicaProfessor: 'Deixe esta capa projetada no Datashow enquanto organiza as carteiras e faz a chamada. Apresente a Luta Marajoara como patrimônio imaterial genuinamente brasileiro.',
+    professorDica: 'Deixe esta capa projetada no Datashow enquanto organiza as carteiras e faz a chamada. Apresente a Luta Marajoara como patrimônio imaterial genuinamente brasileiro.'
   },
   {
     tipo: 'texto_simples',
-    title: '1. ORIGEM E HISTÓRIA',
-    points: [
-      'NASCIMENTO: Criada por ribeirinhos, indígenas e caboclos da Ilha de Marajó (Pará).',
-      'INSPIRAÇÃO: Fortemente ligada ao manejo do gado e dos búfalos, animais símbolos da ilha.',
-      'FINALIDADE: Originalmente era uma forma de entretenimento em festivais ou para resolver disputas sem violência letal.',
-      'RESISTÊNCIA: Considerada uma das poucas lutas genuinamente brasileiras que mantêm suas raízes ancestrais intocadas.'
+    type: 'texto_simples',
+    titulo: 'ROTEIRO DO PROFESSOR (ORIENTAÇÕES DIDÁTICAS)',
+    title: 'ROTEIRO DO PROFESSOR (ORIENTAÇÕES DIDÁTICAS)',
+    subtitulo: 'Orientações pedagógicas para condução da aula no Datashow (Não copiar)',
+    subtitle: 'Orientações pedagógicas para condução da aula no Datashow (Não copiar)',
+    topicos: [
+      '1. CONTEXTUALIZAÇÃO: Explicar que o Brasil não depende de modelos orientais ou ocidentais para ter artes marciais nobres; possuímos a Capoeira, o Huka-Huka e a Luta Marajoara.',
+      '2. DIFERENÇA VITAL (LUTA x BRIGA): Enfatizar que a briga é agressão descontrolada e crime. A luta tem regras, árbitro, cavalheirismo e preservação absoluta da saúde do oponente.',
+      '3. GEOGRAFIA E AMBIENTE: Conectar a luta com o arquipélago do Marajó (PA), o ecossistema de manguezais, campos alagados e a lida com o búfalo-d’água.',
+      '4. ADAPTAÇÃO SEGURA EM SALA: Devido ao espaço de sala de aula e pátio, a vivência prática será de base, equilíbrio isométrico e desequilíbrio sutil em duplas, SEM quedas no chão duro.'
     ],
-    dicaProfessor: 'Destaque que, ao contrário do boxe ou MMA, a Luta Marajoara não busca ferir o oponente, mas sim testar sua força e equilíbrio.'
+    points: [
+      '1. CONTEXTUALIZAÇÃO: Explicar que o Brasil não depende de modelos orientais ou ocidentais para ter artes marciais nobres; possuímos a Capoeira, o Huka-Huka e a Luta Marajoara.',
+      '2. DIFERENÇA VITAL (LUTA x BRIGA): Enfatizar que a briga é agressão descontrolada e crime. A luta tem regras, árbitro, cavalheirismo e preservação absoluta da saúde do oponente.',
+      '3. GEOGRAFIA E AMBIENTE: Conectar a luta com o arquipélago do Marajó (PA), o ecossistema de manguezais, campos alagados e a lida com o búfalo-d’água.',
+      '4. ADAPTAÇÃO SEGURA EM SALA: Devido ao espaço de sala de aula e pátio, a vivência prática será de base, equilíbrio isométrico e desequilíbrio sutil em duplas, SEM quedas no chão duro.'
+    ],
+    dicaProfessor: 'Avise aos estudantes que haverá momentos de cópia essencial no caderno para fixação dos conceitos e posterior visto pedagógico.',
+    professorDica: 'Avise aos estudantes que haverá momentos de cópia essencial no caderno para fixação dos conceitos e posterior visto pedagógico.'
   },
   {
     tipo: 'texto_simples',
-    title: '2. O CAMPO DE BATALHA',
-    points: [
-      'PISO: Tradicionalmente praticada em campos de grama ou na lama/argila (durante a maré ou em festivais).',
-      'VESTIMENTA: Antigamente lutava-se de bermuda ou calção curto, com o corpo muitas vezes coberto de argila para dificultar a pegada.',
-      'CONTATO COM A TERRA: A luta é uma celebração da conexão do homem com o território marajoara.'
+    type: 'texto_simples',
+    titulo: '1. ORIGEM HISTÓRICA E O TERRITÓRIO DE MARAJÓ',
+    title: '1. ORIGEM HISTÓRICA E O TERRITÓRIO DE MARAJÓ',
+    subtitulo: 'Patrimônio Cultural de Natureza Imaterial do Pará (Lei Estadual nº 7.755/2013)',
+    subtitle: 'Patrimônio Cultural de Natureza Imaterial do Pará (Lei Estadual nº 7.755/2013)',
+    topicos: [
+      'BERÇO AMAZÔNICO: Nascida na Ilha de Marajó (Pará), o maior arquipélago fluviomarítimo do planeta Terra, banhado pelo Rio Amazonas e pelo Oceano Atlântico.',
+      'ENCONTRO ANCESTRAL: Criada a partir do encontro entre povos indígenas originários (como a etnia Aruá) e os ribeirinhos e vaqueiros caboclos da região.',
+      'MOMENTOS DE CELEBRAÇÃO: Tradicionalmente praticada em festas populares e religiosas, como as festas do Glorioso São Sebastião em Cachoeira do Arari, Soure e Salvaterra.',
+      'TRANSMISSÃO ORAL: Ensinada de pai para filho pelos mestres vaqueiros, resistindo por gerações como prova viva da cultura corporal do Norte do Brasil.'
     ],
-    dicaProfessor: 'Fale sobre a dificuldade de lutar na lama: o corpo fica escorregadio e exige muito mais força de pegada.'
+    points: [
+      'BERÇO AMAZÔNICO: Nascida na Ilha de Marajó (Pará), o maior arquipélago fluviomarítimo do planeta Terra, banhado pelo Rio Amazonas e pelo Oceano Atlântico.',
+      'ENCONTRO ANCESTRAL: Criada a partir do encontro entre povos indígenas originários (como a etnia Aruá) e os ribeirinhos e vaqueiros caboclos da região.',
+      'MOMENTOS DE CELEBRAÇÃO: Tradicionalmente praticada em festas populares e religiosas, como as festas do Glorioso São Sebastião em Cachoeira do Arari, Soure e Salvaterra.',
+      'TRANSMISSÃO ORAL: Ensinada de pai para filho pelos mestres vaqueiros, resistindo por gerações como prova viva da cultura corporal do Norte do Brasil.'
+    ],
+    dicaProfessor: 'Mostre a importância do cumprimento da Lei 11.645/08 ao valorizar a matriz indígena e cabocla na Educação Física.'
   },
   {
     tipo: 'texto_simples',
-    title: '3. REGRAS FUNDAMENTAIS',
-    points: [
-      'OBJETIVO SUPREMO: Desequilibrar o adversário e fazer com que ele encoste as costas ou os ombros no chão.',
-      'PROIBIÇÕES RÍGIDAS: É estritamente proibido socos, chutes, estrangulamentos ou qualquer golpe traumático.',
-      'SISTEMA DE AGARRE: É uma luta de grappling (agarre). Usa-se a força do tronco, pernas e braços para projetar o oponente.',
-      'CORTESIA: A luta começa e termina com um aperto de mão ou abraço, simbolizando a paz.'
+    type: 'texto_simples',
+    titulo: '2. A INSPIRAÇÃO NOS BÚFALOS-D\'ÁGUA',
+    title: '2. A INSPIRAÇÃO NOS BÚFALOS-D\'ÁGUA',
+    subtitulo: 'A observação da natureza como método de combate corporal',
+    subtitle: 'A observação da natureza como método de combate corporal',
+    topicos: [
+      'OS BÚFALOS DE MARAJÓ: A Ilha de Marajó abriga o maior rebanho de búfalos do Ocidente. Esses animais são o meio de transporte, força e sobrevivência do vaqueiro.',
+      'A OBSERVAÇÃO DO CONFRONTO: Os vaqueiros notaram como os búfalos mediam forças: colidiam as testas e empurravam com o pescoço e patas até que um cedesse o território.',
+      'SEM LETALIDADE: O confronto entre os animais não visava rasgar ou matar, mas demonstrar superioridade de força e equilíbrio territorial.',
+      'TRANSPOSIÇÃO CORPORAL: Os homens reproduziram essa mecânica: projetar a base, colar o tronco, usar os braços como alavancas e empurrar sem desferir golpes.'
     ],
-    dicaProfessor: 'Explique que é parecida com o Judô ou o Wrestling (Luta Livre), mas sem o foco em finalizações de articulação.'
+    points: [
+      'OS BÚFALOS DE MARAJÓ: A Ilha de Marajó abriga o maior rebanho de búfalos do Ocidente. Esses animais são o meio de transporte, força e sobrevivência do vaqueiro.',
+      'A OBSERVAÇÃO DO CONFRONTO: Os vaqueiros notaram como os búfalos mediam forças: colidiam as testas e empurravam com o pescoço e patas até que um cedesse o território.',
+      'SEM LETALIDADE: O confronto entre os animais não visava rasgar ou matar, mas demonstrar superioridade de força e equilíbrio territorial.',
+      'TRANSPOSIÇÃO CORPORAL: Os homens reproduziram essa mecânica: projetar a base, colar o tronco, usar os braços como alavancas e empurrar sem desferir golpes.'
+    ],
+    dicaProfessor: 'Peça aos estudantes para pensarem como o ser humano aprende com os animais: da mesma forma que a Capoeira e o Kung Fu imitam bichos, a Luta Marajoara estuda o búfalo.'
   },
   {
     tipo: 'texto_simples',
-    title: '4. CULTURA E FILOSOFIA',
-    points: [
-      'QUEM CAI, LEVANTA: A filosofia do "quem cai, levanta e continua" ensina resiliência aos jovens.',
-      'RESPEITO AO OPONENTE: Não há espaço para ofensas. O oponente é visto como um parceiro de evolução.',
-      'PATRIMÔNIO: Reconhecida como Patrimônio Cultural e Imaterial, protegendo a história dos povos do Norte do Brasil.'
+    type: 'texto_simples',
+    titulo: '3. O CAMPO DE LUTA: AREIA, GRAMA E LAMA',
+    title: '3. O CAMPO DE LUTA: AREIA, GRAMA E LAMA',
+    subtitulo: 'O círculo natural e o desafio do solo escorregadio',
+    subtitle: 'O círculo natural e o desafio do solo escorregadio',
+    topicos: [
+      'A RODA NO CHÃO: Não existem ringues fechados, grades ou cordas. A luta ocorre dentro de um círculo natural desenhado na terra pelos espectadores.',
+      'SOLO TRADICIONAL: Disputada na areia das praias fluviais, na grama dos campos ou na LAMA ÚMIDA (argila das marés baixas amazônicas).',
+      'O DESAFIO DA LAMA: Quando lutam na lama, o corpo fica extremamente escorregadio e os pés perdem a tração, exigindo sensibilidade de pegada e equilíbrio refinado.',
+      'RESPEITO À TERRA: A argila e a terra são sagradas para o caboclo. Sujar o corpo de barro simboliza a comunhão e a honra com o chão onde se pisa.'
     ],
-    dicaProfessor: 'Relacione com a Capoeira: ambas são expressões da identidade brasileira e da resistência cultural.'
+    points: [
+      'A RODA NO CHÃO: Não existem ringues fechados, grades ou cordas. A luta ocorre dentro de um círculo natural desenhado na terra pelos espectadores.',
+      'SOLO TRADICIONAL: Disputada na areia das praias fluviais, na grama dos campos ou na LAMA ÚMIDA (argila das marés baixas amazônicas).',
+      'O DESAFIO DA LAMA: Quando lutam na lama, o corpo fica extremamente escorregadio e os pés perdem a tração, exigindo sensibilidade de pegada e equilíbrio refinado.',
+      'RESPEITO À TERRA: A argila e a terra são sagradas para o caboclo. Sujar o corpo de barro simboliza a comunhão e a honra com o chão onde se pisa.'
+    ],
+    dicaProfessor: 'Explique que em torneios modernos usa-se tatame ou círculo de areia, mas o festival tradicional raiz preserva a lama como símbolo maior.'
+  },
+  {
+    tipo: 'texto_simples',
+    type: 'texto_simples',
+    titulo: '4. O OBJETIVO SUPREMO: AS COSTAS NO CHÃO',
+    title: '4. O OBJETIVO SUPREMO: AS COSTAS NO CHÃO',
+    subtitulo: 'A mecânica da vitória límpida sem contagem de pontos complexa',
+    subtitle: 'A mecânica da vitória límpida sem contagem de pontos complexa',
+    topicos: [
+      'A QUEDA VÁLIDA (IPPON MARAJOARA): O objetivo absoluto e único da luta é derrubar o adversário e fazer com que suas COSTAS ou OMBROS encostem no chão.',
+      'QUEDAS PARCIAIS NÃO VALEM: Se o oponente cair de joelhos, de quatro apoios ou de bruços (com a barriga no solo), a luta NÃO termina.',
+      'INTERRUPÇÃO E REINÍCIO: Em caso de queda parcial, o árbitro interrompe o combate e os lutadores retornam imediatamente à posição de pé, no centro do círculo.',
+      'DURAÇÃO RÁPIDA: A luta é decidida em rounds dinâmicos de 2 a 3 minutos ou por morte súbita (a primeira queda limpa encerra o combate na hora).'
+    ],
+    points: [
+      'A QUEDA VÁLIDA (IPPON MARAJOARA): O objetivo absoluto e único da luta é derrubar o adversário e fazer com que suas COSTAS ou OMBROS encostem no chão.',
+      'QUEDAS PARCIAIS NÃO VALEM: Se o oponente cair de joelhos, de quatro apoios ou de bruços (com a barriga no solo), a luta NÃO termina.',
+      'INTERRUPÇÃO E REINÍCIO: Em caso de queda parcial, o árbitro interrompe o combate e os lutadores retornam imediatamente à posição de pé, no centro do círculo.',
+      'DURAÇÃO RÁPIDA: A luta é decidida em rounds dinâmicos de 2 a 3 minutos ou por morte súbita (a primeira queda limpa encerra o combate na hora).'
+    ],
+    dicaProfessor: 'Compare com o Sumô (onde encostar qualquer parte além dos pés perde) e com o Judô (onde o Ippon exige projeção de costas).'
+  },
+  {
+    tipo: 'texto_simples',
+    type: 'texto_simples',
+    titulo: '5. REGRAS TÉCNICAS E SISTEMA DE AGARRE',
+    title: '5. REGRAS TÉCNICAS E SISTEMA DE AGARRE',
+    subtitulo: 'Modalidade de Grappling puro: alavancas, equilíbrios e rasteiras',
+    subtitle: 'Modalidade de Grappling puro: alavancas, equilíbrios e rasteiras',
+    topicos: [
+      'O ABRAÇO INICIAL: Os lutadores começam curvados, testas próximas, mãos buscando pegadas firmes nos ombros, nuca e tronco do rival.',
+      'PEGADAS PERMITIDAS: É permitido agarrar os braços, costas, cintura, quadris e a vestimenta do adversário (bermuda tradicional ou faixa na cintura).',
+      'ALAVANCAS E RASTEIRAS: Utilizam-se rasteiras de pé ("calços" e "ganchos") e giros de quadril para tirar o oponente do seu centro de gravidade.',
+      'SEM LUTA DE CHÃO: A Luta Marajoara não tem combate no solo! Encostou as costas no chão, o juiz ergue a mão do vencedor e os dois se abraçam.'
+    ],
+    points: [
+      'O ABRAÇO INICIAL: Os lutadores começam curvados, testas próximas, mãos buscando pegadas firmes nos ombros, nuca e tronco do rival.',
+      'PEGADAS PERMITIDAS: É permitido agarrar os braços, costas, cintura, quadris e a vestimenta do adversário (bermuda tradicional ou faixa na cintura).',
+      'ALAVANCAS E RASTEIRAS: Utilizam-se rasteiras de pé ("calços" e "ganchos") e giros de quadril para tirar o oponente do seu centro de gravidade.',
+      'SEM LUTA DE CHÃO: A Luta Marajoara não tem combate no solo! Encostou as costas no chão, o juiz ergue a mão do vencedor e os dois se abraçam.'
+    ],
+    dicaProfessor: 'Demonstre a postura básica com os pés afastados na largura dos ombros, joelhos semiflexionados e mãos prontas para o contato.'
+  },
+  {
+    tipo: 'texto_simples',
+    type: 'texto_simples',
+    titulo: '6. O QUE É TERMINANTEMENTE PROIBIDO (FALTAS)',
+    title: '6. O QUE É TERMINANTEMENTE PROIBIDO (FALTAS)',
+    subtitulo: 'Regulamento rígido para garantir a integridade e evitar violência',
+    subtitle: 'Regulamento rígido para garantir a integridade e evitar violência',
+    topicos: [
+      '🚫 PROIBIDO GOLPES TRAUMÁTICOS: Socos, tapas, chutes, cotoveladas, joelhadas e cabeçadas geram DESCLASSIFICAÇÃO IMEDIATA.',
+      '🚫 PROIBIDO FINALIZAÇÕES ARTICULARES: Não existem chaves de braço, chaves de perna ou torções de dedos.',
+      '🚫 PROIBIDO ESTRANGULAMENTOS: É expressamente proibido apertar a traqueia (esganadura), sufocar ou puxar cabelos.',
+      '🚫 PROIBIDO ATINGIR OLHOS E GENITAIS: Qualquer conduta desleal ou atitude antidesportiva expulsa o atleta da roda de combate.'
+    ],
+    points: [
+      '🚫 PROIBIDO GOLPES TRAUMÁTICOS: Socos, tapas, chutes, cotoveladas, joelhadas e cabeçadas geram DESCLASSIFICAÇÃO IMEDIATA.',
+      '🚫 PROIBIDO FINALIZAÇÕES ARTICULARES: Não existem chaves de braço, chaves de perna ou torções de dedos.',
+      '🚫 PROIBIDO ESTRANGULAMENTOS: É expressamente proibido apertar a traqueia (esganadura), sufocar ou puxar cabelos.',
+      '🚫 PROIBIDO ATINGIR OLHOS E GENITAIS: Qualquer conduta desleal ou atitude antidesportiva expulsa o atleta da roda de combate.'
+    ],
+    dicaProfessor: 'Reforce: uma luta sem socos e sem chutes mostra que a inteligência do corpo e o domínio da física superam a força bruta desmedida.'
+  },
+  {
+    tipo: 'texto_simples',
+    type: 'texto_simples',
+    titulo: '7. ÉTICA, FILOSOFIA E "QUEM CAI, LEVANTA"',
+    title: '7. ÉTICA, FILOSOFIA E "QUEM CAI, LEVANTA"',
+    subtitulo: 'A formação cidadã e o respeito ancestral pelo adversário',
+    subtitle: 'A formação cidadã e o respeito ancestral pelo adversário',
+    topicos: [
+      '"QUEM CAI, LEVANTA": O lema marajoara ensina que a queda é parte da vida. Não há vergonha em cair; a honra está em levantar a cabeça e seguir firme.',
+      'O ADVERSÁRIO COMO PARCEIRO: Não existe ódio. Sem o colega em frente, você jamais conseguiria testar seus próprios limites corporais.',
+      'CORDIALIDADE OBRIGATÓRIA: O combate sempre se inicia com aperto de mão e termina com um caloroso abraço entre os oponentes.',
+      'LEGADO NO MMA MODERNO: Campeões mundiais de MMA (como os irmãos Iuri e Ildemar "Marajó") levaram essa técnica centenária aos maiores palcos mundiais.'
+    ],
+    points: [
+      '"QUEM CAI, LEVANTA": O lema marajoara ensina que a queda é parte da vida. Não há vergonha em cair; a honra está em levantar a cabeça e seguir firme.',
+      'O ADVERSÁRIO COMO PARCEIRO: Não existe ódio. Sem o colega em frente, você jamais conseguiria testar seus próprios limites corporais.',
+      'CORDIALIDADE OBRIGATÓRIA: O combate sempre se inicia com aperto de mão e termina com um caloroso abraço entre os oponentes.',
+      'LEGADO NO MMA MODERNO: Campeões mundiais de MMA (como os irmãos Iuri e Ildemar "Marajó") levaram essa técnica centenária aos maiores palcos mundiais.'
+    ],
+    dicaProfessor: 'Discuta com a turma a metáfora: "Quantas vezes caímos na vida e precisamos levantar?"'
+  },
+  {
+    tipo: 'texto_simples',
+    type: 'texto_simples',
+    titulo: '✍️ LOUSA DO ALUNO: REGISTRO NO CADERNO (OBRIGATÓRIO)',
+    title: '✍️ LOUSA DO ALUNO: REGISTRO NO CADERNO (OBRIGATÓRIO)',
+    subtitulo: 'Copiem no caderno agora. O professor passará nas carteiras dando visto!',
+    subtitle: 'Copiem no caderno agora. O professor passará nas carteiras dando visto!',
+    topicos: [
+      '• 1. ORIGEM: Ilha de Marajó (Pará), criada por povos indígenas e caboclos, inspirada na disputa de força dos búfalos.',
+      '• 2. OBJETIVO: Derrubar o oponente até que ele encoste as COSTAS ou OMBROS no chão (queda limpa).',
+      '• 3. TERRENO: Praticada em círculo na areia, grama ou lama/argila (sem cordas ou ringues de grade).',
+      '• 4. MECÂNICA: Grappling puro (agarre, alavancas e rasteiras). Não há luta no solo.',
+      '• 5. PROIBIÇÕES: É proibido socos, chutes, cotoveladas, joelhadas, estrangulamentos ou chaves de articulação.',
+      '• 6. FILOSOFIA: "Quem cai, levanta" – Respeito ao adversário e preservação da integridade física.'
+    ],
+    points: [
+      '• 1. ORIGEM: Ilha de Marajó (Pará), criada por povos indígenas e caboclos, inspirada na disputa de força dos búfalos.',
+      '• 2. OBJETIVO: Derrubar o oponente até que ele encoste as COSTAS ou OMBROS no chão (queda limpa).',
+      '• 3. TERRENO: Praticada em círculo na areia, grama ou lama/argila (sem cordas ou ringues de grade).',
+      '• 4. MECÂNICA: Grappling puro (agarre, alavancas e rasteiras). Não há luta no solo.',
+      '• 5. PROIBIÇÕES: É proibido socos, chutes, cotoveladas, joelhadas, estrangulamentos ou chaves de articulação.',
+      '• 6. FILOSOFIA: "Quem cai, levanta" – Respeito ao adversário e preservação da integridade física.'
+    ],
+    category: 'LOUSA_ALUNO',
+    dicaProfessor: 'Professor: Circule pela sala, tire dúvidas dos alunos e carimbe/viste os cadernos como nota processual de participação.',
+    professorDica: 'Professor: Circule pela sala, tire dúvidas dos alunos e carimbe/viste os cadernos como nota processual de participação.'
   },
   {
     tipo: 'destaque_centro',
-    texto: '"A Luta Marajoara é a dança da força e do equilíbrio sobre o solo sagrado de Marajó."',
-    subtexto: 'Educação Física e Identidade Nacional',
-    dicaProfessor: 'Encerre a aula incentivando os alunos a valorizarem os esportes que nasceram no nosso próprio país.'
+    type: 'destaque_centro',
+    titulo: 'DESAFIO COGNITIVO & VIVÊNCIA PRÁTICA SEGURA',
+    title: 'DESAFIO COGNITIVO & VIVÊNCIA PRÁTICA SEGURA',
+    texto: '"A FORÇA DE UM POVO SE MEDE PELA SUA CAPACIDADE DE FICAR EM PÉ DIANTE DOS DESAFIOS."',
+    content: '"A FORÇA DE UM POVO SE MEDE PELA SUA CAPACIDADE DE FICAR EM PÉ DIANTE DOS DESAFIOS."',
+    subtexto: 'Atividade: Em duplas, teste da base do búfalo (sem contato traumático). Reflexão: Por que valorizar as lutas do nosso Brasil?',
+    subtitle: 'Atividade: Em duplas, teste da base do búfalo (sem contato traumático). Reflexão: Por que valorizar as lutas do nosso Brasil?',
+    dicaProfessor: 'Conduza a vivência segura nas carteiras: mãos espalmadas nos ombros do parceiro para sentir o centro de gravidade e desequilíbrio sem puxões bruscos.'
   }
 ];
 
@@ -730,43 +893,173 @@ export const SLIDES_AULA_INTERATIVA_EM = [
 
 export const SLIDES_CAPOEIRA = [
     {
+      tipo: 'capa',
       type: 'capa',
-      title: 'Lutas do Brasil: Capoeira',
-      subtitle: 'Resistência através da Capoeira e lutas indígenas',
-      professorDica: 'Acolha os alunos e introduza o tema da Capoeira não apenas como esporte, mas como ferramenta histórica de libertação e cultura negra no Brasil.'
+      titulo: 'LUTAS DO BRASIL: CAPOEIRA',
+      title: 'LUTAS DO BRASIL: CAPOEIRA',
+      subtitulo: 'Luta, Dança, Ritmo e Resistência Antirracista Ancestral',
+      subtitle: 'Luta, Dança, Ritmo e Resistência Antirracista Ancestral',
+      dicaProfessor: 'Acolha os alunos e introduza a Capoeira como um monumento de inteligência estratégica e resistência cultural afro-brasileira (Lei 10.639/03).',
+      professorDica: 'Acolha os alunos e introduza a Capoeira como um monumento de inteligência estratégica e resistência cultural afro-brasileira (Lei 10.639/03).'
     },
     {
+      tipo: 'texto_simples',
       type: 'texto_simples',
+      titulo: 'ROTEIRO DO PROFESSOR (NÃO COPIAR)',
       title: 'ROTEIRO DO PROFESSOR (NÃO COPIAR)',
+      subtitulo: 'Diretrizes didáticas para condução no Datashow',
+      subtitle: 'Diretrizes didáticas para condução no Datashow',
       topicos: [
-        'Explique que a Capoeira era disfarçada de dança para enganar os senhores de engenho.',
-        'Diferencie Briga (violência sem regras) de Luta (filosofia, regras e respeito).',
-        'Fale sobre a criminalização da Capoeira no início da República (1890).',
-        'Lembre os alunos do trabalho: Construção de tabuleiro africano/indígena.'
+        '1. ENREDO DE LUTAS: Conectar a Capoeira com a matriz africana e a Luta Marajoara com a matriz indígena/cabocla.',
+        '2. LUTA x BRIGA: Desconstruir o preconceito histórico que associava a Capoeira à vadiagem ou criminalidade.',
+        '3. MÚSICA COMO CÓDIGO: Explicar que os toques de berimbau avisavam a aproximação de feitores (toque de Cavalaria).',
+        '4. TRABALHO AVALIATIVO: Explicar a construção do jogo africano (Mancala ou Shisima) com materiais recicláveis.'
       ],
-      professorDica: 'Use tom reflexivo. Deixe claro que a aula de hoje é teórica para fundamentar a prática segura.'
+      points: [
+        '1. ENREDO DE LUTAS: Conectar a Capoeira com a matriz africana e a Luta Marajoara com a matriz indígena/cabocla.',
+        '2. LUTA x BRIGA: Desconstruir o preconceito histórico que associava a Capoeira à vadiagem ou criminalidade.',
+        '3. MÚSICA COMO CÓDIGO: Explicar que os toques de berimbau avisavam a aproximação de feitores (toque de Cavalaria).',
+        '4. TRABALHO AVALIATIVO: Explicar a construção do jogo africano (Mancala ou Shisima) com materiais recicláveis.'
+      ],
+      dicaProfessor: 'Use tom afirmativo e reflexivo. Deixe claro que a aula teórica no Datashow garante embasamento crítico antes de qualquer movimento.',
+      professorDica: 'Use tom afirmativo e reflexivo. Deixe claro que a aula teórica no Datashow garante embasamento crítico antes de qualquer movimento.'
     },
     {
+      tipo: 'texto_simples',
       type: 'texto_simples',
-      title: 'O QUE SÃO AS LUTAS?',
+      titulo: '1. O CONCEITO DE LUTA: RESPEITO E CULTURA',
+      title: '1. O CONCEITO DE LUTA: RESPEITO E CULTURA',
+      subtitulo: 'Diferenciando definitivamente Luta de Briga',
+      subtitle: 'Diferenciando definitivamente Luta de Briga',
       topicos: [
-        'Lutas têm REGRAS, FILOSOFIA e RESPEITO ao adversário.',
-        'Briga é violência descontrolada e sem regras (crime).',
-        'As lutas nasceram como defesa pessoal, sobrevivência e cultura.',
-        'No Brasil, as lutas mais marcantes vieram dos povos originários e escravizados.'
+        'REGRAS E ÉTICA: As lutas possuem regras claras, árbitro, tradição milenar e o dever ético de proteger o oponente.',
+        'BRIGA É VIOLÊNCIA: Briga não tem regras, busca ferir, humilhar e destruir. É caso de polícia e infração disciplinar.',
+        'AUTODEFESA E LIBERDADE: As lutas nasceram como ferramentas de sobrevivência, caça e libertação de povos oprimidos.',
+        'MATRIZES BRASILEIRAS: O Brasil possui tradições marciais ímpares: Capoeira (africana), Luta Marajoara (cabocla) e Huka-Huka (indígena).'
+      ],
+      points: [
+        'REGRAS E ÉTICA: As lutas possuem regras claras, árbitro, tradição milenar e o dever ético de proteger o oponente.',
+        'BRIGA É VIOLÊNCIA: Briga não tem regras, busca ferir, humilhar e destruir. É caso de polícia e infração disciplinar.',
+        'AUTODEFESA E LIBERDADE: As lutas nasceram como ferramentas de sobrevivência, caça e libertação de povos oprimidos.',
+        'MATRIZES BRASILEIRAS: O Brasil possui tradições marciais ímpares: Capoeira (africana), Luta Marajoara (cabocla) e Huka-Huka (indígena).'
       ],
       category: 'LOUSA_ALUNO'
     },
     {
+      tipo: 'texto_simples',
       type: 'texto_simples',
-      title: 'A CAPOEIRA: LUTANDO PELA LIBERDADE',
+      titulo: '2. ORIGEM: SENZALAS E QUILOMBOS',
+      title: '2. ORIGEM: SENZALAS E QUILOMBOS',
+      subtitulo: 'A arte marcial gestada na dor e forjada na liberdade',
+      subtitle: 'A arte marcial gestada na dor e forjada na liberdade',
       topicos: [
-        'Criada por africanos escravizados no Brasil (século XVI).',
-        'Disfarçada de dança e festa (música e palmas) para enganar os feitores.',
-        'Ginga: movimento básico de balanço contínuo para enganar o oponente.',
-        'Em 1890, a Capoeira foi proibida e considerada crime no Brasil.',
-        'Apenas em 1930 foi liberada e hoje é Patrimônio Imaterial da Humanidade.'
+        'SÉCULO XVI: Desenvolvida no Brasil colonial por africanos escravizados de diversas etnias (especialmente bantos/angolanos).',
+        'DISFARCE DE DANÇA: Como o treinamento marcial era punido com tortura e morte, os escravizados uniram cânticos, palmas e instrumentos para que parecesse apenas uma dança inofensiva.',
+        'ARMAS DO CORPO: Proibidos de portar armas de ferro, os capoeiristas transformaram os pés, pernas, cabeça e cotovelos em armas velozes e precisas.',
+        'QUILOMBOS COMO FORTALEZA: Nos quilombos (como o Quilombo dos Palmares), a Capoeira foi a principal tática de guerrilha contra capitães-do-mato.'
+      ],
+      points: [
+        'SÉCULO XVI: Desenvolvida no Brasil colonial por africanos escravizados de diversas etnias (especialmente bantos/angolanos).',
+        'DISFARCE DE DANÇA: Como o treinamento marcial era punido com tortura e morte, os escravizados uniram cânticos, palmas e instrumentos para que parecesse apenas uma dança inofensiva.',
+        'ARMAS DO CORPO: Proibidos de portar armas de ferro, os capoeiristas transformaram os pés, pernas, cabeça e cotovelos em armas velozes e precisas.',
+        'QUILOMBOS COMO FORTALEZA: Nos quilombos (como o Quilombo dos Palmares), a Capoeira foi a principal tática de guerrilha contra capitães-do-mato.'
       ],
       category: 'LOUSA_ALUNO'
+    },
+    {
+      tipo: 'texto_simples',
+      type: 'texto_simples',
+      titulo: '3. A RODA, O RITMO E OS INSTRUMENTOS',
+      title: '3. A RODA, O RITMO E OS INSTRUMENTOS',
+      subtitulo: 'A orquestra sagrada que comanda a velocidade do jogo',
+      subtitle: 'A orquestra sagrada que comanda a velocidade do jogo',
+      topicos: [
+        'O BERIMBAU COMO COMANDANTE: O berimbau comanda o ritmo da roda. São 3 tipos: Gunga (grave/comando), Médio (marcação) e Viola (agudo/improviso).',
+        'BATERIA COMPLETA: Composta por berimbaus, atabaque (pulsação terrena), pandeiros, agogô e reco-reco.',
+        'A CHULA E A LADAINHA: Os cânticos preservam a memória histórica oral, contam façanhas de heróis quilombolas e transmitem ensinamentos filosóficos.',
+        'A RODA: Espaço circular onde todos são iguais em energia, batendo palmas no tempo e respondendo ao coro coletivo.'
+      ],
+      points: [
+        'O BERIMBAU COMO COMANDANTE: O berimbau comanda o ritmo da roda. São 3 tipos: Gunga (grave/comando), Médio (marcação) e Viola (agudo/improviso).',
+        'BATERIA COMPLETA: Composta por berimbaus, atabaque (pulsação terrena), pandeiros, agogô e reco-reco.',
+        'A CHULA E A LADAINHA: Os cânticos preservam a memória histórica oral, contam façanhas de heróis quilombolas e transmitem ensinamentos filosóficos.',
+        'A RODA: Espaço circular onde todos são iguais em energia, batendo palmas no tempo e respondendo ao coro coletivo.'
+      ]
+    },
+    {
+      tipo: 'texto_simples',
+      type: 'texto_simples',
+      titulo: '4. MOVIMENTOS E A GINGA',
+      title: '4. MOVIMENTOS E A GINGA',
+      subtitulo: 'Equilíbrio contínuo, esquiva e malícia corporal',
+      subtitle: 'Equilíbrio contínuo, esquiva e malícia corporal',
+      topicos: [
+        'A GINGA: O passo fundamental. É uma movimentação contínua de vaivém corporal que não permite ao oponente prever de onde virá o golpe ou a esquiva.',
+        'ESQUIVAS: Ao invés de bloquear golpes com força bruta (como no karatê), o capoeirista se esquiva (esquiva baixa, lateral, cocorinha), usando o chão como refúgio.',
+        'GOLPES TRAUMÁTICOS E GIRATÓRIOS: Meia-lua de compasso, armada, queixada, martelo e cabeçada.',
+        'MALÍCIA (MANDINGA): A inteligência de simular um movimento para desferir outro, ludibriando o adversário com elegância corporal.'
+      ],
+      points: [
+        'A GINGA: O passo fundamental. É uma movimentação contínua de vaivém corporal que não permite ao oponente prever de onde virá o golpe ou a esquiva.',
+        'ESQUIVAS: Ao invés de bloquear golpes com força bruta (como no karatê), o capoeirista se esquiva (esquiva baixa, lateral, cocorinha), usando o chão como refúgio.',
+        'GOLPES TRAUMÁTICOS E GIRATÓRIOS: Meia-lua de compasso, armada, queixada, martelo e cabeçada.',
+        'MALÍCIA (MANDINGA): A inteligência de simular um movimento para desferir outro, ludibriando o adversário com elegância corporal.'
+      ]
+    },
+    {
+      tipo: 'texto_simples',
+      type: 'texto_simples',
+      titulo: '5. PERSEGUIÇÃO PENAL E RECONHECIMENTO',
+      title: '5. PERSEGUIÇÃO PENAL E RECONHECIMENTO',
+      subtitulo: 'Do Código Penal de 1890 ao título da UNESCO',
+      subtitle: 'Do Código Penal de 1890 ao título da UNESCO',
+      topicos: [
+        'CRIMINALIZAÇÃO (1890): Após a abolição da escravidão, o Código Penal Republicano no art. 402 proibiu a prática da capoeira nas ruas, com pena de cadeia e trabalho forçado na Ilha de Fernando de Noronha.',
+        'MESTRE BIMBA (1930): Manuel dos Reis Machado criou a "Capoeira Regional" e fundou a primeira academia com regras pedagógicas em Salvador, demonstrando a arte ao presidente Getúlio Vargas.',
+        'LIBERAÇÃO LEGAL: Em 1937, Vargas declarou a Capoeira como "único esporte verdadeiramente nacional".',
+        'PATRIMÔNIO DA HUMANIDADE: Em 2014, a Roda de Capoeira foi declarada Patrimônio Cultural Imaterial da Humanidade pela UNESCO.'
+      ],
+      points: [
+        'CRIMINALIZAÇÃO (1890): Após a abolição da escravidão, o Código Penal Republicano no art. 402 proibiu a prática da capoeira nas ruas, com pena de cadeia e trabalho forçado na Ilha de Fernando de Noronha.',
+        'MESTRE BIMBA (1930): Manuel dos Reis Machado criou a "Capoeira Regional" e fundou a primeira academia com regras pedagógicas em Salvador, demonstrando a arte ao presidente Getúlio Vargas.',
+        'LIBERAÇÃO LEGAL: Em 1937, Vargas declarou a Capoeira como "único esporte verdadeiramente nacional".',
+        'PATRIMÔNIO DA HUMANIDADE: Em 2014, a Roda de Capoeira foi declarada Patrimônio Cultural Imaterial da Humanidade pela UNESCO.'
+      ]
+    },
+    {
+      tipo: 'texto_simples',
+      type: 'texto_simples',
+      titulo: '✍️ LOUSA DO ALUNO: REGISTRO NO CADERNO (OBRIGATÓRIO)',
+      title: '✍️ LOUSA DO ALUNO: REGISTRO NO CADERNO (OBRIGATÓRIO)',
+      subtitulo: 'Copiem com atenção. Registro essencial para avaliação processual',
+      subtitle: 'Copiem com atenção. Registro essencial para avaliação processual',
+      topicos: [
+        '• 1. ORIGEM: Criada por africanos escravizados no Brasil (séc. XVI) como forma de autodefesa e resistência.',
+        '• 2. DISFARCE: Associada à música, canto e palmas para que os feitores não percebessem o treinamento marcial.',
+        '• 3. INSTRUMENTO PRINCIPAL: O Berimbau (Gunga, Médio e Viola) comanda o ritmo e a velocidade do jogo.',
+        '• 4. MOVIMENTO BASE: A Ginga (movimento oscilante de braços e pernas que permite ataque e esquiva contínuos).',
+        '• 5. HISTÓRIA LEGAL: Foi proibida no Código Penal de 1890 e legalizada nos anos 1930 por Mestre Bimba.',
+        '• 6. UNESCO (2014): Declarada Patrimônio Cultural Imaterial da Humanidade.'
+      ],
+      points: [
+        '• 1. ORIGEM: Criada por africanos escravizados no Brasil (séc. XVI) como forma de autodefesa e resistência.',
+        '• 2. DISFARCE: Associada à música, canto e palmas para que os feitores não percebessem o treinamento marcial.',
+        '• 3. INSTRUMENTO PRINCIPAL: O Berimbau (Gunga, Médio e Viola) comanda o ritmo e a velocidade do jogo.',
+        '• 4. MOVIMENTO BASE: A Ginga (movimento oscilante de braços e pernas que permite ataque e esquiva contínuos).',
+        '• 5. HISTÓRIA LEGAL: Foi proibida no Código Penal de 1890 e legalizada nos anos 1930 por Mestre Bimba.',
+        '• 6. UNESCO (2014): Declarada Patrimônio Cultural Imaterial da Humanidade.'
+      ],
+      category: 'LOUSA_ALUNO'
+    },
+    {
+      tipo: 'destaque_centro',
+      type: 'destaque_centro',
+      titulo: 'TRABALHO AVALIATIVO (2º TRIMESTRE)',
+      title: 'TRABALHO AVALIATIVO (2º TRIMESTRE)',
+      texto: 'CONSTRUÇÃO DE JOGOS AFRICANOS: TABULEIRO DE SHISIMA OU MANCALA',
+      content: 'CONSTRUÇÃO DE JOGOS AFRICANOS: TABULEIRO DE SHISIMA OU MANCALA',
+      subtexto: 'Construir em casa com papelão/caixa de ovos/tampinhas e entregar na data estipulada (Vale 3,0 pontos).',
+      subtitle: 'Construir em casa com papelão/caixa de ovos/tampinhas e entregar na data estipulada (Vale 3,0 pontos).',
+      dicaProfessor: 'Explique que a próxima aula explorará a Luta Marajoara para concluir o ciclo das lutas do Brasil!'
     }
 ];

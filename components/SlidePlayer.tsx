@@ -21,9 +21,25 @@ export const SlidePlayer: React.FC<SlidePlayerProps> = ({
   const getSlides = () => {
     if (!selectedAulaData) return null;
     
+    // 1. Direct match in physical slidesData takes highest priority
+    if ((slidesData as any)[selectedAulaData]) {
+      return (slidesData as any)[selectedAulaData];
+    }
+
     const uIndex = selectedAulaData.lastIndexOf('_');
     const tId = uIndex !== -1 ? selectedAulaData.substring(0, uIndex) : '';
     const dStr = uIndex !== -1 ? selectedAulaData.substring(uIndex + 1) : '';
+
+    // Direct alias mappings for Lutas do Brasil (Capoeira & Luta Marajoara)
+    if (dStr === '31/08') {
+      if ((slidesData as any)['8ano_31/08']) return (slidesData as any)['8ano_31/08'];
+      if ((slidesData as any)['ciep369_31/08']) return (slidesData as any)['ciep369_31/08'];
+    }
+    if (dStr === '24/08') {
+      if ((slidesData as any)['8ano_24/08']) return (slidesData as any)['8ano_24/08'];
+      if ((slidesData as any)['ciep369_24/08']) return (slidesData as any)['ciep369_24/08'];
+    }
+
     const isApTurma = tId === 'ap' || tId === 'ap_sexta';
 
     if (isApTurma) {
@@ -1414,21 +1430,13 @@ export const SlidePlayer: React.FC<SlidePlayerProps> = ({
                   </div>
                 )}
                 {(slideAtual.points || slideAtual.topicos) && (
-                  isTeacherSlide ? (
-                    <ul className="space-y-6 max-w-5xl">
-                      {(slideAtual.points || slideAtual.topicos)?.map((topico: string, idx: number) => (
-                        <li key={idx} className="text-xl md:text-2xl font-bold text-slate-700 flex items-start gap-4 leading-relaxed">
-                          <span className="text-blue-600 mt-1 font-bold">●</span> {topico}
-                        </li>
-                      ))}
-                    </ul>
-                  ) : (
-                    <div className="max-w-5xl">
-                      <p className="text-xl md:text-2xl font-bold text-slate-700 leading-relaxed text-justify indent-8">
-                        {(slideAtual.points || slideAtual.topicos).join(' ')}
-                      </p>
-                    </div>
-                  )
+                  <ul className="space-y-4 max-w-5xl">
+                    {(slideAtual.points || slideAtual.topicos)?.map((topico: string, idx: number) => (
+                      <li key={idx} className="text-lg md:text-2xl font-bold text-slate-800 flex items-start gap-4 leading-relaxed">
+                        <span className="text-blue-600 mt-1 font-black shrink-0">●</span> <span>{topico}</span>
+                      </li>
+                    ))}
+                  </ul>
                 )}
               </div>
             )}

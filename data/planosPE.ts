@@ -76,13 +76,66 @@ export const PE_PLAN: Record<string, AulaPlan[]> = {
         { data: '10/08', tri: '2º Tri', modulo: 'Sociedade', titulo: 'Mídias e Padrões', desc: 'Racismo estético e padrões de beleza.', resumo: `🎯 **Objetivo da Aula:** Crítica aos padrões de beleza irreais e racismo estético.\n\n🗣️ **Dinâmica:**\n• Debate sobre a representação do corpo na mídia.\n• Atividade de identificação de padrões em propagandas.\n\n📜 **Reflexão:** Como a mídia influência nossa percepção sobre o próprio corpo?` },
         { data: '17/08', tri: '2º Tri', modulo: 'Avaliação', titulo: 'Avaliação Teórica', desc: 'Aplicação da prova formal do 2º trimestre em sala.', resumo: `🎯 **Objetivo da Aula:** Sistematização e verificação de aprendizagem do trimestre.\n\n🗣️ **Dinâmica:**\n• Aplicação individual de prova escrita abrangendo conteúdos teóricos e jogos de tabuleiro.` },
         { 
-            data: '24/08', tri: '2º Tri', modulo: 'Lutas', titulo: 'Lutas do Brasil: Capoeira', desc: 'Resistência através da Capoeira e lutas indígenas (Sala).', 
+            data: '24/08', tri: '2º Tri', modulo: 'Lutas', titulo: 'Lutas do Brasil: Capoeira', desc: 'Resistência antirracista através da Capoeira, dança-luta e matrizes africanas (Datashow).', 
             trabalho: 'passar',
-            resumo: `🎯 **Objetivo da Aula:** Estudar as lutas como ferramentas de libertação no Brasil.\n\n🗣️ **Dinâmica:**\n• Estudo da Capoeira e da Luta Marajoara.\n\n⚠️ **TRABALHO:** Construção do tabuleiro de Shisima ou Mancala em casa com material reciclável.` 
+            resumo: `🎯 **Objetivo da Aula:**
+Compreender a Capoeira como patrimônio cultural imaterial da humanidade (UNESCO), fruto da resistência política e física de africanos escravizados no Brasil, analisando sua estratégia de disfarce corporal (dança-luta), instrumentos musicais, criminalização histórica no Código Penal de 1890 e a libertação pedagógica promovida por Mestre Bimba nos anos 1930 (Leis 10.639/03 e BNCC EF08EF14/EF08EF15).
+
+🗣️ **Roteiro Pedagógico do Professor (Passo a Passo com Datashow):**
+1. **Acolhimento & Sensibilização (5 min):** Projetar os slides no Datashow. Introduzir a Capoeira como um monumento de inteligência estratégica e autodefesa forjada nas senzalas e quilombos (Palmares).
+2. **A Dança como Disfarce Militar (10 min):** Explicar como os escravizados uniram cânticos, palmas e o berimbau para que os feitores e capitães-do-mato acreditassem que se tratava apenas de uma dança festiva, escondendo o treinamento marcial de autodefesa.
+3. **A Bateria e o Berimbau (10 min):** Apresentar a orquestra da capoeira (Gunga, Médio, Viola, Atabaque, Pandeiro e Agogô) e o papel do ritmo ditando a malícia e a velocidade do jogo.
+4. **Mecânica Corporal e a Ginga (5 min):** Demonstrar que a Ginga é a base viva de oscilação do centro de gravidade, permitindo esquivas imediatas sem bloqueios rígidos de impacto.
+5. **História Legal e Criminalização (5 min):** Contextualizar a perseguição pós-abolição (art. 402 do Código Penal de 1890) e a posterior valorização nacional com Mestre Bimba em 1930 e o título da UNESCO em 2014.
+6. **Lousa e Registro no Caderno (10 min):** Cópia do resumo estruturado projetado no slide para fixação e avaliação processual.
+7. **Lançamento do Trabalho Avaliativo (5 min):** Explicação da confecção dos jogos africanos (Shisima ou Mancala) com material reciclado em casa.
+
+⚠️ **TRABALHO AVALIATIVO (3,0 pts):** Construção do tabuleiro de Shisima ou Mancala em casa com material reciclável para entrega no início do 3º trimestre.` 
         },
         { 
-            data: '31/08', tri: '2º Tri', modulo: 'Lutas', titulo: 'Lutas do Brasil: Luta Marajoara', desc: 'A tradição da Ilha de Marajó e o combate ancestral (Sala).', 
-            resumo: `🎯 **Objetivo da Aula:** Conhecer a história, as regras e a filosofia da Luta Marajoara.\n\n🗣️ **Dinâmica:**\n• Apresentação de slides interativos.\n• Debate sobre a conexão com a cultura do Pará e o manejo do búfalo.\n\n📜 **Reflexão:** Como uma luta pode ser um patrimônio cultural e imaterial?` 
+            data: '31/08', tri: '2º Tri', modulo: 'Lutas', titulo: 'Lutas do Brasil: Luta Marajoara', desc: 'A tradição ancestral da Ilha de Marajó, história cabocla/indígena e regras oficiais de combate (Datashow).', 
+            resumo: `🎯 **Objetivo Geral da Aula:**
+Compreender a Luta Marajoara como patrimônio cultural imaterial do Brasil e do Pará (Lei Estadual nº 7.755/2013), fruto do encontro entre povos indígenas originários (como os Aruás) e caboclos/ribeirinhos do arquipélago do Marajó. Analisar sua inspiração na disputa de força dos búfalos-d’água, regras oficiais de projeção/grappling, proibições de integridade física e o princípio ético da resiliência ("quem cai, levanta"), atendendo à Lei 11.645/08 e às habilidades EF08EF14/EF08EF15 da BNCC.
+
+🗣️ **Roteiro Pedagógico do Professor (Passo a Passo com Datashow):**
+1. **Acolhimento e Pergunta Disparadora (5 a 10 min):**
+   • Projetar os slides da Luta Marajoara no Datashow.
+   • Pergunta reflexiva: *"Vocês sabiam que o Brasil tem uma das lutas corpo a corpo mais antigas e nobres do mundo, praticada em círculo na areia ou na lama, onde dar soco ou chute é terminantemente proibido?"*
+   • Explicar a distinção absoluta entre LUTA (regras, árbitro, cavalheirismo e respeito à integridade física) e BRIGA (violência cega, covardia e infração penal).
+
+2. **Origem Histórica e Geografia Marajoara (10 min):**
+   • Apresentação do Arquipélago de Marajó (Pará), maior arquipélago fluviomarítimo da Terra, moldado pelas marés do Rio Amazonas e Oceano Atlântico.
+   • Criação tradicional pela fusão de saberes dos povos indígenas locais e vaqueiros/caboclos das fazendas de gado.
+   • Prática nas festividades comunitárias tradicionais, como a festa do Glorioso São Sebastião em Cachoeira do Arari, Soure e Salvaterra.
+
+3. **A Sabedoria dos Búfalos e o Campo de Luta (10 min):**
+   • A Ilha de Marajó possui o maior rebanho de búfalos do Ocidente.
+   • Os vaqueiros observavam como os machos disputavam liderança empurrando com as testas e pescoços, sem se dilacerar nem matar.
+   • A luta ocorre em círculos demarcados no chão (sem grades ou cordas de ringue), em areia, grama ou na clássica lama/argila úmida da maré, exigindo máxima estabilidade isométrica e sensibilidade tátil com os pés.
+
+4. **Regras Oficiais e Sistema de Grappling (10 min):**
+   • **Objetivo Supremo:** Desequilibrar o oponente e fazer com que ele encoste as COSTAS ou OMBROS no chão (queda limpa dorsal).
+   • **Quedas Não Finais:** Se o lutador cair de joelhos, de quatro apoios ou de bruços (barriga no chão), o combate NÃO é finalizado; a luta é interrompida e recomeça de pé no centro do círculo.
+   • **Pegadas Válidas:** Grappling tradicional puro (agarre nos braços, costas, cintura, quadris e vestimenta/bermuda). Uso de rasteiras com os pés (calços e ganchos) e giros de quadril.
+   • **Duração:** Decidida em rounds dinâmicos de 2 a 3 minutos ou por morte súbita na primeira queda válida de costas.
+
+5. **Terminantemente PROIBIDO (Faltas e Segurança) (5 min):**
+   • Proibição de golpes traumáticos: socos, tapas, chutes, cotoveladas, joelhadas e cabeçadas causam desclassificação imediata.
+   • Proibição de finalizações: sem chaves de braço, perna, dedos ou torções articulares.
+   • Proibição de estrangulamentos: proibido apertar pescoço (esganadura), sufocar ou puxar cabelos.
+
+6. **Filosofia Marajoara e Formação Cidadã (5 min):**
+   • *"Quem cai, levanta":* A queda não é humilhação, mas oportunidade pedagógica de reerguer-se com honra.
+   • Adversário como parceiro: sem ele não há combate. A luta obrigatoriamente se inicia e se encerra com abraço fraterno e aperto de mãos.
+   • Legado moderno: Presença de mestres marajoaras no MMA internacional demonstrando a eficácia das alavancas corporais.
+
+7. **Registro na Lousa / Caderno do Aluno (10 min):**
+   • Cópia do resumo esquemático obrigatório projetado no slide para fixação no caderno individual.
+   • O professor circula pelas carteiras concedendo visto processual.
+
+8. **Vivência Prática Segura em Sala / Pátio (Adaptada) (10 min):**
+   • Em duplas, mantendo postura ereta com os joelhos semiflexionados.
+   • Desafio do "Búfalo em Equilíbrio": mãos apoiadas espalmadas nos ombros do parceiro; tentar fazer o colega dar um passo para trás usando apenas o recuo e desequilíbrio sutil de base, sem puxões bruscos, solavancos ou contato violento.` 
         },
         { 
             data: '14/09', tri: '3º Tri', modulo: 'Jogos de Tabuleiro', titulo: 'Torneio de Shisima', desc: 'Realização de torneio com o jogo de tabuleiro Shisima.', 
@@ -169,8 +222,18 @@ export const PE_PLAN: Record<string, AulaPlan[]> = {
             resumo: `🎯 **Objetivo da Aula:** Sistematizar saberes cognitivos de Futsal, Vôlei e Basquetebol.\n\n🗣️ **Dinâmica:**\n• Aplicação de prova escrita individual em sala.` 
         },
         { 
-            data: '31/08', tri: '2º Tri', modulo: 'Lutas', titulo: 'Lutas do Brasil: Luta Marajoara', desc: 'A tradição da Ilha de Marajó e o combate ancestral (Sala).', 
-            resumo: `🎯 **Objetivo da Aula:** Conhecer a história, as regras e a filosofia da Luta Marajoara.\n\n🗣️ **Dinâmica:**\n• Apresentação de slides interativos.\n• Debate sobre a conexão com a cultura do Pará e o manejo do búfalo.\n\n📜 **Reflexão:** Como uma luta pode ser um patrimônio cultural e imaterial?` 
+            data: '31/08', tri: '2º Tri', modulo: 'Lutas', titulo: 'Lutas do Brasil: Luta Marajoara', desc: 'A tradição ancestral da Ilha de Marajó, história cabocla/indígena e regras oficiais de combate (Datashow).', 
+            resumo: `🎯 **Objetivo Geral da Aula:**
+Compreender a Luta Marajoara como patrimônio cultural imaterial brasileiro e paraense (Lei Estadual nº 7.755/2013). Analisar sua inspiração na disputa de força dos búfalos-d’água, regras oficiais de projeção/grappling, proibições de integridade física e o lema ético de resiliência ("quem cai, levanta"), atendendo à Lei 11.645/08 e às habilidades EF08EF14/EF08EF15 da BNCC.
+
+🗣️ **Roteiro Pedagógico do Professor (Passo a Passo com Datashow):**
+1. **Acolhimento & Provocação (5 a 10 min):** Distinção entre LUTA (regras, respeito e arte marcial) e BRIGA (violência e descontrole).
+2. **Origem e Geografia de Marajó (10 min):** O maior arquipélago fluviomarítimo do planeta, a herança indígena Aruá e cabocla.
+3. **Manejo dos Búfalos e o Campo de Luta (10 min):** Como a observação dos búfalos ensinou a empurrar e desequilibrar sem machucar. A luta na areia e na argila úmida.
+4. **Regras Oficiais & Grappling (10 min):** Derrubar de costas no chão. Quedas parciais de joelhos ou bruços não encerram a luta. Proibição absoluta de socos, chutes e estrangulamentos.
+5. **Filosofia do "Quem cai, levanta" (5 min):** Resiliência e respeito: abraço inicial e final.
+6. **Lousa e Registro no Caderno (10 min):** Cópia do resumo estruturado projetado no slide para fixação e avaliação processual.
+7. **Vivência Prática Segura (10 min):** Base isométrica do búfalo em duplas (desequilíbrio de base seguro sem impacto).` 
         },
         { 
             data: '14/09', tri: '3º Tri', modulo: 'Esportes de Campo', titulo: 'Futebol: Limites e Regras (Aula 1/4 - TEÓRICA)', desc: 'Marcações de campo e regras básicas (Impedimento tático de forma fácil).', 

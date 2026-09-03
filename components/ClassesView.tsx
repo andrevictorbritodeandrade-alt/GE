@@ -90,6 +90,9 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
   // Input States
   const [newStudentName, setNewStudentName] = useState('');
   const [targetClassId, setTargetClassId] = useState('');
+  const [filterTrimesterOnly, setFilterTrimesterOnly] = useState<boolean>(true);
+  const [modalEnrolledTrimesters, setModalEnrolledTrimesters] = useState<number[]>([1, 2, 3]);
+  const [modalStudentStatus, setModalStudentStatus] = useState<'ativo' | 'transferido' | 'evadido' | 'entrante'>('ativo');
   
   // Date Logic
   const [activeTrimesterId, setActiveTrimesterId] = useState<number>(() => {
@@ -335,18 +338,22 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
     const newStudent: Student = {
       id: newId,
       name: newStudentName.trim(),
-      attendance: {}
+      attendance: {},
+      enrolledTrimesters: modalEnrolledTrimesters.length > 0 ? modalEnrolledTrimesters : [activeTrimesterId],
+      status: modalStudentStatus
     };
 
     setClassData(prev => {
-      const newData = { ...prev };
-      // Adiciona e ordena imediatamente
-      const updatedList = [...newData[selectedClassId].students, newStudent];
-      newData[selectedClassId].students = sortStudentsAlphabetically(updatedList);
-      
-      // Salva imediatamente na nuvem
-      
-      return newData;
+      const currentCls = prev[selectedClassId] || initialClassData[selectedClassId];
+      if (!currentCls) return prev;
+      const updatedList = [...(currentCls.students || []), newStudent];
+      return {
+        ...prev,
+        [selectedClassId]: {
+          ...currentCls,
+          students: sortStudentsAlphabetically(updatedList)
+        }
+      };
     });
     setNewStudentName('');
     setShowAddModal(false);
@@ -356,17 +363,53 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
     if (!showEditModal || !selectedClassId || !newStudentName.trim()) return;
 
     setClassData(prev => {
-      const newData = { ...prev };
-      const students = newData[selectedClassId].students.map(s => 
-        s.id === showEditModal.id ? { ...s, name: newStudentName.trim() } : s
+      const currentCls = prev[selectedClassId] || initialClassData[selectedClassId];
+      if (!currentCls) return prev;
+      const students = (currentCls.students || []).map(s => 
+        s.id === showEditModal.id 
+          ? { 
+              ...s, 
+              name: newStudentName.trim(),
+              enrolledTrimesters: modalEnrolledTrimesters,
+              status: modalStudentStatus
+            } 
+          : s
       );
-      // Reordena após editar o nome para manter a lista correta
-      newData[selectedClassId].students = sortStudentsAlphabetically(students);
-      
-      return newData;
+      return {
+        ...prev,
+        [selectedClassId]: {
+          ...currentCls,
+          students: sortStudentsAlphabetically(students)
+        }
+      };
     });
     setShowEditModal(null);
     setNewStudentName('');
+  };
+
+  const handleToggleTrimesterEnrollment = (student: Student, trimester: number) => {
+    if (!selectedClassId) return;
+    const currentList = student.enrolledTrimesters || [1, 2, 3];
+    const nextList = currentList.includes(trimester)
+      ? currentList.filter(t => t !== trimester)
+      : [...currentList, trimester].sort();
+
+    setClassData(prev => {
+      const currentCls = prev[selectedClassId] || initialClassData[selectedClassId];
+      if (!currentCls) return prev;
+      const students = (currentCls.students || []).map(s => 
+        s.id === student.id 
+          ? { ...s, enrolledTrimesters: nextList } 
+          : s
+      );
+      return {
+        ...prev,
+        [selectedClassId]: {
+          ...currentCls,
+          students
+        }
+      };
+    });
   };
 
   const deleteStudent = () => {
@@ -453,7 +496,12 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
   };
 
   const getClassesBySchool = (school: string): ClassData[] => {
-    return (Object.values(classData) as ClassData[]).filter((c: ClassData) => c.school === school);
+    const fromState = (Object.values(classData || {}) as ClassData[]).filter((c: ClassData) => c.school === school);
+    const fromInit = (Object.values(initialClassData) as ClassData[]).filter((c: ClassData) => c.school === school);
+    const map = new Map<string, ClassData>();
+    fromInit.forEach(c => map.set(c.id, c));
+    fromState.forEach(c => map.set(c.id, c));
+    return Array.from(map.values());
   };
 
   // Helper for stats
@@ -472,24 +520,17 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
     };
   };
 
-  const schools = Array.from(new Set(
-    (Object.values(classData || {}) as ClassData[])
-      .map(c => c.school)
-      .filter(school => school && typeof school === 'string')
-  )).sort();
-
-  // Se schools estiver vazio e tivermos dados iniciais, tenta usá-los como falha
-  const finalSchools = schools.length > 0 ? schools : Array.from(new Set(
-    (Object.values(initialClassData) as ClassData[])
-      .map(c => c.school)
-  )).sort();
+  const finalSchools = Array.from(new Set([
+    ...(Object.values(classData || {}) as ClassData[]).map(c => c.school),
+    ...(Object.values(initialClassData) as ClassData[]).map(c => c.school)
+  ].filter((s): s is string => typeof s === 'string' && s.trim().length > 0))).sort();
 
   // Validação de estado persistido: se a escola selecionada não existe mais nos dados, reseta.
   useEffect(() => {
-    if (selectedGrade && !schools.includes(selectedGrade)) {
+    if (selectedGrade && !finalSchools.includes(selectedGrade)) {
       setSelectedGrade(null);
     }
-  }, [selectedGrade, schools, setSelectedGrade]);
+  }, [selectedGrade, finalSchools, setSelectedGrade]);
 
   // Validação de turma selecionada: se a turma não existe nos dados, reseta.
   useEffect(() => {
@@ -631,7 +672,10 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
   }
 
   // NÍVEL 3: LISTA DE CHAMADA
-  const currentClass = classData && selectedClassId ? classData[selectedClassId] : null;
+  const currentClass = (classData && selectedClassId && classData[selectedClassId])
+    ? classData[selectedClassId]
+    : (selectedClassId ? initialClassData[selectedClassId] : null);
+
   if (!currentClass) {
     return (
       <div className="p-8 text-center text-slate-500 space-y-4">
@@ -640,7 +684,21 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
       </div>
     );
   }
-  const sortedStudents = currentClass.students || [];
+
+  const rawStudents = (currentClass.students && currentClass.students.length > 0)
+    ? currentClass.students
+    : (selectedClassId && initialClassData[selectedClassId]?.students ? initialClassData[selectedClassId].students : []);
+
+  const isEnrolledInTrimester = (student: Student, trimesterId: number): boolean => {
+    if (!student.enrolledTrimesters || !Array.isArray(student.enrolledTrimesters) || student.enrolledTrimesters.length === 0) {
+      return true;
+    }
+    return student.enrolledTrimesters.includes(trimesterId);
+  };
+
+  const enrolledInActiveTrimester = rawStudents.filter(s => isEnrolledInTrimester(s, activeTrimesterId));
+  const displayedStudents = filterTrimesterOnly ? enrolledInActiveTrimester : rawStudents;
+  const sortedStudents = displayedStudents;
   const isCorrectDay = currentClass.days ? currentClass.days.includes(dayOfWeek) : true;
 
   return (
@@ -730,7 +788,9 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
           <div className="absolute inset-0 bg-gradient-to-r from-sky-500/5 to-indigo-500/5" style={{ pointerEvents: "none" }} />
           <div className="relative z-10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4 border-b border-slate-200 pb-3">
             <div>
-              <p className="text-[10px] text-sky-700 font-extrabold uppercase tracking-widest leading-none mb-1">Régua do Trimestre</p>
+              <p className="text-[10px] text-sky-700 font-extrabold uppercase tracking-widest leading-none mb-1">
+                Régua do Trimestre • 27 Aulas Previstas (Seg/Sex) • 81 no Ano
+              </p>
               <h4 className="text-sm font-black text-slate-900 uppercase tracking-tighter">Cronograma de Dias de Aula</h4>
             </div>
             
@@ -841,14 +901,66 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
           </div>
         </div>
         
+        {/* Banner de Matrícula por Trimestre (SEEDUC-RJ 2026) */}
+        <div className="mb-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-white p-3.5 rounded-2xl border border-slate-200 shadow-xs">
+          <div className="flex items-center gap-2.5">
+            <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-black text-slate-800 uppercase tracking-tight">
+                  Alunos Matriculados no {activeTrimesterId}º Trimestre
+                </span>
+                <span className="px-2 py-0.5 bg-emerald-100 text-emerald-800 border border-emerald-300 rounded-full text-[10px] font-black">
+                  {enrolledInActiveTrimester.length} alunos
+                </span>
+              </div>
+              <p className="text-[11px] text-slate-500 font-medium">
+                {rawStudents.length !== enrolledInActiveTrimester.length
+                  ? `Exibindo apenas alunos com matrícula ativa no ${activeTrimesterId}º Trimestre (${rawStudents.length - enrolledInActiveTrimester.length} em outro período)`
+                  : `Todos os ${rawStudents.length} alunos da turma estão matriculados no ${activeTrimesterId}º Trimestre.`}
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-xl self-stretch sm:self-auto justify-end">
+            <button
+              onClick={() => setFilterTrimesterOnly(true)}
+              className={`px-3 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-tight transition-all ${
+                filterTrimesterOnly
+                  ? 'bg-sky-600 text-white shadow-xs'
+                  : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              Matriculados no {activeTrimesterId}º Tri ({enrolledInActiveTrimester.length})
+            </button>
+            <button
+              onClick={() => setFilterTrimesterOnly(false)}
+              className={`px-3 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-tight transition-all ${
+                !filterTrimesterOnly
+                  ? 'bg-slate-700 text-white shadow-xs'
+                  : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              Ver Todos ({rawStudents.length})
+            </button>
+          </div>
+        </div>
+        
         <ClassDiaryTable 
-            students={sortedStudents}
+            students={displayedStudents}
             dateStr={dateStr}
             onAttendance={handleAttendance}
-            onEdit={(student) => { setNewStudentName(student.name); setShowEditModal(student); }}
+            onEdit={(student) => { 
+              setNewStudentName(student.name); 
+              setModalEnrolledTrimesters(student.enrolledTrimesters || [1, 2, 3]);
+              setModalStudentStatus(student.status || 'ativo');
+              setShowEditModal(student); 
+            }}
             onMove={setShowMoveModal}
             onDelete={setShowDeleteConfirm}
             isCorrectDay={isCorrectDay}
+            activeTrimesterId={activeTrimesterId}
+            onToggleTrimester={handleToggleTrimesterEnrollment}
         />
       </div>
       
@@ -878,14 +990,58 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
             <h3 className="text-xl font-bold text-slate-800 mb-4">Adicionar Novo Aluno</h3>
             <input 
               autoFocus
-              className="w-full p-3 border rounded-lg mb-4 focus:ring-2 focus:ring-blue-500 outline-none"
-              placeholder="Nome Completo"
+              className="w-full p-3 border rounded-lg mb-3 focus:ring-2 focus:ring-blue-500 outline-none text-sm"
+              placeholder="Nome Completo do Aluno"
               value={newStudentName}
               onChange={e => setNewStudentName(e.target.value)}
             />
+
+            {/* Trimester selection */}
+            <div className="mb-3">
+              <label className="text-[11px] font-bold text-slate-600 uppercase tracking-wider block mb-1.5">
+                Matriculado nos Trimestres:
+              </label>
+              <div className="flex gap-2">
+                {[1, 2, 3].map(tri => (
+                  <label key={tri} className="flex items-center gap-1 text-xs font-bold text-slate-700 bg-slate-50 border border-slate-200 px-2 py-1 rounded cursor-pointer">
+                    <input 
+                      type="checkbox" 
+                      checked={modalEnrolledTrimesters.includes(tri)}
+                      onChange={e => {
+                        if (e.target.checked) {
+                          setModalEnrolledTrimesters(prev => [...prev, tri].sort());
+                        } else {
+                          setModalEnrolledTrimesters(prev => prev.filter(t => t !== tri));
+                        }
+                      }}
+                      className="rounded text-blue-600 focus:ring-0"
+                    />
+                    {tri}º Tri
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            {/* Status selection */}
+            <div className="mb-4">
+              <label className="text-[11px] font-bold text-slate-600 uppercase tracking-wider block mb-1.5">
+                Situação da Matrícula:
+              </label>
+              <select 
+                value={modalStudentStatus}
+                onChange={e => setModalStudentStatus(e.target.value as any)}
+                className="w-full p-2 border rounded-lg text-xs bg-slate-50 font-bold"
+              >
+                <option value="ativo">Ativo (Regular)</option>
+                <option value="entrante">Entrante / Nova Matrícula</option>
+                <option value="transferido">Transferido</option>
+                <option value="evadido">Evadido</option>
+              </select>
+            </div>
+
             <div className="flex justify-end gap-2">
-              <button onClick={() => setShowAddModal(false)} className="px-4 py-2 text-slate-500 hover:bg-slate-100 rounded">Cancelar</button>
-              <button onClick={addStudent} className="px-4 py-2 bg-blue-600 text-white rounded font-bold hover:bg-blue-700">Salvar</button>
+              <button onClick={() => setShowAddModal(false)} className="px-4 py-2 text-slate-500 hover:bg-slate-100 rounded text-sm">Cancelar</button>
+              <button onClick={addStudent} className="px-4 py-2 bg-blue-600 text-white rounded font-bold hover:bg-blue-700 text-sm">Salvar</button>
             </div>
           </div>
         </div>
@@ -895,16 +1051,60 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
       {showEditModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
           <div className="bg-white rounded-xl shadow-2xl w-full max-w-sm p-6 animate-scale-in">
-            <h3 className="text-xl font-bold text-slate-800 mb-4">Editar Nome</h3>
+            <h3 className="text-xl font-bold text-slate-800 mb-4">Editar Aluno</h3>
             <input 
               autoFocus
-              className="w-full p-3 border rounded-lg mb-4 focus:ring-2 focus:ring-blue-500 outline-none"
+              className="w-full p-3 border rounded-lg mb-3 focus:ring-2 focus:ring-blue-500 outline-none text-sm"
               value={newStudentName}
               onChange={e => setNewStudentName(e.target.value)}
             />
+
+            {/* Trimester selection */}
+            <div className="mb-3">
+              <label className="text-[11px] font-bold text-slate-600 uppercase tracking-wider block mb-1.5">
+                Matriculado nos Trimestres:
+              </label>
+              <div className="flex gap-2">
+                {[1, 2, 3].map(tri => (
+                  <label key={tri} className="flex items-center gap-1 text-xs font-bold text-slate-700 bg-slate-50 border border-slate-200 px-2 py-1 rounded cursor-pointer">
+                    <input 
+                      type="checkbox" 
+                      checked={modalEnrolledTrimesters.includes(tri)}
+                      onChange={e => {
+                        if (e.target.checked) {
+                          setModalEnrolledTrimesters(prev => [...prev, tri].sort());
+                        } else {
+                          setModalEnrolledTrimesters(prev => prev.filter(t => t !== tri));
+                        }
+                      }}
+                      className="rounded text-blue-600 focus:ring-0"
+                    />
+                    {tri}º Tri
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            {/* Status selection */}
+            <div className="mb-4">
+              <label className="text-[11px] font-bold text-slate-600 uppercase tracking-wider block mb-1.5">
+                Situação da Matrícula:
+              </label>
+              <select 
+                value={modalStudentStatus}
+                onChange={e => setModalStudentStatus(e.target.value as any)}
+                className="w-full p-2 border rounded-lg text-xs bg-slate-50 font-bold"
+              >
+                <option value="ativo">Ativo (Regular)</option>
+                <option value="entrante">Entrante / Nova Matrícula</option>
+                <option value="transferido">Transferido</option>
+                <option value="evadido">Evadido</option>
+              </select>
+            </div>
+
             <div className="flex justify-end gap-2">
-              <button onClick={() => setShowEditModal(null)} className="px-4 py-2 text-slate-500 hover:bg-slate-100 rounded">Cancelar</button>
-              <button onClick={updateStudentName} className="px-4 py-2 bg-blue-600 text-white rounded font-bold hover:bg-blue-700">Salvar</button>
+              <button onClick={() => setShowEditModal(null)} className="px-4 py-2 text-slate-500 hover:bg-slate-100 rounded text-sm">Cancelar</button>
+              <button onClick={updateStudentName} className="px-4 py-2 bg-blue-600 text-white rounded font-bold hover:bg-blue-700 text-sm">Salvar</button>
             </div>
           </div>
         </div>
@@ -966,9 +1166,9 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
     </div>
       
       {/* Footer do Diário */}
-      <div className="px-6 py-4 border-t border-slate-300 bg-[#f4ece0] flex justify-between items-center text-[10px] font-black text-slate-600 uppercase tracking-widest">
+      <div className="px-6 py-4 border-t border-slate-300 bg-[#f4ece0] flex flex-col sm:flex-row justify-between items-center gap-2 text-[10px] font-black text-slate-600 uppercase tracking-widest">
          <span>Escola: {selectedGrade}</span>
-         <span>Total de Alunos: {sortedStudents.length}</span>
+         <span>Alunos Exibidos: {displayedStudents.length} {filterTrimesterOnly ? `(${activeTrimesterId}º Trimestre)` : '(Todos)'} • Total na Turma: {rawStudents.length}</span>
       </div>
     </>
   );

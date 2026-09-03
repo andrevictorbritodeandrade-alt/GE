@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import { ViewState, ClassDataMap, ClassData } from '../types';
 
 import frequenciasImg from '../src/assets/images/frequencias_premium_1779983180555.png';
+import notasImg from '../src/assets/images/notas_card_premium_1788455599418.jpg';
 import gradeHorariosImg from '../src/assets/images/grade_horarios_premium_1779983196214.png';
 import estatisticasImg from '../src/assets/images/estatisticas_premium_1779983211882.png';
 import ementaImg from '../src/assets/images/ementa_premium_1779983243784.png';
@@ -56,6 +57,20 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ setView, classData
       hoverText: 'group-hover:text-sky-300',
       glowGradient: 'from-sky-600/40',
       bgFallback: 'bg-gradient-to-br from-sky-950 via-slate-900 to-indigo-950'
+    },
+    {
+      id: 'grades',
+      title: 'NOTAS',
+      description: 'Lançamento e médias',
+      image: notasImg,
+      action: () => setView('grades'),
+      colorName: 'Âmbar Dourado',
+      badgeClass: 'bg-amber-500/90 text-white shadow-sm',
+      barBg: 'bg-amber-400',
+      hoverBorder: 'hover:border-amber-400 hover:shadow-amber-500/20',
+      hoverText: 'group-hover:text-amber-300',
+      glowGradient: 'from-amber-600/40',
+      bgFallback: 'bg-gradient-to-br from-amber-950 via-slate-900 to-orange-950'
     },
     {
       id: 'schedule',

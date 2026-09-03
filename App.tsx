@@ -18,6 +18,7 @@ import { DailyActivityLogView } from './components/DailyActivityLogView';
 import { PortalView } from './components/PortalView';
 import { ProfessorLoginView } from './components/ProfessorLoginView';
 import { AlunosView } from './components/AlunosView';
+import { GradesView } from './components/GradesView';
 import { ViewState, ClassDataMap, ClassData, GalleryData } from './types';
 import { mockUserProfile, initialClassData } from './constants';
 import { initFirebase, subscribeToClasses, saveClassesToFirestore, subscribeToGallery, saveGalleryToFirestore } from './services/firebaseService';
@@ -180,10 +181,14 @@ const App: React.FC = () => {
           }
         }
 
-        // Deduplicate base[id].students just in case duplicates already exist
+        // Ensure enrolledTrimesters is defaulted for all students
         if (base[id].students && base[id].students.length > 0) {
-          const { deduplicated } = deduplicateStudentsByNameAndId(base[id].students);
-          base[id].students = deduplicated;
+          base[id].students.forEach((s: any) => {
+            if (!s.enrolledTrimesters || !Array.isArray(s.enrolledTrimesters) || s.enrolledTrimesters.length === 0) {
+              const initStud = initialClassData[id]?.students?.find((item: any) => String(item.id) === String(s.id));
+              s.enrolledTrimesters = initStud?.enrolledTrimesters || [1, 2, 3];
+            }
+          });
         }
 
         if (initialClassData[id].dailyActivities && initialClassData[id].dailyActivities!.length > 0) {
@@ -673,25 +678,30 @@ const App: React.FC = () => {
               }
             }
 
-            // RETAIN ONLY AUTHORIZED SCHOOLS: EE Cordelia Paiva, CE Dr. Ignacio Bezerra, CIEP 229
-            const allowedSchools = [
-              "EE Professora Cordelia Paiva",
-              "EE Cordelia Paiva",
-              "CE Doutor Ignacio Bezerra de Menezes",
-              "CE Doutor Ignácio Bezerra de Menezes",
-              "CIEP 229 Cândido Portinari",
-              "CIEP 229"
-            ];
-            const initialClassCount = Object.keys(migratedClasses).length;
-            migratedClasses = Object.fromEntries(
-              Object.entries(migratedClasses).filter(([id, data]) => {
-                return data.school && allowedSchools.includes(data.school);
-              })
-            );
+            // Ensure all initial classes and student rosters are preserved
+            Object.keys(initialClassData).forEach(id => {
+              if (!migratedClasses[id]) {
+                migratedClasses[id] = { ...initialClassData[id] };
+                needsUpdateRemote = true;
+              } else {
+                // If remote class has no students or fewer students than initialClassData, merge students
+                if ((!migratedClasses[id].students || migratedClasses[id].students.length === 0) &&
+                    initialClassData[id].students && initialClassData[id].students.length > 0) {
+                  migratedClasses[id].students = [...initialClassData[id].students];
+                  needsUpdateRemote = true;
+                }
+              }
 
-            if (Object.keys(migratedClasses).length !== initialClassCount) {
-              needsUpdateRemote = true;
-            }
+              // Ensure enrolledTrimesters is set on all students
+              if (migratedClasses[id].students) {
+                migratedClasses[id].students.forEach((s: any) => {
+                  if (!s.enrolledTrimesters || !Array.isArray(s.enrolledTrimesters) || s.enrolledTrimesters.length === 0) {
+                    const initStud = initialClassData[id]?.students?.find((item: any) => String(item.id) === String(s.id));
+                    s.enrolledTrimesters = initStud?.enrolledTrimesters || [1, 2, 3];
+                  }
+                });
+              }
+            });
           
             if (needsUpdateRemote) {
             saveClassesToFirestore(migratedClasses);
@@ -834,6 +844,14 @@ const App: React.FC = () => {
         />
       );
       case 'calendar': return <CalendarView onBack={goBack} />;
+      case 'grades': return (
+        <GradesView 
+          onBack={goBack} 
+          classData={classData} 
+          setClassData={setClassData}
+          onSave={handleSaveClasses}
+        />
+      );
       case 'daily-activities': return (
         <DailyActivityLogView 
           classData={classData} 
@@ -850,6 +868,7 @@ const App: React.FC = () => {
      switch(currentView) {
       case 'home': return 'Início';
       case 'statistics': return 'Estatísticas';
+      case 'grades': return 'Notas & Avaliações';
       case 'classes': 
         if (selectedClassId && classData[selectedClassId]) return classData[selectedClassId].name.toUpperCase();
         if (selectedGrade) return `${selectedGrade}º ANO`;

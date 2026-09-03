@@ -16,7 +16,9 @@ interface AlunosViewProps {
 const TURMAS_ALUNOS = [
   { id: 'cordelia', title: '801 - 802 - 803 (Educação Física)', school: 'EE Profª Cordelia Paiva' },
   { id: 'ignacio', title: 'ILGCH 1001, IFFC 2001, IFLA 2002 (Linguagens / Filosofia / Artes)', school: 'CE Doutor Ignacio Bezerra de Menezes' },
+  { id: 'ciep369', title: 'AP Segundas (Educação Física)', school: 'CIEP 369 Jornalista Maurício Azedo' },
   { id: 'ciep229', title: 'EJANEM-I01 (Educação Física)', school: 'CIEP 229 Cândido Portinari' },
+  { id: 'ciep476', title: '1001, 1002, 2001 (Educação Física)', school: 'CIEP 476 Flávio Ribeiro de Rezende' },
 ];
 
 const getTurmaIcon = (id: string) => {
