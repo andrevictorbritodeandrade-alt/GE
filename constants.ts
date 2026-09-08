@@ -1,8 +1,7 @@
 import { ClassDataMap, UserProfile } from './types';
 
 export const ALLOWED_SCHOOLS = [
-  "CE DOUTOR IGNACIO BEZERRA DE MENEZES",
-  "CIEP 476 ELIAS LAZARONI",
+  "CE DR. IGNACIO BEZERRA DE MENEZES / CIEP 476 ELIAS LAZARONI",
   "CIEP 369 JORNALISTA SANDRO MOREYRA",
   "CIEP 229 CÂNDIDO PORTINARI",
   "EE PROFESSORA CORDELIA PAIVA"
@@ -15,8 +14,8 @@ export function normalizeSchoolName(school: string | undefined | null): AllowedS
   const s = school.trim();
   const upper = s.toUpperCase();
   
-  if (upper.includes("IGNACIO") || upper.includes("IGNÁCIO") || upper.includes("BEZERRA")) {
-    return "CE DOUTOR IGNACIO BEZERRA DE MENEZES";
+  if (upper.includes("IGNACIO") || upper.includes("IGNÁCIO") || upper.includes("BEZERRA") || upper.includes("LAZARONI") || upper.includes("476")) {
+    return "CE DR. IGNACIO BEZERRA DE MENEZES / CIEP 476 ELIAS LAZARONI";
   }
   if (upper.includes("CORDELIA") || upper.includes("CORDÉLIA")) {
     return "EE PROFESSORA CORDELIA PAIVA";
@@ -26,9 +25,6 @@ export function normalizeSchoolName(school: string | undefined | null): AllowedS
   }
   if (upper.includes("369") || upper.includes("SANDRO MOREYRA") || upper.includes("MAURÍCIO AZEDO") || upper.includes("MAURICIO AZEDO")) {
     return "CIEP 369 JORNALISTA SANDRO MOREYRA";
-  }
-  if (upper.includes("476") || upper.includes("ELIAS LAZARONI") || upper.includes("FLÁVIO RIBEIRO") || upper.includes("FLAVIO RIBEIRO")) {
-    return "CIEP 476 ELIAS LAZARONI";
   }
 
   return null;
@@ -647,43 +643,75 @@ export const initialClassData: ClassDataMap = {
     id: "CE_IGNACIO_1001", 
     name: "ILGCH 1001", 
     grade: "1ª Série EM", 
-    school: "CE DOUTOR IGNACIO BEZERRA DE MENEZES",
+    school: "CE DR. IGNACIO BEZERRA DE MENEZES / CIEP 476 ELIAS LAZARONI",
     discipline: "ILGCH (Linguagens e Ciências Humanas)",
     students: [
-      { id: 100101, name: "Allan Gabriel de Castro Soares", enrolledTrimesters: [1, 2, 3], attendance: { "12/05": "P", "19/05": "P", "26/05": "P", "02/06": "P", "09/06": "P", "16/06": "F", "23/06": "P", "28/07": "P" } },
-      { id: 100102, name: "Beatriz Miranda da Fonseca", enrolledTrimesters: [1, 2, 3], attendance: { "12/05": "P", "19/05": "P", "26/05": "P", "02/06": "P", "09/06": "P", "16/06": "P", "23/06": "P", "28/07": "P" } },
-      { id: 100103, name: "Caio Vinícius Teixeira Lima", enrolledTrimesters: [1, 2, 3], attendance: { "12/05": "P", "19/05": "F", "26/05": "P", "02/06": "P", "09/06": "P", "16/06": "P", "23/06": "P", "28/07": "F" } },
-      { id: 100104, name: "Camila Vianna dos Santos", enrolledTrimesters: [1, 2, 3], attendance: { "12/05": "P", "19/05": "P", "26/05": "P", "02/06": "P", "09/06": "P", "16/06": "P", "23/06": "P", "28/07": "P" } },
-      { id: 100105, name: "Davi Lucas Cardoso Ribeiro", enrolledTrimesters: [1, 2, 3], attendance: { "12/05": "P", "19/05": "P", "26/05": "F", "02/06": "P", "09/06": "P", "16/06": "P", "23/06": "P", "28/07": "P" } },
-      { id: 100106, name: "Eduarda Cristina Ramos Melo", enrolledTrimesters: [1, 2, 3], attendance: { "12/05": "P", "19/05": "P", "26/05": "P", "02/06": "P", "09/06": "F", "16/06": "P", "23/06": "P", "28/07": "P" } },
-      { id: 100107, name: "Enzo Gabriel Martins Paiva", enrolledTrimesters: [1, 2, 3], attendance: { "12/05": "P", "19/05": "P", "26/05": "P", "02/06": "P", "09/06": "P", "16/06": "P", "23/06": "P", "28/07": "P" } },
-      { id: 100108, name: "Gabriel Henrique Santana Alves", enrolledTrimesters: [1, 2, 3], attendance: { "12/05": "F", "19/05": "P", "26/05": "P", "02/06": "P", "09/06": "P", "16/06": "P", "23/06": "P", "28/07": "P" } },
-      { id: 100109, name: "Giovanna Pires de Albuquerque", enrolledTrimesters: [1, 2, 3], attendance: { "12/05": "P", "19/05": "P", "26/05": "P", "02/06": "P", "09/06": "P", "16/06": "P", "23/06": "P", "28/07": "P" } },
-      { id: 100110, name: "Guilherme Siqueira Guimarães", enrolledTrimesters: [1, 2, 3], attendance: { "12/05": "P", "19/05": "P", "26/05": "P", "02/06": "F", "09/06": "P", "16/06": "P", "23/06": "P", "28/07": "P" } },
-      { id: 100111, name: "Isabela Ferreira Mendonça", enrolledTrimesters: [1, 2, 3], attendance: { "12/05": "P", "19/05": "P", "26/05": "P", "02/06": "P", "09/06": "P", "16/06": "P", "23/06": "P", "28/07": "P" } },
-      { id: 100112, name: "João Pedro Silveira Barreto", enrolledTrimesters: [1, 2, 3], attendance: { "12/05": "P", "19/05": "P", "26/05": "P", "02/06": "P", "09/06": "P", "16/06": "P", "23/06": "F", "28/07": "P" } },
-      { id: 100113, name: "Juliana Bastos Figueiredo", enrolledTrimesters: [1, 2, 3], attendance: { "12/05": "P", "19/05": "P", "26/05": "P", "02/06": "P", "09/06": "P", "16/06": "P", "23/06": "P", "28/07": "P" } },
-      { id: 100114, name: "Larissa Carvalho Menezes", enrolledTrimesters: [1, 2, 3], attendance: { "12/05": "P", "19/05": "F", "26/05": "P", "02/06": "P", "09/06": "P", "16/06": "P", "23/06": "P", "28/07": "P" } },
-      { id: 100115, name: "Lucas Eduardo Brandão Vieira", enrolledTrimesters: [1, 2, 3], attendance: { "12/05": "P", "19/05": "P", "26/05": "P", "02/06": "P", "09/06": "P", "16/06": "P", "23/06": "P", "28/07": "P" } },
-      { id: 100116, name: "Luiza Fernanda Gomes Nogueira", enrolledTrimesters: [1, 2, 3], attendance: { "12/05": "P", "19/05": "P", "26/05": "P", "02/06": "P", "09/06": "P", "16/06": "F", "23/06": "P", "28/07": "P" } },
-      { id: 100117, name: "Matheus Vinícius Rocha Costa", enrolledTrimesters: [1, 2, 3], attendance: { "12/05": "P", "19/05": "P", "26/05": "P", "02/06": "P", "09/06": "P", "16/06": "P", "23/06": "P", "28/07": "P" } },
-      { id: 100118, name: "Natália Cristina Barbosa Lopes", enrolledTrimesters: [1, 2, 3], attendance: { "12/05": "P", "19/05": "P", "26/05": "P", "02/06": "P", "09/06": "P", "16/06": "P", "23/06": "P", "28/07": "P" } },
-      { id: 100119, name: "Pedro Henrique Farias Dutra", enrolledTrimesters: [1, 2, 3], attendance: { "12/05": "P", "19/05": "P", "26/05": "F", "02/06": "P", "09/06": "P", "16/06": "P", "23/06": "P", "28/07": "P" } },
-      { id: 100120, name: "Rafaela Antunes Medeiros", enrolledTrimesters: [1, 2, 3], attendance: { "12/05": "P", "19/05": "P", "26/05": "P", "02/06": "P", "09/06": "P", "16/06": "P", "23/06": "P", "28/07": "P" } },
-      { id: 100121, name: "Rodrigo Vasconcelos de Moraes", enrolledTrimesters: [1, 2, 3], attendance: { "12/05": "P", "19/05": "P", "26/05": "P", "02/06": "P", "09/06": "F", "16/06": "P", "23/06": "P", "28/07": "P" } },
-      { id: 100122, name: "Sophia Helena Toledo Dias", enrolledTrimesters: [1, 2, 3], attendance: { "12/05": "P", "19/05": "P", "26/05": "P", "02/06": "P", "09/06": "P", "16/06": "P", "23/06": "P", "28/07": "P" } },
-      { id: 100123, name: "Thiago Augusto Freitas Prado", enrolledTrimesters: [1, 2, 3], attendance: { "12/05": "P", "19/05": "P", "26/05": "P", "02/06": "P", "09/06": "P", "16/06": "P", "23/06": "P", "28/07": "P" } },
-      { id: 100124, name: "Yasmin Vitória Moreira Campos", enrolledTrimesters: [2, 3], status: 'entrante', attendance: { "19/05": "P", "26/05": "P", "02/06": "P", "09/06": "P", "16/06": "P", "23/06": "P", "28/07": "P" } },
-      { id: 100125, name: "Felipe Nogueira Salgado", enrolledTrimesters: [1, 2], status: 'transferido', attendance: { "12/05": "P", "19/05": "P", "26/05": "P", "02/06": "P", "09/06": "P", "16/06": "P", "23/06": "F" } }
+      { id: 100101, name: "ANA JÚLIA DE SOUZA SANTOS", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100102, name: "CRISTHIAN HENRIQUE PESSANHA DE PAULA MATTOS", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100103, name: "GILBERTO DA SILVA FERREIRA", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100104, name: "HUGO DANIEL ARGOLO DIAS", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100105, name: "JÚLIA BASÍLIO DOS SANTOS SILVA", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100106, name: "KAUÊ DA SILVA LAGE", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100107, name: "KAUHE DO VALLE OLIVEIRA", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100108, name: "KAYLANE DO NASCIMENTO CORRÊA", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100109, name: "KEROLLEM CRISTINA DE ALMEIDA DOS SANTOS", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100110, name: "LARISSA FERNANDA RODRIGUES DOS SANTOS", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100111, name: "LAURA STELET COELHO", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100112, name: "LAYANE SANTIAGO DE ALMEIDA", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100113, name: "LOHANY MORAES MATHIAS", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100114, name: "LUCAS GABRIEL TAVARES DA SILVA", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100115, name: "LUIZ FELLIP RODRIGUES ROSARIO", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100116, name: "LUIZ FELLIPE GOMES PEREIRA", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100117, name: "MAICON DOUGLAS DA SILVA ROCHA", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100118, name: "MAICON FERREIRA DOS SANTOS", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100119, name: "MARCOS PAULO FARIA LIMA", enrolledTrimesters: [1, 2, 3], status: 'cancelado', attendance: {} },
+      { id: 100120, name: "MARIA EDUARDA BARBOSA SOARES", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100121, name: "MARIA EDUARDA SILVA DE SOUZA", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100122, name: "MARIA LUIZA SOARES DO NASCIMENTO", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100123, name: "MAYCON ALEXANDRE DE CARVALHO ANTERO CIRCUNCIZÃO", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100124, name: "MIDIAM DA SILVA VIEIRA", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100125, name: "MIGUEL CASSANELLO FADEL", enrolledTrimesters: [1, 2, 3], status: 'cancelado', attendance: {} },
+      { id: 100126, name: "NADIR PAIVA MACIEL DE BRITO", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100127, name: "NICOLE CAROLINE DOS SANTOS AZEREDO", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100128, name: "PÂMELLA RIBEIRO SILVA", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100129, name: "PIETRA DE SANTANA", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100130, name: "RYANNA VICTÓRIA PESSANHA DE PAULA MATTOS", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100131, name: "SAMYRA DUARTE MOREIRA DA GRAÇA", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100132, name: "SUENYA VITÓRIA COUTO SILVA", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100133, name: "TALISON DA SILVA SALES RAMOS", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100134, name: "THOMÁZ NAIM DOS SANTOS RIBEIRO", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100135, name: "VITÓRIA RIBEIRO DOS SANTOS", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100136, name: "WARLLEY GOMES DE OLIVEIRA", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100137, name: "WESLLEY CLEITON RAMOS DOS SANTOS", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100138, name: "YASMIN SOUZA DA COSTA", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100139, name: "YASMIN STYPURSKI RANGEL", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100140, name: "YURI CONCEIÇÃO DA SILVA", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100141, name: "YSADORA DA CONCEIÇÃO", enrolledTrimesters: [1, 2, 3], attendance: {} }
     ],
     schedule: "10:35 – 12:15",
-    days: ["Terça"]
+    days: ["Terça"],
+    dailyActivities: [
+      {
+        id: "ignacio-1001-susp",
+        date: "2026-08-25T12:00:00.000Z",
+        plannedActivity: "Início das Eletivas",
+        actualActivity: "Aulas suspensas por motivos de força maior",
+        observations: "Suspensão determinada pela direção"
+      },
+      {
+        id: "ignacio-1001-first",
+        date: "2026-09-01T12:00:00.000Z",
+        plannedActivity: "Apresentação da Disciplina ILGCH",
+        actualActivity: "Primeira aula: Introdução às matérias eletivas (ILGCH/IFFC/IFLA)",
+        observations: "Início efetivo do cronograma"
+      }
+    ]
   },
   "CE_IGNACIO_2001": { 
     id: "CE_IGNACIO_2001", 
     name: "IFFC 2001", 
     grade: "2ª Série EM", 
-    school: "CE DOUTOR IGNACIO BEZERRA DE MENEZES",
+    school: "CE DR. IGNACIO BEZERRA DE MENEZES / CIEP 476 ELIAS LAZARONI",
     discipline: "IFFC (Iniciação Filosófico-Científica)",
     students: [
       { id: 200101, name: "Arthur Felipe dos Santos Prado", enrolledTrimesters: [1, 2, 3], attendance: { "12/05": "P", "19/05": "P", "26/05": "P", "02/06": "P", "09/06": "P", "16/06": "P", "23/06": "P", "28/07": "P" } },
@@ -710,13 +738,29 @@ export const initialClassData: ClassDataMap = {
       { id: 200122, name: "Zayn Gabriel Martins de Souza", enrolledTrimesters: [1, 2], status: 'transferido', attendance: { "12/05": "P", "19/05": "P", "26/05": "P", "02/06": "P", "09/06": "P", "16/06": "P", "23/06": "F" } }
     ],
     schedule: "07:00 – 08:40",
-    days: ["Terça"]
+    days: ["Terça"],
+    dailyActivities: [
+      {
+        id: "ignacio-2001-susp",
+        date: "2026-08-25T12:00:00.000Z",
+        plannedActivity: "Início das Eletivas",
+        actualActivity: "Aulas suspensas por motivos de força maior",
+        observations: "Suspensão determinada pela direção"
+      },
+      {
+        id: "ignacio-2001-first",
+        date: "2026-09-01T12:00:00.000Z",
+        plannedActivity: "Apresentação da Disciplina IFFC",
+        actualActivity: "Primeira aula: Introdução às matérias eletivas (ILGCH/IFFC/IFLA)",
+        observations: "Início efetivo do cronograma"
+      }
+    ]
   },
   "CE_IGNACIO_2002": { 
     id: "CE_IGNACIO_2002", 
     name: "IFLA 2002", 
     grade: "2ª Série EM", 
-    school: "CE DOUTOR IGNACIO BEZERRA DE MENEZES",
+    school: "CE DR. IGNACIO BEZERRA DE MENEZES / CIEP 476 ELIAS LAZARONI",
     discipline: "IFLA (Iniciação Filosófico-Literária e Artes)",
     students: [
       { id: 200201, name: "Amanda Vitoria Carvalho Diniz", enrolledTrimesters: [1, 2, 3], attendance: { "12/05": "P", "19/05": "P", "26/05": "P", "02/06": "P", "09/06": "P", "16/06": "P", "23/06": "P", "28/07": "P" } },
@@ -741,13 +785,29 @@ export const initialClassData: ClassDataMap = {
       { id: 200220, name: "Yasmin Eduarda Siqueira Meira", enrolledTrimesters: [2, 3], status: 'entrante', attendance: { "19/05": "P", "26/05": "P", "02/06": "P", "09/06": "P", "16/06": "P", "23/06": "P", "28/07": "P" } }
     ],
     schedule: "08:40 – 10:20",
-    days: ["Terça"]
+    days: ["Terça"],
+    dailyActivities: [
+      {
+        id: "ignacio-2002-susp",
+        date: "2026-08-25T12:00:00.000Z",
+        plannedActivity: "Início das Eletivas",
+        actualActivity: "Aulas suspensas por motivos de força maior",
+        observations: "Suspensão determinada pela direção"
+      },
+      {
+        id: "ignacio-2002-first",
+        date: "2026-09-01T12:00:00.000Z",
+        plannedActivity: "Apresentação da Disciplina IFLA",
+        actualActivity: "Primeira aula: Introdução às matérias eletivas (ILGCH/IFFC/IFLA)",
+        observations: "Início efetivo do cronograma"
+      }
+    ]
   },
   "CE_IGNACIO_AP_SEG": { 
     id: "CE_IGNACIO_AP_SEG", 
     name: "AP (Segundas)", 
     grade: "1ª/2ª Série EM", 
-    school: "CE DOUTOR IGNACIO BEZERRA DE MENEZES",
+    school: "CE DR. IGNACIO BEZERRA DE MENEZES / CIEP 476 ELIAS LAZARONI",
     discipline: "Educação Física (Atividades Práticas)",
     students: [
       { id: 201101, name: "Alan Victor Duarte Gomes", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "27/07": "P" } },
@@ -775,7 +835,7 @@ export const initialClassData: ClassDataMap = {
     id: "CE_IGNACIO_AP_SEX", 
     name: "AP (Sextas)", 
     grade: "1ª/2ª Série EM", 
-    school: "CE DOUTOR IGNACIO BEZERRA DE MENEZES",
+    school: "CE DR. IGNACIO BEZERRA DE MENEZES / CIEP 476 ELIAS LAZARONI",
     discipline: "Educação Física (Atividades Práticas)",
     students: [
       { id: 201201, name: "Arthur Rodrigues Vasconcellos", enrolledTrimesters: [1, 2, 3], attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "05/06": "P", "12/06": "P", "19/06": "P", "26/06": "P" } },
@@ -862,7 +922,7 @@ export const initialClassData: ClassDataMap = {
     id: "CIEP476_1001", 
     name: "Turma 1001", 
     grade: "1ª Série EM", 
-    school: "CIEP 476 ELIAS LAZARONI",
+    school: "CE DR. IGNACIO BEZERRA DE MENEZES / CIEP 476 ELIAS LAZARONI",
     discipline: "Educação Física",
     students: [
       { id: 476101, name: "Alexandre Silva de Oliveira", enrolledTrimesters: [1, 2, 3], attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "05/06": "P", "12/06": "P", "19/06": "P", "26/06": "P" } },
@@ -889,7 +949,7 @@ export const initialClassData: ClassDataMap = {
     id: "CIEP476_1002", 
     name: "Turma 1002", 
     grade: "1ª Série EM", 
-    school: "CIEP 476 ELIAS LAZARONI",
+    school: "CE DR. IGNACIO BEZERRA DE MENEZES / CIEP 476 ELIAS LAZARONI",
     discipline: "Educação Física",
     students: [
       { id: 476201, name: "Alice Maria de Oliveira Ramos", enrolledTrimesters: [1, 2, 3], attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "05/06": "P", "12/06": "P", "19/06": "P", "26/06": "P" } },
@@ -914,7 +974,7 @@ export const initialClassData: ClassDataMap = {
     id: "CIEP476_2001", 
     name: "Turma 2001", 
     grade: "2ª Série EM", 
-    school: "CIEP 476 ELIAS LAZARONI",
+    school: "CE DR. IGNACIO BEZERRA DE MENEZES / CIEP 476 ELIAS LAZARONI",
     discipline: "Educação Física",
     students: [
       { id: 476301, name: "Amanda Vitoria de Souza Meira", enrolledTrimesters: [1, 2, 3], attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "05/06": "P", "12/06": "P", "19/06": "P", "26/06": "P" } },

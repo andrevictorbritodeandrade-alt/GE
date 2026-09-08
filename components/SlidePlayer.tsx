@@ -1359,7 +1359,7 @@ export const SlidePlayer: React.FC<SlidePlayerProps> = ({
               </div>
             )}
             {(slideAtual.points || slideAtual.topicos) && (
-              isTeacherSlide ? (
+              
                 <ul className="space-y-6 max-w-5xl">
                   {(slideAtual.points || slideAtual.topicos)?.map((topico: string, idx: number) => (
                     <li key={idx} className="text-xl md:text-3xl font-bold text-slate-200 flex items-start gap-4 leading-tight">
@@ -1367,13 +1367,7 @@ export const SlidePlayer: React.FC<SlidePlayerProps> = ({
                     </li>
                   ))}
                 </ul>
-              ) : (
-                <div className="max-w-5xl">
-                  <p className="text-2xl md:text-3xl font-bold text-slate-200 leading-relaxed text-justify indent-8">
-                    {(slideAtual.points || slideAtual.topicos).join(' ')}
-                  </p>
-                </div>
-              )
+
             )}
           </div>
         ) : (
@@ -1394,7 +1388,7 @@ export const SlidePlayer: React.FC<SlidePlayerProps> = ({
                     </div>
                   )}
                   {(slideAtual.points || slideAtual.topicos) && (
-                    isTeacherSlide ? (
+                    
                       <ul className="space-y-4 max-w-xl">
                         {(slideAtual.points || slideAtual.topicos)?.map((topico: string, idx: number) => (
                           <li key={idx} className="text-base md:text-lg font-bold text-slate-700 flex items-start gap-3 leading-relaxed">
@@ -1402,13 +1396,7 @@ export const SlidePlayer: React.FC<SlidePlayerProps> = ({
                           </li>
                         ))}
                       </ul>
-                    ) : (
-                      <div className="max-w-xl">
-                        <p className="text-lg md:text-xl font-bold text-slate-700 leading-relaxed text-justify indent-8">
-                          {(slideAtual.points || slideAtual.topicos).join(' ')}
-                        </p>
-                      </div>
-                    )
+
                   )}
                 </div>
                 <div className="lg:col-span-6 flex items-center justify-center w-full">

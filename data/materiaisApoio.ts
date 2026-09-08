@@ -191,18 +191,22 @@ No século passados, através das margens das cidades (comunidades periféricas 
 O corpo negro retoma a improvisação através do som cru do rap, hip hop e o Breaking, bem como do Funk carioca. Aqui a dança serve para aliviar tensões, reencantar a calçada nua e disputar protagonismo cultural sem precisar pagar figurinos caros. Três elementos compõem essa expressão urbana: ritmo acelerado (bpm), disputas na roda (batalhas) e alta improvisação.
   `,
 
-  'O que é ILGCH?': `
-# Introdução ao ILGCH (Linguagens e Ciências Humanas)
+    'O que é ILGCH?': `# Introdução às Eletivas do Novo Ensino Médio (SEEDUC RJ)
 
-O Novo Ensino Médio propõe a criação de trilhas e Itinerários Formativos para o acúmulo e direcionamento de estudos avançados.
+O Novo Ensino Médio da SEEDUC RJ propõe a criação de trilhas e Itinerários Formativos para o acúmulo e direcionamento de estudos avançados focados na realidade do aluno.
 
-## O foco de Humanas e Linguagens
-Vocês estão na trilha de ILGCH: Itinerário de Linguagens e Ciências Humanas. 
-Nesse percurso, disciplinas da base (como Sociologia, Filosofia, Educação Física, Artes e Literatura) abandonam o papel de matérias isoladas e passam a trabalhar em projetos práticos focados em **problemas que envolvem a sociedade humana e sua organização e comunicação na modernidade**.
+## O que significam as siglas ILGCH, IFFC e IFLA?
 
-## Por que a Educação Física está aqui?
-Educação Física, embora pareça relacionada apenas aos corpos anatômicos (Ciências da Natureza), é majoritariamente **Linguagem Corporal**. O esporte é uma manifestação criada pelo meio "humano" e "social", regido por políticas que envolvem a economia de um país.
-  `,
+A Secretaria de Educação do Estado do Rio de Janeiro organiza as matérias eletivas através de eixos estruturantes:
+
+*   **ILGCH:** Itinerário de Linguagens e Ciências Humanas. Disciplinas (como Sociologia, Filosofia, Educação Física e Literatura) deixam de ser ilhas isoladas e passam a trabalhar em projetos práticos focados em problemas da sociedade humana.
+*   **IFFC e IFLA:** São módulos complementares de Formação Cultural, Linguagens e Iniciação Científica exigidos pela rede estadual. Eles visam desenvolver habilidades essenciais para o mercado de trabalho e o senso crítico contemporâneo.
+
+## Por que estamos aqui?
+
+Neste semestre, o nosso foco não será copiar do quadro, mas **debater, pesquisar e construir projetos**. A nossa matriz curricular exigirá que vocês coloquem a mão na massa para entender como as linguagens e as ciências humanas moldam o esporte, a cultura e a sociedade.
+`,
+
   
   'Identidade e Sociedade': `
 # Construindo a Identidade - Diálogos com Fanon e Cida Bento

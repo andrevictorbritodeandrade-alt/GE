@@ -33,44 +33,55 @@ export interface Slide {
 
 export const slidesData: Record<string, Slide[]> = {
   // AULA 1 & 2: INTRO / O QUE É ILGCH / CULTURA CORPORAL
-  'ilgch_08/05': [
+  'ilgch_28/08': [
     {
       tipo: 'capa',
-      titulo: 'Acolhimento e Apresentação do Itinerário',
-      subtitulo: 'ILGCH 1001, IFFC 2001, IFLA 2002 • CE Dr. Ignacio Bezerra',
-      dicaProfessor: 'Apresente a proposta do Itinerário de Linguagens e Ciências Humanas e acolha os novos estudantes.',
-      imagemDeFundo: '[Imagem de acolhimento escolar e diversidade]'
-    },
-    {
-      tipo: 'texto_simples',
-      titulo: 'Boas-vindas ao Itinerário Formativo',
-      topicos: [
-        'Acolhimento e integração da turma',
-        'Apresentação do Professor André Brito',
-        'Metodologia de trabalho e dinâmica das aulas',
-        'Construção do contrato de convivência e combinados'
-      ],
-      dicaProfessor: 'Apresente a estrutura do ano letivo e escute as expectativas dos alunos.'
+      titulo: 'Aulas Suspensas',
+      subtitulo: 'Motivos de Força Maior',
+      dicaProfessor: 'Não houve aula nesta data. Iniciar conteúdo na próxima semana.',
+      imagemDeFundo: '[Imagem de sala vazia ou quadro em branco]'
     }
   ],
-  'ilgch_15/05': [
+  'ilgch_04/09': [
     {
       tipo: 'capa',
       titulo: 'O que é ILGCH / IFFC / IFLA?',
-      subtitulo: 'Investigação e Aprofundamento em Linguagens e Ciências Humanas.',
-      dicaProfessor: 'Aula conceitual e estruturante do itinerário. Explique os eixos de formação.',
+      subtitulo: 'Matérias Eletivas da SEEDUC/RJ (Novo Ensino Médio)',
+      dicaProfessor: 'Aula conceitual e estruturante do itinerário. Explique os eixos de formação da rede estadual.',
       imagemDeFundo: '[Imagem de debate filosófico, arte e cultura corporal]'
     },
     {
       tipo: 'texto_simples',
-      titulo: 'Conceitos Fundamentais da Disciplina',
+      titulo: 'As Siglas e os Itinerários',
       topicos: [
-        'O que significa Itinerário Formativo no Ensino Médio?',
-        'Eixos: Investigação Científica, Mediação Cultural e Processos Criativos',
-        'Cultura Corporal, Mídia, Sociedade e Direitos Humanos',
-        'Como a sociedade e a cultura moldam os nossos corpos e ações'
+        'ILGCH: Itinerário de Linguagens e Ciências Humanas',
+        'IFFC: Itinerário Formativo de Formação Cultural / Investigação',
+        'IFLA: Itinerário Formativo de Linguagens e Suas Tecnologias',
+        'Por que a SEEDUC/RJ implementa essas eletivas?'
       ],
-      dicaProfessor: 'Construa um mapa mental no quadro ligando: Corpo, Cultura, Sociedade e Autonomia.'
+      dicaProfessor: 'Construa um mapa mental no quadro desmistificando as siglas.'
+    },
+    {
+      tipo: 'texto_simples',
+      titulo: 'Nosso Foco no Semestre',
+      topicos: [
+        'Projetos práticos e debates críticos',
+        'Cultura Corporal, Mídia, Sociedade e Direitos Humanos',
+        'Abandono do modelo isolado: tudo está conectado',
+        'Como a sociedade e a cultura moldam nossas ações'
+      ],
+      dicaProfessor: 'Destaque que a disciplina exige reflexão, e não apenas cópia do quadro.'
+    },
+    {
+      tipo: 'texto_simples',
+      titulo: 'O que Esperar das Próximas Aulas?',
+      topicos: [
+        'Análise da Cultura Corporal e do Esporte sob a ótica social',
+        'Como a Mídia constrói Padrões de Beleza inalcançáveis',
+        'A Herança de Lutas e Resistência do povo Afro e Indígena',
+        'Vamos assistir vídeos, debater em roda e escrever nossas próprias opiniões'
+      ],
+      dicaProfessor: 'Deixe claro que haverá espaço seguro para eles expressarem opiniões contrárias, desde que com base e respeito.'
     }
   ],
 
@@ -385,6 +396,7 @@ interface DecolonialAppProps {
   classData?: any;
   setClassData?: any;
   onSave?: (newData: any) => void;
+  initialView?: string;
 }
 
 export const DecolonialApp: React.FC<DecolonialAppProps> = ({ 
@@ -392,11 +404,15 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
   setSlideViewerOpen,
   classData,
   setClassData,
-  onSave
+  onSave,
+  initialView = 'planejamento'
 }) => {
-  const [currentView, setCurrentView] = useState(() => {
-    return safeLocalStorage.getItem('decolonial_currentView') || 'menu';
-  });
+  const [currentView, setCurrentView] = useState(initialView);
+  
+  useEffect(() => {
+    setCurrentView(initialView);
+  }, [initialView]);
+
   const [selectedAulaData, setSelectedAulaData] = useState<string | null>(() => {
     return safeLocalStorage.getItem('decolonial_selectedAulaData') || null;
   });
@@ -423,14 +439,6 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
   useEffect(() => {
     safeLocalStorage.setItem('decolonial_selectedActiveAulaIndex', JSON.stringify(selectedActiveAulaIndex));
   }, [selectedActiveAulaIndex]);
-
-  useEffect(() => {
-    if (currentView) {
-      safeLocalStorage.setItem('decolonial_currentView', currentView);
-    } else {
-      safeLocalStorage.removeItem('decolonial_currentView');
-    }
-  }, [currentView]);
 
   useEffect(() => {
     if (selectedAulaData) {
@@ -636,7 +644,7 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
   const renderPlanejamentoMenu = () => (
     <div className="p-8 md:p-12 font-sans bg-white/70 backdrop-blur-md rounded-3xl min-h-[600px] border border-slate-300 flex flex-col items-center">
       <div className="mb-8 self-start">
-        <BackButton onClick={() => { setCurrentView('menu'); setPlanningSubView(null); }} label="Voltar" />
+        <BackButton onClick={() => { onBack(); setPlanningSubView(null); }} label="Voltar" />
       </div>
 
       <DatashowHeader title="Escolha a Turma" />
@@ -644,11 +652,11 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl mt-4">
         {[
           { id: '8ano', label: '801 - 802 - 803', sub: 'EE Profª Cordelia Paiva - 2ª feiras' },
-          { id: 'ap', label: 'AP (SEGUNDAS)', sub: 'CE Dr. Ignacio Bezerra - Educação Física' },
-          { id: 'ap_sexta', label: 'AP (SEXTAS)', sub: 'CE Dr. Ignacio Bezerra - Educação Física' },
-          { id: 'gestao', label: 'ILGCH 1001 / IFFC 2001 / IFLA 2002', sub: 'CE Dr. Ignacio Bezerra - Gestão' },
+          { id: 'ap', label: 'AP (SEGUNDAS)', sub: 'CE Dr. Ignacio Bezerra de Menezes / CIEP 476 Elias Lazaroni' },
+          { id: 'ap_sexta', label: 'AP (SEXTAS)', sub: 'CE Dr. Ignacio Bezerra de Menezes / CIEP 476 Elias Lazaroni' },
+          { id: 'gestao', label: 'ILGCH 1001 / IFFC 2001 / IFLA 2002', sub: 'CE Dr. Ignacio Bezerra de Menezes / CIEP 476 Elias Lazaroni' },
           { id: 'ejanem', label: 'EJANEM I01', sub: 'CIEP 229 Cândido Portinari - Noturno' },
-          { id: 'ciep369', label: 'AP (SEGUNDAS)', sub: 'CIEP 369 - Bangu' }
+          { id: 'ciep369', label: 'AP (SEXTAS)', sub: 'CIEP 369 Jornalista Sandro Moreyra' }
         ].map((turma, idx) => (
           <button 
             key={idx}
@@ -1039,7 +1047,7 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
   const renderAulasMenu = () => (
     <div className="p-8 md:p-12 font-sans bg-white/70 backdrop-blur-md rounded-3xl min-h-[500px] border border-slate-300 flex flex-col items-center justify-center">
       <div className="mb-8 self-start">
-        <BackButton onClick={() => setCurrentView('menu')} label="Voltar" />
+        <BackButton onClick={() => onBack()} label="Voltar" />
       </div>
 
       <header className="mb-12 flex flex-col items-center text-center">
@@ -1170,12 +1178,8 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
               let slideKey = `${currentSubView}_${aula.data}`;
               let temSlides = (slidesData as any)[slideKey] !== undefined;
 
-              if (!temSlides && originalIndex === 0 && (slidesData as any)['ilgch_08/05']) {
-                slideKey = 'ilgch_08/05';
-                temSlides = true;
-              } else if (!temSlides && originalIndex === 1 && (slidesData as any)['ilgch_15/05']) {
-                slideKey = 'ilgch_15/05';
-                temSlides = true;
+              if (!temSlides && originalIndex === 1 && (slidesData as any)['ilgch_04/09']) {
+                slideKey = 'ilgch_04/09'; temSlides = true;
               }
 
               let isPast = false;
@@ -1328,7 +1332,7 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
     <div className="w-full">
       {currentView === 'menu' && renderMenu()}
       {currentView === 'planejamento' && renderPlanejamento()}
-      {currentView === 'plano_anual_pe' && <PlanoAnualPE onBack={() => setCurrentView('menu')} />}
+      {currentView === 'plano_anual_pe' && <PlanoAnualPE onBack={() => onBack()} />}
       {currentView === 'repositorio_aulas' && renderAulasMenu()}
       {currentView === 'repositorio_aulas_lista' && renderRepositorioAulas()}
       {currentView === 'player' && (
@@ -1338,16 +1342,16 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
           setCurrentView={setCurrentView}
         />
       )}
-      {currentView === 'ocorrencias' && <OcorrenciasView onBack={() => setCurrentView('menu')} />}
+      {currentView === 'ocorrencias' && <OcorrenciasView onBack={() => onBack()} />}
       {currentView === 'notas' && (
         <GradesView 
-          onBack={() => setCurrentView('menu')} 
+          onBack={() => onBack()} 
           classData={classData}
           setClassData={setClassData}
           onSave={onSave}
         />
       )}
-      {currentView === 'repositorio_provas' && <ExamRepositoryView onBack={() => setCurrentView('menu')} />}
+      {currentView === 'repositorio_provas' && <ExamRepositoryView onBack={() => onBack()} />}
     </div>
   );
 };

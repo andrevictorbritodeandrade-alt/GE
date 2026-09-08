@@ -1,5 +1,5 @@
 
-export type ViewState = 'home' | 'statistics' | 'classes' | 'grades' | 'profile' | 'ementa' | 'plano' | 'lesson-content' | 'schedule' | 'gallery' | 'assignments' | 'biblioteca' | 'register-activities' | 'decolonial' | 'calendar' | 'daily-activities' | 'alunos-view';
+export type ViewState = 'home' | 'statistics' | 'classes' | 'grades' | 'profile' | 'ementa' | 'plano' | 'lesson-content' | 'schedule' | 'gallery' | 'assignments' | 'biblioteca' | 'register-activities' | 'decolonial' | 'calendar' | 'daily-activities' | 'alunos-view' | 'planejamento' | 'plano_anual_pe' | 'repositorio_aulas' | 'ocorrencias' | 'repositorio_provas';
 
 export interface UserProfile {
   id: string;

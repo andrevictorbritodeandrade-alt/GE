@@ -10,6 +10,11 @@ import planoCursoImg from '../src/assets/images/plano_curso_premium_177998322577
 import gestaoProfessorImg from '../src/assets/images/gestao_professor_premium_1779983261744.png';
 import calendarioImg from '../src/assets/images/calendario_2026_premium_1779983280133.png';
 import registroDiarioImg from '../src/assets/images/registro_diario_premium_1779983296811.png';
+import planejamentoImg from '../src/assets/images/planejamento_capa_1788477213719.jpg';
+import planoAnualImg from '../src/assets/images/plano_anual_capa_1788477231515.jpg';
+import aulasDatashowImg from '../src/assets/images/aulas_datashow_capa_1788477246185.jpg';
+import ocorrenciasImg from '../src/assets/images/ocorrencias_capa_1788477258683.jpg';
+import repositorioProvasImg from '../src/assets/images/repositorio_provas_capa_1788477270457.jpg';
 
 interface DashboardViewProps {
   setView: (view: ViewState) => void;
@@ -129,18 +134,74 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ setView, classData
       bgFallback: 'bg-gradient-to-br from-rose-950 via-slate-900 to-pink-950'
     },
     {
-      id: 'decolonial',
-      title: 'GESTÃO PROFESSOR',
-      description: 'Corpos e mídias',
-      image: gestaoProfessorImg,
-      action: () => setView('decolonial'),
+      id: 'planejamento',
+      title: 'PLANEJAMENTO',
+      description: 'Cronograma e resumos',
+      image: planejamentoImg,
+      action: () => setView('planejamento'),
+      colorName: 'Azul',
+      badgeClass: 'bg-blue-500/90 text-white shadow-sm',
+      barBg: 'bg-blue-400',
+      hoverBorder: 'hover:border-blue-400 hover:shadow-blue-500/20',
+      hoverText: 'group-hover:text-blue-300',
+      glowGradient: 'from-blue-600/40',
+      bgFallback: 'bg-gradient-to-br from-blue-900 to-blue-950'
+    },
+    {
+      id: 'plano_anual_pe',
+      title: 'PLANO ANUAL',
+      description: 'Gestão de aulas de PE',
+      image: planoAnualImg,
+      action: () => setView('plano_anual_pe'),
+      colorName: 'Esmeralda',
+      badgeClass: 'bg-emerald-500/90 text-white shadow-sm',
+      barBg: 'bg-emerald-400',
+      hoverBorder: 'hover:border-emerald-400 hover:shadow-emerald-500/20',
+      hoverText: 'group-hover:text-emerald-300',
+      glowGradient: 'from-emerald-600/40',
+      bgFallback: 'bg-gradient-to-br from-emerald-900 to-emerald-950'
+    },
+    {
+      id: 'repositorio_aulas',
+      title: 'AULAS (Datashow)',
+      description: 'Slides apresentação',
+      image: aulasDatashowImg,
+      action: () => setView('repositorio_aulas'),
       colorName: 'Púrpura',
       badgeClass: 'bg-purple-500/90 text-white shadow-sm',
       barBg: 'bg-purple-400',
       hoverBorder: 'hover:border-purple-400 hover:shadow-purple-500/20',
       hoverText: 'group-hover:text-purple-300',
       glowGradient: 'from-purple-600/40',
-      bgFallback: 'bg-gradient-to-br from-purple-950 via-slate-900 to-violet-950'
+      bgFallback: 'bg-gradient-to-br from-purple-900 to-purple-950'
+    },
+    {
+      id: 'ocorrencias',
+      title: 'OCORRÊNCIAS',
+      description: 'Registro de alunos',
+      image: ocorrenciasImg,
+      action: () => setView('ocorrencias'),
+      colorName: 'Rosa',
+      badgeClass: 'bg-rose-500/90 text-white shadow-sm',
+      barBg: 'bg-rose-400',
+      hoverBorder: 'hover:border-rose-400 hover:shadow-rose-500/20',
+      hoverText: 'group-hover:text-rose-300',
+      glowGradient: 'from-rose-600/40',
+      bgFallback: 'bg-gradient-to-br from-rose-900 to-rose-950'
+    },
+    {
+      id: 'repositorio_provas',
+      title: 'REPOSITÓRIO DE PROVAS',
+      description: 'Avaliações teóricas',
+      image: repositorioProvasImg,
+      action: () => setView('repositorio_provas'),
+      colorName: 'Ciano',
+      badgeClass: 'bg-cyan-500/90 text-white shadow-sm',
+      barBg: 'bg-cyan-400',
+      hoverBorder: 'hover:border-cyan-400 hover:shadow-cyan-500/20',
+      hoverText: 'group-hover:text-cyan-300',
+      glowGradient: 'from-cyan-600/40',
+      bgFallback: 'bg-gradient-to-br from-cyan-900 to-cyan-950'
     },
     {
       id: 'calendar',
@@ -223,11 +284,13 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ setView, classData
           >
             {/* Card Background Illustration */}
             <div className="absolute inset-0 z-0">
-              <img 
-                src={card.image} 
-                alt={card.title}
-                className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transform group-hover:scale-105 transition-all duration-500"
-              />
+              {card.image && (
+                <img 
+                  src={card.image} 
+                  alt={card.title}
+                  className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transform group-hover:scale-105 transition-all duration-500"
+                />
+              )}
               {/* Color glow overlay */}
               <div className={`absolute inset-0 bg-gradient-to-tr ${card.glowGradient} via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300 z-[1]`} />
               {/* Dark protection gradient */}
