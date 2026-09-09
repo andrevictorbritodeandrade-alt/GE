@@ -1,0 +1,196 @@
+{
+  "CIEP369_AP201": {
+    "grade": "2ª Série EM",
+    "students": [
+      {
+        "id": 369201,
+        "name": "Alerrandro de Oliveira",
+        "attendance": {}
+      },
+      {
+        "id": 369202,
+        "attendance": {},
+        "name": "Brenda Luíza Santos"
+      },
+      {
+        "id": 369203,
+        "attendance": {},
+        "name": "Caio Cesar Viana"
+      },
+      {
+        "attendance": {},
+        "name": "Daniela Cristina",
+        "id": 369204
+      },
+      {
+        "attendance": {},
+        "id": 369205,
+        "name": "Erick Silva"
+      },
+      {
+        "name": "Fernanda Lima",
+        "id": 369206,
+        "attendance": {}
+      },
+      {
+        "id": 369207,
+        "name": "Gabriel de Jesus",
+        "attendance": {}
+      },
+      {
+        "name": "Hugo Leonardo",
+        "attendance": {},
+        "id": 369208
+      },
+      {
+        "name": "Isabela Rangel",
+        "id": 369209,
+        "attendance": {}
+      },
+      {
+        "id": 369210,
+        "attendance": {},
+        "name": "Jonathan Souza"
+      }
+    ],
+    "id": "CIEP369_AP201",
+    "school": "CIEP 369 JORNALISTA SANDRO MOREYRA",
+    "discipline": "Educação Física",
+    "schedule": "14:25 – 16:05",
+    "days": [
+      "Quinta"
+    ],
+    "name": "AP_201-181151"
+  },
+  "CIEP476_1007": {
+    "discipline": "ILGCH (Linguagens e Ciências Humanas)",
+    "name": "ILG_CH_1007-181152",
+    "school": "CE DR. IGNACIO BEZERRA DE MENEZES / CIEP 476 ELIAS LAZARONI",
+    "assignments": [
+      {
+        "discipline": "ILGCH",
+        "format": "Individual ou dupla",
+        "dueDate": "22/05/2026",
+        "description": "Pesquisa sobre como corpos negros e periféricos são vistos na mídia.",
+        "totalPoints": 3,
+        "title": "O Corpo na Mídia - Estereótipo vs. Realidade",
+        "id": "A1"
+      }
+    ],
+    "days": [
+      "Sexta"
+    ],
+    "dailyActivities": [
+      {
+        "plannedActivity": "",
+        "actualActivity": "não houve aula a noite, pois a turma tinha sido liberada",
+        "id": "ciep476-1007-2026-05-08",
+        "date": "2026-05-08T12:00:00.000Z",
+        "observations": ""
+      },
+      {
+        "id": "ciep476-1007-2026-05-15",
+        "actualActivity": "fui liberado pelo diretor da turma da noite",
+        "plannedActivity": "",
+        "date": "2026-05-15T12:00:00.000Z",
+        "observations": ""
+      },
+      {
+        "actualActivity": "inicio do conteúdo sobre ILGCH e a proposta da disciplina",
+        "observations": "",
+        "plannedActivity": "",
+        "id": "ciep476-1007-2026-05-22",
+        "date": "2026-05-22T12:00:00.000Z"
+      },
+      {
+        "observations": "",
+        "date": "2026-05-29T12:00:00.000Z",
+        "plannedActivity": "",
+        "id": "ciep476-1007-2026-05-29",
+        "actualActivity": "Aprofundamento da matéria e chamada"
+      }
+    ],
+    "grade": "1",
+    "id": "CIEP476_1007",
+    "students": [
+      {
+        "name": "Ana Beatriz Ferreira Santos",
+        "id": 100701,
+        "attendance": {
+          "29/05": "P"
+        }
+      },
+      {
+        "id": 100702,
+        "name": "Ana Clara Mendonça Guimarães",
+        "attendance": {
+          "29/05": "P"
+        }
+      },
+      {
+        "name": "Anna Giulia de Félix",
+        "attendance": {
+          "29/05": "P"
+        },
+        "id": 100703
+      },
+      {
+        "name": "Anny Camilly Gomes da Silva",
+        "id": 100704,
+        "attendance": {
+          "29/05": "P"
+        }
+      },
+      {
+        "id": 100705,
+        "name": "João Pedro Samara Soares",
+        "attendance": {
+          "29/05": "P"
+        }
+      },
+      {
+        "name": "Júlio César",
+        "id": 100706,
+        "attendance": {
+          "29/05": "P"
+        }
+      },
+      {
+        "name": "Ketelyn Vitória Fernandes Nascimento",
+        "attendance": {
+          "29/05": "P"
+        },
+        "id": 100707
+      },
+      {
+        "name": "Maria Eduarda da Silva Gonçalves",
+        "attendance": {
+          "29/05": "P"
+        },
+        "id": 100708
+      },
+      {
+        "id": 100709,
+        "name": "Maria Vitória Fonseca",
+        "attendance": {
+          "29/05": "P"
+        }
+      },
+      {
+        "id": 100710,
+        "attendance": {
+          "29/05": "P"
+        },
+        "name": "Rhyan Pereira"
+      },
+      {
+        "attendance": {
+          "29/05": "P"
+        },
+        "name": "Yuri Yohan Ferreira Rodrigues",
+        "id": 100711
+      }
+    ],
+    "schedule": "19:40 – 21:20"
+  }
+}

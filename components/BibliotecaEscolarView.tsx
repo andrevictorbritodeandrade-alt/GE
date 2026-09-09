@@ -34,11 +34,17 @@ export const BibliotecaEscolarView: React.FC<{ onBack: () => void }> = ({ onBack
   useEffect(() => {
     if (!user || !db || !appId) return;
     const arquivosRef = collection(db, 'artifacts', appId, 'users', user.uid, 'arquivos');
-    const unsubscribe = onSnapshot(arquivosRef, (snapshot) => {
-      const arquivosDoBanco = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      arquivosDoBanco.sort((a, b) => (b as any).createdAt - (a as any).createdAt);
-      setArquivos(arquivosDoBanco);
-    });
+    const unsubscribe = onSnapshot(
+      arquivosRef,
+      (snapshot) => {
+        const arquivosDoBanco = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        arquivosDoBanco.sort((a, b) => (b as any).createdAt - (a as any).createdAt);
+        setArquivos(arquivosDoBanco);
+      },
+      (error) => {
+        console.warn('Biblioteca: modo offline ou limite atingido', error.message);
+      }
+    );
     return () => unsubscribe();
   }, [user]);
 
@@ -58,15 +64,24 @@ export const BibliotecaEscolarView: React.FC<{ onBack: () => void }> = ({ onBack
         dataUrl: event.target.result,
         createdAt: Date.now()
       };
-      const arquivosRef = collection(db, 'artifacts', appId, 'users', user.uid, 'arquivos');
-      await addDoc(arquivosRef, novoArquivo);
-      setIsUploading(false);
+      try {
+        const arquivosRef = collection(db, 'artifacts', appId, 'users', user.uid, 'arquivos');
+        await addDoc(arquivosRef, novoArquivo);
+      } catch (err: any) {
+        console.warn('Erro ao salvar arquivo na nuvem:', err.message);
+      } finally {
+        setIsUploading(false);
+      }
     };
     reader.readAsDataURL(file);
   };
 
   const apagarArquivo = async (id: string) => {
-    await deleteDoc(doc(db, 'artifacts', appId, 'users', user.uid, 'arquivos', id));
+    try {
+      await deleteDoc(doc(db, 'artifacts', appId, 'users', user.uid, 'arquivos', id));
+    } catch (err: any) {
+      console.warn('Erro ao deletar arquivo:', err.message);
+    }
   };
 
   if (view === 'home') {

@@ -36,7 +36,7 @@ export interface Student {
   grades?: { [assignmentId: string]: number };
   trimestreGrades?: { [trimestre: string]: TrimestreGrade };
   enrolledTrimesters?: number[]; // [1, 2, 3] or subset of trimesters enrolled
-  status?: 'ativo' | 'transferido' | 'evadido' | 'entrante';
+  status?: 'ativo' | 'transferido' | 'evadido' | 'entrante' | 'cancelado';
 }
 
 export interface Assignment {
@@ -67,6 +67,7 @@ export interface ClassData {
   assignments?: Assignment[];
   dailyActivities?: DailyActivity[];
   schedule?: string;
+  shift?: string;
   days?: string[];
 }
 

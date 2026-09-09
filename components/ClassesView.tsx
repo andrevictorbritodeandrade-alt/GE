@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { ClassData, ClassDataMap, Student } from '../types';
 import { PrintPreviewModal } from './PrintPreviewModal';
 import { ClassDiaryTable } from './ClassDiaryTable';
-import { saveClassesToFirestore } from '../services/firebaseService';
 import { initialClassData } from '../constants';
 import { scanStudentList } from '../services/geminiService';
 import { safeLocalStorage } from '../utils/storage';
@@ -14,25 +13,25 @@ const TRIMESTERS = [
     id: 1,
     name: '1º Trimestre',
     rangeText: '05/02 a 18/05',
-    start: new Date(2026, 1, 5), // 05/02/2026 (Note: Jan is 0, Feb is 1)
-    end: new Date(2026, 4, 18),   // 18/05/2026
+    start: new Date(2026, 1, 5),  // 05/02/2026 (Jan is 0, Feb is 1)
+    end: new Date(2026, 4, 18),   // 18/05/2026 (May is 4)
     months: [1, 2, 3, 4]          // FEV, MAR, ABR, MAI
   },
   {
     id: 2,
     name: '2º Trimestre',
     rangeText: '19/05 a 04/09',
-    start: new Date(2026, 4, 19),  // 19/05/2026
-    end: new Date(2026, 8, 4),    // 04/09/2026
-    months: [4, 5, 6, 7, 8]        // MAI, JUN, JUL, AGO, SET
+    start: new Date(2026, 4, 19), // 19/05/2026 (May is 4)
+    end: new Date(2026, 8, 4),    // 04/09/2026 (Sep is 8)
+    months: [4, 5, 6, 7, 8]       // MAI, JUN, JUL, AGO, SET
   },
   {
     id: 3,
     name: '3º Trimestre',
     rangeText: '08/09 a 22/12',
-    start: new Date(2026, 8, 8),   // 08/09/2026
-    end: new Date(2026, 11, 22),   // 22/12/2026
-    months: [8, 9, 10, 11]         // SET, OUT, NOV, DEZ
+    start: new Date(2026, 8, 8),   // 08/09/2026 (Sep is 8)
+    end: new Date(2026, 11, 22),  // 22/12/2026 (Dec is 11)
+    months: [8, 9, 10, 11]        // SET, OUT, NOV, DEZ
   }
 ];
 
@@ -92,7 +91,7 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
   const [targetClassId, setTargetClassId] = useState('');
   const [filterTrimesterOnly, setFilterTrimesterOnly] = useState<boolean>(true);
   const [modalEnrolledTrimesters, setModalEnrolledTrimesters] = useState<number[]>([1, 2, 3]);
-  const [modalStudentStatus, setModalStudentStatus] = useState<'ativo' | 'transferido' | 'evadido' | 'entrante'>('ativo');
+  const [modalStudentStatus, setModalStudentStatus] = useState<NonNullable<Student['status']>>('ativo');
   
   // Date Logic
   const [activeTrimesterId, setActiveTrimesterId] = useState<number>(() => {
@@ -567,7 +566,7 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
             <p className="text-xs text-slate-500 font-medium">Escolha uma das instituições em exercício para acessar as turmas</p>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 relative z-10 w-full">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 relative z-10 w-full">
             {finalSchools.length > 0 ? finalSchools.map(school => {
               const schoolClasses = getClassesBySchool(school);
               return (
@@ -796,10 +795,39 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
           <div className="absolute inset-0 bg-gradient-to-r from-sky-500/5 to-indigo-500/5" style={{ pointerEvents: "none" }} />
           <div className="relative z-10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4 border-b border-slate-200 pb-3">
             <div>
-              <p className="text-[10px] text-sky-700 font-extrabold uppercase tracking-widest leading-none mb-1">
-                Régua do Trimestre • 27 Aulas Previstas (Seg/Sex) • 81 no Ano
-              </p>
-              <h4 className="text-sm font-black text-slate-900 uppercase tracking-tighter">Cronograma de Dias de Aula</h4>
+              {(() => {
+                const tDates = getClassDatesInTrimester(selectedClassId!, activeTrimesterId);
+                const validDates = tDates.filter(d => !checkIfHolidayOrRecess(d));
+                const segundas = validDates.filter(d => d.getDay() === 1).length;
+                const sextas = validDates.filter(d => d.getDay() === 5).length;
+                
+                const dadas = tDates.filter(d => {
+                  const iso = getIsoStringForDate(d);
+                  const hasAttendance = checkHasAttendanceForDate(d, sortedStudents);
+                  const hasActivity = currentClass.dailyActivities?.some(act => act.date?.substring(0,10) === iso);
+                  return hasAttendance || hasActivity;
+                }).length;
+
+                return (
+                  <>
+                    <p className="text-[10px] text-sky-700 font-extrabold uppercase tracking-widest leading-none mb-1">
+                      Régua do Trimestre • Planejamento Dinâmico
+                    </p>
+                    <h4 className="text-sm font-black text-slate-900 uppercase tracking-tighter flex items-center gap-2 flex-wrap">
+                      Cronograma de Dias de Aula
+                      <span className="text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-lg border border-emerald-200 tracking-widest ml-2 flex items-center gap-1.5">
+                        <span>PREVISTAS: {validDates.length}</span>
+                        <span className="opacity-50">•</span>
+                        <span>SEG: {segundas}</span>
+                        <span className="opacity-50">•</span>
+                        <span>SEX: {sextas}</span>
+                        <span className="opacity-50">•</span>
+                        <span>DADAS: {dadas}</span>
+                      </span>
+                    </h4>
+                  </>
+                );
+              })()}
             </div>
             
             {/* Trimester Tabs */}
@@ -1044,6 +1072,7 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
                 <option value="entrante">Entrante / Nova Matrícula</option>
                 <option value="transferido">Transferido</option>
                 <option value="evadido">Evadido</option>
+                <option value="cancelado">Cancelado</option>
               </select>
             </div>
 
@@ -1107,6 +1136,7 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
                 <option value="entrante">Entrante / Nova Matrícula</option>
                 <option value="transferido">Transferido</option>
                 <option value="evadido">Evadido</option>
+                <option value="cancelado">Cancelado</option>
               </select>
             </div>
 

@@ -63,9 +63,60 @@ export let app: any = null;
 export let auth: any = null;
 let persistenceEnabled = false;
 
+// Quota Circuit Breaker: prevents continuous retry storms when Firestore daily quota is reached
+const QUOTA_COOLDOWN_MS = 15 * 60 * 1000; // 15 minutes cooldown before retrying cloud writes
+const QUOTA_STORAGE_KEY = 'firestore_quota_exceeded_until';
+
+let quotaExceededTimestamp = 0;
+let lastSavedClassesHash = '';
+let lastSavedGalleryHash = '';
+
+export const isQuotaCurrentlyExceeded = (): boolean => {
+  const now = Date.now();
+  if (now < quotaExceededTimestamp) return true;
+  
+  try {
+    const storedUntil = safeLocalStorage.getItem(QUOTA_STORAGE_KEY);
+    if (storedUntil) {
+      const until = Number(storedUntil);
+      if (now < until) {
+        quotaExceededTimestamp = until;
+        return true;
+      }
+    }
+  } catch (e) {
+    // Ignore storage parse error
+  }
+  return false;
+};
+
+export const markQuotaExceeded = () => {
+  const until = Date.now() + QUOTA_COOLDOWN_MS;
+  quotaExceededTimestamp = until;
+  try {
+    safeLocalStorage.setItem(QUOTA_STORAGE_KEY, String(until));
+  } catch (e) {
+    // Ignore storage write error
+  }
+  console.warn('[Firestore] Cota diária gratuita do Firestore atingida. Alternando automaticamente para persistência local ultrarrápida (LocalStorage) sem perda de dados.');
+};
+
 function handleFirestoreError(error: unknown, operationType: OperationType, path: string | null) {
+  const errMsg = error instanceof Error ? error.message : String(error);
+  const errCode = (error as any)?.code || '';
+
+  if (
+    errCode === 'resource-exhausted' || 
+    errMsg.toLowerCase().includes('quota limit exceeded') || 
+    errMsg.toLowerCase().includes('quota exceeded') ||
+    errMsg.toLowerCase().includes('resource-exhausted')
+  ) {
+    markQuotaExceeded();
+    return;
+  }
+
   const errInfo: FirestoreErrorInfo = {
-    error: error instanceof Error ? error.message : String(error),
+    error: errMsg,
     authInfo: {
       userId: auth?.currentUser?.uid,
       email: auth?.currentUser?.email,
@@ -175,6 +226,7 @@ export const subscribeToClasses = (callback: (data: ClassDataMap) => void) => {
 };
 
 export const deleteClassFromFirestore = async (classId: string) => {
+  if (isQuotaCurrentlyExceeded()) return;
   if (!db) initFirebase();
   if (!db) return;
   const path = `classes/${classId}`;
@@ -186,6 +238,7 @@ export const deleteClassFromFirestore = async (classId: string) => {
 };
 
 export const deleteClassesBatchFromFirestore = async (classIds: string[]) => {
+  if (isQuotaCurrentlyExceeded()) return;
   if (!db) initFirebase();
   if (!db || classIds.length === 0) return;
   const batch = writeBatch(db);
@@ -199,11 +252,29 @@ export const deleteClassesBatchFromFirestore = async (classIds: string[]) => {
   }
 };
 
-export const saveClassesToFirestore = async (data: ClassDataMap) => {
+export const saveSingleClassToFirestore = async (classId: string, classData: any) => {
+  if (isQuotaCurrentlyExceeded()) return;
   if (!db) initFirebase();
   if (!db) return;
+  const path = `classes/${classId}`;
+  try {
+    await setDoc(doc(db, 'classes', classId), classData);
+  } catch (error) {
+    handleFirestoreError(error, OperationType.WRITE, path);
+  }
+};
+
+export const saveClassesToFirestore = async (data: ClassDataMap) => {
+  if (isQuotaCurrentlyExceeded()) return;
+  if (!db) initFirebase();
+  if (!db) return;
+
+  const currentDataStr = JSON.stringify(data);
+  if (currentDataStr === lastSavedClassesHash) {
+    return; // Skip identical payload write
+  }
+
   const batch = writeBatch(db);
-  
   Object.values(data).forEach((cls) => {
     const ref = doc(db, 'classes', cls.id);
     batch.set(ref, cls);
@@ -211,6 +282,7 @@ export const saveClassesToFirestore = async (data: ClassDataMap) => {
   
   try {
     await batch.commit();
+    lastSavedClassesHash = currentDataStr;
   } catch (error) {
     handleFirestoreError(error, OperationType.WRITE, 'classes');
   }
@@ -224,7 +296,9 @@ export const subscribeToGallery = (callback: (data: GalleryData | null) => void)
   const path = 'gallery/main';
   return onSnapshot(doc(db, 'gallery', 'main'), (doc: any) => {
     if (doc.exists()) {
-      callback(doc.data() as GalleryData);
+      const gData = doc.data() as GalleryData;
+      lastSavedGalleryHash = JSON.stringify(gData);
+      callback(gData);
     } else {
       callback(null);
     }
@@ -234,11 +308,19 @@ export const subscribeToGallery = (callback: (data: GalleryData | null) => void)
 };
 
 export const saveGalleryToFirestore = async (data: GalleryData) => {
+  if (isQuotaCurrentlyExceeded()) return;
   if (!db) initFirebase();
   if (!db) return;
+
+  const currentGalleryStr = JSON.stringify(data);
+  if (currentGalleryStr === lastSavedGalleryHash) {
+    return; // Skip identical payload write
+  }
+
   const path = 'gallery/main';
   try {
     await setDoc(doc(db, 'gallery', 'main'), data);
+    lastSavedGalleryHash = currentGalleryStr;
   } catch (error) {
     handleFirestoreError(error, OperationType.WRITE, path);
   }
@@ -265,6 +347,7 @@ export const subscribeToOccurrences = (callback: (data: OccurrenceData[]) => voi
 };
 
 export const saveOccurrenceToFirestore = async (occurrence: OccurrenceData) => {
+  if (isQuotaCurrentlyExceeded()) return;
   if (!db) initFirebase();
   if (!db) return;
   const path = `occurrences/${occurrence.id}`;
@@ -276,6 +359,7 @@ export const saveOccurrenceToFirestore = async (occurrence: OccurrenceData) => {
 };
 
 export const deleteOccurrenceFromFirestore = async (id: string) => {
+  if (isQuotaCurrentlyExceeded()) return;
   if (!db) initFirebase();
   if (!db) return;
   const path = `occurrences/${id}`;

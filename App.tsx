@@ -159,8 +159,26 @@ const App: React.FC = () => {
       if (!base[id]) {
         base[id] = { ...initialClassData[id] };
       } else {
-        // Merge missing students or update if empty
-        if (initialClassData[id].students && initialClassData[id].students.length > 0) {
+        // For Cordelia classes (801, 802, 803), enforce the exact authoritative roster from initialClassData
+        if (id === '801' || id === '802' || id === '803') {
+          const initList = initialClassData[id].students || [];
+          const currentStuds = base[id].students || [];
+          base[id].students = initList.map((initS: any) => {
+            const existing = currentStuds.find((s: any) => String(s.id) === String(initS.id) || (s.name && s.name.trim().toLowerCase() === initS.name.trim().toLowerCase()));
+            const mergedTrim = { ...(initS.trimestreGrades || {}) };
+            if (existing?.trimestreGrades) {
+              Object.keys(existing.trimestreGrades).forEach((k: string) => {
+                mergedTrim[k] = { ...(mergedTrim[k] || {}), ...existing.trimestreGrades[k] };
+              });
+            }
+            return {
+              ...initS,
+              attendance: { ...initS.attendance, ...(existing?.attendance || {}) },
+              trimestreGrades: mergedTrim
+            };
+          });
+        } else if (initialClassData[id].students && initialClassData[id].students.length > 0) {
+          // Merge missing students or update if empty
           if (!base[id].students || base[id].students.length === 0) {
             base[id].students = [...initialClassData[id].students];
           } else {
@@ -439,12 +457,40 @@ const App: React.FC = () => {
                         baseStud.attendance = {};
                         changed = true;
                       }
-                      Object.keys(initStud.attendance).forEach(date => {
-                        if (baseStud.attendance[date] !== initStud.attendance[date]) {
-                          baseStud.attendance[date] = initStud.attendance[date];
+                      if (id === '801' || id === '803') {
+                        Object.keys(baseStud.attendance).forEach(k => {
+                          if (k.includes(' - 1º T') || k.includes(' - 2º T')) {
+                            delete baseStud.attendance[k];
+                            changed = true;
+                          }
+                        });
+                      }
+                      if (id === '802' || id === '803') {
+                        baseStud.attendance = { ...initStud.attendance };
+                        changed = true;
+                      } else {
+                        Object.keys(initStud.attendance).forEach(date => {
+                          if (baseStud.attendance[date] !== initStud.attendance[date]) {
+                            baseStud.attendance[date] = initStud.attendance[date];
+                            changed = true;
+                          }
+                        });
+                      }
+                      if (initStud.trimestreGrades) {
+                        if (!baseStud.trimestreGrades) {
+                          baseStud.trimestreGrades = {};
                           changed = true;
                         }
-                      });
+                        Object.keys(initStud.trimestreGrades).forEach(tKey => {
+                          if (!baseStud.trimestreGrades[tKey] || id === '801' || id === '802' || id === '803') {
+                            baseStud.trimestreGrades[tKey] = {
+                              ...(baseStud.trimestreGrades[tKey] || {}),
+                              ...initStud.trimestreGrades[tKey]
+                            };
+                            changed = true;
+                          }
+                        });
+                      }
                       if (changed) {
                         needsUpdateRemote = true;
                       }
@@ -507,57 +553,11 @@ const App: React.FC = () => {
               }
             });
 
-             // Clean up Turma 803 to contain the correct 27 students with their presence/absence records (18/05, 25/05, and 01/06 - double periods)
-             if (migratedClasses["803"]) {
-               const correctStudents803: any[] = [
-                 { id: 80301, name: "Adrieli Vitória dos Santos da Silva", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
-                 { id: 80302, name: "Ana Clara de Jesus Pereira", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
-                 { id: 80303, name: "Danilo Ribeiro Feliciano", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
-                 { id: 80304, name: "Esther Nunes da Costa", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
-                 { id: 80305, name: "Felipe Santos Vital Guimarães", attendance: { "18/05 - 1º T": "F", "18/05 - 2º T": "F", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "F", "01/06 - 2º T": "F" } },
-                 { id: 80306, name: "Ítalo Silva de Almeida", attendance: { "18/05 - 1º T": "F", "18/05 - 2º T": "F", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "F", "01/06 - 2º T": "F" } },
-                 { id: 80307, name: "João Paulo Lima da Silva", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
-                 { id: 80308, name: "Matheus Araujo da Silva", attendance: { "18/05 - 1º T": "F", "18/05 - 2º T": "F", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "F", "01/06 - 2º T": "F" } },
-                 { id: 80309, name: "Matheus Severiano Galdino da Silva", attendance: { "18/05 - 1º T": "F", "18/05 - 2º T": "F", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "F", "01/06 - 2º T": "F" } },
-                 { id: 80310, name: "Micaella Moraes Lourenço da Silva", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
-                 { id: 80311, name: "Micaelly Vitória Alves de França", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
-                 { id: 80312, name: "Miguel Lucas Vicente Gomes", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
-                 { id: 80313, name: "Milena Vitória Tavares de Jesus", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
-                 { id: 80314, name: "Nicole Archanjo Santos", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
-                 { id: 80315, name: "Pedro Henryk dos Santos Coelho", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
-                 { id: 80316, name: "Pietro Vitor Santos Braga", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
-                 { id: 80317, name: "Rafaela Lourenço da Silva Camilo", attendance: { "18/05 - 1º T": "F", "18/05 - 2º T": "F", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "F", "01/06 - 2º T": "F" } },
-                 { id: 80318, name: "Rafaelle dos Santos Almeida", attendance: { "18/05 - 1º T": "F", "18/05 - 2º T": "F", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "F", "01/06 - 2º T": "F" } },
-                 { id: 80319, name: "Ray Bomfim Pereira", attendance: { "18/05 - 1º T": "F", "18/05 - 2º T": "F", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "F", "01/06 - 2º T": "F" } },
-                 { id: 80320, name: "Richard Reis Costa", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
-                 { id: 80321, name: "Riquelme Oliveira Carlos", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
-                 { id: 80322, name: "Roberta Flôr de Liz Araujo da Silva", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
-                 { id: 80323, name: "Ryan Lucas Soares Velasco", attendance: { "18/05 - 1º T": "F", "18/05 - 2º T": "F", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "F", "01/06 - 2º T": "F" } },
-                 { id: 80324, name: "Sarah Rafaela de Souza Ferreira", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
-                 { id: 80325, name: "Sofia Nascimento de Araujo", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
-                 { id: 80326, name: "Sophia Quaresma Jeronymo", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
-                 { id: 80327, name: "Vitor Manoel Gomes da Silva", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } }
-               ];
-
-               const studs = migratedClasses["803"].students || [];
-               const hasAttendanceMismatch = studs.length !== 27 || studs.some((s: any) => {
-                 const corr = correctStudents803.find(c => c.id === s.id);
-                 if (!corr) return true;
-                 return !s.attendance || !s.attendance["18/05 - 1º T"] || !s.attendance["25/05 - 1º T"] || !s.attendance["01/06 - 1º T"];
-               });
-
-               if (hasAttendanceMismatch) {
-                migratedClasses["803"].students = correctStudents803.map(c => {
-                  const existing = studs.find((s: any) => s.id === c.id || s.name === c.name);
-                  const initStud = initialClassData["803"]?.students?.find((s: any) => s.id === c.id || s.name === c.name);
-                  return {
-                    ...c,
-                    enrolledTrimesters: existing?.enrolledTrimesters || initStud?.enrolledTrimesters || [1, 2, 3],
-                    trimestreGrades: existing?.trimestreGrades || initStud?.trimestreGrades || {}
-                  };
-                });
-                needsUpdateRemote = true;
-              }
+             // Ensure Turma 803 contains all 30 students with their complete 2º Trimestre grades and attendance records
+            if (migratedClasses["803"]) {
+              const initStudents803 = initialClassData["803"]?.students || [];
+              migratedClasses["803"].students = initStudents803.map((s: any) => ({ ...s }));
+              needsUpdateRemote = true;
             }
 
             // Clean up Turma 802 to contain the correct 28 students with their presence/absence records (18/05, 25/05, and 01/06 - double periods), ensuring no duplicates and added Kauã
@@ -598,116 +598,25 @@ const App: React.FC = () => {
               }
             }
 
-            // Clean up Turma 801 to contain the correct 30 students with their presence/absence records (18/05, 25/05, 01/06, 08/06)
+            // Ensure Turma 801 contains all 32 students with their complete 2º Trimestre grades, attendance records and no duplicates
             if (migratedClasses["801"]) {
-              const correctStudents801: any[] = [
-                { id: 80101, name: "Alice Vitória Rosa de Sales Ramos", attendance: { "08/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "F", "01/06 - 2º T": "F", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-                { id: 80102, name: "Ana Cristina Silva Pereira", attendance: { "08/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "F", "08/06 - 2º T": "F" } },
-                { id: 80103, name: "Ana Luiza da Costa Martins", attendance: { "08/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "F", "01/06 - 2º T": "F", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-                { id: 80104, name: "Ana Luiza Rodrigues da Silva", attendance: { "08/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "F", "01/06 - 2º T": "F", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-                { id: 80105, name: "Ana Vitória Farias Correa", attendance: { "08/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "F", "08/06 - 2º T": "F" } },
-                { id: 80106, name: "André Nunes da Silva Lopes", attendance: { "08/05": "P", "18/05 - 1º T": "F", "18/05 - 2º T": "F", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-                { id: 80107, name: "Andressa da Silva Vieira", attendance: { "08/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "F", "08/06 - 2º T": "F" } },
-                { id: 80108, name: "Andrey de Sousa Santos", attendance: { "08/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-                { id: 80109, name: "Angelliny de Oliveira Silva", attendance: { "08/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-                { id: 80110, name: "Anna Beatriz Souza Lima", attendance: { "08/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-                { id: 80111, name: "Anna Karolinny Souza Lima", attendance: { "08/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-                { id: 80112, name: "Bianca Santos de Souza Oliveira", attendance: { "08/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-                { id: 80113, name: "Camili Oliveira Batista", attendance: { "08/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-                { id: 80114, name: "Carolina Caldas Souza", attendance: { "08/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-                { id: 80115, name: "Cauã Victor Nobre de Oliveira Lins", attendance: { "08/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-                { id: 80116, name: "Davi Moura da Cruz", attendance: { "08/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-                { id: 80117, name: "Davi Sousa Santos da Silva", attendance: { "08/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-                { id: 80118, name: "Enzo José Jardim Augusto", attendance: { "08/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-                { id: 80119, name: "Ezequiel Lima de Oliveira", attendance: { "08/05": "P", "18/05 - 1º T": "F", "18/05 - 2º T": "F", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "F", "01/06 - 2º T": "F", "08/06 - 1º T": "F", "08/06 - 2º T": "F" } },
-                { id: 80120, name: "Fernanda Honorato Sabino da Silva", attendance: { "08/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-                { id: 80121, name: "Gabrieli de Barros Caiana", attendance: { "08/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-                { id: 80122, name: "Gabrielly Lima da Silva", attendance: { "08/05": "P", "18/05 - 1º T": "F", "18/05 - 2º T": "F", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "F", "08/06 - 2º T": "F" } },
-                { id: 80123, name: "Geovana Fernandes R. de Andrade", attendance: { "08/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-                { id: 80124, name: "Giovanna Kaylane Gonçalves Godoy", attendance: { "08/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-                { id: 80125, name: "Guilherme Santos de Jesus", attendance: { "08/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-                { id: 80126, name: "Gustavo Nascimento de Jesus", attendance: { "08/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-                { id: 80127, name: "Hashelly Letícia B. dos Santos", attendance: { "08/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-                { id: 80128, name: "Miguel de Souza R. do Nascimento", attendance: { "08/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-                { id: 80129, name: "Nicolly Baptista do Nascimento", attendance: { "08/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "F", "01/06 - 2º T": "F", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-                { id: 80130, name: "Richard Josafá V. B. T. Augusto", attendance: { "08/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } }
-              ];
-
-              const studs801 = migratedClasses["801"].students || [];
-              const hasAttendanceMismatch801 = studs801.length !== 30 || studs801.some((s: any) => {
-                const corr = correctStudents801.find(c => c.id === s.id);
-                if (!corr) return true;
-                return !s.attendance || !s.attendance["08/06 - 1º T"] || s.attendance["18/05"] !== undefined;
-              });
-
-              if (hasAttendanceMismatch801) {
-                migratedClasses["801"].students = correctStudents801.map(c => {
-                  const existing = studs801.find((s: any) => s.id === c.id || s.name === c.name);
-                  const initStud = initialClassData["801"]?.students?.find((s: any) => s.id === c.id || s.name === c.name);
-                  return {
-                    ...c,
-                    enrolledTrimesters: existing?.enrolledTrimesters || initStud?.enrolledTrimesters || [1, 2, 3],
-                    trimestreGrades: existing?.trimestreGrades || initStud?.trimestreGrades || {}
-                  };
-                });
-                
-                // Also ensure dailyActivities and assignments are up to date
-                migratedClasses["801"].dailyActivities = [
-                  {
-                    id: "cordelia-801-2026-05-11",
-                    date: "2026-05-11T12:00:00.000Z",
-                    plannedActivity: "",
-                    actualActivity: "Fique em sala para conhecer as turmas e aplicar prova de recuperação de outros professores. Nesse dia, as turmas saíram cedo",
-                    observations: ""
-                  },
-                  {
-                    id: "cordelia-801-2026-05-18",
-                    date: "2026-05-18T12:00:00.000Z",
-                    plannedActivity: "",
-                    actualActivity: "Comecei o conteúdo de altinha e futevôlei de maneira teórica. passei, no quadro até a página 4 dos slides.",
-                    observations: ""
-                  },
-                  {
-                    id: "cordelia-801-2026-05-25",
-                    date: "2026-05-25T12:00:00.000Z",
-                    plannedActivity: "",
-                    actualActivity: "Continuidade do conteúdo de altinha e futevôlei, com conteúdo teórico, no quadro, até a página 7 do slide; jogos em grupo dentro de sala",
-                    observations: ""
-                  },
-                  {
-                    id: "cordelia-801-2026-06-01",
-                    date: "2026-06-01T12:00:00.000Z",
-                    plannedActivity: "",
-                    actualActivity: "Aulas práticas de fundamento de toque, passe e recepção adaptados a jogos pré-desportivos de altinha e futevôlei",
-                    observations: ""
-                  },
-                  {
-                    id: "cordelia-801-2026-06-08",
-                    date: "2026-06-08T12:00:00.000Z",
-                    plannedActivity: "",
-                    actualActivity: "Apresentação e registro no quadro das especificações do Trabalho do 2º Trimestre: valor de 3 pontos, formação de grupos de até 5 pessoas, com o objetivo de entregar trabalho escrito manuscrito (capa, introdução, desenvolvimento e referências) sobre pesquisa de jogos de tabuleiro, cartas, mentais ou de concentração de outros países, além de apresentação prática em sala de aula. Datas das apresentações serão 22/06 e 29/06.",
-                    observations: ""
-                  }
-                ];
-
-                migratedClasses["801"].assignments = [
-                  {
-                    id: "A2_801",
-                    title: "Trabalho do 2º Trimestre",
-                    discipline: "Educação Física",
-                    description: "Entrega de trabalho manuscrito contendo capa, introdução, desenvolvimento e referências, além da apresentação e reprodução prática em sala de aula de jogos de tabuleiro, cartas, mentais ou de concentração de outros países.",
-                    totalPoints: 3,
-                    format: "Formação de até 05 pessoas por grupo",
-                    dueDate: "29/06/2026"
-                  }
-                ];
-
-                needsUpdateRemote = true;
+              const initStudents801 = initialClassData["801"]?.students || [];
+              migratedClasses["801"].students = initStudents801.map((s: any) => ({ ...s }));
+              
+              if (initialClassData["801"]?.dailyActivities) {
+                migratedClasses["801"].dailyActivities = initialClassData["801"].dailyActivities.map((a: any) => ({ ...a }));
               }
+              if (initialClassData["801"]?.assignments) {
+                migratedClasses["801"].assignments = initialClassData["801"].assignments.map((a: any) => ({ ...a }));
+              }
+              needsUpdateRemote = true;
             }
 
             // Ensure all initial classes and student rosters are preserved
             Object.keys(initialClassData).forEach(id => {
+              if (id === '801' || id === '802' || id === '803') {
+                return;
+              }
               if (!migratedClasses[id]) {
                 migratedClasses[id] = { ...initialClassData[id] };
                 needsUpdateRemote = true;
@@ -756,27 +665,16 @@ const App: React.FC = () => {
               }
             });
           
-            // Standardize and sanitize all school names and purge deprecated schools
-            const { sanitized, changed: wasSanitizedChanged, purgedIds } = sanitizeAndNormalizeClassData(migratedClasses);
-            if (purgedIds && purgedIds.length > 0) {
-              deleteClassesBatchFromFirestore(purgedIds);
-              needsUpdateRemote = true;
-            }
-            if (wasSanitizedChanged) {
-              migratedClasses = sanitized;
-              needsUpdateRemote = true;
-            }
-
-            if (needsUpdateRemote) {
-              saveClassesToFirestore(migratedClasses);
-            }
-            setClassData(migratedClasses);
+            // Standardize and sanitize all school names and purge deprecated schools locally for state
+            const { sanitized } = sanitizeAndNormalizeClassData(migratedClasses);
+            isRemoteClassUpdate.current = true;
+            setClassData(sanitized);
         } else if (!hasLoadedClasses.current) {
-          // If Firestore is empty, initialize with local/blueprint data
+          // If Firestore is empty, initialize with local/blueprint data without recursive save
           const stored = safeLocalStorage.getItem('app_classData');
           let rawData = stored ? JSON.parse(stored) : initialClassData;
           const { sanitized } = sanitizeAndNormalizeClassData(rawData);
-          saveClassesToFirestore(sanitized);
+          isRemoteClassUpdate.current = true;
           setClassData(sanitized);
         }
         hasLoadedClasses.current = true;
@@ -791,7 +689,7 @@ const App: React.FC = () => {
           const stored = safeLocalStorage.getItem('app_galleryData');
           if (stored) {
             const dataToSave = JSON.parse(stored);
-            saveGalleryToFirestore(dataToSave);
+            isRemoteGalleryUpdate.current = true;
             setGalleryData(dataToSave);
           }
         }

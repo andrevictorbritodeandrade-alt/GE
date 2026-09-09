@@ -484,7 +484,7 @@ export const StatisticsView: React.FC<StatisticsViewProps> = ({ classData, onBac
           subtitle="Selecione a turma para visualizar a planilha completa de frequência individual"
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {classes.map(cls => (
             <div 
               key={cls.id}
