@@ -377,7 +377,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "F",
                         "24/08": "P",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "P"
                   },
                   "trimestreGrades": {
                         "2": {
@@ -390,6 +391,7 @@ export const initialClassData: ClassDataMap = {
             {
                   "id": 80102,
                   "name": "Ana Cristina Silva Pereira",
+                  "status": "cancelado",
                   "enrolledTrimesters": [
                         1,
                         2,
@@ -443,7 +445,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "F",
                         "17/08": "F",
                         "24/08": "F",
-                        "31/08": "F"
+                        "31/08": "F",
+                        "14/09": "P"
                   },
                   "trimestreGrades": {
                         "2": {
@@ -476,7 +479,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "P",
                         "24/08": "P",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "F"
                   },
                   "trimestreGrades": {
                         "2": {
@@ -509,7 +513,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "F",
                         "17/08": "P",
                         "24/08": "P",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "P"
                   },
                   "trimestreGrades": {
                         "2": {
@@ -542,7 +547,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "P",
                         "24/08": "P",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "P"
                   },
                   "trimestreGrades": {
                         "2": {
@@ -575,7 +581,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "P",
                         "24/08": "P",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "F"
                   },
                   "trimestreGrades": {
                         "2": {
@@ -608,7 +615,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "P",
                         "24/08": "F",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "P"
                   },
                   "trimestreGrades": {
                         "2": {
@@ -641,7 +649,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "F",
                         "17/08": "P",
                         "24/08": "P",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "P"
                   },
                   "trimestreGrades": {
                         "2": {
@@ -674,7 +683,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "F",
                         "17/08": "P",
                         "24/08": "P",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "P"
                   },
                   "trimestreGrades": {
                         "2": {
@@ -707,7 +717,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "F",
                         "17/08": "P",
                         "24/08": "P",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "P"
                   },
                   "trimestreGrades": {
                         "2": {
@@ -740,7 +751,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "F",
                         "17/08": "P",
                         "24/08": "P",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "F"
                   },
                   "trimestreGrades": {
                         "2": {
@@ -773,7 +785,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "P",
                         "24/08": "P",
-                        "31/08": "F"
+                        "31/08": "F",
+                        "14/09": "P"
                   },
                   "trimestreGrades": {
                         "2": {
@@ -806,7 +819,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "P",
                         "24/08": "P",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "P"
                   },
                   "trimestreGrades": {
                         "2": {
@@ -839,7 +853,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "P",
                         "24/08": "P",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "P"
                   },
                   "trimestreGrades": {
                         "2": {
@@ -872,7 +887,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "F",
                         "17/08": "P",
                         "24/08": "P",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "F"
                   },
                   "trimestreGrades": {
                         "2": {
@@ -905,7 +921,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "P",
                         "24/08": "P",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "P"
                   },
                   "trimestreGrades": {
                         "2": {
@@ -938,7 +955,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "P",
                         "24/08": "F",
-                        "31/08": "F"
+                        "31/08": "F",
+                        "14/09": "F"
                   },
                   "trimestreGrades": {
                         "2": {
@@ -951,6 +969,7 @@ export const initialClassData: ClassDataMap = {
             {
                   "id": 80119,
                   "name": "Ezequiel Lima de Oliveira",
+                  "status": "cancelado",
                   "enrolledTrimesters": [
                         1,
                         2,
@@ -1004,7 +1023,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "F",
                         "17/08": "P",
                         "24/08": "F",
-                        "31/08": "F"
+                        "31/08": "F",
+                        "14/09": "F"
                   },
                   "trimestreGrades": {
                         "2": {
@@ -1037,7 +1057,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "P",
                         "24/08": "P",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "P"
                   },
                   "trimestreGrades": {
                         "2": {
@@ -1070,7 +1091,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "P",
                         "24/08": "P",
-                        "31/08": "F"
+                        "31/08": "F",
+                        "14/09": "P"
                   },
                   "trimestreGrades": {
                         "2": {
@@ -1103,7 +1125,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "P",
                         "24/08": "P",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "F"
                   },
                   "trimestreGrades": {
                         "2": {
@@ -1136,7 +1159,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "P",
                         "24/08": "P",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "P"
                   },
                   "trimestreGrades": {
                         "2": {
@@ -1169,7 +1193,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "P",
                         "24/08": "P",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "F"
                   },
                   "trimestreGrades": {
                         "2": {
@@ -1202,7 +1227,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "F",
                         "24/08": "P",
-                        "31/08": "F"
+                        "31/08": "F",
+                        "14/09": "F"
                   },
                   "trimestreGrades": {
                         "2": {
@@ -1235,7 +1261,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "F",
                         "17/08": "F",
                         "24/08": "P",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "P"
                   },
                   "trimestreGrades": {
                         "2": {
@@ -1268,7 +1295,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "P",
                         "24/08": "P",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "P"
                   },
                   "trimestreGrades": {
                         "2": {
@@ -1301,7 +1329,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "P",
                         "24/08": "P",
-                        "31/08": "F"
+                        "31/08": "F",
+                        "14/09": "P"
                   },
                   "trimestreGrades": {
                         "2": {
@@ -1334,7 +1363,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "P",
                         "24/08": "P",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "P"
                   },
                   "trimestreGrades": {
                         "2": {
@@ -1367,7 +1397,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "P",
                         "24/08": "F",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "F"
                   },
                   "trimestreGrades": {
                         "2": {
@@ -1400,7 +1431,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "P",
                         "24/08": "P",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "P"
                   },
                   "trimestreGrades": {
                         "2": {
@@ -1480,6 +1512,13 @@ export const initialClassData: ClassDataMap = {
         plannedActivity: "",
         actualActivity: "Retorno do recesso escolar e chamada/lançamento de frequência do dia 27/07.",
         observations: ""
+      },
+      {
+        id: "cordelia-801-2026-09-14",
+        date: "2026-09-14T12:00:00.000Z",
+        plannedActivity: "Lançamento de frequência",
+        actualActivity: "Lançamento de frequência e acompanhamento da turma.",
+        observations: "Ana Cristina e Ezequiel saíram da turma."
       }
     ]
   },
@@ -1513,7 +1552,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "P",
                         "24/08": "P",
-                        "31/08": "F"
+                        "31/08": "F",
+                        "14/09": "P"
                   },
                   "trimestreGrades": {
                         "1": {
@@ -1551,7 +1591,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "P",
                         "24/08": "P",
-                        "31/08": "F"
+                        "31/08": "F",
+                        "14/09": "P"
                   },
                   "grades": {
                         "jogos_do_mundo_802_2026_06_22": 2.5
@@ -1592,7 +1633,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "P",
                         "24/08": "P",
-                        "31/08": "F"
+                        "31/08": "F",
+                        "14/09": "P"
                   },
                   "grades": {
                         "jogos_do_mundo_802_2026_06_22": 3
@@ -1633,7 +1675,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "P",
                         "24/08": "P",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "F"
                   },
                   "grades": {
                         "jogos_do_mundo_802_2026_06_22": 3
@@ -1674,7 +1717,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "F",
                         "24/08": "P",
-                        "31/08": "F"
+                        "31/08": "F",
+                        "14/09": "F"
                   },
                   "trimestreGrades": {
                         "1": {
@@ -1712,7 +1756,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "P",
                         "24/08": "P",
-                        "31/08": "F"
+                        "31/08": "F",
+                        "14/09": "P"
                   },
                   "trimestreGrades": {
                         "1": {
@@ -1750,7 +1795,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "P",
                         "24/08": "P",
-                        "31/08": "F"
+                        "31/08": "F",
+                        "14/09": "F"
                   },
                   "trimestreGrades": {
                         "1": {
@@ -1788,7 +1834,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "P",
                         "24/08": "P",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "P"
                   },
                   "trimestreGrades": {
                         "1": {
@@ -1826,7 +1873,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "P",
                         "24/08": "P",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "F"
                   },
                   "trimestreGrades": {
                         "1": {
@@ -1864,7 +1912,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "P",
                         "24/08": "P",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "P"
                   },
                   "trimestreGrades": {
                         "1": {
@@ -1902,7 +1951,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "F",
                         "24/08": "P",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "P"
                   },
                   "trimestreGrades": {
                         "1": {
@@ -1940,7 +1990,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "P",
                         "24/08": "P",
-                        "31/08": "F"
+                        "31/08": "F",
+                        "14/09": "P"
                   },
                   "trimestreGrades": {
                         "1": {
@@ -1978,7 +2029,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "F",
                         "17/08": "P",
                         "24/08": "P",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "P"
                   },
                   "grades": {
                         "jogos_do_mundo_802_2026_06_22": 3
@@ -2019,7 +2071,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "P",
                         "24/08": "P",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "F"
                   },
                   "trimestreGrades": {
                         "1": {
@@ -2057,7 +2110,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "F",
                         "17/08": "F",
                         "24/08": "F",
-                        "31/08": "F"
+                        "31/08": "F",
+                        "14/09": "P"
                   },
                   "grades": {
                         "jogos_do_mundo_802_2026_06_22": 3
@@ -2098,7 +2152,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "P",
                         "24/08": "P",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "P"
                   },
                   "trimestreGrades": {
                         "1": {
@@ -2136,7 +2191,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "F",
                         "24/08": "P",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "P"
                   },
                   "grades": {
                         "jogos_do_mundo_802_2026_06_22": 3
@@ -2177,7 +2233,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "P",
                         "24/08": "P",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "F"
                   },
                   "grades": {
                         "jogos_do_mundo_802_2026_06_22": 2.5
@@ -2218,7 +2275,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "P",
                         "24/08": "P",
-                        "31/08": "F"
+                        "31/08": "F",
+                        "14/09": "F"
                   },
                   "trimestreGrades": {
                         "1": {
@@ -2256,7 +2314,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "F",
                         "24/08": "F",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "P"
                   },
                   "trimestreGrades": {
                         "1": {
@@ -2294,7 +2353,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "P",
                         "24/08": "F",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "F"
                   },
                   "grades": {
                         "jogos_do_mundo_802_2026_06_22": 2.5
@@ -2335,7 +2395,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "P",
                         "24/08": "F",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "P"
                   },
                   "grades": {
                         "jogos_do_mundo_802_2026_06_22": 2.2
@@ -2376,7 +2437,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "F",
                         "17/08": "F",
                         "24/08": "F",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "P"
                   },
                   "trimestreGrades": {
                         "1": {
@@ -2414,7 +2476,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "P",
                         "24/08": "F",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "P"
                   },
                   "grades": {
                         "jogos_do_mundo_802_2026_06_22": 2.2
@@ -2455,7 +2518,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "P",
                         "24/08": "F",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "F"
                   },
                   "trimestreGrades": {
                         "1": {
@@ -2493,7 +2557,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "P",
                         "24/08": "F",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "P"
                   },
                   "trimestreGrades": {
                         "1": {
@@ -2531,7 +2596,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "F",
                         "17/08": "F",
                         "24/08": "F",
-                        "31/08": "P"
+                        "31/08": "P",
+                        "14/09": "P"
                   },
                   "trimestreGrades": {
                         "1": {
@@ -2568,7 +2634,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "F",
                         "17/08": "F",
                         "24/08": "F",
-                        "31/08": "F"
+                        "31/08": "F",
+                        "14/09": "P"
                   },
                   "trimestreGrades": {
                         "2": {
@@ -2600,7 +2667,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "F",
                         "17/08": "F",
                         "24/08": "F",
-                        "31/08": "F"
+                        "31/08": "F",
+                        "14/09": "P"
                   },
                   "trimestreGrades": {
                         "2": {
@@ -2632,7 +2700,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "F",
                         "24/08": "P",
-                        "31/08": "F"
+                        "31/08": "F",
+                        "14/09": "F"
                   },
                   "trimestreGrades": {
                         "2": {
@@ -2664,7 +2733,8 @@ export const initialClassData: ClassDataMap = {
                         "10/08": "P",
                         "17/08": "F",
                         "24/08": "P",
-                        "31/08": "F"
+                        "31/08": "F",
+                        "14/09": "F"
                   },
                   "trimestreGrades": {
                         "2": {
@@ -2744,6 +2814,13 @@ export const initialClassData: ClassDataMap = {
         plannedActivity: "",
         actualActivity: "Retorno do recesso escolar e chamada/lançamento de frequência do dia 27/07.",
         observations: ""
+      },
+      {
+        id: "cordelia-802-2026-09-14",
+        date: "2026-09-14T12:00:00.000Z",
+        plannedActivity: "Lançamento de frequência",
+        actualActivity: "Lançamento de frequência e acompanhamento da turma.",
+        observations: ""
       }
     ]
   },
@@ -2776,7 +2853,8 @@ export const initialClassData: ClassDataMap = {
                       "10/08": "F",
                       "17/08": "P",
                       "24/08": "P",
-                      "31/08": "P"
+                      "31/08": "P",
+                      "14/09": "F"
                 },
                 "trimestreGrades": {
                       "1": {
@@ -2813,7 +2891,8 @@ export const initialClassData: ClassDataMap = {
                       "10/08": "P",
                       "17/08": "P",
                       "24/08": "P",
-                      "31/08": "P"
+                      "31/08": "P",
+                      "14/09": "P"
                 },
                 "trimestreGrades": {
                       "1": {
@@ -2850,7 +2929,8 @@ export const initialClassData: ClassDataMap = {
                       "10/08": "F",
                       "17/08": "P",
                       "24/08": "P",
-                      "31/08": "P"
+                      "31/08": "P",
+                      "14/09": "P"
                 },
                 "trimestreGrades": {
                       "1": {
@@ -2868,6 +2948,7 @@ export const initialClassData: ClassDataMap = {
           {
                 "id": 80304,
                 "name": "Esther Nunes da Costa",
+                "status": "cancelado",
                 "enrolledTrimesters": [
                       1,
                       2,
@@ -2924,7 +3005,8 @@ export const initialClassData: ClassDataMap = {
                       "10/08": "P",
                       "17/08": "P",
                       "24/08": "P",
-                      "31/08": "P"
+                      "31/08": "P",
+                      "14/09": "F"
                 },
                 "trimestreGrades": {
                       "1": {
@@ -2942,6 +3024,7 @@ export const initialClassData: ClassDataMap = {
           {
                 "id": 80306,
                 "name": "Ítalo Silva de Almeida",
+                "status": "cancelado",
                 "enrolledTrimesters": [
                       1,
                       2,
@@ -2979,6 +3062,7 @@ export const initialClassData: ClassDataMap = {
           {
                 "id": 80307,
                 "name": "João Paulo Lima da Silva",
+                "status": "cancelado",
                 "enrolledTrimesters": [
                       1,
                       2,
@@ -2998,7 +3082,8 @@ export const initialClassData: ClassDataMap = {
                       "10/08": "P",
                       "17/08": "P",
                       "24/08": "P",
-                      "31/08": "P"
+                      "31/08": "F",
+                      "14/09": "F"
                 },
                 "trimestreGrades": {
                       "1": {
@@ -3035,7 +3120,8 @@ export const initialClassData: ClassDataMap = {
                       "10/08": "P",
                       "17/08": "P",
                       "24/08": "P",
-                      "31/08": "P"
+                      "31/08": "P",
+                      "14/09": "P"
                 },
                 "trimestreGrades": {
                       "1": {
@@ -3072,7 +3158,8 @@ export const initialClassData: ClassDataMap = {
                       "10/08": "P",
                       "17/08": "P",
                       "24/08": "P",
-                      "31/08": "P"
+                      "31/08": "P",
+                      "14/09": "P"
                 },
                 "trimestreGrades": {
                       "1": {
@@ -3109,7 +3196,8 @@ export const initialClassData: ClassDataMap = {
                       "10/08": "F",
                       "17/08": "P",
                       "24/08": "P",
-                      "31/08": "P"
+                      "31/08": "P",
+                      "14/09": "P"
                 },
                 "trimestreGrades": {
                       "1": {
@@ -3146,7 +3234,8 @@ export const initialClassData: ClassDataMap = {
                       "10/08": "P",
                       "17/08": "P",
                       "24/08": "P",
-                      "31/08": "P"
+                      "31/08": "P",
+                      "14/09": "F"
                 },
                 "trimestreGrades": {
                       "1": {
@@ -3183,7 +3272,8 @@ export const initialClassData: ClassDataMap = {
                       "10/08": "F",
                       "17/08": "P",
                       "24/08": "F",
-                      "31/08": "P"
+                      "31/08": "P",
+                      "14/09": "P"
                 },
                 "trimestreGrades": {
                       "1": {
@@ -3220,7 +3310,8 @@ export const initialClassData: ClassDataMap = {
                       "10/08": "P",
                       "17/08": "P",
                       "24/08": "P",
-                      "31/08": "P"
+                      "31/08": "P",
+                      "14/09": "P"
                 },
                 "trimestreGrades": {
                       "1": {
@@ -3257,7 +3348,8 @@ export const initialClassData: ClassDataMap = {
                       "10/08": "P",
                       "17/08": "P",
                       "24/08": "P",
-                      "31/08": "P"
+                      "31/08": "P",
+                      "14/09": "P"
                 },
                 "trimestreGrades": {
                       "1": {
@@ -3294,7 +3386,8 @@ export const initialClassData: ClassDataMap = {
                       "10/08": "F",
                       "17/08": "P",
                       "24/08": "F",
-                      "31/08": "F"
+                      "31/08": "F",
+                      "14/09": "F"
                 },
                 "trimestreGrades": {
                       "1": {
@@ -3331,7 +3424,8 @@ export const initialClassData: ClassDataMap = {
                       "10/08": "P",
                       "17/08": "P",
                       "24/08": "P",
-                      "31/08": "P"
+                      "31/08": "P",
+                      "14/09": "F"
                 },
                 "trimestreGrades": {
                       "1": {
@@ -3368,7 +3462,8 @@ export const initialClassData: ClassDataMap = {
                       "10/08": "P",
                       "17/08": "P",
                       "24/08": "P",
-                      "31/08": "P"
+                      "31/08": "P",
+                      "14/09": "P"
                 },
                 "trimestreGrades": {
                       "1": {
@@ -3405,7 +3500,8 @@ export const initialClassData: ClassDataMap = {
                       "10/08": "F",
                       "17/08": "P",
                       "24/08": "P",
-                      "31/08": "P"
+                      "31/08": "P",
+                      "14/09": "P"
                 },
                 "trimestreGrades": {
                       "1": {
@@ -3423,6 +3519,7 @@ export const initialClassData: ClassDataMap = {
           {
                 "id": 80319,
                 "name": "Ray Bomfim Pereira",
+                "status": "cancelado",
                 "enrolledTrimesters": [
                       1,
                       2,
@@ -3479,7 +3576,8 @@ export const initialClassData: ClassDataMap = {
                       "10/08": "P",
                       "17/08": "F",
                       "24/08": "P",
-                      "31/08": "P"
+                      "31/08": "P",
+                      "14/09": "F"
                 },
                 "trimestreGrades": {
                       "1": {
@@ -3516,7 +3614,8 @@ export const initialClassData: ClassDataMap = {
                       "10/08": "P",
                       "17/08": "P",
                       "24/08": "P",
-                      "31/08": "P"
+                      "31/08": "P",
+                      "14/09": "P"
                 },
                 "trimestreGrades": {
                       "1": {
@@ -3553,7 +3652,8 @@ export const initialClassData: ClassDataMap = {
                       "10/08": "P",
                       "17/08": "P",
                       "24/08": "P",
-                      "31/08": "P"
+                      "31/08": "P",
+                      "14/09": "P"
                 },
                 "trimestreGrades": {
                       "1": {
@@ -3590,7 +3690,8 @@ export const initialClassData: ClassDataMap = {
                       "10/08": "P",
                       "17/08": "P",
                       "24/08": "P",
-                      "31/08": "P"
+                      "31/08": "P",
+                      "14/09": "F"
                 },
                 "trimestreGrades": {
                       "1": {
@@ -3627,7 +3728,8 @@ export const initialClassData: ClassDataMap = {
                       "10/08": "P",
                       "17/08": "P",
                       "24/08": "P",
-                      "31/08": "P"
+                      "31/08": "P",
+                      "14/09": "P"
                 },
                 "trimestreGrades": {
                       "1": {
@@ -3664,7 +3766,8 @@ export const initialClassData: ClassDataMap = {
                       "10/08": "P",
                       "17/08": "P",
                       "24/08": "P",
-                      "31/08": "F"
+                      "31/08": "F",
+                      "14/09": "F"
                 },
                 "trimestreGrades": {
                       "1": {
@@ -3701,7 +3804,8 @@ export const initialClassData: ClassDataMap = {
                       "10/08": "P",
                       "17/08": "P",
                       "24/08": "P",
-                      "31/08": "P"
+                      "31/08": "P",
+                      "14/09": "P"
                 },
                 "trimestreGrades": {
                       "1": {
@@ -3738,7 +3842,8 @@ export const initialClassData: ClassDataMap = {
                       "10/08": "F",
                       "17/08": "P",
                       "24/08": "F",
-                      "31/08": "P"
+                      "31/08": "P",
+                      "14/09": "F"
                 },
                 "trimestreGrades": {
                       "1": {
@@ -3767,7 +3872,8 @@ export const initialClassData: ClassDataMap = {
                       "10/08": "F",
                       "17/08": "P",
                       "24/08": "P",
-                      "31/08": "F"
+                      "31/08": "F",
+                      "14/09": "P"
                 },
                 "trimestreGrades": {
                       "2": {
@@ -3788,7 +3894,8 @@ export const initialClassData: ClassDataMap = {
                 "attendance": {
                       "17/08": "P",
                       "24/08": "P",
-                      "31/08": "P"
+                      "31/08": "P",
+                      "14/09": "P"
                 },
                 "trimestreGrades": {
                       "2": {
@@ -3809,7 +3916,8 @@ export const initialClassData: ClassDataMap = {
                 "attendance": {
                       "17/08": "P",
                       "24/08": "P",
-                      "31/08": "F"
+                      "31/08": "F",
+                      "14/09": "P"
                 },
                 "trimestreGrades": {
                       "2": {
@@ -3890,6 +3998,13 @@ export const initialClassData: ClassDataMap = {
         plannedActivity: "",
         actualActivity: "Retorno do recesso escolar e chamada/lançamento de frequência do dia 27/07.",
         observations: ""
+      },
+      {
+        id: "cordelia-803-2026-09-14",
+        date: "2026-09-14T12:00:00.000Z",
+        plannedActivity: "Lançamento de frequência",
+        actualActivity: "Lançamento de frequência e acompanhamento da turma.",
+        observations: "Ray, João Paulo, Ítalo e Esther saíram da turma."
       }
     ]
   },
