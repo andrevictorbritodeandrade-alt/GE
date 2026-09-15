@@ -1,15 +1,16 @@
 import React from 'react';
-import { ClipboardList } from 'lucide-react';
-import { ClassDataMap, ClassData } from '../types';
+import { ClipboardList, Printer } from 'lucide-react';
+import { ClassDataMap, ClassData, Assignment } from '../types';
 import { ScreenHeader } from './ScreenHeader';
 import { BackButton } from './BackButton';
 
 interface AssignmentsViewProps {
   classData: ClassDataMap;
   onBack: () => void;
+  onSelectAssignment: (assignment: Assignment, classId: string) => void;
 }
 
-export const AssignmentsView: React.FC<AssignmentsViewProps> = ({ classData, onBack }) => {
+export const AssignmentsView: React.FC<AssignmentsViewProps> = ({ classData, onBack, onSelectAssignment }) => {
   return (
     <div className="space-y-6 max-w-7xl mx-auto pb-16 font-sans">
       <ScreenHeader
@@ -31,12 +32,24 @@ export const AssignmentsView: React.FC<AssignmentsViewProps> = ({ classData, onB
               </h2>
               <div className="space-y-4">
                 {classItem.assignments.map((assignment) => (
-                  <div key={assignment.id} className="p-4 bg-slate-50 rounded-xl border border-slate-200">
-                    <h3 className="font-bold text-slate-900">{assignment.title}</h3>
-                    <p className="text-sm text-slate-600">{assignment.description}</p>
-                    <div className="mt-4 flex gap-4 text-xs font-bold text-slate-500 uppercase tracking-widest">
-                      <span>Data: {assignment.dueDate}</span>
-                      <span>Valor: {assignment.totalPoints} pts</span>
+                  <div key={assignment.id} className="p-4 bg-slate-50 rounded-xl border border-slate-200 group">
+                    <div className="flex justify-between items-start gap-4">
+                      <div className="flex-1">
+                        <h3 className="font-bold text-slate-900">{assignment.title}</h3>
+                        <p className="text-sm text-slate-600 mt-1">{assignment.description}</p>
+                      </div>
+                      <button 
+                        onClick={() => onSelectAssignment(assignment, classItem.id)}
+                        className="flex items-center gap-2 bg-white border border-slate-200 text-slate-700 px-3 py-2 rounded-lg font-bold text-xs shadow-sm hover:bg-indigo-50 hover:text-indigo-600 hover:border-indigo-200 transition-all opacity-0 group-hover:opacity-100"
+                        title="Imprimir Trabalho"
+                      >
+                        <Printer size={14} /> Imprimir
+                      </button>
+                    </div>
+                    <div className="mt-4 flex flex-wrap gap-4 text-xs font-bold text-slate-500 uppercase tracking-widest">
+                      <span>Entrega: {assignment.dueDate}</span>
+                      <span>Valor: {assignment.totalPoints.toFixed(1)} pts</span>
+                      <span>Formato: {assignment.format}</span>
                     </div>
                   </div>
                 ))}

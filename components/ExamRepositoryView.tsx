@@ -267,6 +267,51 @@ const EXAMS: Exam[] = [
         points: 0.5
       }
     ]
+  },
+  {
+    id: 'trab_futsal_volei_ap201',
+    title: 'Trabalho Avaliativo: Futsal e Voleibol',
+    subject: 'Educação Física',
+    classes: ['Turma AP 201 - CIEP 369'],
+    trimester: '3º Trimestre',
+    totalPoints: 10.0,
+    questions: [
+      {
+        id: 'q1',
+        type: 'discursive',
+        text: 'No Voleibol, o que é o sistema de "Rodízio" e em que sentido os jogadores devem se mover na quadra?',
+        points: 2.0,
+        expectedAnswer: 'O rodízio é a troca de posições dos jogadores toda vez que a equipe recupera o saque. O sentido de movimentação é o horário.'
+      },
+      {
+        id: 'q2',
+        type: 'discursive',
+        text: 'No Futsal, cite as 4 posições principais de linha (Fixo, Alas e Pivô) e explique brevemente a função principal do "Fixo".',
+        points: 2.0,
+        expectedAnswer: 'Posições: Fixo, Alas (Direito e Esquerdo) e Pivô. O Fixo é o jogador mais recuado, responsável pela organização defensiva e início das jogadas.'
+      },
+      {
+        id: 'q3',
+        type: 'discursive',
+        text: 'No Voleibol, em qual situação de jogo a "Manchete" é mais recomendada em comparação ao "Toque de Dedos"?',
+        points: 2.0,
+        expectedAnswer: 'O toque é feito com as pontas dos dedos acima da cabeça, usado para levantamento. A manchete é feita com os antebraços unidos, recomendada para recepção de saques e defesas de ataques potentes.'
+      },
+      {
+        id: 'q4',
+        type: 'discursive',
+        text: 'Explique como deve ser cobrado o "Tiro de Canto" (Escanteio) no Futsal e qual o tempo limite que o jogador tem para realizar a cobrança.',
+        points: 2.0,
+        expectedAnswer: 'Deve ser cobrado com os pés, com a bola sobre a linha. O jogador tem 4 segundos para realizar a cobrança.'
+      },
+      {
+        id: 'q5',
+        type: 'discursive',
+        text: 'DESENHO TÁTICO: No espaço abaixo, desenhe uma quadra de Futsal ou Voleibol e posicione os jogadores em um sistema tático estudado (ex: 3:1 no Futsal ou 6:0 no Voleibol).',
+        points: 2.0,
+        expectedAnswer: 'O aluno deve desenhar o retângulo da quadra com as linhas principais e posicionar 5 (futsal) ou 6 (vôlei) jogadores de forma coerente com o sistema escolhido.'
+      }
+    ]
   }
 ];
 

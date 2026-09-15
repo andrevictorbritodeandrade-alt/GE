@@ -4016,6 +4016,17 @@ export const initialClassData: ClassDataMap = {
     discipline: "Educação Física",
     schedule: "14:25 – 16:05",
     days: ["Quinta"],
+    assignments: [
+      {
+        id: "AP201_TRAB_1",
+        title: "Trabalho Avaliativo: Futsal e Voleibol",
+        discipline: "Educação Física",
+        description: "Mapeamento tático e fundamentos teóricos dos esportes de quadra (Futsal e Voleibol).",
+        totalPoints: 10,
+        format: "Individual - Escrito",
+        dueDate: "30/09/2026"
+      }
+    ],
     students: [
       { id: 369201, name: "Alerrandro de Oliveira", enrolledTrimesters: [1, 2, 3], attendance: {} },
       { id: 369202, name: "Brenda Luíza Santos", enrolledTrimesters: [1, 2, 3], attendance: {} },

@@ -22,7 +22,9 @@ import { PortalView } from './components/PortalView';
 import { ProfessorLoginView } from './components/ProfessorLoginView';
 import { AlunosView } from './components/AlunosView';
 import { GradesView } from './components/GradesView';
-import { ViewState, ClassDataMap, ClassData, GalleryData } from './types';
+import { AssignmentsView } from './components/AssignmentsView';
+import { AssignmentPrintView } from './components/AssignmentPrintView';
+import { ViewState, ClassDataMap, ClassData, GalleryData, Assignment } from './types';
 import { mockUserProfile, initialClassData, sanitizeAndNormalizeClassData } from './constants';
 import { initFirebase, subscribeToClasses, saveClassesToFirestore, deleteClassesBatchFromFirestore, subscribeToGallery, saveGalleryToFirestore } from './services/firebaseService';
 import { AiAssistant } from './components/AiAssistant';
@@ -103,7 +105,7 @@ const App: React.FC = () => {
   const ALL_VALID_VIEWS: ViewState[] = [
     'home', 'statistics', 'classes', 'profile', 'ementa', 'plano', 
     'lesson-content', 'schedule', 'gallery', 'assignments', 'biblioteca', 
-    'register-activities', 'decolonial', 'calendar', 'daily-activities', 'alunos-view'
+    'register-activities', 'decolonial', 'calendar', 'daily-activities', 'alunos-view', 'assignment-print'
   ];
 
   const [currentView, setView] = useState<ViewState>(() => {
@@ -352,6 +354,7 @@ const App: React.FC = () => {
       return safeLocalStorage.getItem('app_selectedClassId');
     }
   });
+  const [selectedAssignment, setSelectedAssignment] = useState<{ assignment: Assignment, classId: string } | null>(null);
 
   useEffect(() => {
     safeLocalStorage.setItem('app_currentView', currentView);
@@ -829,6 +832,24 @@ const App: React.FC = () => {
           onSave={handleSaveClasses}
         />
       );
+      case 'assignments': return (
+        <AssignmentsView 
+          classData={classData} 
+          onBack={goBack} 
+          onSelectAssignment={(assignment, classId) => {
+            setSelectedAssignment({ assignment, classId });
+            setView('assignment-print');
+          }}
+        />
+      );
+      case 'assignment-print': return selectedAssignment ? (
+        <AssignmentPrintView 
+          assignment={selectedAssignment.assignment}
+          className={classData[selectedAssignment.classId]?.name || ''}
+          school={classData[selectedAssignment.classId]?.school || ''}
+          onBack={() => setView('assignments')}
+        />
+      ) : <DashboardView setView={setViewWithHistory} classData={classData} />;
       case 'daily-activities': return (
         <DailyActivityLogView 
           classData={classData} 
