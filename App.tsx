@@ -917,7 +917,9 @@ const App: React.FC = () => {
       )}
 
       {/* Global Background */}
-      <BackgroundSlider />
+      <div className="print:hidden">
+        <BackgroundSlider />
+      </div>
       
       {accessLevel === 'portal' && (
         <PortalView onSelectAccess={(level) => setAccessLevel(level)} />
@@ -947,54 +949,58 @@ const App: React.FC = () => {
           <div className="flex-1 flex flex-col">
              
              {/* Sidebar */}
-             <Sidebar 
-               isOpen={isSidebarOpen} 
-               onClose={() => setSidebarOpen(false)} 
-               currentView={currentView}
-               setView={(v) => { resetClassesNav(); setView(v); }}
-               onSwitchToPortal={() => setAccessLevel('portal')}
-             />
+             <div className="print:hidden">
+               <Sidebar 
+                 isOpen={isSidebarOpen} 
+                 onClose={() => setSidebarOpen(false)} 
+                 currentView={currentView}
+                 setView={(v) => { resetClassesNav(); setView(v); }}
+                 onSwitchToPortal={() => setAccessLevel('portal')}
+               />
+             </div>
 
              {/* Header */}
-             <header className="bg-black/80 backdrop-blur-md border-b border-white/10 h-16 flex items-center px-4 sticky top-0 z-30 shadow-2xl shrink-0 transition-all duration-300 text-white">
-               <button 
-                 onClick={() => setSidebarOpen(true)}
-                 className="p-2 mr-3 rounded-xl bg-white/5 hover:bg-white/10 text-white focus:outline-none transition-all active:scale-90 border border-white/10 shadow-lg"
-               >
-                 <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 6h16M4 12h16M4 18h16" />
-                 </svg>
-               </button>
-               
-               <div className="flex items-center gap-3">
-                 <div className="flex flex-col justify-center">
-                   <h1 className="text-base md:text-lg font-black leading-tight tracking-tighter uppercase">{currentView === 'home' ? 'CONTEÚDOS TEÓRICOS' : getTitle()}</h1>
-                   <p className="text-[9px] md:text-[10px] font-bold text-white/40 uppercase tracking-[0.2em] truncate">
-                     {currentView === 'home' ? 'Prof. André Brito' : 'MÓDULO DE GESTÃO'}
-                   </p>
+             {currentView !== 'assignment-print' && (
+               <header className="bg-black/80 backdrop-blur-md border-b border-white/10 h-16 flex items-center px-4 sticky top-0 z-30 shadow-2xl shrink-0 transition-all duration-300 text-white print:hidden">
+                 <button 
+                   onClick={() => setSidebarOpen(true)}
+                   className="p-2 mr-3 rounded-xl bg-white/5 hover:bg-white/10 text-white focus:outline-none transition-all active:scale-90 border border-white/10 shadow-lg"
+                 >
+                   <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 6h16M4 12h16M4 18h16" />
+                   </svg>
+                 </button>
+                 
+                 <div className="flex items-center gap-3">
+                   <div className="flex flex-col justify-center">
+                     <h1 className="text-base md:text-lg font-black leading-tight tracking-tighter uppercase">{currentView === 'home' ? 'CONTEÚDOS TEÓRICOS' : getTitle()}</h1>
+                     <p className="text-[9px] md:text-[10px] font-bold text-white/40 uppercase tracking-[0.2em] truncate">
+                       {currentView === 'home' ? 'Prof. André Brito' : 'MÓDULO DE GESTÃO'}
+                     </p>
+                   </div>
                  </div>
-               </div>
-               
-               <div className="ml-auto flex items-center gap-2 md:gap-5">
-                  <div className="hidden sm:block">
-                    <SyncStatusIndicator status={syncStatus} />
-                  </div>
-                  <button
-                    onClick={() => setAccessLevel('portal')}
-                    className="px-3 py-1.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-[10px] md:text-xs font-black uppercase tracking-wider flex items-center gap-1.5 shadow-md active:scale-95 transition-all"
-                    title="Voltar ao Menu Iniciar"
-                  >
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                    </svg>
-                    <span className="hidden sm:inline">Menu Iniciar</span>
-                  </button>
-                  <WeatherWidget />
-               </div>
-             </header>
+                 
+                 <div className="ml-auto flex items-center gap-2 md:gap-5">
+                    <div className="hidden sm:block">
+                      <SyncStatusIndicator status={syncStatus} />
+                    </div>
+                    <button
+                      onClick={() => setAccessLevel('portal')}
+                      className="px-3 py-1.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-[10px] md:text-xs font-black uppercase tracking-wider flex items-center gap-1.5 shadow-md active:scale-95 transition-all"
+                      title="Voltar ao Menu Iniciar"
+                    >
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                      </svg>
+                      <span className="hidden sm:inline">Menu Iniciar</span>
+                    </button>
+                    <WeatherWidget />
+                 </div>
+               </header>
+             )}
 
              {/* Main Content Area */}
-             <main className={`flex-1 ${currentView === 'home' ? 'p-2 md:p-4 pb-16 md:pb-4' : 'p-3 md:p-6 pb-20 md:pb-6'}`}>
+             <main className={`flex-1 ${currentView === 'assignment-print' ? 'p-0' : currentView === 'home' ? 'p-2 md:p-4 pb-16 md:pb-4' : 'p-3 md:p-6 pb-20 md:pb-6'} print:p-0`}>
                <div className="w-full">
                   {currentView === 'home' ? (
                     <DashboardView setView={setViewWithHistory} classData={classData} />
@@ -1002,17 +1008,25 @@ const App: React.FC = () => {
                </div>
              </main>
 
-             <BottomNav 
-               currentView={currentView} 
-               setView={setViewWithHistory} 
-             />
+             {currentView !== 'assignment-print' && (
+               <div className="print:hidden">
+                 <BottomNav 
+                   currentView={currentView} 
+                   setView={setViewWithHistory} 
+                 />
+               </div>
+             )}
              
           </div>
       </div>
       )}
 
       {/* Global Footer (Always visible, unless viewing slides) */}
-      {!slideViewerOpen && accessLevel === 'professor' && <GlobalFooter />}
+      {!slideViewerOpen && accessLevel === 'professor' && (
+        <div className="print:hidden">
+          <GlobalFooter />
+        </div>
+      )}
     </div>
   );
 };
