@@ -1,7 +1,8 @@
 import { ClassDataMap, UserProfile } from './types';
 
 export const ALLOWED_SCHOOLS = [
-  "CE DR. IGNACIO BEZERRA DE MENEZES / CIEP 476 ELIAS LAZARONI",
+  "CE DR. IGNACIO BEZERRA DE MENEZES",
+  "CIEP 476 ELIAS LAZARONI",
   "CIEP 369 JORNALISTA SANDRO MOREYRA",
   "CIEP 229 CÂNDIDO PORTINARI",
   "EE PROFESSORA CORDELIA PAIVA"
@@ -14,8 +15,11 @@ export function normalizeSchoolName(school: string | undefined | null): AllowedS
   const s = school.trim();
   const upper = s.toUpperCase();
   
-  if (upper.includes("IGNACIO") || upper.includes("IGNÁCIO") || upper.includes("BEZERRA") || upper.includes("LAZARONI") || upper.includes("476")) {
-    return "CE DR. IGNACIO BEZERRA DE MENEZES / CIEP 476 ELIAS LAZARONI";
+  if (upper.includes("LAZARONI") || upper.includes("476")) {
+    return "CIEP 476 ELIAS LAZARONI";
+  }
+  if (upper.includes("IGNACIO") || upper.includes("IGNÁCIO") || upper.includes("BEZERRA")) {
+    return "CE DR. IGNACIO BEZERRA DE MENEZES";
   }
   if (upper.includes("CORDELIA") || upper.includes("CORDÉLIA")) {
     return "EE PROFESSORA CORDELIA PAIVA";
@@ -4044,7 +4048,7 @@ export const initialClassData: ClassDataMap = {
     id: "CIEP476_1007",
     name: "ILG CH 1007",
     grade: "1ª Série EM",
-    school: "CE DR. IGNACIO BEZERRA DE MENEZES / CIEP 476 ELIAS LAZARONI",
+    school: "CIEP 476 ELIAS LAZARONI",
     discipline: "ILGCH (Linguagens e Ciências Humanas)",
     schedule: "19:40 – 21:20",
     days: ["Sexta"],

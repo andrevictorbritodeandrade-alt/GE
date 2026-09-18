@@ -75,7 +75,7 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({ onBack }) => {
               Segunda • Tarde
             </span>
             <h3 className="font-black text-slate-900 text-sm mt-2 leading-tight">CIEP 369 JORNALISTA SANDRO MOREYRA</h3>
-            <p className="text-xs text-slate-600 font-medium mt-1">AP Segundas (Atividades Práticas)</p>
+            <p className="text-xs text-slate-600 font-medium mt-1">AP 201 (Atividades Práticas)</p>
           </div>
           <div className="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-amber-700 font-bold">
             <span>13:30 às 15:30</span>
@@ -87,14 +87,14 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({ onBack }) => {
         <div className="bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-rose-200 shadow-sm flex flex-col justify-between">
           <div>
             <span className="text-[9px] font-black uppercase px-2 py-0.5 bg-rose-100 text-rose-800 rounded-md">
-              Sexta • Manhã
+              Sexta • Noite
             </span>
             <h3 className="font-black text-slate-900 text-sm mt-2 leading-tight">CIEP 476 ELIAS LAZARONI</h3>
-            <p className="text-xs text-slate-600 font-medium mt-1">Turmas 1001, 1002, 2001 (Ensino Médio)</p>
+            <p className="text-xs text-slate-600 font-medium mt-1">ILGCH 1007 (Linguagens e Ciências Humanas)</p>
           </div>
           <div className="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-rose-700 font-bold">
-            <span>07:00 às 12:15</span>
-            <span className="bg-rose-50 px-1.5 py-0.5 rounded text-[10px]">3 Turmas</span>
+            <span>19:40 às 21:20</span>
+            <span className="bg-rose-50 px-1.5 py-0.5 rounded text-[10px]">1 Turma</span>
           </div>
         </div>
       </div>
@@ -220,7 +220,13 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({ onBack }) => {
                     tag: 'EJA Médio', 
                     color: 'purple' 
                   }, 
-                  fri: null
+                  fri: {
+                    school: 'CIEP 476 ELIAS LAZARONI',
+                    class: 'ILGCH 1007',
+                    code: 'ILGCH_1007',
+                    tag: '1ª Série EM (Noturno)',
+                    color: 'rose'
+                  }
                 },
               ].map((row, i) => (
                 <tr key={i} className="hover:bg-slate-50/80 transition-colors">

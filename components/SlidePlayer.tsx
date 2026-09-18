@@ -4,7 +4,13 @@ import { safeLocalStorage } from '../utils/storage';
 import { PE_PLAN } from '../data/planosPE';
 import { ChalkboardDiagram } from './ChalkboardDiagram';
 import { Slide, slidesData } from './DecolonialApp';
-import { SLIDES_PARALIMPICO } from '../data/corpoMidiaSlides';
+import { 
+  SLIDES_PARALIMPICO,
+  SLIDES_AULA_1_SETEMBRO_AMARELO,
+  SLIDES_AULA_2_SETEMBRO_AMARELO,
+  SLIDES_AULA_3_SETEMBRO_AMARELO,
+  CRONOGRAMA_3TRI_AULAS
+} from '../data/corpoMidiaSlides';
 import { BackButton } from './BackButton';
 
 interface SlidePlayerProps {
@@ -21,6 +27,30 @@ export const SlidePlayer: React.FC<SlidePlayerProps> = ({
   const getSlides = () => {
     if (!selectedAulaData) return null;
     
+    // Direct search in CRONOGRAMA_3TRI_AULAS (all 14 lessons)
+    const matchedCronogramaAula = CRONOGRAMA_3TRI_AULAS.find(a => 
+      a.id === selectedAulaData || 
+      `setembro_amarelo_${a.id}` === selectedAulaData ||
+      `cronograma_3tri_${a.id}` === selectedAulaData ||
+      `setembro_amarelo_${a.data}` === selectedAulaData ||
+      `cronograma_3tri_${a.data}` === selectedAulaData ||
+      `ilgch_${a.data}` === selectedAulaData
+    );
+    if (matchedCronogramaAula && matchedCronogramaAula.slides && matchedCronogramaAula.slides.length > 0) {
+      return matchedCronogramaAula.slides;
+    }
+
+    // Setembro Amarelo direct mappings
+    if (selectedAulaData === 'aula_1' || selectedAulaData === 'setembro_amarelo_aula_1' || selectedAulaData === 'setembro_amarelo_05/09' || selectedAulaData === 'ilgch_05/09') {
+      return SLIDES_AULA_1_SETEMBRO_AMARELO;
+    }
+    if (selectedAulaData === 'aula_2' || selectedAulaData === 'setembro_amarelo_aula_2' || selectedAulaData === 'setembro_amarelo_12/09' || selectedAulaData === 'ilgch_12/09') {
+      return SLIDES_AULA_2_SETEMBRO_AMARELO;
+    }
+    if (selectedAulaData === 'aula_3' || selectedAulaData === 'setembro_amarelo_aula_3' || selectedAulaData === 'setembro_amarelo_19/09' || selectedAulaData === 'ilgch_19/09') {
+      return SLIDES_AULA_3_SETEMBRO_AMARELO;
+    }
+
     // 1. Direct match in physical slidesData takes highest priority
     if ((slidesData as any)[selectedAulaData]) {
       return (slidesData as any)[selectedAulaData];
@@ -1314,7 +1344,59 @@ export const SlidePlayer: React.FC<SlidePlayerProps> = ({
 
     switch (slideType) {
       case 'capa':
-      case 'hero':
+      case 'hero': {
+        const isSetembro = combinedText.includes('SETEMBRO') || combinedText.includes('AMARELO') || combinedText.includes('SAÚDE MENTAL') || combinedText.includes('CHORA');
+        const isCidadania = combinedText.includes('CIDADANIA') || combinedText.includes('ELEIÇÕES') || combinedText.includes('VOTO') || combinedText.includes('FAKE NEWS') || combinedText.includes('CONSTITUIÇÃO') || combinedText.includes('DIREITOS');
+        const isConsciencia = combinedText.includes('CONSCIÊNCIA') || combinedText.includes('NEGRA') || combinedText.includes('RACISMO') || combinedText.includes('ZUMBI') || combinedText.includes('IDENTIDADE') || combinedText.includes('CULTURA');
+        const isEncerramento = combinedText.includes('ENCERRAMENTO') || combinedText.includes('SÍNTESE') || combinedText.includes('FÉRIAS') || combinedText.includes('AVALIAÇÃO') || combinedText.includes('SACO CHEIO');
+
+        let badgeLabel = '📖 PLANEJAMENTO DE AULA';
+        let badgeStyle = 'bg-blue-500 text-white';
+
+        if (isSetembro) {
+          badgeLabel = '💛 SETEMBRO AMARELO • VALORIZAÇÃO DA VIDA';
+          badgeStyle = 'bg-amber-400 text-slate-950 font-black';
+        } else if (isCidadania) {
+          badgeLabel = '🏛️ CIDADANIA, POLÍTICA & DEMOCRACIA';
+          badgeStyle = 'bg-indigo-600 text-white font-black';
+        } else if (isConsciencia) {
+          badgeLabel = '✊🏾 CONSCIÊNCIA NEGRA & DECOLONIALIDADE';
+          badgeStyle = 'bg-amber-700 text-white font-black';
+        } else if (isEncerramento) {
+          badgeLabel = '✨ SÍNTESE & ENCERRAMENTO DO CICLO';
+          badgeStyle = 'bg-emerald-600 text-white font-black';
+        }
+
+        if (slideAtual.imagem_url) {
+          return (
+            <div className="w-full h-full flex flex-col md:flex-row items-center justify-between p-6 md:p-12 lg:p-16 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 text-white min-h-[450px] gap-8">
+              <div className="w-full md:w-1/2 flex flex-col items-start text-left justify-center">
+                <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full ${badgeStyle} text-xs uppercase tracking-wider mb-6 shadow-md`}>
+                  {badgeLabel}
+                </div>
+                <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white tracking-tight uppercase leading-tight mb-4 drop-shadow-md">
+                  {slideAtual.title || slideAtual.titulo}
+                </h1>
+                <div className="h-1.5 w-24 bg-amber-400 mb-6 rounded"></div>
+                <p className="text-lg md:text-2xl font-bold text-amber-300 leading-snug">
+                  {slideAtual.subtitle || slideAtual.subtitulo}
+                </p>
+              </div>
+              <div className="w-full md:w-1/2 flex items-center justify-center">
+                <div className="relative group max-w-lg w-full">
+                  <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-amber-500 rounded-3xl blur opacity-30 group-hover:opacity-60 transition duration-1000"></div>
+                  <img 
+                    src={slideAtual.imagem_url} 
+                    alt={slideAtual.titulo || slideAtual.title || "Slide Capa"} 
+                    className="relative w-full h-[280px] md:h-[380px] lg:h-[440px] object-cover rounded-2xl shadow-2xl border-2 border-white/20"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+              </div>
+            </div>
+          );
+        }
+
         return isIlgch ? (
           <div className="w-full h-full flex flex-col items-center justify-center text-center p-6 md:p-12 bg-slate-950 min-h-[450px]">
             <h1 className="text-4xl md:text-7xl font-black text-white tracking-tighter mb-6 uppercase leading-tight">
@@ -1335,12 +1417,437 @@ export const SlidePlayer: React.FC<SlidePlayerProps> = ({
             </p>
           </div>
         );
+      }
+
+      case 'objetivos':
+        return (
+          <div className="w-full h-full flex flex-col lg:flex-row items-center justify-between p-6 md:p-12 lg:p-14 bg-gradient-to-br from-blue-50/70 via-white to-indigo-50/50 min-h-[450px] gap-8">
+            <div className={`w-full ${slideAtual.imagem_url ? 'lg:w-3/5' : 'w-full'} flex flex-col justify-center`}>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-blue-100 text-blue-950 border border-blue-300 font-black text-xs uppercase tracking-wider mb-4 w-fit shadow-sm">
+                🎯 OBJETIVOS DE APRENDIZAGEM
+              </div>
+              <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-2 tracking-tight leading-tight">
+                {slideAtual.title || slideAtual.titulo}
+              </h2>
+              {(slideAtual.subtitle || slideAtual.subtitulo) && (
+                <p className="text-lg md:text-xl font-bold text-blue-900 mb-6 border-l-4 border-blue-500 pl-3">
+                  {slideAtual.subtitle || slideAtual.subtitulo}
+                </p>
+              )}
+              {(slideAtual.points || slideAtual.topicos) && (
+                <div className="space-y-3.5">
+                  {(slideAtual.points || slideAtual.topicos)?.map((topico: string, idx: number) => (
+                    <div key={idx} className="p-4 bg-white rounded-2xl border border-blue-200 shadow-sm flex items-start gap-3.5 hover:border-blue-400 transition-colors">
+                      <span className="w-7 h-7 rounded-xl bg-blue-600 text-white font-black text-sm flex items-center justify-center shrink-0 shadow-sm">
+                        {idx + 1}
+                      </span>
+                      <p className="text-base md:text-lg font-bold text-slate-800 leading-snug">
+                        {topico}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+            {slideAtual.imagem_url && (
+              <div className="w-full lg:w-2/5 flex items-center justify-center">
+                <div className="relative w-full max-w-md">
+                  <img 
+                    src={slideAtual.imagem_url} 
+                    alt={slideAtual.titulo || "Objetivos"} 
+                    className="w-full h-[260px] md:h-[360px] object-cover rounded-2xl shadow-xl border-2 border-blue-300"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute bottom-3 left-3 bg-blue-950/90 text-blue-200 px-3 py-1 rounded-lg text-xs font-bold border border-blue-400/30">
+                    Metas Pedagógicas
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        );
+
+      case 'reflexao':
+        return (
+          <div className="w-full h-full flex flex-col lg:flex-row items-center justify-between p-6 md:p-12 lg:p-14 bg-gradient-to-br from-emerald-50/70 via-white to-teal-50/40 min-h-[450px] gap-8">
+            <div className={`w-full ${slideAtual.imagem_url ? 'lg:w-3/5' : 'w-full'} flex flex-col justify-center`}>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-emerald-100 text-emerald-950 border border-emerald-300 font-black text-xs uppercase tracking-wider mb-4 w-fit shadow-sm">
+                💭 REFLEXÃO & AUTOCUIDADO
+              </div>
+              <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-2 tracking-tight leading-tight">
+                {slideAtual.title || slideAtual.titulo}
+              </h2>
+              {(slideAtual.subtitle || slideAtual.subtitulo) && (
+                <p className="text-lg md:text-xl font-bold text-emerald-900 mb-6 border-l-4 border-emerald-500 pl-3">
+                  {slideAtual.subtitle || slideAtual.subtitulo}
+                </p>
+              )}
+              {(slideAtual.points || slideAtual.topicos) && (
+                <div className="space-y-3.5">
+                  {(slideAtual.points || slideAtual.topicos)?.map((topico: string, idx: number) => (
+                    <div key={idx} className="p-4 bg-white rounded-2xl border border-emerald-200 shadow-sm flex items-start gap-3.5 hover:border-emerald-400 transition-colors">
+                      <span className="text-2xl text-emerald-600 shrink-0">🌿</span>
+                      <p className="text-base md:text-lg font-bold text-slate-800 leading-snug">
+                        {topico}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+            {slideAtual.imagem_url && (
+              <div className="w-full lg:w-2/5 flex items-center justify-center">
+                <div className="relative w-full max-w-md">
+                  <img 
+                    src={slideAtual.imagem_url} 
+                    alt={slideAtual.titulo || "Reflexão"} 
+                    className="w-full h-[260px] md:h-[360px] object-cover rounded-2xl shadow-xl border-2 border-emerald-300"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute bottom-3 left-3 bg-emerald-950/90 text-emerald-200 px-3 py-1 rounded-lg text-xs font-bold border border-emerald-400/30">
+                    Cuidado e Conexão
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        );
+
+      case 'discussao':
+        return (
+          <div className="w-full h-full flex flex-col lg:flex-row items-center justify-between p-6 md:p-12 lg:p-14 bg-gradient-to-br from-amber-50/70 via-white to-amber-100/40 min-h-[450px] gap-8">
+            <div className="w-full lg:w-3/5 flex flex-col justify-center">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-amber-100 text-amber-950 border border-amber-300 font-black text-xs uppercase tracking-wider mb-4 w-fit shadow-sm">
+                🗣️ RODA DE CONVERSA & DEBATE
+              </div>
+              <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-3 tracking-tight leading-tight">
+                {slideAtual.title || slideAtual.titulo}
+              </h2>
+              {(slideAtual.subtitle || slideAtual.subtitulo) && (
+                <p className="text-lg md:text-xl font-bold text-amber-800 mb-6 bg-amber-100/60 p-3 rounded-xl border-l-4 border-amber-500">
+                  {slideAtual.subtitle || slideAtual.subtitulo}
+                </p>
+              )}
+              {(slideAtual.points || slideAtual.topicos) && (
+                <div className="space-y-3">
+                  {(slideAtual.points || slideAtual.topicos)?.map((topico: string, idx: number) => (
+                    <div key={idx} className="p-4 bg-white rounded-xl border border-amber-200 shadow-sm flex items-start gap-3 hover:border-amber-400 transition-colors">
+                      <span className="text-xl text-amber-600 font-bold shrink-0 mt-0.5">💬</span>
+                      <p className="text-base md:text-lg font-bold text-slate-800 leading-snug">
+                        {topico}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+            {slideAtual.imagem_url && (
+              <div className="w-full lg:w-2/5 flex items-center justify-center">
+                <div className="relative w-full max-w-md">
+                  <img 
+                    src={slideAtual.imagem_url} 
+                    alt={slideAtual.titulo || "Discussão"} 
+                    className="w-full h-[260px] md:h-[360px] object-cover rounded-2xl shadow-xl border-2 border-amber-300"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute bottom-3 left-3 bg-black/75 backdrop-blur-md text-amber-300 px-3 py-1 rounded-lg text-xs font-bold border border-amber-500/40">
+                    Reflexão em Grupo
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        );
+
+      case 'conceito':
+        return (
+          <div className="w-full h-full flex flex-col lg:flex-row items-center justify-between p-6 md:p-12 lg:p-14 bg-white min-h-[450px] gap-8">
+            <div className={`w-full ${slideAtual.imagem_url ? 'lg:w-3/5' : 'w-full'} flex flex-col justify-center`}>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-yellow-100 text-yellow-950 border border-yellow-300 font-black text-xs uppercase tracking-wider mb-4 w-fit shadow-sm">
+                💡 CONCEITO CHAVE
+              </div>
+              <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-2 tracking-tight leading-tight">
+                {slideAtual.title || slideAtual.titulo}
+              </h2>
+              {(slideAtual.subtitle || slideAtual.subtitulo) && (
+                <p className="text-lg md:text-xl font-bold text-slate-600 mb-6 border-l-4 border-yellow-500 pl-3">
+                  {slideAtual.subtitle || slideAtual.subtitulo}
+                </p>
+              )}
+              {(slideAtual.points || slideAtual.topicos) && (
+                <ul className="space-y-3.5">
+                  {(slideAtual.points || slideAtual.topicos)?.map((topico: string, idx: number) => (
+                    <li key={idx} className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 flex items-start gap-3 shadow-sm">
+                      <span className="w-6 h-6 rounded-full bg-yellow-400 text-slate-950 font-black text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+                        {idx + 1}
+                      </span>
+                      <span className="text-base md:text-lg font-bold text-slate-800 leading-snug">
+                        {topico}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+            {slideAtual.imagem_url && (
+              <div className="w-full lg:w-2/5 flex items-center justify-center">
+                <div className="relative w-full max-w-md">
+                  <img 
+                    src={slideAtual.imagem_url} 
+                    alt={slideAtual.titulo || "Conceito"} 
+                    className="w-full h-[260px] md:h-[360px] object-cover rounded-2xl shadow-xl border-2 border-slate-200"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+              </div>
+            )}
+          </div>
+        );
+
+      case 'dados':
+        return (
+          <div className="w-full h-full flex flex-col lg:flex-row items-center justify-between p-6 md:p-12 lg:p-14 bg-gradient-to-br from-red-50/40 via-white to-slate-50 min-h-[450px] gap-8">
+            <div className={`w-full ${slideAtual.imagem_url ? 'lg:w-3/5' : 'w-full'} flex flex-col justify-center`}>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-red-100 text-red-950 border border-red-300 font-black text-xs uppercase tracking-wider mb-4 w-fit shadow-sm">
+                📊 DADOS & DETERMINANTES SOCIAIS
+              </div>
+              <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-2 tracking-tight leading-tight">
+                {slideAtual.title || slideAtual.titulo}
+              </h2>
+              {(slideAtual.subtitle || slideAtual.subtitulo) && (
+                <p className="text-lg md:text-xl font-bold text-red-800 mb-6 bg-red-50 p-2.5 rounded-lg border-l-4 border-red-500">
+                  {slideAtual.subtitle || slideAtual.subtitulo}
+                </p>
+              )}
+              {(slideAtual.points || slideAtual.topicos) && (
+                <div className="space-y-3">
+                  {(slideAtual.points || slideAtual.topicos)?.map((topico: string, idx: number) => (
+                    <div key={idx} className="p-3.5 bg-white rounded-xl border border-red-100 shadow-sm flex items-start gap-3">
+                      <span className="text-red-600 font-black text-lg shrink-0">📌</span>
+                      <p className="text-base md:text-lg font-bold text-slate-800 leading-snug">
+                        {topico}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+            {slideAtual.imagem_url && (
+              <div className="w-full lg:w-2/5 flex items-center justify-center">
+                <div className="relative w-full max-w-md">
+                  <img 
+                    src={slideAtual.imagem_url} 
+                    alt={slideAtual.titulo || "Dados Sociais"} 
+                    className="w-full h-[260px] md:h-[360px] object-cover rounded-2xl shadow-xl border-2 border-red-200"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute bottom-3 left-3 bg-black/80 backdrop-blur-md text-white px-3 py-1 rounded-lg text-xs font-bold border border-white/20">
+                    Interseccionalidade & Saúde
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        );
+
+      case 'literatura':
+        return (
+          <div className="w-full h-full flex flex-col lg:flex-row items-center justify-between p-6 md:p-12 lg:p-14 bg-gradient-to-br from-purple-50/50 via-white to-amber-50/30 min-h-[450px] gap-8">
+            <div className={`w-full ${slideAtual.imagem_url ? 'lg:w-3/5' : 'w-full'} flex flex-col justify-center`}>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-purple-100 text-purple-950 border border-purple-300 font-black text-xs uppercase tracking-wider mb-4 w-fit shadow-sm">
+                📚 LITERATURA COMO ESPELHO & MEMÓRIA
+              </div>
+              <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-2 tracking-tight leading-tight">
+                {slideAtual.title || slideAtual.titulo}
+              </h2>
+              {(slideAtual.subtitle || slideAtual.subtitulo) && (
+                <p className="text-lg md:text-xl font-bold text-purple-900 mb-6 italic bg-purple-50/80 p-3 rounded-xl border-l-4 border-purple-600">
+                  {slideAtual.subtitle || slideAtual.subtitulo}
+                </p>
+              )}
+              {(slideAtual.points || slideAtual.topicos) && (
+                <div className="space-y-3">
+                  {(slideAtual.points || slideAtual.topicos)?.map((topico: string, idx: number) => (
+                    <div key={idx} className="p-3.5 bg-white rounded-xl border border-purple-100 shadow-sm flex items-start gap-3">
+                      <span className="text-purple-600 font-black text-lg shrink-0">📖</span>
+                      <p className="text-base md:text-lg font-bold text-slate-800 leading-snug">
+                        {topico}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+            {slideAtual.imagem_url && (
+              <div className="w-full lg:w-2/5 flex items-center justify-center">
+                <div className="relative w-full max-w-md">
+                  <img 
+                    src={slideAtual.imagem_url} 
+                    alt={slideAtual.titulo || "Literatura"} 
+                    className="w-full h-[260px] md:h-[360px] object-cover rounded-2xl shadow-xl border-2 border-purple-300"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute bottom-3 left-3 bg-purple-950/90 text-purple-200 px-3 py-1 rounded-lg text-xs font-bold border border-purple-400/30">
+                    Conceição Evaristo
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        );
+
+      case 'atividade':
+        return (
+          <div className="w-full h-full flex flex-col lg:flex-row items-center justify-between p-6 md:p-12 lg:p-14 bg-amber-50/60 min-h-[450px] gap-8">
+            <div className={`w-full ${slideAtual.imagem_url ? 'lg:w-3/5' : 'w-full'} flex flex-col justify-center`}>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-amber-200 text-amber-950 border border-amber-400 font-black text-xs uppercase tracking-wider mb-4 w-fit shadow-sm">
+                ✏️ ATIVIDADE PRÁTICA COLETIVA
+              </div>
+              <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-2 tracking-tight leading-tight">
+                {slideAtual.title || slideAtual.titulo}
+              </h2>
+              {(slideAtual.subtitle || slideAtual.subtitulo) && (
+                <p className="text-lg md:text-xl font-bold text-amber-900 mb-6 border-l-4 border-amber-500 pl-3">
+                  {slideAtual.subtitle || slideAtual.subtitulo}
+                </p>
+              )}
+              {(slideAtual.points || slideAtual.topicos) && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {(slideAtual.points || slideAtual.topicos)?.map((topico: string, idx: number) => (
+                    <div key={idx} className="p-4 bg-yellow-100/80 rounded-2xl border border-yellow-300 shadow-md flex items-start gap-2.5">
+                      <span className="text-amber-700 font-bold shrink-0 mt-0.5">📝</span>
+                      <p className="text-sm md:text-base font-bold text-slate-900 leading-snug">
+                        {topico}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+            {slideAtual.imagem_url && (
+              <div className="w-full lg:w-2/5 flex items-center justify-center">
+                <div className="relative w-full max-w-md">
+                  <img 
+                    src={slideAtual.imagem_url} 
+                    alt={slideAtual.titulo || "Atividade"} 
+                    className="w-full h-[260px] md:h-[360px] object-cover rounded-2xl shadow-xl border-2 border-amber-400"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute bottom-3 left-3 bg-amber-950/90 text-amber-300 px-3 py-1 rounded-lg text-xs font-bold border border-amber-400/40">
+                    Mural Coletivo
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        );
+
+      case 'fechamento':
+        return (
+          <div className="w-full h-full flex flex-col lg:flex-row items-center justify-between p-6 md:p-12 lg:p-14 bg-gradient-to-br from-amber-50 via-white to-yellow-100/50 min-h-[450px] gap-8">
+            <div className={`w-full ${slideAtual.imagem_url ? 'lg:w-3/5' : 'w-full'} flex flex-col justify-center`}>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-amber-400 text-slate-950 font-black text-xs uppercase tracking-wider mb-4 w-fit shadow-md">
+                💛 ENCERRAMENTO & REDE DE APOIO
+              </div>
+              <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-2 tracking-tight leading-tight">
+                {slideAtual.title || slideAtual.titulo}
+              </h2>
+              {(slideAtual.subtitle || slideAtual.subtitulo) && (
+                <p className="text-xl md:text-2xl font-extrabold text-amber-800 mb-6">
+                  {slideAtual.subtitle || slideAtual.subtitulo}
+                </p>
+              )}
+              {(slideAtual.points || slideAtual.topicos) && (
+                <div className="space-y-3 mb-6">
+                  {(slideAtual.points || slideAtual.topicos)?.map((topico: string, idx: number) => (
+                    <div key={idx} className="p-3 bg-white rounded-xl border border-amber-200 shadow-sm flex items-start gap-3">
+                      <span className="text-amber-500 font-black text-lg shrink-0">✨</span>
+                      <p className="text-base md:text-lg font-bold text-slate-800 leading-snug">
+                        {topico}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              )}
+              {/* CVV HIGHLIGHT CARD */}
+              <div className="p-4 bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 rounded-2xl shadow-lg flex items-center gap-4 border-2 border-amber-600">
+                <div className="p-3 bg-slate-950 text-amber-400 rounded-xl font-black text-2xl shrink-0 shadow-inner">
+                  188
+                </div>
+                <div>
+                  <h4 className="font-black text-base uppercase tracking-tight">CVV - Centro de Valorização da Vida</h4>
+                  <p className="text-xs font-bold text-slate-900 mt-0.5">Ligue 188 • Atendimento gratuito, sigiloso e 24 horas por dia.</p>
+                </div>
+              </div>
+            </div>
+            {slideAtual.imagem_url && (
+              <div className="w-full lg:w-2/5 flex items-center justify-center">
+                <div className="relative w-full max-w-md">
+                  <img 
+                    src={slideAtual.imagem_url} 
+                    alt={slideAtual.titulo || "Fechamento"} 
+                    className="w-full h-[260px] md:h-[360px] object-cover rounded-2xl shadow-xl border-2 border-amber-400"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute bottom-3 left-3 bg-black/80 backdrop-blur-md text-amber-300 px-3 py-1 rounded-lg text-xs font-bold border border-amber-400/40">
+                    Você não está sozinho
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        );
       
       case 'text':
       case 'texto':
       case 'texto_simples':
       case 'list': {
         const isTeacherSlide = slideAtual.title?.toUpperCase().includes('PROFESSOR') || slideAtual.title?.toUpperCase().includes('NÃO COPIAR');
+        
+        // If image exists on text slide, render with 2 columns
+        if (slideAtual.imagem_url) {
+          return (
+            <div className="w-full h-full flex flex-col lg:flex-row items-center justify-between p-6 md:p-12 lg:p-14 bg-white min-h-[450px] gap-8">
+              <div className="w-full lg:w-3/5 flex flex-col justify-center">
+                <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4 border-l-8 border-blue-600 pl-4 tracking-tight leading-tight">
+                  {slideAtual.title || slideAtual.titulo}
+                </h2>
+                {(slideAtual.subtitle || slideAtual.subtitulo) && (
+                  <p className="text-lg md:text-xl font-bold text-blue-700 mb-6 bg-blue-50 px-3 py-1.5 rounded-xl w-fit">
+                    {slideAtual.subtitle || slideAtual.subtitulo}
+                  </p>
+                )}
+                {slideAtual.content && !slideAtual.points && !slideAtual.topicos && (
+                  <div className="space-y-4">
+                    {slideAtual.content.split('\n').filter(Boolean).map((par: string, idx: number) => (
+                      <p key={idx} className="text-lg md:text-xl font-bold text-slate-700 leading-relaxed text-justify">
+                        {par}
+                      </p>
+                    ))}
+                  </div>
+                )}
+                {(slideAtual.points || slideAtual.topicos) && (
+                  <ul className="space-y-3">
+                    {(slideAtual.points || slideAtual.topicos)?.map((topico: string, idx: number) => (
+                      <li key={idx} className="text-base md:text-lg font-bold text-slate-700 flex items-start gap-3 leading-relaxed">
+                        <span className="text-blue-600 mt-1 font-bold shrink-0">●</span> <span>{topico}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+              <div className="w-full lg:w-2/5 flex items-center justify-center">
+                <img 
+                  src={slideAtual.imagem_url} 
+                  alt={slideAtual.titulo || slideAtual.title || "Imagem da aula"} 
+                  className="w-full h-[260px] md:h-[360px] object-cover rounded-2xl shadow-xl border-2 border-slate-200"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+            </div>
+          );
+        }
+
         return isIlgch ? (
           <div className="w-full h-full flex flex-col justify-center p-6 md:p-16 bg-[#0B1120] min-h-[450px]">
             <h2 className="text-3xl md:text-5xl font-black text-emerald-400 mb-6 border-l-8 border-emerald-500 pl-4">
@@ -1359,7 +1866,6 @@ export const SlidePlayer: React.FC<SlidePlayerProps> = ({
               </div>
             )}
             {(slideAtual.points || slideAtual.topicos) && (
-              
                 <ul className="space-y-6 max-w-5xl">
                   {(slideAtual.points || slideAtual.topicos)?.map((topico: string, idx: number) => (
                     <li key={idx} className="text-xl md:text-3xl font-bold text-slate-200 flex items-start gap-4 leading-tight">
@@ -1367,7 +1873,6 @@ export const SlidePlayer: React.FC<SlidePlayerProps> = ({
                     </li>
                   ))}
                 </ul>
-
             )}
           </div>
         ) : (
@@ -1388,7 +1893,6 @@ export const SlidePlayer: React.FC<SlidePlayerProps> = ({
                     </div>
                   )}
                   {(slideAtual.points || slideAtual.topicos) && (
-                    
                       <ul className="space-y-4 max-w-xl">
                         {(slideAtual.points || slideAtual.topicos)?.map((topico: string, idx: number) => (
                           <li key={idx} className="text-base md:text-lg font-bold text-slate-700 flex items-start gap-3 leading-relaxed">
@@ -1396,7 +1900,6 @@ export const SlidePlayer: React.FC<SlidePlayerProps> = ({
                           </li>
                         ))}
                       </ul>
-
                   )}
                 </div>
                 <div className="lg:col-span-6 flex items-center justify-center w-full">
@@ -1505,6 +2008,7 @@ export const SlidePlayer: React.FC<SlidePlayerProps> = ({
   };
 
   const isIlgch = selectedAulaData ? selectedAulaData.startsWith('ilgch') : false;
+  const teacherGuidance = slideAtual?.dicaProfessor || slideAtual?.notas;
 
   return (
     <div className={`fixed inset-0 ${isIlgch ? 'bg-slate-950' : 'bg-slate-100'} z-[99999] flex flex-col font-sans`}>
@@ -1559,18 +2063,18 @@ export const SlidePlayer: React.FC<SlidePlayerProps> = ({
         {renderSlideContent()}
       </div>
 
-      {slideAtual?.dicaProfessor && (
+      {teacherGuidance && (
         <div className="absolute bottom-4 left-4 max-w-lg z-[100000] no-print">
           <button 
             onClick={() => setShowDica(!showDica)}
             className={`flex items-center gap-2 px-3 py-1.5 rounded-lg font-bold text-xs backdrop-blur border shadow-md cursor-pointer transition-all ${isIlgch ? 'text-slate-300 hover:text-white bg-slate-900/90 border-slate-700' : 'text-slate-700 hover:text-slate-900 bg-white/95 border-slate-300'}`}
           >
-            <Info size={14} className="text-amber-400" /> {showDica ? 'Esconder Dica do Prof' : '💡 Dica de Fala do Prof'}
+            <Info size={14} className="text-amber-400" /> {showDica ? 'Esconder Roteiro de Fala' : '💡 Roteiro de Fala do Prof'}
           </button>
           {showDica && (
             <div className={`mt-2 p-4 rounded-xl shadow-2xl max-h-[160px] overflow-y-auto border-2 ${isIlgch ? 'bg-slate-900 border-emerald-500 text-slate-100' : 'bg-white border-blue-500 text-slate-800'}`}>
               <span className={`font-bold text-xs uppercase tracking-wider block mb-1 ${isIlgch ? 'text-emerald-400' : 'text-blue-600'}`}>Roteiro de Fala:</span>
-              <p className="text-sm font-medium leading-snug">{slideAtual.dicaProfessor}</p>
+              <p className="text-sm font-medium leading-snug">{teacherGuidance}</p>
             </div>
           )}
         </div>

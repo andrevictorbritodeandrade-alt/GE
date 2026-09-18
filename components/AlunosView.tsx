@@ -16,9 +16,9 @@ interface AlunosViewProps {
 const TURMAS_ALUNOS = [
   { id: 'cordelia', title: '801 - 802 - 803 (Educação Física)', school: 'EE PROFESSORA CORDELIA PAIVA' },
   { id: 'ignacio', title: 'ILGCH 1001, IFFC 2001, IFLA 2002 (Linguagens / Filosofia / Artes)', school: 'CE DOUTOR IGNACIO BEZERRA DE MENEZES' },
-  { id: 'ciep369', title: 'AP Segundas (Educação Física)', school: 'CIEP 369 JORNALISTA SANDRO MOREYRA' },
+  { id: 'ciep476', title: 'ILGCH 1007 (Linguagens e Ciências Humanas)', school: 'CIEP 476 ELIAS LAZARONI' },
+  { id: 'ciep369', title: 'AP201 (Educação Física)', school: 'CIEP 369 JORNALISTA SANDRO MOREYRA' },
   { id: 'ciep229', title: 'EJANEM-I01 (Educação Física)', school: 'CIEP 229 CÂNDIDO PORTINARI' },
-  { id: 'ciep476', title: '1001, 1002, 2001 (Educação Física)', school: 'CIEP 476 ELIAS LAZARONI' },
 ];
 
 const getTurmaIcon = (id: string) => {
@@ -27,6 +27,10 @@ const getTurmaIcon = (id: string) => {
       return <School className="w-5 h-5 text-indigo-400 group-hover:text-indigo-300 transition-colors" />;
     case 'ignacio':
       return <BookOpen className="w-5 h-5 text-emerald-400 group-hover:text-emerald-300 transition-colors" />;
+    case 'ciep476':
+      return <BookOpen className="w-5 h-5 text-rose-400 group-hover:text-rose-300 transition-colors" />;
+    case 'ciep369':
+      return <School className="w-5 h-5 text-amber-400 group-hover:text-amber-300 transition-colors" />;
     case 'ciep229':
       return <GraduationCap className="w-5 h-5 text-cyan-400 group-hover:text-cyan-300 transition-colors" />;
     default:
@@ -43,7 +47,7 @@ export const AlunosView: React.FC<AlunosViewProps> = ({ onBack, classData }) => 
     const agora = new Date('2026-06-20T23:59:59Z'); // Fixando a data baseado no contexto
     
     let planKey = '8ano';
-    if (turmaId.includes('1001') || turmaId.includes('2001') || turmaId.includes('2002') || turmaId.includes('ignacio')) planKey = 'ilgch';
+    if (turmaId.includes('1001') || turmaId.includes('2001') || turmaId.includes('2002') || turmaId.includes('ignacio') || turmaId.includes('1007') || turmaId.includes('ciep476')) planKey = 'ilgch';
     if (turmaId.includes('eja') || turmaId.includes('229')) planKey = 'ejanem';
     
     let planos = PE_PLAN[planKey] || [];

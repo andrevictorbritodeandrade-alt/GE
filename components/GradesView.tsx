@@ -148,11 +148,11 @@ export const SCHOOL_GROUPS: SchoolGroupDef[] = [
     }
   },
   {
-    id: "ciep476",
-    tag: "CIEP 476",
-    shortName: "CIEP 476",
-    fullName: "CIEP 476 ELIAS LAZARONI / CE DR. IGNACIO BEZERRA DE MENEZES",
-    badge: "Itinerários Formativos • Lançamento de Faltas SEEDUC",
+    id: "ignacio",
+    tag: "CE DR. IGNACIO",
+    shortName: "CE DR. IGNACIO BEZERRA",
+    fullName: "CE DOUTOR IGNACIO BEZERRA DE MENEZES",
+    badge: "Itinerários Formativos (ILGCH / IFFC / IFLA) • Lançamento de Faltas SEEDUC",
     isAttendanceOnly: true,
     attendanceOnlyNote: "Dispensa de Nota Trimestral • Lançamento Exclusivo de Faltas no DocenteOnline SEEDUC",
     colorScheme: {
@@ -168,8 +168,33 @@ export const SCHOOL_GROUPS: SchoolGroupDef[] = [
     },
     matcher: (name: string) => {
       const u = (name || '').toUpperCase();
+      if (u.includes('CORDELIA') || u.includes('CORDÉLIA') || u.includes('476') || u.includes('LAZARONI')) return false;
+      return u.includes('IGNACIO') || u.includes('IGNÁCIO');
+    }
+  },
+  {
+    id: "ciep476",
+    tag: "CIEP 476",
+    shortName: "CIEP 476 ELIAS LAZARONI",
+    fullName: "CIEP 476 ELIAS LAZARONI",
+    badge: "Itinerários Formativos (ILGCH 1007 Noturno) • Lançamento de Faltas SEEDUC",
+    isAttendanceOnly: true,
+    attendanceOnlyNote: "Dispensa de Nota Trimestral • Lançamento Exclusivo de Faltas no DocenteOnline SEEDUC",
+    colorScheme: {
+      border: "border-rose-300",
+      hoverBorder: "hover:border-rose-500",
+      headerBg: "bg-rose-50/80 border-b border-rose-200",
+      badgeBg: "bg-rose-100 text-rose-900 border border-rose-300",
+      badgeText: "text-rose-900",
+      accent: "text-rose-700",
+      iconBg: "bg-rose-600 text-white",
+      iconText: "text-rose-700",
+      lightBg: "bg-rose-50/40",
+    },
+    matcher: (name: string) => {
+      const u = (name || '').toUpperCase();
       if (u.includes('CORDELIA') || u.includes('CORDÉLIA')) return false;
-      return u.includes('476') || u.includes('IGNACIO') || u.includes('IGNÁCIO') || u.includes('LAZARONI');
+      return u.includes('476') || u.includes('LAZARONI');
     }
   },
   {

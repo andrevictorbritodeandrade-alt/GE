@@ -13,7 +13,16 @@ import { GradesView } from './GradesView';
 import { ExamRepositoryView } from './ExamRepositoryView';
 import { ChalkboardDiagram } from './ChalkboardDiagram';
 import { SlidePlayer as ExternalSlidePlayer } from './SlidePlayer';
-import { ALTINHA_FUTVOLEI_SLIDES, SLIDES_3TRI, SLIDES_JOGOS_TABULEIRO, SLIDES_GENERICOS, SLIDES_HANDEBOL, SLIDES_POVOS_ORIGINARIOS, SLIDES_PARALIMPICO, SLIDES_AULA_INTERATIVA_EM, SLIDES_CAPOEIRA, SLIDES_LUTA_MARAJOARA } from '../data/corpoMidiaSlides';
+import { 
+  ALTINHA_FUTVOLEI_SLIDES, SLIDES_3TRI, SLIDES_JOGOS_TABULEIRO, SLIDES_GENERICOS, 
+  SLIDES_HANDEBOL, SLIDES_POVOS_ORIGINARIOS, SLIDES_PARALIMPICO, SLIDES_AULA_INTERATIVA_EM, 
+  SLIDES_CAPOEIRA, SLIDES_LUTA_MARAJOARA,
+  AULAS_SETEMBRO_AMARELO,
+  SLIDES_AULA_1_SETEMBRO_AMARELO,
+  SLIDES_AULA_2_SETEMBRO_AMARELO,
+  SLIDES_AULA_3_SETEMBRO_AMARELO,
+  CRONOGRAMA_3TRI_AULAS
+} from '../data/corpoMidiaSlides';
 import { BackButton } from './BackButton';
 
 // ================= DADOS DO CRONOGRAMA =================
@@ -21,17 +30,90 @@ const cronograma = PE_PLAN['ilgch'] || [];
 
 // ================= DADOS DOS SLIDES DA AULA =================
 export interface Slide {
+  id?: number;
   tipo: string;
+  type?: string;
   titulo?: string;
+  title?: string;
   subtitulo?: string;
+  subtitle?: string;
   topicos?: string[];
+  points?: string[];
   dicaProfessor?: string;
+  notas?: string;
+  imagem_url?: string;
   imagemDeFundo?: string;
+  image?: string;
   texto?: string;
+  content?: string;
   subtexto?: string;
+  parentTitle?: string;
 }
 
 export const slidesData: Record<string, Slide[]> = {
+  // CRONOGRAMA 3º TRI - SETEMBRO A DEZEMBRO (14 AULAS COMPLETAS)
+  'aula_1': (CRONOGRAMA_3TRI_AULAS[0]?.slides || SLIDES_AULA_1_SETEMBRO_AMARELO) as any,
+  'aula_2': (CRONOGRAMA_3TRI_AULAS[1]?.slides || SLIDES_AULA_2_SETEMBRO_AMARELO) as any,
+  'aula_3': (CRONOGRAMA_3TRI_AULAS[2]?.slides || SLIDES_AULA_3_SETEMBRO_AMARELO) as any,
+  'aula_4': CRONOGRAMA_3TRI_AULAS[3]?.slides as any,
+  'aula_5': CRONOGRAMA_3TRI_AULAS[4]?.slides as any,
+  'aula_6': CRONOGRAMA_3TRI_AULAS[5]?.slides as any,
+  'aula_7': CRONOGRAMA_3TRI_AULAS[6]?.slides as any,
+  'aula_8': CRONOGRAMA_3TRI_AULAS[7]?.slides as any,
+  'aula_9': CRONOGRAMA_3TRI_AULAS[8]?.slides as any,
+  'aula_10': CRONOGRAMA_3TRI_AULAS[9]?.slides as any,
+  'aula_11': CRONOGRAMA_3TRI_AULAS[10]?.slides as any,
+  'aula_12': CRONOGRAMA_3TRI_AULAS[11]?.slides as any,
+  'aula_13': CRONOGRAMA_3TRI_AULAS[12]?.slides as any,
+  'aula_14': CRONOGRAMA_3TRI_AULAS[13]?.slides as any,
+
+  // ALIASES POR DATA E PREFIXOS
+  'setembro_amarelo_05/09': CRONOGRAMA_3TRI_AULAS[0]?.slides as any,
+  'setembro_amarelo_12/09': CRONOGRAMA_3TRI_AULAS[1]?.slides as any,
+  'setembro_amarelo_19/09': CRONOGRAMA_3TRI_AULAS[2]?.slides as any,
+  'setembro_amarelo_26/09': CRONOGRAMA_3TRI_AULAS[3]?.slides as any,
+  'setembro_amarelo_03/10': CRONOGRAMA_3TRI_AULAS[4]?.slides as any,
+  'setembro_amarelo_10/10': CRONOGRAMA_3TRI_AULAS[5]?.slides as any,
+  'setembro_amarelo_17/10': CRONOGRAMA_3TRI_AULAS[6]?.slides as any,
+  'setembro_amarelo_24/10': CRONOGRAMA_3TRI_AULAS[7]?.slides as any,
+  'setembro_amarelo_31/10': CRONOGRAMA_3TRI_AULAS[8]?.slides as any,
+  'setembro_amarelo_07/11': CRONOGRAMA_3TRI_AULAS[9]?.slides as any,
+  'setembro_amarelo_14/11': CRONOGRAMA_3TRI_AULAS[10]?.slides as any,
+  'setembro_amarelo_21/11': CRONOGRAMA_3TRI_AULAS[11]?.slides as any,
+  'setembro_amarelo_28/11': CRONOGRAMA_3TRI_AULAS[12]?.slides as any,
+  'setembro_amarelo_05/12': CRONOGRAMA_3TRI_AULAS[13]?.slides as any,
+
+  'cronograma_3tri_05/09': CRONOGRAMA_3TRI_AULAS[0]?.slides as any,
+  'cronograma_3tri_12/09': CRONOGRAMA_3TRI_AULAS[1]?.slides as any,
+  'cronograma_3tri_19/09': CRONOGRAMA_3TRI_AULAS[2]?.slides as any,
+  'cronograma_3tri_26/09': CRONOGRAMA_3TRI_AULAS[3]?.slides as any,
+  'cronograma_3tri_03/10': CRONOGRAMA_3TRI_AULAS[4]?.slides as any,
+  'cronograma_3tri_10/10': CRONOGRAMA_3TRI_AULAS[5]?.slides as any,
+  'cronograma_3tri_17/10': CRONOGRAMA_3TRI_AULAS[6]?.slides as any,
+  'cronograma_3tri_24/10': CRONOGRAMA_3TRI_AULAS[7]?.slides as any,
+  'cronograma_3tri_31/10': CRONOGRAMA_3TRI_AULAS[8]?.slides as any,
+  'cronograma_3tri_07/11': CRONOGRAMA_3TRI_AULAS[9]?.slides as any,
+  'cronograma_3tri_14/11': CRONOGRAMA_3TRI_AULAS[10]?.slides as any,
+  'cronograma_3tri_21/11': CRONOGRAMA_3TRI_AULAS[11]?.slides as any,
+  'cronograma_3tri_28/11': CRONOGRAMA_3TRI_AULAS[12]?.slides as any,
+  'cronograma_3tri_05/12': CRONOGRAMA_3TRI_AULAS[13]?.slides as any,
+
+  'ilgch_05/09': CRONOGRAMA_3TRI_AULAS[0]?.slides as any,
+  'ilgch_12/09': CRONOGRAMA_3TRI_AULAS[1]?.slides as any,
+  'ilgch_19/09': CRONOGRAMA_3TRI_AULAS[2]?.slides as any,
+  'ilgch_26/09': CRONOGRAMA_3TRI_AULAS[3]?.slides as any,
+  'ilgch_03/10': CRONOGRAMA_3TRI_AULAS[4]?.slides as any,
+  'ilgch_10/10': CRONOGRAMA_3TRI_AULAS[5]?.slides as any,
+  'ilgch_17/10': CRONOGRAMA_3TRI_AULAS[6]?.slides as any,
+  'ilgch_24/10': CRONOGRAMA_3TRI_AULAS[7]?.slides as any,
+  'ilgch_31/10': CRONOGRAMA_3TRI_AULAS[8]?.slides as any,
+  'ilgch_07/11': CRONOGRAMA_3TRI_AULAS[9]?.slides as any,
+  'ilgch_14/11': CRONOGRAMA_3TRI_AULAS[10]?.slides as any,
+  'ilgch_21/11': CRONOGRAMA_3TRI_AULAS[11]?.slides as any,
+  'ilgch_28/11': CRONOGRAMA_3TRI_AULAS[12]?.slides as any,
+  'ilgch_05/12': CRONOGRAMA_3TRI_AULAS[13]?.slides as any,
+
+
   // AULA 1 & 2: INTRO / O QUE É ILGCH / CULTURA CORPORAL
   'ilgch_28/08': [
     {
@@ -416,7 +498,7 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
   const [selectedAulaData, setSelectedAulaData] = useState<string | null>(() => {
     return safeLocalStorage.getItem('decolonial_selectedAulaData') || null;
   });
-  const [planningSubView, setPlanningSubView] = useState<null | '8ano' | 'ap' | 'ap_sexta' | 'gestao' | 'ejanem' | 'ciep369'>(() => {
+  const [planningSubView, setPlanningSubView] = useState<null | '8ano' | 'ap' | 'ap_sexta' | 'gestao' | 'ciep476' | 'ejanem' | 'ciep369' | 'setembro_amarelo'>(() => {
     return (safeLocalStorage.getItem('decolonial_planningSubView') as any) || null;
   });
   const [selectedAulaPlan, setSelectedAulaPlan] = useState<any>(() => {
@@ -651,12 +733,14 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
       
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl mt-4">
         {[
-          { id: '8ano', label: '801 - 802 - 803', sub: 'EE Profª Cordelia Paiva - 2ª feiras' },
-          { id: 'ap', label: 'AP (SEGUNDAS)', sub: 'CE Dr. Ignacio Bezerra de Menezes / CIEP 476 Elias Lazaroni' },
-          { id: 'ap_sexta', label: 'AP (SEXTAS)', sub: 'CE Dr. Ignacio Bezerra de Menezes / CIEP 476 Elias Lazaroni' },
-          { id: 'gestao', label: 'ILGCH 1001 / IFFC 2001 / IFLA 2002', sub: 'CE Dr. Ignacio Bezerra de Menezes / CIEP 476 Elias Lazaroni' },
+          { id: 'setembro_amarelo', label: '💛 3º Trimestre Completo', sub: '14 Aulas (Set-Dez): Saúde Mental, Cidadania & Consciência Negra' },
+          { id: '8ano', label: '801 - 802 - 803', sub: 'EE Profª Cordelia Paiva' },
+          { id: 'ap', label: 'AP (SEGUNDAS)', sub: 'CE Dr. Ignacio Bezerra de Menezes' },
+          { id: 'ap_sexta', label: 'AP (SEXTAS)', sub: 'CE Dr. Ignacio Bezerra de Menezes' },
+          { id: 'gestao', label: 'ILGCH 1001 / IFFC 2001 / IFLA 2002', sub: 'CE Dr. Ignacio Bezerra de Menezes' },
+          { id: 'ciep476', label: 'ILGCH 1007', sub: 'CIEP 476 Elias Lazaroni' },
           { id: 'ejanem', label: 'EJANEM I01', sub: 'CIEP 229 Cândido Portinari - Noturno' },
-          { id: 'ciep369', label: 'AP (SEXTAS)', sub: 'CIEP 369 Jornalista Sandro Moreyra' }
+          { id: 'ciep369', label: 'AP201', sub: 'CIEP 369' }
         ].map((turma, idx) => (
           <button 
             key={idx}
@@ -875,7 +959,7 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
     const processedAulas = aulas.map((aula, localIdx) => {
       const globalIdx = startIndex + localIdx;
       let isPast = false;
-      if (startFromLessonOne && (turma === 'ilgch' || planningSubView === 'gestao')) {
+      if (startFromLessonOne && (turma === 'ilgch' || planningSubView === 'gestao' || planningSubView === 'ciep476')) {
         isPast = globalIdx < selectedActiveAulaIndex;
       } else if (aula.data) {
         const parts = aula.data.split('/');
@@ -922,15 +1006,17 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
     );
   };
 
-  const renderPlanejamentoClasses = (turma: '8ano' | 'ap' | 'ap_sexta' | 'ejanem' | 'ciep369') => {
+  const renderPlanejamentoClasses = (turma: '8ano' | 'ap' | 'ap_sexta' | 'ejanem' | 'ciep369' | 'setembro_amarelo') => {
     const planos = PE_PLAN[turma] || [];
     const tri1 = planos.filter(aula => aula.tri === '1º Tri');
     const tri2 = planos.filter(aula => aula.tri === '2º Tri');
     const tri3 = planos.filter(aula => aula.tri === '3º Tri');
     
     let title = 'Planejamento: 8º Ano';
+    if (turma === 'setembro_amarelo') title = 'Planejamento: Setembro Amarelo (Saúde Mental)';
     if (turma === 'ap') title = 'Planejamento: AP (Segundas)';
     if (turma === 'ap_sexta') title = 'Planejamento: AP (Sextas)';
+    if (turma === 'ciep369') title = 'Planejamento: AP201 (CIEP 369)';
     if (turma === 'ejanem') title = 'Planejamento: EJANEM I01';
 
     return (
@@ -980,13 +1066,14 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
         {renderAulaModal()}
         {!planningSubView && renderPlanejamentoMenu()}
         {planningSubView === 'gestao' && renderPlanejamentoGestao()}
-        {(planningSubView === '8ano' || planningSubView === 'ap' || planningSubView === 'ap_sexta' || planningSubView === 'ejanem' || planningSubView === 'ciep369') && renderPlanejamentoClasses(planningSubView)}
+        {planningSubView === 'ciep476' && renderPlanejamentoCiep476()}
+        {(planningSubView === '8ano' || planningSubView === 'ap' || planningSubView === 'ap_sexta' || planningSubView === 'ejanem' || planningSubView === 'ciep369' || planningSubView === 'setembro_amarelo') && renderPlanejamentoClasses(planningSubView)}
       </div>
     );
   };
 
 
-  // --- TELA DE PLANEJAMENTO ---
+  // --- TELA DE PLANEJAMENTO CE DR. IGNACIO BEZERRA ---
   const renderPlanejamentoGestao = () => {
     const tri2 = cronograma.filter(aula => aula.tri === '2º Tri');
     const tri3 = cronograma.filter(aula => aula.tri === '3º Tri');
@@ -998,8 +1085,8 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
         </div>
 
         <DatashowHeader 
-          title="Planejamento: ILGCH" 
-          sub="Cultura Corporal e Educação em Direitos Humanos" 
+          title="Planejamento: CE Dr. Ignacio Bezerra de Menezes" 
+          sub="ILGCH 1001 / IFFC 2001 / IFLA 2002 • Cultura Corporal e Educação em Direitos Humanos" 
         />
 
         {/* Conteúdo do Planejamento */}
@@ -1019,11 +1106,11 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
                   Decolonização de Corpos, Identidades, Mídias e Espaços
                 </h1>
                 <p className="text-base md:text-lg text-slate-600 mb-4 font-medium">
-                  Professor <strong className="text-blue-600 font-bold">André Brito</strong> • Turma 1001 (Aulas às Sextas)
+                  Professor <strong className="text-blue-600 font-bold">André Brito</strong> • Turmas 1001, 2001, 2002 (Terças e Sextas)
                 </p>
                 <div className="inline-flex items-center gap-2 px-3 py-1 bg-slate-100 text-slate-700 text-xs font-bold uppercase tracking-wider rounded border border-slate-200 shadow-sm">
                   <span className="w-2 h-2 rounded-full bg-slate-400"></span> 
-                  Disciplina SEEDUC: Gestão do Professor (Itinerário de Linguagens e Ciências Humanas)
+                  CE Dr. Ignacio Bezerra de Menezes (Linguagens / Filosofia / Artes)
                 </div>
               </div>
             </div>
@@ -1041,7 +1128,64 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
         </div>
       </div>
     );
-  }
+  };
+
+  // --- TELA DE PLANEJAMENTO CIEP 476 ELIAS LAZARONI ---
+  const renderPlanejamentoCiep476 = () => {
+    const tri2 = cronograma.filter(aula => aula.tri === '2º Tri');
+    const tri3 = cronograma.filter(aula => aula.tri === '3º Tri');
+
+    return (
+      <div className="p-4 md:p-8 font-sans text-slate-800 relative bg-slate-50 rounded-2xl shadow-2xl">
+        <div className="mb-6">
+          <BackButton onClick={() => setPlanningSubView(null)} label="Voltar" />
+        </div>
+
+        <DatashowHeader 
+          title="Planejamento: CIEP 476 Elias Lazaroni" 
+          sub="ILGCH 1007 • Cultura Corporal e Educação em Direitos Humanos" 
+        />
+
+        {/* Conteúdo do Planejamento */}
+        <div className={`max-w-7xl mx-auto space-y-8 ${selectedAulaPlan ? 'blur-sm pointer-events-none' : ''} transition-all duration-200`}>
+          
+          <header className="bg-white rounded-2xl shadow-sm border border-slate-200 relative overflow-hidden">
+            <div className="bg-slate-900 text-white px-6 py-2 flex items-center gap-3">
+               <span className="text-xl">⚖️</span>
+               <p className="text-xs md:text-sm font-semibold tracking-wide">
+                 Currículo estruturado em cumprimento às <span className="text-amber-400 font-bold">Leis Federais 10.639/03 e 11.645/08</span>.
+               </p>
+            </div>
+
+            <div className="p-6 md:p-8 relative">
+              <div className="relative z-10">
+                <h1 className="text-2xl md:text-4xl font-black text-slate-900 mb-3 tracking-tight">
+                  Decolonização de Corpos, Identidades, Mídias e Espaços
+                </h1>
+                <p className="text-base md:text-lg text-slate-600 mb-4 font-medium">
+                  Professor <strong className="text-blue-600 font-bold">André Brito</strong> • Turma 1007 (Aulas às Sextas - Noturno)
+                </p>
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-slate-100 text-slate-700 text-xs font-bold uppercase tracking-wider rounded border border-slate-200 shadow-sm">
+                  <span className="w-2 h-2 rounded-full bg-slate-400"></span> 
+                  CIEP 476 Elias Lazaroni (Itinerário de Linguagens e Ciências Humanas)
+                </div>
+              </div>
+            </div>
+          </header>
+
+          {renderTrimestre('2º Trimestre', tri2, 0, 'bg-blue-600', 'bg-blue-50 text-blue-800 border border-blue-200', 'ilgch')}
+
+          <div className="flex items-center my-12 opacity-50">
+            <div className="flex-grow border-t border-slate-300"></div>
+            <span className="mx-4 text-slate-400 text-xs font-black uppercase tracking-widest">Avanço de Trimestre</span>
+            <div className="flex-grow border-t border-slate-300"></div>
+          </div>
+
+          {renderTrimestre('3º Trimestre', tri3, tri2.length, 'bg-green-600', 'bg-green-50 text-green-800 border border-green-200', 'ilgch')}
+        </div>
+      </div>
+    );
+  };
 
   // --- TELA SELEÇÃO AULAS ---
   const renderAulasMenu = () => (
@@ -1056,9 +1200,11 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
       
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-5xl">
         {[
-          { id: '8ano', label: '801 - 802 - 803', sub: 'EE Profª Cordelia Paiva - 2ª feiras' },
-          { id: 'ciep369', label: 'AP (SEGUNDAS)', sub: 'CIEP 369 - Bangu' },
+          { id: 'setembro_amarelo', label: '💛 Setembro Amarelo', sub: 'Saúde Mental e Valorização da Vida (3 Aulas)' },
+          { id: '8ano', label: '801 - 802 - 803', sub: 'EE Profª Cordelia Paiva' },
+          { id: 'ciep369', label: 'AP201', sub: 'CIEP 369' },
           { id: 'gestao', label: 'ILGCH 1001 / IFFC 2001 / IFLA 2002', sub: 'CE Dr. Ignacio Bezerra' },
+          { id: 'ciep476', label: 'ILGCH 1007', sub: 'CIEP 476 Elias Lazaroni' },
           { id: 'ejanem', label: 'EJANEM I01', sub: 'CIEP 229 Cândido Portinari - Noturno' }
         ].map((turma, idx) => (
           <button 
@@ -1074,7 +1220,7 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
     </div>
   );
   const renderRepositorioAulas = () => {
-    const planningSubViewKey = planningSubView === 'gestao' ? 'ilgch' : planningSubView;
+    const planningSubViewKey = (planningSubView === 'gestao' || planningSubView === 'ciep476') ? 'ilgch' : planningSubView;
     const activeCronograma = PE_PLAN[planningSubViewKey as any] || [];
     
     return (
@@ -1086,7 +1232,15 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
 
         <header className="mb-8 flex flex-col items-center text-center">
           <h2 className="text-4xl md:text-5xl font-black text-slate-900 flex items-center gap-4 uppercase tracking-tighter drop-shadow-[0_4px_4px_rgba(0,0,0,0.15)]">
-            <LayoutGrid className="text-blue-600 drop-shadow-sm" size={40} /> AULAS PRONTAS ({planningSubView === 'gestao' ? 'ILGCH / DR. IGNACIO' : planningSubView})
+            <LayoutGrid className="text-blue-600 drop-shadow-sm" size={40} /> AULAS PRONTAS ({
+              planningSubView === 'setembro_amarelo' ? 'SETEMBRO AMARELO / SAÚDE MENTAL' :
+              planningSubView === 'gestao' ? 'ILGCH / DR. IGNACIO' : 
+              planningSubView === 'ciep476' ? 'ILGCH 1007 / CIEP 476' : 
+              planningSubView === 'ciep369' ? 'AP201 / CIEP 369' : 
+              planningSubView === '8ano' ? '801 - 802 - 803 / CORDÉLIA' :
+              planningSubView === 'ejanem' ? 'EJANEM I01 / CIEP 229' :
+              planningSubView
+            })
           </h2>
           <p className="text-slate-500 mt-3 font-black tracking-widest text-sm uppercase">Escolha a aula para abrir os slides interativos.</p>
         </header>
@@ -1103,18 +1257,22 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
                   Início de Turma
                 </span>
                 <span className="text-[10px] font-black uppercase tracking-widest text-blue-200 bg-blue-800/60 px-2 py-0.5 rounded-full border border-blue-600">
-                  {planningSubView === 'gestao' ? 'CE Dr. Ignacio Bezerra' : 
+                  {planningSubView === 'setembro_amarelo' ? 'Setembro Amarelo & Direitos Humanos' :
+                   planningSubView === 'gestao' ? 'CE Dr. Ignacio Bezerra' : 
+                   planningSubView === 'ciep476' ? 'CIEP 476 Elias Lazaroni' :
                    planningSubView === '8ano' ? 'EE Profª Cordélia Paiva' :
-                   planningSubView === 'ciep369' ? 'CIEP 369 - Bangu' :
+                   planningSubView === 'ciep369' ? 'CIEP 369' :
                    planningSubView === 'ejanem' ? 'CIEP 229 Cândido Portinari' :
                    planningSubView === 'ap' ? 'CE Dr. Ignacio Bezerra' :
                    planningSubView === 'ap_sexta' ? 'CE Dr. Ignacio Bezerra' : planningSubView}
                 </span>
               </div>
               <h3 className="text-lg font-black text-white leading-tight mt-1">
-                {planningSubView === 'gestao' ? 'ILGCH / IFFC / IFLA' : 
+                {planningSubView === 'setembro_amarelo' ? 'Saúde Mental e Valorização da Vida (3 Aulas com Imagens)' :
+                 planningSubView === 'gestao' ? 'ILGCH 1001 / IFFC / IFLA' : 
+                 planningSubView === 'ciep476' ? 'ILGCH 1007' : 
                  planningSubView === '8ano' ? '801 - 802 - 803' :
-                 planningSubView === 'ciep369' ? 'Atividades Práticas (AP)' :
+                 planningSubView === 'ciep369' ? 'AP201' :
                  planningSubView === 'ejanem' ? 'EJANEM I01' : 'Plano de Aulas'}
               </h3>
               <p className="text-xs text-blue-200 mt-0.5 font-medium">
@@ -1175,12 +1333,14 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
 
             activeCronograma.forEach((aula, originalIndex) => {
               const currentSubView = planningSubViewKey as string;
-              let slideKey = `${currentSubView}_${aula.data}`;
-              let temSlides = (slidesData as any)[slideKey] !== undefined;
+              const cronoItem = CRONOGRAMA_3TRI_AULAS.find(a => 
+                a.data === aula.data || 
+                a.id === aula.id ||
+                `aula_${originalIndex + 1}` === a.id
+              );
 
-              if (!temSlides && originalIndex === 1 && (slidesData as any)['ilgch_04/09']) {
-                slideKey = 'ilgch_04/09'; temSlides = true;
-              }
+              let slideKey = cronoItem?.id || `${currentSubView}_${aula.data}`;
+              let temSlides = true;
 
               let isPast = false;
               if (startFromLessonOne) {
@@ -1195,10 +1355,11 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
 
               const isCurrentActive = startFromLessonOne 
                 ? originalIndex === selectedActiveAulaIndex 
-                : false;
+                : (cronoItem?.status === 'AULA ATUAL' && originalIndex === 0);
 
               const aulaObj = { 
                 ...aula, 
+                cronoItem,
                 originalIndex, 
                 isPast, 
                 isCurrentActive,
@@ -1213,83 +1374,111 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
               }
             });
 
-            const renderAulaCard = (aula: any) => (
-              <div 
-                key={aula.data + aula.originalIndex} 
-                className={`bg-white rounded-xl border overflow-hidden flex flex-col transition-all ${
-                  aula.isCurrentActive 
-                    ? 'border-blue-500 ring-2 ring-blue-500/50 shadow-xl scale-[1.02]' 
-                    : 'border-slate-300 hover:shadow-lg hover:-translate-y-1'
-                } ${!aula.temSlides && 'opacity-80'}`}
-              >
-                <div className={`px-4 py-3 ${
-                  aula.isCurrentActive 
-                    ? 'bg-gradient-to-r from-blue-600 to-indigo-600' 
-                    : aula.temSlides 
-                      ? 'bg-slate-800' 
-                      : 'bg-slate-400'
-                } text-white font-bold text-sm flex justify-between uppercase items-center`}>
-                  <div className="flex items-center gap-2">
-                    <span className="font-extrabold tracking-wide">Aula {aula.originalIndex + 1}</span>
-                    {aula.isCurrentActive && (
-                      <span className="bg-amber-400 text-slate-950 text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full shadow-sm animate-pulse">
-                        ⭐ AULA ATIVA
-                      </span>
-                    )}
-                    {aula.isPast && !aula.isCurrentActive && (
-                      <span className="flex items-center gap-1 bg-emerald-500/90 text-white text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full shadow-sm border border-emerald-400/50">
-                        <CheckCircle2 size={12} strokeWidth={3} /> Aula Dada
-                      </span>
+            const renderAulaCard = (aula: any) => {
+              const tags = aula.cronoItem?.tags || (aula.modulo ? [aula.modulo] : ['Geral']);
+              const displayTitle = aula.cronoItem?.titulo_aula || aula.titulo;
+              const lessonNum = aula.originalIndex + 1;
+
+              return (
+                <div 
+                  key={aula.data + aula.originalIndex} 
+                  className={`bg-white rounded-2xl border overflow-hidden flex flex-col transition-all duration-200 ${
+                    aula.isCurrentActive 
+                      ? 'border-blue-600 ring-2 ring-blue-500/40 shadow-xl scale-[1.02]' 
+                      : 'border-slate-300 hover:shadow-lg hover:-translate-y-1'
+                  }`}
+                >
+                  {/* CARD HEADER */}
+                  <div className={`px-5 py-3.5 ${
+                    aula.isCurrentActive 
+                      ? 'bg-gradient-to-r from-blue-700 via-indigo-700 to-slate-900' 
+                      : 'bg-slate-900'
+                  } text-white font-bold text-sm flex justify-between uppercase items-center`}>
+                    <div className="flex items-center gap-2">
+                      <span className="font-black tracking-wide text-xs md:text-sm">AULA {lessonNum}</span>
+                      {aula.isCurrentActive && (
+                        <span className="bg-amber-400 text-slate-950 text-[10px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full shadow-sm animate-pulse">
+                          ⭐ AULA ATUAL
+                        </span>
+                      )}
+                      {!aula.isCurrentActive && !aula.isPast && (
+                        <span className="bg-slate-800 text-slate-300 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md border border-slate-700">
+                          {aula.cronoItem?.status || 'AGUARDANDO'}
+                        </span>
+                      )}
+                      {aula.isPast && !aula.isCurrentActive && (
+                        <span className="flex items-center gap-1 bg-emerald-500 text-white text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full shadow-sm">
+                          <CheckCircle2 size={12} strokeWidth={3} /> AULA DADA
+                        </span>
+                      )}
+                    </div>
+                    <span className="flex items-center gap-1 bg-white/15 px-2.5 py-1 rounded-lg text-xs font-black tracking-wider backdrop-blur-sm shadow-inner text-amber-300">
+                      📅 {aula.data}
+                    </span>
+                  </div>
+
+                  {/* TAGS ROW */}
+                  <div className="px-5 pt-4 pb-2 flex flex-wrap items-center justify-between gap-2">
+                    <div className="flex flex-wrap gap-1.5">
+                      {tags.map((tag: string, tIdx: number) => (
+                        <span 
+                          key={tIdx} 
+                          className="inline-block px-2.5 py-1 rounded-md text-[10px] font-black uppercase tracking-wider bg-amber-50 text-amber-900 border border-amber-200/80 shadow-xs"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    {startFromLessonOne && (
+                      <button
+                        onClick={() => setSelectedActiveAulaIndex(aula.originalIndex)}
+                        className={`text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded transition-colors ${
+                          aula.isCurrentActive 
+                            ? 'bg-amber-100 text-amber-800 border border-amber-200 font-bold' 
+                            : 'bg-slate-100 hover:bg-slate-200 text-slate-600'
+                        }`}
+                      >
+                        {aula.isCurrentActive ? '✓ Aula Atual' : 'Definir como Atual'}
+                      </button>
                     )}
                   </div>
-                  <span className="flex items-center gap-1 bg-white/20 px-2 py-1 rounded-md text-[10px] font-black tracking-widest backdrop-blur-sm shadow-sm">
-                    📅 {aula.data}
-                  </span>
-                </div>
-                <div className="px-4 pt-4 pb-2 flex items-center justify-between">
-                  <span className={`inline-block px-2 py-1 rounded-md text-[10px] font-black uppercase tracking-wider ${aula.temSlides ? 'bg-blue-50 text-blue-700 font-black border border-blue-100' : 'bg-slate-100 text-slate-500 border border-slate-200'}`}>
-                    {aula.modulo || 'Aula'}
-                  </span>
-                  {startFromLessonOne && (
-                    <button
-                      onClick={() => setSelectedActiveAulaIndex(aula.originalIndex)}
-                      className={`text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded transition-colors ${
-                        aula.isCurrentActive 
-                          ? 'bg-amber-100 text-amber-800 border border-amber-200 font-bold' 
-                          : 'bg-slate-100 hover:bg-slate-200 text-slate-600'
-                      }`}
-                    >
-                      {aula.isCurrentActive ? '✓ Aula Atual' : 'Definir como Atual'}
-                    </button>
-                  )}
-                </div>
-                <div className="px-5 pt-2 pb-6 flex-grow flex flex-col justify-center">
-                  <h3 className={`text-lg font-black mb-2 uppercase leading-tight ${aula.temSlides ? 'text-slate-900' : 'text-slate-600'}`}>{aula.titulo}</h3>
-                  <p className="text-sm font-medium text-slate-500 line-clamp-3">{aula.desc}</p>
-                </div>
-                <div className="p-4 bg-slate-50/80 border-t border-slate-100 mt-auto flex flex-col gap-2">
-                  {aula.temSlides ? (
+
+                  {/* CONTENT */}
+                  <div className="px-5 pt-2 pb-5 flex-grow flex flex-col justify-start">
+                    <h3 className="text-xl font-black mb-2 uppercase leading-tight text-slate-900 tracking-tight">
+                      {displayTitle}
+                    </h3>
+                    <p className="text-sm font-medium text-slate-600 leading-relaxed line-clamp-3">
+                      {aula.desc || aula.cronoItem?.descricao}
+                    </p>
+                  </div>
+
+                  {/* BUTTONS */}
+                  <div className="p-4 bg-slate-50 border-t border-slate-200 mt-auto flex flex-col gap-2">
                     <button 
-                      onClick={() => { setSelectedAulaData(aula.slideKey); setCurrentView('player'); }}
-                      className={`w-full py-2.5 ${aula.isCurrentActive ? 'bg-blue-600 hover:bg-blue-700' : 'bg-slate-900 hover:bg-slate-800'} text-white font-extrabold tracking-wide rounded-lg flex items-center justify-center gap-2 transition-all shadow-sm hover:shadow`}
+                      onClick={() => { 
+                        setSelectedAulaData(aula.slideKey); 
+                        setCurrentView('player'); 
+                      }}
+                      className={`w-full py-2.5 ${
+                        aula.isCurrentActive 
+                          ? 'bg-blue-600 hover:bg-blue-700' 
+                          : 'bg-slate-900 hover:bg-slate-800'
+                      } text-white font-extrabold tracking-wide rounded-xl flex items-center justify-center gap-2 transition-all shadow-sm hover:shadow active:scale-[0.99]`}
                     >
                       <Presentation size={18} /> PROJETAR SLIDES
                     </button>
-                  ) : (
-                    <button disabled className="w-full py-2.5 bg-slate-200 text-slate-400 font-black rounded-lg cursor-not-allowed text-xs tracking-widest uppercase transition-all">
-                      Ainda não criado
-                    </button>
-                  )}
 
-                  <button 
-                    onClick={() => setSelectedAulaPlan(aula)}
-                    className="w-full py-2 bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 font-extrabold tracking-wide rounded-lg flex items-center justify-center gap-2 transition-all shadow-sm text-xs"
-                  >
-                    <ClipboardList size={14} className="text-blue-600" /> 🗣️ VER ROTEIRO DE FALA
-                  </button>
+                    <button 
+                      onClick={() => setSelectedAulaPlan(aula)}
+                      className="w-full py-2 bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 font-extrabold tracking-wide rounded-xl flex items-center justify-center gap-2 transition-all shadow-xs text-xs"
+                    >
+                      <ClipboardList size={14} className="text-blue-600" /> 🗣️ VER ROTEIRO DE FALA
+                    </button>
+                  </div>
                 </div>
-              </div>
-            );
+              );
+            };
 
             return (
               <>

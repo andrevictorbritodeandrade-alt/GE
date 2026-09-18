@@ -1,5 +1,8 @@
 
+import { CRONOGRAMA_3TRI_PE_PLAN } from './cronogramaAulas3Tri';
+
 export interface AulaPlan {
+    id?: string;
     data: string;
     tri: string;
     modulo: string;
@@ -403,3 +406,6 @@ Compreender a Luta Marajoara como patrimônio cultural imaterial brasileiro e pa
 
 PE_PLAN['ciep369'] = PE_PLAN['8ano'];
 PE_PLAN['correcao_fluxo'] = PE_PLAN['ap'];
+PE_PLAN['setembro_amarelo'] = CRONOGRAMA_3TRI_PE_PLAN;
+PE_PLAN['cronograma_3tri'] = CRONOGRAMA_3TRI_PE_PLAN;
+

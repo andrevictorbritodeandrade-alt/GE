@@ -1063,3 +1063,15 @@ export const SLIDES_CAPOEIRA = [
       dicaProfessor: 'Explique que a próxima aula explorará a Luta Marajoara para concluir o ciclo das lutas do Brasil!'
     }
 ];
+
+export { 
+  AULAS_SETEMBRO_AMARELO, 
+  SLIDES_AULA_1_SETEMBRO_AMARELO, 
+  SLIDES_AULA_2_SETEMBRO_AMARELO, 
+  SLIDES_AULA_3_SETEMBRO_AMARELO 
+} from './setembroAmareloAulas';
+
+export {
+  CRONOGRAMA_3TRI_AULAS,
+  CRONOGRAMA_3TRI_PE_PLAN
+} from './cronogramaAulas3Tri';
