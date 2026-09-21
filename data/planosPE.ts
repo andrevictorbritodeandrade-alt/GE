@@ -140,38 +140,7 @@ Compreender a Luta Marajoara como patrimônio cultural imaterial do Brasil e do 
    • Em duplas, mantendo postura ereta com os joelhos semiflexionados.
    • Desafio do "Búfalo em Equilíbrio": mãos apoiadas espalmadas nos ombros do parceiro; tentar fazer o colega dar um passo para trás usando apenas o recuo e desequilíbrio sutil de base, sem puxões bruscos, solavancos ou contato violento.` 
         },
-        { 
-            data: '14/09', tri: '3º Tri', modulo: 'Jogos de Tabuleiro', titulo: 'Torneio de Shisima', desc: 'Realização de torneio com o jogo de tabuleiro Shisima.', 
-            trabalho: 'recolher',
-            resumo: `🎯 **Objetivo da Aula:** Praticar a lógica matemática queniana.\n\n🗣️ **Dinâmica:**\n• Torneio inter-carteiras com o jogo Shisima.\n\n📥 **TRABALHO:** Recolher os tabuleiros construídos pelos alunos.` 
-        },
-        { 
-            data: '21/09', tri: '3º Tri', modulo: 'Saúde', titulo: 'Saúde: Postura e Ergonomia', desc: 'Vício postural celular/estudante e ginástica laboral em sala.', 
-            resumo: `🎯 **Objetivo da Aula:** Prevenção de dores e vícios posturais.\n\n🗣️ **Dinâmica:**\n• Guia de ginástica laboral feita sentado na própria cadeira escolar.` 
-        },
-        { 
-            data: '28/09', tri: '3º Tri', modulo: 'Geopolítica', titulo: 'Olimpíadas e Política', desc: 'Protestos e história das Olimpíadas Modernas.', 
-            trabalho: 'passar',
-            resumo: `🎯 **Objetivo da Aula:** Analisar o esporte como palco de manifestações políticas.\n\n⚠️ **TRABALHO:** Pesquisa sobre fatos históricos e políticos importantes nas Olimpíadas.` 
-        },
-        { 
-            data: '05/10', tri: '3º Tri', modulo: 'Cinema/História', titulo: 'Filme: Invictus', desc: 'Cine-debate sobre Nelson Mandela e o Rugby.', 
-            resumo: `🎯 **Objetivo da Aula:** Compreender o papel do esporte na unificação nacional.\n\n🗣️ **Dinâmica:**\n• Exibição de trechos do filme Invictus e debate em sala.` 
-        },
-        { 
-            data: '19/10', tri: '3º Tri', modulo: 'Jogos de Salão', titulo: 'Jogos de Salão: Dominó', desc: 'Tradição cultural e probabilidade matemática básica.', 
-            resumo: `🎯 **Objetivo da Aula:** Lazer operário e raciocínio lógico em grupos.\n\n🗣️ **Dinâmica:**\n• Torneio de Dominó nas carteiras escolares.` 
-        },
-        { 
-            data: '26/10', tri: '3º Tri', modulo: 'Geopolítica', titulo: 'Apartheid e o Esporte', desc: 'Segregação na África do Sul e resistência.', 
-            trabalho: 'passar',
-            resumo: `🎯 **Objetivo da Aula:** Estudar o esporte como ferramenta política e social.\n\n⚠️ **TRABALHO:** Pesquisa sobre Atletas Negros contra o Racismo.` 
-        },
-        { 
-            data: '09/11', tri: '3º Tri', modulo: 'Trabalho Acadêmico', titulo: 'Apresentações Finais', desc: 'Apresentação dos trabalhos de história olímpica e esportiva.', 
-            destaque: true,
-            resumo: `🎯 **Objetivo da Aula:** Conclusão dos seminários e socialização de pesquisas.` 
-        }
+        ...CRONOGRAMA_3TRI_PE_PLAN
     ],
     'ap': [
         { 
@@ -238,48 +207,7 @@ Compreender a Luta Marajoara como patrimônio cultural imaterial brasileiro e pa
 6. **Lousa e Registro no Caderno (10 min):** Cópia do resumo estruturado projetado no slide para fixação e avaliação processual.
 7. **Vivência Prática Segura (10 min):** Base isométrica do búfalo em duplas (desequilíbrio de base seguro sem impacto).` 
         },
-        { 
-            data: '14/09', tri: '3º Tri', modulo: 'Esportes de Campo', titulo: 'Futebol: Limites e Regras (Aula 1/4 - TEÓRICA)', desc: 'Marcações de campo e regras básicas (Impedimento tático de forma fácil).', 
-            resumo: `🎯 **Objetivo da Aula:** Compreender regras conceituais do futebol de campo aberto.\n\n🗣️ **Dinâmica (Quadro):**\n• Linha de impedimento explicada de forma desenhada no quadro.` 
-        },
-        { 
-            data: '21/09', tri: '3º Tri', modulo: 'Esportes de Campo', titulo: 'Futebol: Passes e Domínio (Aula 2/4 - PRÁTICA)', desc: 'Prática de domínio de sola/peito e precisão de passes no pátio/campo.', 
-            resumo: `🎯 **Objetivo da Aula:** Controlar a bola em campos abertos ou pátios amplos.\n\n🗣️ **Dinâmica (Prática):**\n• Roda de bobinho e drills de controle motor de bola pesada.` 
-        },
-        { 
-            data: '28/09', tri: '3º Tri', modulo: 'Esportes de Campo', titulo: 'Futebol: Desenhos Táticos (Aula 3/4 - MEIO A MEIO)', desc: 'Desenhos clássicos de equipes (4-4-2 e 4-3-3). Passagem de Trabalho.', 
-            trabalho: 'passar',
-            resumo: `🎯 **Objetivo da Aula:** Compreender formações clássicas no quadro e passar Trabalho.\n\n🗣️ **Dinâmica (Quadro/Prática):**\n• Desenho das táticas 4-4-2 e 4-3-3 no quadro e jogo de posicionamento tático fixo em quadra.\n\n⚠️ **TRABALHO TRIMESTRAL (Valor: 3 pontos) - Copiar do Quadro:**\n\n📋 **O QUE FAZER:** Desenho de Mapeamento Tático Simples. Fazer individual no caderno ou papel avulso.\n\n📑 **ESTRUTURA TÉCNICA:**\n1. **Capa:** Nome, número, turma e matéria (Educação Física).\n2. **Desenho:** Desenhar um campo de futebol completo com as marcações de linhas.\n3. **Táticas:** Desenhar o seu time posicionado em duas táticas diferentes (ex: 4-4-2 e 4-3-3), usando bolinhas com números para representar os jogadores.\n4. **Explicação:** Escrever em 1 ou 2 linhas qual dessas táticas você acha mais defensiva e qual é mais ofensiva.` 
-        },
-        { 
-            data: '05/10', tri: '3º Tri', modulo: 'Esportes de Campo', titulo: 'Futebol: Jogo Coletivo (Aula 4/4 - PRÁTICA)', desc: 'Práticas de jogo amplo, passes distribuídos e esporte de lazer comunitário.', 
-            resumo: `🎯 **Objetivo da Aula:** Aplicar regras integradas em jogo tático.\n\n🗣️ **Dinâmica (Prática):**\n• Jogo coletivo no pátio/campo focando em passes contínuos.` 
-        },
-        { 
-            data: '19/10', tri: '3º Tri', modulo: 'Inclusão Desportiva', titulo: 'Inclusão: Esporte Paralímpico (Aula 1/4 - TEÓRICA)', desc: 'Acessibilidade na Educação Física e regras de inclusão.', 
-            resumo: `🎯 **Objetivo da Aula:** Entender o conceito de paradesporto e barreira física.\n\n🗣️ **Dinâmica (Quadro):**\n• Debate conceitual sobre limitações de mobilidade e a inclusão social no esporte.` 
-        },
-        { 
-            data: '26/10', tri: '3º Tri', modulo: 'Inclusão Desportiva', titulo: 'Inclusão: Vôlei Sentado (Aula 2/4 - PRÁTICA)', desc: 'Vivência de locomoção com glúteos tocando o chão de forma cooperativa.', 
-            resumo: `🎯 **Objetivo da Aula:** Exercitar o tronco superior em deslocamento sentado.\n\n🗣️ **Dinâmica (Prática):**\n• Jogo de voleibol facilitado com rede baixa onde os alunos jogam sentados.` 
-        },
-        { 
-            data: '09/11', tri: '3º Tri', modulo: 'Inclusão Desportiva', titulo: 'Inclusão: Futebol de 5 (Aula 3/4 - MEIO A MEIO)', desc: 'Compreensão de sinalizações auditivas e guias silenciosos. Recolhimento de Trabalho.', 
-            trabalho: 'recolher',
-            resumo: `🎯 **Objetivo da Aula:** Desenvolver atenção sensorial auditiva e recolher trabalhos.\n\n🗣️ **Dinâmica (Quadro/Prática):**\n• Conceito do guia e bola de guizo.\n• Drills de passes com vendas nos olhos e guia verbal.\n\n📥 **TRABALHO:** Recolher o Trabalho de Mapeamento Tático Simples (3 pts).` 
-        },
-        { 
-            data: '16/11', tri: '3º Tri', modulo: 'Inclusão Desportiva', titulo: 'Inclusão: Esportes Adaptados (Aula 4/4 - PRÁTICA)', desc: 'Basquete adaptado e jogos corporais coordenados finais.', 
-            resumo: `🎯 **Objetivo da Aula:** Fechamento motor prático integrado.\n\n🗣️ **Dinâmica (Prática):**\n• Circuitos divertidos de arremessos em nível integrado.` 
-        },
-        { 
-            data: '23/11', tri: '3º Tri', modulo: 'Avaliação', titulo: 'Avaliação Teórica: Esportes de Campo (SALA - sem prática)', desc: 'Aplicação da avaliação escrita conceitual em sala de aula.', 
-            resumo: `🎯 **Objetivo da Aula:** Sistematização de saberes do 3º período.\n\n🗣️ **Dinâmica:**\n• Prova conceitual sobre futebol de várzea e esportes adaptados.` 
-        },
-        { 
-            data: '30/11', tri: '3º Tri', modulo: 'Recuperação', titulo: 'Recuperação Trimestral Final (SALA - sem prática)', desc: 'Aplicação de provas pendentes e fechamento anual.', 
-            resumo: `🎯 **Objetivo da Aula:** Consolidar médias e apoiar alunos com dúvidas gerais.\n\n🗣️ **Dinâmica:**\n• Entrega de notas finais escolares em sala.` 
-        }
+        ...CRONOGRAMA_3TRI_PE_PLAN
     ],
     'ap_sexta': [
         { 
@@ -333,74 +261,12 @@ Compreender a Luta Marajoara como patrimônio cultural imaterial brasileiro e pa
             data: '04/09', tri: '2º Tri', modulo: 'Recuperação', titulo: 'Recuperação e Segunda Chamada (SALA - sem prática)', desc: 'Reposição de prova final presencial em sala de aula.', 
             resumo: `🎯 **Objetivo da Aula:** Sanar pendências e fechar as médias do segundo período.\n\n🗣️ **Dinâmica:**\n• Avaliações individualizadas na sala.` 
         },
-        { 
-            data: '11/09', tri: '3º Tri', modulo: 'Esportes de Campo', titulo: 'Futebol: Regras Escolares (Aula 1/4 - TEÓRICA)', desc: 'Funcionamento de faltas, saídas e barreira tática de impedimento fácil.', 
-            resumo: `🎯 **Objetivo da Aula:** Conhecer regras táticas fundamentais do futebol.\n\n🗣️ **Dinâmica (Quadro):**\n• Desenho das áreas de escanteio e a linha tática de impedimento.` 
-        },
-        { 
-            data: '18/09', tri: '3º Tri', modulo: 'Esportes de Campo', titulo: 'Futebol: Passes Direcionados (Aula 2/4 - PRÁTICA)', desc: 'Domínio de sola e condução coordenada com parte interna do pé no pátio.', 
-            resumo: `🎯 **Objetivo da Aula:** Reforçar habilidades motoras básicas de controle de bola.` 
-        },
-        { 
-            data: '25/09', tri: '3º Tri', modulo: 'Esportes de Campo', titulo: 'Futebol: Posicionamentos (Aula 3/4 - MEIO A MEIO)', desc: 'Mapeamento das táticas 4-4-2 e 4-3-3 na teoria e na prática. Passagem de Trabalho.', 
-            trabalho: 'passar',
-            resumo: `🎯 **Objetivo da Aula:** Analisar esquemas com bolinhas metálicas no quadro e orientar Trabalho.\n\n🗣️ **Dinâmica (Quadro/Prática):**\n• Desenho das posições de campo 4-4-2 e 4-3-3 no quadro e treino de ataque tático no pátio.\n\n⚠️ **TRABALHO TRIMESTRAL (Valor: 3 pontos) - Copiar do Quadro:**\n\n📋 **O QUE FAZER:** Desenho de Mapeamento Tático Simples. Fazer individual no caderno ou papel avulso.\n\n📑 **ESTRUTURA TÉCNICA:**\n1. **Capa:** Nome, número, turma e matéria (Educação Física).\n2. **Desenho:** Desenhar um campo de futebol completo com as marcações de linhas.\n3. **Táticas:** Desenhar o seu time posicionado em duas táticas diferentes (ex: 4-4-2 e 4-3-3), usando bolinhas com números para representar os jogadores.\n4. **Explicação:** Escrever em 1 ou 2 linhas qual dessas táticas você acha mais defensiva e qual é mais ofensiva.` 
-        },
-        { 
-            data: '09/10', tri: '3º Tri', modulo: 'Esportes de Campo', titulo: 'Futebol: Coletivos de Equipes (Aula 4/4 - PRÁTICA)', desc: 'Partidas com passes integrados e controle de cooperação discente.', 
-            resumo: `🎯 **Objetivo da Aula:** Desenvolver fair-play e controle individual emocional.\n\n🗣️ **Dinâmica (Prática):**\n• Partidas de futebol integradas e controle escolar de comportamento.` 
-        },
-        { 
-            data: '16/10', tri: '3º Tri', modulo: 'Inclusão Desportiva', titulo: 'Inclusão: Esportes Adaptados (Aula 1/4 - TEÓRICA)', desc: 'A inclusão social pelas práticas paralímpicas na Educação Física.', 
-            resumo: `🎯 **Objetivo da Aula:** Integrar conceitos de paradesporto e limitações corporais.` 
-        },
-        { 
-            data: '23/10', tri: '3º Tri', modulo: 'Inclusão Desportiva', titulo: 'Inclusão: Vôlei Sentado (Aula 2/4 - PRÁTICA)', desc: 'Toques de vôlei na quadra sentados mantendo glúteos tocando o chão.', 
-            resumo: `🎯 **Objetivo da Aula:** Dominar a mobilidade restrita corporal sentados.` 
-        },
-        { 
-            data: '30/10', tri: '3º Tri', modulo: 'Inclusão Desportiva', titulo: 'Inclusão: Futebol de 5 (Aula 3/4 - MEIO A MEIO)', desc: 'Dribles e passes na quadra usando bola de guizo com olhos vendados.', 
-            resumo: `🎯 **Objetivo da Aula:** Exercitar a percepção auditiva no desporto inclusivo.` 
-        },
-        { 
-            data: '06/11', tri: '3º Tri', modulo: 'Inclusão Desportiva', titulo: 'Inclusão: Basquete Cadeira (Aula 4/4 - PRÁTICA)', desc: 'Basquete adaptado de precisão de arremessos ao cesto.', 
-            resumo: `🎯 **Objetivo da Aula:** Praticar movimentos integrados de arremesso cooperativo.` 
-        },
-        { 
-            data: '27/11', tri: '3º Tri', modulo: 'Esportes de Campo', titulo: 'Futebol de Várzea e Cidadania (Aula Única - MEIO A MEIO)', desc: 'Cultura da várzea periférica e projetos sociais nos subúrbios rurais. Recolhimento de Trabalho.', 
-            trabalho: 'recolher',
-            resumo: `🎯 **Objetivo da Aula:** Estudo social comunitário esportivo e recolhimento de trabalhos.\n\n🗣️ **Dinâmica (Teoria/Prática):**\n• O papel da várzea na favela e subúrbio.\n• Drills finais cooperativos em quadra.\n\n📥 **TRABALHO:** Recolher o Trabalho de Mapeamento Tático Simples (3 pts).` 
-        },
-        { 
-            data: '04/12', tri: '3º Tri', modulo: 'Avaliação', titulo: 'Avaliação Teórica: Esportes de Campo e de Quadra (SALA - sem prática)', desc: 'Aplicação da prova conceitual em sala de aula.', 
-            resumo: `🎯 **Objetivo da Aula:** Avaliação global teórica dos desportos regulamentados.\n\n🗣️ **Dinâmica:**\n• Prova conceitual sobre futsal, basquete, vôlei e futebol.` 
-        },
-        { 
-            data: '11/12', tri: '3º Tri', modulo: 'Conselho de Classe', titulo: 'Conselho de Classe e Fechamento (SALA - sem prática)', desc: 'Fechamento de diários pedagógicos, autoavaliação e médias.', 
-            resumo: `🎯 **Objetivo da Aula:** Oferecer devolutiva didática final aos discentes.` 
-        },
-        { 
-            data: '18/12', tri: '3º Tri', modulo: 'Recuperação', titulo: 'Recuperação Final e Encerramento (SALA - sem prática)', desc: 'Consolidação das notas finais por recuperação paralela.', 
-            resumo: `🎯 **Objetivo da Aula:** Conclusão letiva do ano com suporte final de conselho e recuperação.` 
-        }
+        ...CRONOGRAMA_3TRI_PE_PLAN
     ],
         'ilgch': [
         { data: '28/08', tri: '2º Tri', modulo: 'Introdução', titulo: 'Aulas Suspensas', desc: 'Aulas suspensas por motivos de força maior.', status: 'concluido', resumo: `🎯 **Objetivo da Aula:** Sem aula por motivo de força maior.` },
         { data: '04/09', tri: '2º Tri', modulo: 'Introdução', titulo: 'O que é ILGCH / IFFC / IFLA?', desc: 'Apresentação das matérias eletivas exigidas pela SEEDUC RJ.', status: 'concluido', resumo: `🎯 **Objetivo da Aula:** Apresentar a disciplina e seus eixos formativos.\n\n🗣️ **Dinâmica:**\n• O que significa Itinerário Formativo?\n• Ciências Humanas e Sociais Aplicadas.\n\n📜 **Reflexão:** Qual a importância das disciplinas eletivas na formação do aluno?` },
-        { data: '11/09', tri: '3º Tri', modulo: 'Identidade', titulo: 'Identidade e Sociedade', desc: 'Debate sobre Frantz Fanon e Cida Bento.', resumo: `🎯 **Objetivo da Aula:** Debater construções identitárias.\n\n🗣️ **Dinâmica:**\n• Leitura sobre Fanon.\n• Conceito de branquitude por Cida Bento.\n\n📜 **Reflexão:** A identidade é algo dado ou construído?` },
-        { data: '18/09', tri: '3º Tri', modulo: 'Racismo', titulo: 'Racismo Estrutural e Recreativo', desc: 'Debate sobre o racismo invisível e estrutural, exemplos na segregação, África do Sul, Brasil, Jim Crow e Blackface.', resumo: `🎯 **Objetivo da Aula:** Compreender as nuances do racismo invisível e estrutural.\n\n🗣️ **Dinâmica:**\n• Apresentação de slides com casos reais: Segregação, África do Sul, Jim Crow e Blackface no Brasil e no mundo.\n\n📜 **Reflexão:** Como o humor recreativo mascara preconceitos estruturais?` },
-        { data: '25/09', tri: '3º Tri', modulo: 'Identidade', titulo: 'Negro vs Preto e o Pardismo no Brasil', desc: 'Autodeclaração, pardismo e Fanon. Passar trabalho sobre os povos originários.', trabalho: 'passar', resumo: `🎯 **Objetivo da Aula:** Diferenciar negro e preto politicamente e estatisticamente.\n\n🗣️ **Dinâmica:**\n• O mito da democracia racial e o "pardismo" influenciado pelas reflexões de Fanon.\n• Divisão dos grupos para o trabalho trimestral.\n\n⚠️ **TRABALHO DE PESQUISA (Apresentação e Escrito):**\n\n📋 **O QUE FAZER:** Trabalho em grupo sobre os Povos Originários das 5 regiões do Brasil antes da grande invasão (1500) e o cenário atual.\n\n📑 **ESTRUTURA OBRIGATÓRIA DO TRABALHO ESCRITO:**\n1. **Capa:** Nome do CIEP, Disciplina (ILGCH), Nome do Professor, Nomes e números de todos os componentes do grupo, Turma e Ano.\n2. **Introdução:** Apresentação geral do tema e da região do Brasil escolhida pelo grupo.\n3. **Desenvolvimento (Tópicos obrigatórios):**\n   - Apresentar no mínimo **3 povos originários** da região escolhida.\n   - Como era a estrutura social, cultura e economia desses povos **antes de 1500**?\n   - Qual o **cenário atual** desses povos? (Lutas por demarcação, preservação cultural, ameaças contemporâneas).\n4. **Conclusão:** Reflexão do grupo sobre a importância da preservação das culturas originárias.\n5. **Referências:** Citar os livros, sites ou documentários pesquisados.\n\n🎤 **SOBRE A APRESENTAÇÃO:**\n• Todos do grupo devem falar.\n• Podem utilizar cartazes, slides ou outros recursos visuais.\n• Data das apresentações: 23/10.` },
-        { data: '02/10', tri: '3º Tri', modulo: 'Povos Originários', titulo: 'Ailton Krenak', desc: 'A representatividade de Ailton Krenak e suas "ideias para adiar o fim do mundo".', resumo: `🎯 **Objetivo da Aula:** Conhecer o pensamento do líder indígena Ailton Krenak.\n\n🗣️ **Dinâmica:**\n• A importância da obra de Krenak.\n• Sua entrada na Academia Brasileira de Letras.\n\n📜 **Reflexão:** O que significa "adiar o fim do mundo"?` },
-        { data: '09/10', tri: '3º Tri', modulo: 'Povos Originários', titulo: 'Formação das Sociedades Globais', desc: 'A contribuição dos povos originários em cada continente.', resumo: `🎯 **Objetivo da Aula:** Analisar a fundação das sociedades sob a ótica dos povos nativos.\n\n🗣️ **Dinâmica:**\n• O apagamento dos nativos.\n• Estruturas sociais, econômicas e culturais antes de 1500.\n\n📜 **Reflexão:** O que a nossa sociedade atual deve às engenharias dos povos nativos?` },
-        { data: '16/10', tri: '3º Tri', modulo: 'Recesso', titulo: 'Semana do Saco Cheio / Prof', desc: 'Recesso do Dia do Professor.', resumo: `🎯 **Objetivo da Aula:** Recesso - Sem aula.` },
-        { data: '23/10', tri: '3º Tri', modulo: 'Seminários', titulo: 'Apresentações: Povos Originários', destaque: true, desc: 'Apresentação de todos os grupos sobre povos das 5 regiões do Brasil.', resumo: `🎯 **Objetivo da Aula:** Socializar conhecimento sobre a cultura e concluir as apresentações avaliativas.\n\n🗣️ **Dinâmica:**\n• Apresentação de todos os grupos.\n• Fechamento e análise comparada das etnias pesquisadas.` },
-        { data: '30/10', tri: '3º Tri', modulo: 'Políticas Públicas', titulo: 'A Guerra pela sua Mente: Algoritmos e Saúde Mental', desc: 'Análise de redes sociais, dopamina, tempo de tela e reterritorialização do próprio corpo.', resumo: `🎯 **Objetivo da Aula:** Compreender o impacto neuroquímico e corporal do uso de redes sociais, aprendendo estratégias práticas de decolonização do tempo e do espaço físico.\n\n🗣️ **ROTEIRO DE FALA DO PROFESSOR (PASSO A PASSO):**\n\n📢 **1. INTRODUÇÃO (Acolhimento - 5 min):**\n"Bom dia, pessoal! Hoje nós vamos falar sobre uma guerra invisível que está acontecendo agora mesmo, neste exato segundo, dentro do seu bolso. Quem aqui olhou o celular nos últimos 15 minutos? E por quê? Não é bronca! Quero que vocês pensem: vocês escolheram abri-lo ou sentiram uma 'coceira' física na mão? Hoje vamos entender a química do nosso cérebro, como as gigantes da tecnologia vendem nosso tempo e como podemos recuperar o comando."\n\n🧠 **2. A ARMADILHA DA DOPAMINA (10 min):**\n"A dopamina não é o hormônio do prazer, mas do DESEJO e da expectativa! No feed infinito (TikTok/Reels), o algoritmo funciona como uma máquina caça-níqueis. Ele intercala posts sem graça com posts sensacionais. Esse padrão incerto vicia seu cérebro e cansa sua mente. Após 20 minutos disso, sua capacidade de focar despenca. Vamos abrir agora o celular em 'Tempo de Tela' nas configurações e ver quem tem a coragem de falar o seu tempo real de uso de ontem?"\n\n🧘‍♂️ **3. CORPO IMÓVEL x CÉREBRO ACELERADO (10 min):**\n"Enquanto o cérebro voa a mil por hora, o corpo está curvado e estático. A cabeça inclinada joga um peso de até 27kg na coluna cervical (Tech Neck)! Além disso, usar o celular antes de dormir bloqueia a melatonina, gerando um cansaço crônico. A boa notícia é que esportes liberam endorfina e serotonina reais, limpando a mente. Vamos todos ficar de pé por 10 segundos, alinhar a postura, respirar fundo e sentir o alívio imediato na coluna. Sinta seu corpo de verdade!"\n\n🌐 **4. QUEM COMANDA SUA IDENTIDADE? (10 min):**\n"Se você não paga pelo produto, o produto é você: eles vendem seu tempo de vida para anunciantes. Decolonizar o feed significa retomar suas escolhas reais e o comando de sua rotina. Como hack de atenção: desativem notificações inúteis, deixem o celular longe do quarto ao dormir e pratiquem atividades físicas."\n\n🔥 **5. DEBATE EXPRESS (10 min):**\n"Vamos abrir a roda: Qual a primeira coisa que faz ao acordar e a última antes de dormir? É olhar o celular? Você sente que controla o aparelho ou ele te controla? Quero ouvir as opiniões sinceras de vocês!"\n\n✍️ **6. ATIVIDADE NO CADERNO (15 min):**\n"Mantenham as perguntas projetadas. Respondam as 4 questões individualmente. Passarei nas carteiras dando visto e nota de participação do trimestre no caderno de todos!"` },
-        { data: '06/11', tri: '3º Tri', modulo: 'Mídias', titulo: 'Redes Sociais, Ativismo e Algoritmos', desc: 'Ativismo virtual x presencial. A bolha dos algoritmos.', resumo: `🎯 **Objetivo da Aula:** Entender como a internet molda o que recebemos de causa social.\n\n🗣️ **Dinâmica:**\n• Debate sobre ativismo de sofá.\n• Cancelamento nas mídias sociais.` },
-        { data: '13/11', tri: '3º Tri', modulo: 'Cultura', titulo: 'Apropriação vs Intercâmbio', desc: 'A fronteira da apropriação cultural na moda, no esporte e na música.', resumo: `🎯 **Objetivo da Aula:** Destrinchar de quem é a arte e por qual preço se adquire.\n\n🗣️ **Dinâmica:**\n• Elementos tradicionais que viraram produtos comerciais.\n• Respeito e herança.` },
-        { data: '20/11', tri: '3º Tri', modulo: 'Feriado', titulo: 'Dia da Consciência Negra', desc: 'Feriado Nacional.', resumo: `🎯 **Objetivo da Aula:** Feriado Nacional - Sem aula.` },
-        { data: '27/11', tri: '3º Tri', modulo: 'Revisão', titulo: 'Revisão Geral e Plantão', desc: 'Repasse completo pro trimestre (Racismo, Autodeclaração, Krenak, Políticas Públicas).', resumo: `🎯 **Objetivo da Aula:** Sistematização de saberes (Povos Originários, Lutas Sociais, Identidade).` },
-        { data: '04/12', tri: '3º Tri', modulo: 'Avaliação', titulo: 'Avaliação Final', desc: 'Prova final do Itinerário Formativo sobre Ciências Humanas.', resumo: `🎯 **Objetivo da Aula:** Verificar o amadurecimento crítico do aluno.` },
-        { data: '11/12', tri: '3º Tri', modulo: 'Recuperação', titulo: 'Recuperação e Fechamento', desc: 'Consolidação de notas e oportunidade para reavaliação.', resumo: `🎯 **Objetivo da Aula:** Recuperação de notas dos alunos que não alcançaram a média e fechamento de diários.` }
+        ...CRONOGRAMA_3TRI_PE_PLAN
     ]
 };
 
