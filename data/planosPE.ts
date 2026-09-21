@@ -140,7 +140,50 @@ Compreender a Luta Marajoara como patrimônio cultural imaterial do Brasil e do 
    • Em duplas, mantendo postura ereta com os joelhos semiflexionados.
    • Desafio do "Búfalo em Equilíbrio": mãos apoiadas espalmadas nos ombros do parceiro; tentar fazer o colega dar um passo para trás usando apenas o recuo e desequilíbrio sutil de base, sem puxões bruscos, solavancos ou contato violento.` 
         },
-        ...CRONOGRAMA_3TRI_PE_PLAN
+        { 
+            data: '21/09', tri: '3º Tri', modulo: 'Lutas', titulo: 'Uru-Can: A Luta das Cobras', desc: 'Arte marcial brasileira: Urutu + Caninana.', 
+            resumo: `🎯 **Objetivo da Aula:** Conhecer a história e o nome da luta Uru-Can.\n\n🗣️ **Dinâmica:**\n• Apresentação da origem militar e do significado do nome (junção das cobras Urutu e Caninana).\n\n📜 **Reflexão:** A importância de valorizar as criações marciais brasileiras.` 
+        },
+        { 
+            data: '28/09', tri: '3º Tri', modulo: 'Lutas', titulo: 'Huka-Huka: A Luta Ritualística', desc: 'Luta indígena do Xingu praticada no Kuarup.', 
+            resumo: `🎯 **Objetivo da Aula:** Compreender a luta como rito de passagem.\n\n🗣️ **Dinâmica:**\n• Estudo das regras (luta de joelhos) e do som da onça.\n\n📜 **Reflexão:** O respeito e a tradição nos rituais indígenas.` 
+        },
+        { 
+            data: '05/10', tri: '3º Tri', modulo: 'Lutas', titulo: 'Jiu-Jitsu Brasileiro', desc: 'A evolução da arte suave no Brasil.', 
+            resumo: `🎯 **Objetivo da Aula:** Diferenciar o Jiu-Jitsu tradicional do Brasileiro.\n\n🗣️ **Dinâmica:**\n• História da família Gracie e o foco em alavancas.\n\n📜 **Reflexão:** Como a técnica pode superar a força bruta?` 
+        },
+        { 
+            data: '19/10', tri: '3º Tri', modulo: 'Lutas', titulo: 'Luta Livre Esportiva', desc: 'A luta de Euclydes Hatem (Tatu).', 
+            resumo: `🎯 **Objetivo da Aula:** Conhecer o submission wrestling brasileiro.\n\n🗣️ **Dinâmica:**\n• Comparação entre Jiu-Jitsu e Luta Livre.\n\n📜 **Reflexão:** A diversidade das lutas de agarramento no Brasil.` 
+        },
+        { 
+            data: '26/10', tri: '3º Tri', modulo: 'Ginástica', titulo: 'Conscientização Corporal', desc: 'Conectando corpo e mente em sala.', 
+            resumo: `🎯 **Objetivo da Aula:** Introduzir técnicas de relaxamento e respiração.\n\n🗣️ **Dinâmica:**\n• Prática guiada de respiração e automassagem.\n\n📜 **Reflexão:** Como a consciência corporal ajuda a reduzir o estresse?` 
+        },
+        { 
+            data: '09/11', tri: '3º Tri', modulo: 'Ginástica', titulo: 'Prática de Conscientização', desc: 'Aprofundamento nas técnicas corporais.', 
+            resumo: `🎯 **Objetivo da Aula:** Aplicar os conceitos de bem-estar.\n\n🗣️ **Dinâmica:**\n• Sequência de alongamento e meditação guiada.\n\n📜 **Reflexão:** O autocuidado como ferramenta de saúde.` 
+        },
+        { 
+            data: '16/11', tri: '3º Tri', modulo: 'Esportes', titulo: 'Rede e Parede Adaptados', desc: 'Esportes de rede no espaço da sala.', 
+            resumo: `🎯 **Objetivo da Aula:** Adaptar modalidades para o espaço escolar.\n\n🗣️ **Dinâmica:**\n• Jogos com bexigas e petecas de papel.\n\n📜 **Reflexão:** A criatividade na superação de limites físicos.` 
+        },
+        { 
+            data: '23/11', tri: '3º Tri', modulo: 'Dança', titulo: 'Danças Urbanas', desc: 'Hip Hop e movimentos de Bounce/Wave.', 
+            resumo: `🎯 **Objetivo da Aula:** Vivenciar o ritmo das danças urbanas.\n\n🗣️ **Dinâmica:**\n• Prática de passos básicos e improvisação em roda.\n\n📜 **Reflexão:** A dança como expressão cultural das periferias.` 
+        },
+        { 
+            data: '30/11', tri: '3º Tri', modulo: 'Jogos', titulo: 'Criação de Tabuleiros', desc: 'Gamificação dos conteúdos do trimestre.', 
+            resumo: `🎯 **Objetivo da Aula:** Sistematizar o conhecimento de forma lúdica.\n\n🗣️ **Dinâmica:**\n• Oficina de criação de jogos sobre o conteúdo estudado.\n\n📜 **Reflexão:** O que aprendemos jogando?` 
+        },
+        { 
+            data: '07/12', tri: '3º Tri', modulo: 'Avaliação', titulo: 'Avaliação Escrita', desc: 'Verificação de aprendizagem do trimestre.', 
+            resumo: `🎯 **Objetivo da Aula:** Aplicar a avaliação teórica final.\n\n🗣️ **Dinâmica:**\n• Aplicar a prova teórica final.\n\n📜 **Reflexão:** O que você aprendeu de mais importante?` 
+        },
+        { 
+            data: '14/12', tri: '3º Tri', modulo: 'Encerramento', titulo: 'Retrospectiva e Despedida', desc: 'Fechamento do ano letivo.', 
+            resumo: `🎯 **Objetivo da Aula:** Refletir sobre a jornada anual.\n\n🗣️ **Dinâmica:**\n• Roda de conversa e autoavaliação.\n\n📜 **Reflexão:** Boas festas e foco no próximo ano!` 
+        }
     ],
     'ap': [
         { 

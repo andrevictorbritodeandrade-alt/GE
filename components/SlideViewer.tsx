@@ -220,7 +220,7 @@ export const SlideViewer: React.FC<{ onClose: () => void, slideType?: 'corpo-mid
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  const slide = slides[currentSlide];
+  const slide = slides[currentSlide] as any;
 
   const getHeaderTitle = () => {
     if (slideType === 'altinha-futvolei') return 'Altinha & Futevôlei';

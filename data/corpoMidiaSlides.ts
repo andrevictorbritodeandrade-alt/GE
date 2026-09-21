@@ -512,137 +512,71 @@ export const SLIDES_LUTA_MARAJOARA = [
 ];
 
 export const SLIDES_LUTAS_BRASIL_8ANO_3TRI: Record<string, any[]> = {
-  '21/09': [
-    { id: 1, tipo: "capa", titulo: "Revisão: Lutas do Brasil", subtitulo: "Retomando o 2º Trimestre", imagem_url: "https://images.unsplash.com/photo-1544027993-37dbfe43562a?q=80&w=1200&auto=format&fit=crop", topicos: [], notas: "Acolher a turma de volta. Explicar que vamos retomar o que foi visto antes de avançar." },
-    { id: 2, tipo: "objetivos", titulo: "Objetivos da Aula", subtitulo: "", imagem_url: "", topicos: ["Relembrar as principais lutas brasileiras", "Diferenciar luta de briga", "Refletir sobre a valorização da nossa cultura"], notas: "Apresentar os objetivos de forma rápida." },
-    { id: 3, tipo: "discussao", titulo: "O que lembramos?", subtitulo: "", imagem_url: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800&auto=format&fit=crop", topicos: ["Quais lutas brasileiras vocês se lembram?", "O que é Capoeira?", "O que é Luta Marajoara?", "Quais são as principais características de cada uma?"], notas: "Anotar as respostas no quadro. Mediar a discussão." },
-    { id: 4, tipo: "conceito", titulo: "Luta x Briga", subtitulo: "Uma diferença fundamental", imagem_url: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=800&auto=format&fit=crop", topicos: ["Luta: prática corporal com regras, rituais e respeito ao oponente", "Briga: violência sem regras, com intenção de machucar", "Na luta, o colega é um oponente, não um inimigo"], notas: "Enfatizar a importância do respeito e da segurança." },
-    { id: 5, tipo: "fechamento", titulo: "Fechamento", subtitulo: "Próxima aula: Huka-Huka", imagem_url: "https://images.unsplash.com/photo-1493836512294-502baa1986e2?q=80&w=800&auto=format&fit=crop", topicos: ["Vamos conhecer a luta dos povos indígenas do Xingu", "Pesquisar: O que é o Kuarup?"], notas: "Criar expectativa para a próxima aula." }
+  "21/09": [
+    { "id": 1, "tipo": "capa", "titulo": "Uru-Can", "subtitulo": "A Luta das Cobras Brasileiras", "imagem_url": "https://images.unsplash.com/photo-1544027993-37dbfe43562a?q=80&w=1200&auto=format&fit=crop", "topicos": [], "notas": "Introduzir o tema. Perguntar se alguém já ouviu falar do Uru-Can. Explicar que é uma luta genuinamente brasileira." },
+    { "id": 2, "tipo": "conceito", "titulo": "Origem", "subtitulo": "", "imagem_url": "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=800&auto=format&fit=crop", "topicos": ["Criada na Brigada de Infantaria Paraquedista, no Rio de Janeiro", "Criador: Paulo César da Silva Lopes, militar negro e evangélico", "Criada nos anos 70 para situações reais de combate", "Mistura de Karatê, Taekwondo, Kung Fu, Judô e Jiu-Jitsu"], "notas": "Contar a história do criador. Destacar que é uma luta 100% brasileira, criada dentro dos quartéis." },
+    { "id": 3, "tipo": "conceito", "titulo": "O Nome", "subtitulo": "A Junção das Cobras", "imagem_url": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800&auto=format&fit=crop", "topicos": ["O nome Uru-Can é a junção de duas cobras brasileiras", "URU de Urutu: cobra peçonhenta e agressiva", "CAN de Caninana: cobra ágil e rápida", "O nome representa a agressividade e a agilidade da luta"], "notas": "Mostrar imagens das cobras. Explicar que o nome foi escolhido para representar as qualidades da luta." },
+    { "id": 4, "tipo": "conceito", "titulo": "Características", "subtitulo": "", "imagem_url": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop", "topicos": ["Foco em defesa pessoal e letalidade", "Combina golpes de percussão, projeções e imobilizações", "Inclui treinamento com armas brancas (facão, fuzil)", "Não tem regras de competição — foco no combate real"], "notas": "Explicar que o Uru-Can não é uma luta esportiva, mas sim uma arte de combate. Mostrar a diferença para o Jiu-Jitsu." },
+    { "id": 5, "tipo": "fechamento", "titulo": "Fechamento", "subtitulo": "Próxima aula: Huka-Huka", "imagem_url": "https://images.unsplash.com/photo-1493836512294-502baa1986e2?q=80&w=800&auto=format&fit=crop", "topicos": ["Vamos conhecer a luta ritualística dos povos indígenas do Xingu", "Pesquisar: O que é o Kuarup?"], "notas": "Criar expectativa para a próxima aula." }
   ],
-  '28/09': [
-    { id: 1, tipo: "capa", titulo: "Huka-Huka", subtitulo: "A Luta dos Povos Indígenas do Xingu", imagem_url: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200&auto=format&fit=crop", topicos: [], notas: "Introduzir o tema. Mostrar que é uma luta com forte significado cultural." },
-    { id: 2, tipo: "conceito", titulo: "Origem e Significado", subtitulo: "", imagem_url: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=800&auto=format&fit=crop", topicos: ["Luta tradicional dos povos do Alto Xingu (Mato Grosso)", "Criada pelos povos Kamayurá e outras etnias", "Parte do ritual de celebração chamado Kuarup", "Simboliza paz, vida e morte"], notas: "Explicar o contexto ritual. Mostrar que não é só uma competição." },
-    { id: 3, tipo: "conceito", titulo: "Como Funciona a Luta?", subtitulo: "", imagem_url: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop", topicos: ["Realizada de joelhos", "Movimentos rápidos e fluidos", "Técnicas de desequilíbrio, projeção e imobilização", "Não são permitidos socos, chutes, joelhadas, cotoveladas, mordidas ou puxões de cabelo", "Duração de até 2 minutos, sem árbitros"], notas: "Detalhar as regras. Explicar que a luta é decidida pelos próprios lutadores." },
-    { id: 4, tipo: "discussao", titulo: "Refletindo sobre o Huka-Huka", subtitulo: "", imagem_url: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=800&auto=format&fit=crop", topicos: ["O que mais chamou a atenção de vocês?", "Por que essa luta é importante para os povos indígenas?", "Como vocês acham que essa luta se diferencia das que já conhecemos?"], notas: "Incentivar a participação da turma. Mediar a discussão." },
-    { id: 5, tipo: "fechamento", titulo: "Fechamento", subtitulo: "Próxima aula: Jiu-Jitsu Brasileiro", imagem_url: "https://images.unsplash.com/photo-1493836512294-502baa1986e2?q=80&w=800&auto=format&fit=crop", topicos: ["Vamos conhecer a luta que nasceu no Japão e se tornou brasileira", "Pesquisar: Quem foi Mitsuyo Maeda?"], notas: "Criar expectativa para a próxima aula." }
+  "28/09": [
+    { "id": 1, "tipo": "capa", "titulo": "Huka-Huka", "subtitulo": "A Luta Ritualística dos Povos do Xingu", "imagem_url": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200&auto=format&fit=crop", "topicos": [], "notas": "Introduzir o tema. Contextualizar que é uma luta indígena com forte significado cultural." },
+    { "id": 2, "tipo": "conceito", "titulo": "Origem e Significado", "subtitulo": "", "imagem_url": "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=800&auto=format&fit=crop", "topicos": ["Luta tradicional dos povos do Alto Xingu (Mato Grosso)", "Praticada no ritual do Kuarup, celebração da vida e da paz", "O nome refere-se ao som emitido pelos lutadores imitando o rugido da onça", "Representa um rito de passagem para a vida adulta"], "notas": "Explicar o contexto ritual. Mostrar que não é só uma competição, é uma celebração." },
+    { "id": 3, "tipo": "conceito", "titulo": "Como Funciona a Luta?", "subtitulo": "", "imagem_url": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop", "topicos": ["Realizada de joelhos", "Movimentos rápidos e fluidos", "Técnicas de desequilíbrio, projeção e imobilização", "Proibidos: socos, chutes, joelhadas, mordidas e puxões de cabelo", "Duração de até 2 minutos, sem árbitros"], "notas": "Detalhar as regras. Explicar que a luta é decidida pelos próprios lutadores, sem juiz." },
+    { "id": 4, "tipo": "discussao", "titulo": "Refletindo sobre o Huka-Huka", "subtitulo": "", "imagem_url": "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=800&auto=format&fit=crop", "topicos": ["O que mais chamou a atenção de vocês?", "Por que essa luta é importante para os povos indígenas?", "Como vocês acham que essa luta se diferencia das que já conhecemos?"], "notas": "Incentivar a participação da turma. Mediar a discussão." },
+    { "id": 5, "tipo": "fechamento", "titulo": "Fechamento", "subtitulo": "Próxima aula: Jiu-Jitsu Brasileiro", "imagem_url": "https://images.unsplash.com/photo-1493836512294-502baa1986e2?q=80&w=800&auto=format&fit=crop", "topicos": ["Vamos conhecer a luta que nasceu no Japão e se tornou brasileira", "Pesquisar: Quem foi Mitsuyo Maeda?"], "notas": "Criar expectativa para a próxima aula." }
   ],
-  '05/10': [
-    { id: 1, tipo: "capa", titulo: "Jiu-Jitsu Brasileiro", subtitulo: "A Luta que Conquistou o Mundo", imagem_url: "https://images.unsplash.com/photo-1541872703-74c5e44368f9?q=80&w=1200&auto=format&fit=crop", topicos: [], notas: "Introduzir o tema. Mostrar a importância global do JJB." },
-    { id: 2, tipo: "conceito", titulo: "Origens", subtitulo: "", imagem_url: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=800&auto=format&fit=crop", topicos: ["Arte marcial de origem japonesa", "Trazida ao Brasil por Mitsuyo Maeda no início do século XX", "Maeda ensinou a Carlos Gracie, que adaptou as técnicas", "A família Gracie desenvolveu um estilo próprio", "Ficou conhecido como Gracie Jiu-Jitsu ou Brazilian Jiu-Jitsu"], notas: "Contar a história da família Gracie. Explicar a adaptação das técnicas." },
-    { id: 3, tipo: "conceito", titulo: "Características", subtitulo: "", imagem_url: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop", topicos: ["Foco em lutas no chão", "Uso de alavancas e eficiência", "Técnicas de estrangulamento e chaves de braço", "Objetivo: submeter o oponente", "A ênfase na defesa pessoal e na superação da força bruta"], notas: "Explicar a filosofia do JJB. Mostrar como a técnica supera a força." },
-    { id: 4, tipo: "fechamento", titulo: "Fechamento", subtitulo: "Próxima aula: Idjassú e outras lutas indígenas", imagem_url: "https://images.unsplash.com/photo-1493836512294-502baa1986e2?q=80&w=800&auto=format&fit=crop", topicos: ["Vamos conhecer outras lutas indígenas brasileiras", "Pesquisar: O que é o Idjassú?"], notas: "Criar expectativa para a próxima aula." }
+  "05/10": [
+    { "id": 1, "tipo": "capa", "titulo": "Jiu-Jitsu Brasileiro", "subtitulo": "A Luta que Conquistou o Mundo", "imagem_url": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?q=80&w=1200&auto=format&fit=crop", "topicos": [], "notas": "Introduzir o tema. Mostrar a importância global do JJB." },
+    { "id": 2, "tipo": "conceito", "titulo": "Origens", "subtitulo": "", "imagem_url": "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=800&auto=format&fit=crop", "topicos": ["Arte marcial de origem japonesa", "Trazida ao Brasil por Mitsuyo Maeda no início do século XX", "Maeda ensinou a Carlos Gracie, que adaptou as técnicas", "A família Gracie desenvolveu um estilo próprio", "Ficou conhecido como Gracie Jiu-Jitsu ou Brazilian Jiu-Jitsu"], "notas": "Contar a história da família Gracie. Explicar a adaptation das técnicas." },
+    { "id": 3, "tipo": "conceito", "titulo": "Características", "subtitulo": "", "imagem_url": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop", "topicos": ["Foco em lutas no chão", "Uso de alavancas e eficiência", "Técnicas de estrangulamento e chaves de braço", "Objetivo: submeter o oponente", "Ênfase na defesa pessoal e na superação da força bruta"], "notas": "Explicar a filosofia do JJB. Mostrar como a técnica supera a força." },
+    { "id": 4, "tipo": "fechamento", "titulo": "Fechamento", "subtitulo": "Próxima aula: Luta Livre Esportiva", "imagem_url": "https://images.unsplash.com/photo-1493836512294-502baa1986e2?q=80&w=800&auto=format&fit=crop", "topicos": ["Vamos conhecer a luta criada por Euclydes Hatem, o 'Tatu'", "Pesquisar: O que é grappling?"], "notas": "Criar expectativa para a próxima aula." }
   ],
-  '19/10': [
-    { id: 1, tipo: "capa", titulo: "Idjassú e Outras Lutas Indígenas", subtitulo: "A Diversidade das Lutas dos Povos Originários", imagem_url: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200&auto=format&fit=crop", topicos: [], notas: "Introduzir o tema. Mostrar a diversidade das lutas indígenas." },
-    { id: 2, tipo: "conceito", titulo: "Idjassú", subtitulo: "", imagem_url: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=800&auto=format&fit=crop", topicos: ["Luta do povo Karajá do Tocantins", "Praticada nos Jogos dos Povos Indígenas", "Inicia-se em pé, com os lutadores se agarrando pela cintura", "Objetivo: derrubar o oponente no chão"], notas: "Explicar as diferenças em relação ao Huka-Huka." },
-    { id: 3, tipo: "conceito", titulo: "Outras Lutas Indígenas", subtitulo: "", imagem_url: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop", topicos: ["Aipenkuit: luta dos Gavião Kyikatejê (Pará)", "Xondaro Jeroky: luta dos Guarani (dança-luta)", "Derruba Toco: luta dos Pataxós (Minas Gerais e Bahia)", "Luta do Maracá: também conhecida como Derruba Toco"], notas: "Apresentar as outras lutas. Mostrar a riqueza cultural." },
-    { id: 4, tipo: "fechamento", titulo: "Fechamento", subtitulo: "Próxima aula: Jogos de Oposição", imagem_url: "https://images.unsplash.com/photo-1493836512294-502baa1986e2?q=80&w=800&auto=format&fit=crop", topicos: ["Vamos vivenciar as lutas na prática, em sala de aula", "Preparem-se para atividades de desequilíbrio e imobilização"], notas: "Criar expectativa para a próxima aula." }
+  "19/10": [
+    { "id": 1, "tipo": "capa", "titulo": "Luta Livre Esportiva", "subtitulo": "A Luta Brasileira de Euclydes Hatem", "imagem_url": "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=1200&auto=format&fit=crop", "topicos": [], "notas": "Introduzir o tema. Contextualizar a Luta Livre como uma luta genuinamente brasileira." },
+    { "id": 2, "tipo": "conceito", "titulo": "Origens", "subtitulo": "", "imagem_url": "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=800&auto=format&fit=crop", "topicos": ["Criada no Rio de Janeiro por Euclydes Hatem, o 'Tatu'", "Influência do catch wrestling e do jiu-jitsu", "Considerada uma luta brasileira de submission wrestling", "Foco em quedas, imobilizações e finalizações"], "notas": "Contar a história de Euclydes Hatem. Explicar a diferença para o Jiu-Jitsu." },
+    { "id": 3, "tipo": "atividade", "titulo": "Revisão das Lutas Brasileiras", "subtitulo": "", "imagem_url": "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=800&auto=format&fit=crop", "topicos": ["Capoeira: dança, luta e música", "Luta Marajoara: agarrada da Ilha de Marajó", "Huka-Huka: luta indígena do Xingu", "Jiu-Jitsu Brasileiro: luta no chão, família Gracie", "Uru-Can: luta das cobras, criada no Exército", "Luta Livre Esportiva: criada por Euclydes Hatem"], "notas": "Fazer um resumo rápido de cada luta. Perguntar o que lembram." },
+    { "id": 4, "tipo": "fechamento", "titulo": "Fechamento", "subtitulo": "Próxima aula: Ginástica de Conscientização Corporal", "imagem_url": "https://images.unsplash.com/photo-1493836512294-502baa1986e2?q=800&auto=format&fit=crop", "topicos": ["Vamos sair das lutas e entrar no mundo da ginástica", "Preparem-se para atividades de respiração e relaxamento"], "notas": "Criar expectativa para a próxima aula." }
   ],
-  '26/10': [
-    { id: 1, tipo: "capa", titulo: "Jogos de Oposição", subtitulo: "Vivenciando as Lutas em Sala de Aula", imagem_url: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1200&auto=format&fit=crop", topicos: [], notas: "Avisar que a aula será prática. Organizar o espaço da sala." },
-    { id: 2, tipo: "conceito", titulo: "O que são Jogos de Oposição?", subtitulo: "", imagem_url: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=800&auto=format&fit=crop", topicos: ["Atividades lúdicas que trabalham princípios das lutas", "Desenvolvem equilíbrio, força, velocidade e atenção", "Não têm contato agressivo", "São um fim em si mesmos: o prazer de jogar"], notas: "Explicar o conceito. Dizer que não é para machucar ninguém." },
-    { id: 3, tipo: "atividade", titulo: "Jogos de Oposição", subtitulo: "Vamos praticar!", imagem_url: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop", topicos: ["Tirando do Círculo: em duplas, o objetivo é fazer o oponente tirar o pé de um círculo desenhado no chão", "Mini Sumô: em duplas, agachados e segurando as mãos, o objetivo é desequilibrar o oponente", "Briga de Galo: em duplas, um de frente para o outro, o objetivo é desequilibrar o oponente usando apenas o corpo"], notas: "Organizar a turma em duplas. Explicar as regras de cada jogo. Garantir a segurança de todos." },
-    { id: 4, tipo: "fechamento", titulo: "Fechamento", subtitulo: "Próxima aula: Luta Livre Esportiva", imagem_url: "https://images.unsplash.com/photo-1493836512294-502baa1986e2?q=80&w=800&auto=format&fit=crop", topicos: ["O que aprenderam com os jogos?", "Como se sentiram?", "Próxima aula: Luta Livre Esportiva"], notas: "Fazer uma roda de conversa sobre a experiência. Ouvir os alunos." }
+  "26/10": [
+    { "id": 1, "tipo": "capa", "titulo": "Ginástica de Conscientização Corporal", "subtitulo": "Conectando Corpo e Mente", "imagem_url": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=1200&auto=format&fit=crop", "topicos": [], "notas": "Introduzir o tema. Explicar que vamos trabalhar corpo e mente de forma integrada." },
+    { "id": 2, "tipo": "conceito", "titulo": "O que é?", "subtitulo": "", "imagem_url": "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=800&auto=format&fit=crop", "topicos": ["Atividades físicas que combinam movimentos lentos e suaves", "Exercícios de respiração para fortalecer a conexão corpo-mente", "Exemplos: ioga, pilates, tai chi chuan, automassagem", "Foco na percepção do próprio corpo, não no desempenho"], "notas": "Explicar que não é sobre força ou velocidade, mas sobre sentir o corpo." },
+    { "id": 3, "tipo": "atividade", "titulo": "Prática em Sala", "subtitulo": "", "imagem_url": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=800&auto=format&fit=crop", "topicos": ["Respiração consciente: inspirar em 4 tempos, segurar em 4, expirar em 6", "Alongamento guiado: pescoço, ombros, braços e coluna", "Automassagem: mãos, pés e rosto", "Relaxamento final: olhos fechados, atenção na respiração"], "notas": "Conduzir a prática com voz calma. Adaptar para quem tem limitações físicas." },
+    { "id": 4, "tipo": "fechamento", "titulo": "Fechamento", "subtitulo": "Próxima aula: Prática de Conscientização", "imagem_url": "https://images.unsplash.com/photo-1493836512294-502baa1986e2?q=800&auto=format&fit=crop", "topicos": ["Como vocês se sentiram?", "Vocês já praticaram alguma dessas atividades?", "Próxima aula: aprofundamento na prática"], "notas": "Ouvir os alunos. Recolher impressões." }
   ],
-  '09/11': [
-    { id: 1, tipo: "capa", titulo: "Luta Livre Esportiva", subtitulo: "A Luta Brasileira de Euclydes Hatem", imagem_url: "https://images.unsplash.com/photo-1541872703-74c5e44368f9?q=80&w=1200&auto=format&fit=crop", topicos: [], notas: "Introduzir o tema. Contextualizar a Luta Livre como uma luta genuinamente brasileira." },
-    { id: 2, tipo: "conceito", titulo: "Origens", subtitulo: "", imagem_url: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=800&auto=format&fit=crop", topicos: ["Criada no Rio de Janeiro por Euclydes Hatem", "Conhecido como 'Tatu'", "Influência do catch wrestling e do jiu-jitsu", "Considerada uma luta brasileira de submission wrestling"], notas: "Contar a história de Euclydes Hatem. Explicar a diferença para o Jiu-Jitsu." },
-    { id: 3, tipo: "conceito", titulo: "Características", subtitulo: "", imagem_url: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop", topicos: ["Combate corpo a corpo", "Foco em quedas, imobilizações e finalizações", "Uso de técnicas de grappling (agarramento)", "Sem golpes traumáticos como socos e chutes"], notas: "Detalhar as características. Mostrar a semelhança com outras lutas." },
-    { id: 4, tipo: "fechamento", titulo: "Fechamento", subtitulo: "Próxima aula: Revisão e Jogo de Tabuleiro", imagem_url: "https://images.unsplash.com/photo-1493836512294-502baa1986e2?q=80&w=800&auto=format&fit=crop", topicos: ["Vamos revisar tudo o que aprendemos sobre as lutas brasileiras", "Preparem-se para criar um jogo de tabuleiro!"], notas: "Criar expectativa para a próxima aula." }
+  "09/11": [
+    { "id": 1, "tipo": "capa", "titulo": "Ginástica de Conscientização", "subtitulo": "Prática e Relaxamento", "imagem_url": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=1200&auto=format&fit=crop", "topicos": [], "notas": "Retomar o que foi visto na aula anterior." },
+    { "id": 2, "tipo": "atividade", "titulo": "Sequência de Práticas", "subtitulo": "", "imagem_url": "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=800&auto=format&fit=crop", "topicos": ["Alongamento guiado com música suave", "Exercícios de respiração diafragmática", "Automassagem nos pés e mãos", "Meditação guiada de 5 minutos", "Roda de conversa sobre as sensações"], "notas": "Preparar o ambiente: luz baixa se possível, música calma. Conduzir com voz tranquila." },
+    { "id": 3, "tipo": "reflexao", "titulo": "Benefícios", "subtitulo": "", "imagem_url": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=800&auto=format&fit=crop", "topicos": ["Redução do estresse e da ansiedade", "Melhora da concentração", "Consciência corporal e postura", "Bem-estar e qualidade de vida"], "notas": "Relacionar com o dia a dia dos alunos. Perguntar como se sentem após a prática." },
+    { "id": 4, "tipo": "fechamento", "titulo": "Fechamento", "subtitulo": "Próxima aula: Esportes de Rede e Parede", "imagem_url": "https://images.unsplash.com/photo-1493836512294-502baa1986e2?q=800&auto=format&fit=crop", "topicos": ["Vamos conhecer os esportes de rede e parede", "Pesquisar: O que é badminton?"], "notas": "Criar expectativa para a próxima aula." }
   ],
-  '16/11': [
-    { id: 1, tipo: "capa", titulo: "Revisão e Jogo de Tabuleiro", subtitulo: "Vamos criar um jogo sobre as Lutas Brasileiras!", imagem_url: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1200&auto=format&fit=crop", topicos: [], notas: "Avisar que a aula será de revisão e criação. Organizar os grupos." },
-    { id: 2, tipo: "atividade", titulo: "Revisão Rápida", subtitulo: "", imagem_url: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=800&auto=format&fit=crop", topicos: ["Capoeira: dança, luta e música", "Luta Marajoara: agarrada da Ilha de Marajó", "Huka-Huka: luta indígena do Xingu", "Jiu-Jitsu Brasileiro: luta no chão, família Gracie", "Idjassú: luta indígena dos Karajá", "Luta Livre Esportiva: criada por Euclydes Hatem"], notas: "Fazer um resumo rápido de cada luta. Perguntar o que lembram." },
-    { id: 3, tipo: "atividade", titulo: "Criando o Jogo de Tabuleiro", subtitulo: "", imagem_url: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop", topicos: ["Em grupos, vocês vão criar um jogo de tabuleiro sobre as lutas brasileiras", "O jogo deve ter: tabuleiro, regras, peões e cartas com perguntas", "As perguntas devem ser sobre as lutas que estudamos", "Sejam criativos!"], notas: "Distribuir os materiais (cartolina, canetas, dados, etc.). Circular pela sala para ajudar os grupos." },
-    { id: 4, tipo: "fechamento", titulo: "Fechamento", subtitulo: "Próxima aula: Quiz das Lutas Brasileiras", imagem_url: "https://images.unsplash.com/photo-1493836512294-502baa1986e2?q=80&w=800&auto=format&fit=crop", topicos: ["Preparem-se para o quiz!", "Na próxima aula, vamos testar nossos conhecimentos"], notas: "Criar expectativa para o quiz." }
+  "16/11": [
+    { "id": 1, "tipo": "capa", "titulo": "Esportes de Rede e Parede", "subtitulo": "Jogando na Sala de Aula", "imagem_url": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?q=1200&auto=format&fit=crop", "topicos": [], "notas": "Introduzir o tema. Explicar que vamos adaptar esportes de rede para a sala." },
+    { "id": 2, "tipo": "conceito", "titulo": "O que são?", "subtitulo": "", "imagem_url": "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=800&auto=format&fit=crop", "topicos": ["Esportes de rede: jogar a bola por cima de uma rede para o campo adversário", "Esportes de parede: rebater a bola contra uma parede de rebote", "Exemplos: vôlei, tênis de mesa, badminton, peteca, squash"], "notas": "Explicar a diferença entre rede e parede. Mostrar imagens." },
+    { "id": 3, "tipo": "atividade", "titulo": "Adaptações para Sala", "subtitulo": "", "imagem_url": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=800&auto=format&fit=crop", "topicos": ["Vôlei de balão: usar bexigas em vez de bola, rede feita com barbante", "Tênis de mesa na carteira: usar livros como rede e réguas como raquetes", "Peteca de papel: confeccionar petecas com papel e jogar em duplas", "Badminton de mão: usar as mãos como raquetes"], "notas": "Organizar a turma em duplas ou trios. Adaptar conforme o espaço da sala." },
+    { "id": 4, "tipo": "fechamento", "titulo": "Fechamento", "subtitulo": "Próxima aula: Danças Urbanas", "imagem_url": "https://images.unsplash.com/photo-1493836512294-502baa1986e2?q=800&auto=format&fit=crop", "topicos": ["Vamos entrar no mundo do Hip Hop e das danças urbanas", "Pesquisar: Quais são os estilos de dança urbana?"], "notas": "Criar expectativa para a próxima aula." }
   ],
-  '23/11': [
-    { id: 1, tipo: "capa", titulo: "Quiz das Lutas Brasileiras", subtitulo: "Teste seus conhecimentos!", imagem_url: "https://images.unsplash.com/photo-1544027993-37dbfe43562a?q=80&w=1200&auto=format&fit=crop", topicos: [], notas: "Avisar que a aula será um quiz. Organizar a turma em equipes." },
-    { id: 2, tipo: "atividade", titulo: "Regras do Quiz", subtitulo: "", imagem_url: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=800&auto=format&fit=crop", topicos: ["A turma será dividida em equipes", "Cada equipe responderá às perguntas", "A equipe que acertar mais ganha", "Respeito total aos colegas"], notas: "Explicar as regras. Mediar o quiz." },
-    { id: 3, tipo: "atividade", titulo: "Perguntas do Quiz", subtitulo: "", imagem_url: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop", topicos: ["1. Qual luta brasileira tem forte relação com musicalidade e resistência cultural? (Capoeira)", "2. Qual luta indígena é originária do Alto Xingu? (Huka-Huka)", "3. Qual é o principal objetivo do Jiu-Jitsu Brasileiro? (Levar o oponente ao solo e controlá-lo)", "4. Qual luta é praticada na Ilha de Marajó? (Luta Marajoara)", "5. Quem criou a Luta Livre Esportiva? (Euclydes Hatem)", "6. Qual a diferença entre luta e briga? (Luta tem regras, briga é violência)"], notas: "Fazer as perguntas e mediar as respostas. Discutir cada resposta." },
-    { id: 4, tipo: "fechamento", titulo: "Fechamento", subtitulo: "Próxima aula: Apresentação do Jogo de Tabuleiro", imagem_url: "https://images.unsplash.com/photo-1493836512294-502baa1986e2?q=80&w=800&auto=format&fit=crop", topicos: ["Preparem a apresentação do jogo de tabuleiro de vocês", "Na próxima aula, cada grupo vai apresentar o seu jogo"], notas: "Criar expectativa para a apresentação." }
+  "23/11": [
+    { "id": 1, "tipo": "capa", "titulo": "Danças Urbanas", "subtitulo": "Hip Hop, Breakdance e Muito Mais", "imagem_url": "https://images.unsplash.com/photo-1544027993-37dbfe43562a?q=1200&auto=format&fit=crop", "topicos": [], "notas": "Introduzir o tema. Perguntar quem já dançou ou viu danças urbanas." },
+    { "id": 2, "tipo": "conceito", "titulo": "O que são Danças Urbanas?", "subtitulo": "", "imagem_url": "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=800&auto=format&fit=crop", "topicos": ["Estilos de dança que surgiram nas periferias e centros urbanos", "Relacionadas à cultura Hip Hop", "Principais estilos: Locking, Wacking, Breakdance, Vogue, Hip Hop Dance", "Movimentos: Bounce, Wave, Ticking, Slide"], "notas": "Mostrar vídeos curtos de cada estilo. Explicar a origem social dessas danças." },
+    { "id": 3, "tipo": "atividade", "titulo": "Vivência em Sala", "subtitulo": "", "imagem_url": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=800&auto=format&fit=crop", "topicos": ["Aquecimento: bounce e wave (movimentos básicos)", "Sequência de 6 passos para iniciantes", "Improvisação em roda: cada aluno mostra um movimento", "Criação de uma coreografia simples em grupos"], "notas": "Adaptar os movimentos para o espaço da sala. Respeitar quem não quiser dançar, mas incentivar a participação." },
+    { "id": 4, "tipo": "fechamento", "titulo": "Fechamento", "subtitulo": "Próxima aula: Jogos de Tabuleiro", "imagem_url": "https://images.unsplash.com/photo-1493836512294-502baa1986e2?q=800&auto=format&fit=crop", "topicos": ["Vamos criar um jogo de tabuleiro sobre o que aprendemos", "Preparem a criatividade!"], "notas": "Criar expectativa para a próxima aula." }
   ],
-  '30/11': [
-    { id: 1, tipo: "capa", titulo: "Apresentação do Jogo de Tabuleiro", subtitulo: "Mostrando o que criamos!", imagem_url: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1200&auto=format&fit=crop", topicos: [], notas: "Organizar a ordem das apresentações. Acolher os grupos." },
-    { id: 2, tipo: "atividade", titulo: "Como Será a Apresentação?", subtitulo: "", imagem_url: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=800&auto=format&fit=crop", topicos: ["Cada grupo terá 5 a 10 minutos para apresentar", "Expliquem: como jogar, quais são as regras, quais as perguntas", "Os colegas poderão fazer perguntas", "Respeito total ao trabalho dos colegas"], notas: "Deixar claro os critérios de avaliação: clareza, criatividade e pesquisa." },
-    { id: 3, tipo: "fechamento", titulo: "Fechamento", subtitulo: "Próxima aula: Avaliação Escrita", imagem_url: "https://images.unsplash.com/photo-1493836512294-502baa1986e2?q=80&w=800&auto=format&fit=crop", topicos: ["Na próxima aula, teremos uma avaliação escrita sobre tudo o que aprendemos", "Revisem o conteúdo!"], notas: "Avisar sobre a avaliação. Dar dicas de estudo." }
+  "30/11": [
+    { "id": 1, "tipo": "capa", "titulo": "Jogos de Tabuleiro", "subtitulo": "Criando e Aprendendo", "imagem_url": "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=1200&auto=format&fit=crop", "topicos": [], "notas": "Explicar que os alunos vão criar um jogo de tabuleiro sobre o conteúdo do trimestre." },
+    { "id": 2, "tipo": "atividade", "titulo": "Criando o Jogo", "subtitulo": "", "imagem_url": "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=800&auto=format&fit=crop", "topicos": ["Em grupos, criem um jogo de tabuleiro sobre as lutas, ginástica, esportes ou danças", "O jogo deve ter: tabuleiro, regras, peões e cartas de perguntas", "As perguntas devem ser sobre o que aprendemos no trimestre", "Sejam criativos!"], "notas": "Distribuir materiais: cartolina, canetas, dados, etc. Circular pela sala para ajudar." },
+    { "id": 3, "tipo": "fechamento", "titulo": "Fechamento", "subtitulo": "Próxima aula: Avaliação Escrita", "imagem_url": "https://images.unsplash.com/photo-1493836512294-502baa1986e2?q=800&auto=format&fit=crop", "topicos": ["Na próxima aula, teremos a avaliação escrita do trimestre", "Revisem o conteúdo!"], "notas": "Avisar sobre a avaliação. Dar dicas de estudo." }
   ],
-  '07/12': [
-    { id: 1, tipo: "capa", titulo: "Avaliação Escrita", subtitulo: "Mostrando o que aprendemos", imagem_url: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=1200&auto=format&fit=crop", topicos: [], notas: "Aplicar a avaliação. Manter a tranquilidade da turma." },
-    { id: 2, tipo: "conceito", titulo: "Instruções", subtitulo: "", imagem_url: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=800&auto=format&fit=crop", topicos: ["Leia as questões com atenção", "Responda com calma e clareza", "Não é permitido consultar o material", "Boa prova!"], notas: "Distribuir as provas. Circular pela sala para tirar dúvidas." },
-    { id: 3, tipo: "fechamento", titulo: "Fechamento", subtitulo: "Próxima aula: Fechamento do Ano", imagem_url: "https://images.unsplash.com/photo-1493836512294-502baa1986e2?q=80&w=800&auto=format&fit=crop", topicos: ["Na próxima aula, vamos fazer uma retrospectiva do ano", "Preparem suas reflexões finais"], notas: "Criar expectativa para a última aula." }
+  "07/12": [
+    { "id": 1, "tipo": "capa", "titulo": "Avaliação Escrita", "subtitulo": "Mostrando o que aprendemos", "imagem_url": "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=1200&auto=format&fit=crop", "topicos": [], "notas": "Aplicar a avaliação. Manter a tranquilidade da turma." },
+    { "id": 2, "tipo": "conceito", "titulo": "Instruções", "subtitulo": "", "imagem_url": "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=800&auto=format&fit=crop", "topicos": ["Leia as questões com atenção", "Responda com calma e clareza", "Não é permitido consultar o material", "Boa prova!"], "notas": "Distribuir as provas. Circular pela sala para tirar dúvidas." },
+    { "id": 3, "tipo": "fechamento", "titulo": "Fechamento", "subtitulo": "Próxima aula: Encerramento do Ano", "imagem_url": "https://images.unsplash.com/photo-1493836512294-502baa1986e2?q=800&auto=format&fit=crop", "topicos": ["Na próxima aula, vamos fazer uma retrospectiva do ano", "Preparem suas reflexões finais"], "notas": "Criar expectativa para a última aula." }
   ],
-  '14/12': [
-    { id: 1, tipo: "capa", titulo: "Fechamento do Ano", subtitulo: "Até o próximo ano!", imagem_url: "https://images.unsplash.com/photo-1544027993-37dbfe43562a?q=80&w=1200&auto=format&fit=crop", topicos: [], notas: "Última aula do ano. Momento de descontração e avaliação." },
-    { id: 2, tipo: "reflexao", titulo: "Nossa Jornada", subtitulo: "3º Trimestre", imagem_url: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1200&auto=format&fit=crop", topicos: ["Huka-Huka", "Jiu-Jitsu Brasileiro", "Idjassú", "Luta Livre Esportiva", "Jogos de Oposição", "Jogo de Tabuleiro"], notas: "Fazer uma retrospectiva do que foi estudado. Ouvir os alunos." },
-    { id: 3, tipo: "atividade", titulo: "Autoavaliação", subtitulo: "", imagem_url: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=800&auto=format&fit=crop", topicos: ["O que eu aprendi neste ano?", "O que eu levo para a vida?", "Como me senti nas aulas?", "Sugestões para o próximo ano"], notas: "Distribuir papel. Pode ser anônimo. Recolher para feedback." },
-    { id: 4, tipo: "fechamento", titulo: "Mensagem Final", subtitulo: "", imagem_url: "https://images.unsplash.com/photo-1493836512294-502baa1986e2?q=80&w=800&auto=format&fit=crop", topicos: ["Você é importante", "Cuide da sua saúde mental", "Boas festas e um excelente 2027!"], notas: "Encerrar com acolhimento e votos de boas festas." }
-  ]
-};
-
-export const CORPO_MIDIA_SLIDES = [
-  { title: "DEBATE: CORPO E MÍDIA", subtitle: "Desconstruindo estereótipos com Frantz Fanon e Cida Bento.", type: "text", theme: "hero" },
-  { title: "O PONTO DE PARTIDA", content: "Uma reflexão sociológica sobre como a TV e a internet limitam as narrativas sobre corpos negros e periféricos.", type: "text", theme: "quote" },
-  { title: "NOSSOS GUIAS TEÓRICOS", points: [
-    "**FRANTZ FANON (Sociogenia):** A experiência vivida do negro é marcada pela marcação histórica e social de inferioridade.",
-    "**FRANTZ FANON (Epidermização):** A internalização da inferioridade baseada na cor da pele como constructo social.",
-    "**CIDA BENTO (Pacto Narcísico):** Mecanismo de autopreservação branca que privilegia seus pares em detrimento da meritocracia real.",
-    "**CIDA BENTO (Branquitude):** O poder de definir o que é o 'normal' ou 'humano' universal, excluindo o outro."
-  ], type: "list", theme: "theory" },
-  { title: "FANON: A SOCIOGENIA", content: "A experiência vivida do negro é marcada pela epidermização da inferioridade – uma construção social que domina o psiquismo.", type: "text", hasImage: true },
-  { title: "CIDA BENTO: O PACTO", content: "O Pacto Narcísico da branquitude atua como um sistema que garante privilégios e a manutenção da estrutura de poder, invisibilizando o racismo.", type: "text", hasImage: true },
-  { title: "COMO O ESTEREÓTIPO ATUA?", points: ["**HIPERSEXUALIZAÇÃO:** Redução do corpo apenas ao desejo.", "**MARGINALIZAÇÃO:** O corpo negro fora do centro da narrativa.", "**SUBSERVIÊNCIA:** Papéis subalternos reforçados."], type: "list", theme: "cards" },
-  { title: "DADOS DA REALIDADE", content: "Fonte: Agência Brasil / Perfil Racial da Imprensa Brasileira.", type: "chart" },
-  { title: "CITAÇÃO", content: '"Oh, meu corpo, faça de mim sempre um homem que questiona!" - Frantz Fanon', type: "text", theme: "hero" },
-  { title: "EVOLUÇÃO DA REPRESENTAÇÃO", points: ["**DÉCADAS 70-80:** Papéis predominantemente caricatos.", "**ANOS 90-2000:** Primeiros avanços com protagonistas.", "**ATUALMENTE:** Narrativas diversas e combate ao pacto."], type: "list", theme: "timeline" },
-  { title: "UM NOVO OLHAR: RESISTÊNCIA", content: "Criadores de conteúdo e jornalistas independentes estão quebrando o pacto narcísico e produzindo novos significados.", type: "text", hasImage: true },
-  { title: "CONCLUSÃO E DEBATE", content: "Como podemos descolonizar o nosso olhar midiático e construir novas representações para corpos negros?", type: "text", theme: "hero" }
-];
-
-
-export const SLIDES_3TRI = {
-  'Gênero, Sociedade e Esporte': [
-    { title: "Gênero, Sociedade e Esporte", subtitle: "O debate do século XXI", type: "hero", dicaProfessor: "Introduza o tema com leveza, perguntando o que eles entendem por 'esporte de menino' vs 'esporte de menina'." },
-    { title: "Construção Social", content: "Por que dividimos o esporte por gênero? É biológico ou histórico?", type: "text", dicaProfessor: "Explique brevemente que esportes são construções históricas." },
-    { title: "O que é Feminino no Esporte?", points: ["Regras históricas", "Inclusão vs Exclusão", "Papéis sociais"], type: "list", dicaProfessor: "Use exemplos de como regras foram alteradas para incluir ou excluir mulheres." },
-    { title: "Reflexão Final", content: "O esporte tem gênero?", type: "hero", dicaProfessor: "Pergunte a opinião deles para iniciar o debate." }
-  ],
-  'O Apagamento Invisível': [
-    { title: "O Apagamento Invisível", subtitle: "Mulheres na Ciência", type: "hero", dicaProfessor: "Contextualize a importância de mulheres na história da ciência." },
-    { title: "O Efeito Matilda", content: "Quando o Nobel é dado a homens pelo trabalho de mulheres.", type: "text", dicaProfessor: "Explique o termo efeito Matilda." },
-    { title: "Grandes Esquecidas", points: ["Rosalind Franklin", "Lise Meitner", "Jocelyn Bell Burnell"], type: "list", dicaProfessor: "Fale brevemente sobre cada uma delas." },
-    { title: "Reflexão", content: "De quem são as glórias da ciência?", type: "hero", dicaProfessor: "Debata sobre autoria e reconhecimento." }
-  ],
-  'Divisão Sexista do Corpo': [
-    { title: "Divisão Sexista", subtitle: "O peso do preconceito", type: "hero", dicaProfessor: "Fale sobre como corpos são julgados." },
-    { title: "Corpos de Atletas", points: ["Hipertrofia feminina", "Estética vs Performance", "O julgamento do público"], type: "list", dicaProfessor: "Questione por que esforço feminino é tratado como 'luta contra própria natureza'." },
-    { title: "Reflexão", content: "Prática corporal tem gênero?", type: "hero", dicaProfessor: "Finalize perguntando se eles acham que exercício tem gênero." }
-  ],
-  'Hipersexualização e Espetáculo': [
-    { title: "Hipersexualização", subtitle: "O espetáculo do corpo", type: "hero", dicaProfessor: "Inicie debate sobre consumo de mídia esportiva." },
-    { title: "Foco na Mídia", content: "Foco na aparência ou na técnica?", type: "text", dicaProfessor: "Analise como imprensa cobra performance masculina e beleza feminina." },
-    { title: "Impactos", points: ["Traje versus performance", "Comercialização", "Resistência política"], type: "list", dicaProfessor: "Cite exemplos de uniformes." },
-    { title: "Esporte como Espetáculo", content: "Apenas técnica ou apelo comercial?", type: "hero", dicaProfessor: "Reflita sobre valor comercial do corpo." }
-  ],
-  'Equidade Salarial no Esporte': [
-    { title: "Equidade Salarial", subtitle: "Luta por direitos", type: "hero", dicaProfessor: "Aborde o tema econômico." },
-    { title: "O Ciclo Vicioso", points: ["Falta de investimento", "Horários ruins", "Baixa audiência"], type: "list", dicaProfessor: "Desenhe no quadro como esse ciclo se mantém." },
-    { title: "Igualdade é possível?", content: "Luta global por direitos.", type: "hero", dicaProfessor: "Finalize discutindo a luta das atletas pelo mundo." }
-  ],
-  'As Pioneiras Olímpicas': [
-    { title: "Pioneiras Olímpicas", subtitle: "Legado no Brasil", type: "hero", dicaProfessor: "Apresente Aída dos Santos e Maria Lenk." },
-    { title: "Proibições Históricas", points: ["Decreto de Vargas", "Corpo feminino", "Luta pelo esporte"], type: "list", dicaProfessor: "Explique o decreto de Vargas." },
-    { title: "O Preço da Liberdade", content: "Eram proibidas de atuar.", type: "hero", dicaProfessor: "Reflita sobre a importância da coragem delas." }
-  ],
-  'Debate Integrador': [
-    { title: "Debate Final", subtitle: "Consolidando o ano", type: "hero", dicaProfessor: "Inicie debate sobre o percurso do ano." },
-    { title: "Pontos Chave", points: ["O que ficou?", "O que mudou?", "O futuro no ILGCH"], type: "list", dicaProfessor: "Instigue-os a falar pontos mais impactantes." },
-    { title: "O que levamos?", content: "Pense no ano.", type: "hero", dicaProfessor: "Finalize reforçando o pensamento crítico." }
-  ],
-  'Síntese Final': [
-    { title: "Síntese Final", subtitle: "Nosso percurso", type: "hero", dicaProfessor: "Finalize o percurso da disciplina." },
-    { title: "Review", content: "Os eixos do ano: Gênero, Ciência, Esporte.", type: "text", dicaProfessor: "Dê visão panorâmica do que foi estudado." },
-    { title: "Rumo ao Futuro", content: "Estamos prontos para os próximos passos?", type: "hero", dicaProfessor: "Encerre com fala inspiradora." }
+  "14/12": [
+    { "id": 1, "tipo": "capa", "titulo": "Encerramento do Ano", "subtitulo": "Até o próximo ano!", "imagem_url": "https://images.unsplash.com/photo-1544027993-37dbfe43562a?q=1200&auto=format&fit=crop", "topicos": [], "notas": "Última aula do ano. Momento de descontração e avaliação." },
+    { "id": 2, "tipo": "reflexao", "titulo": "Nossa Jornada", "subtitulo": "3º Trimestre", "imagem_url": "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=1200&auto=format&fit=crop", "topicos": ["Uru-Can", "Huka-Huka", "Jiu-Jitsu Brasileiro", "Luta Livre Esportiva", "Ginástica de Conscientização Corporal", "Esportes de Rede e Parede", "Danças Urbanas", "Jogos de Tabuleiro"], "notas": "Fazer uma retrospectiva do que foi estudado. Ouvir os alunos." },
+    { "id": 3, "tipo": "atividade", "titulo": "Autoavaliação", "subtitulo": "", "imagem_url": "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=800&auto=format&fit=crop", "topicos": ["O que eu aprendi neste ano?", "O que eu levo para a vida?", "Como me senti nas aulas?", "Sugestões para o próximo ano"], "notas": "Distribuir papel. Pode ser anônimo. Recolher para feedback." },
+    { "id": 4, "tipo": "fechamento", "titulo": "Mensagem Final", "subtitulo": "", "imagem_url": "https://images.unsplash.com/photo-1493836512294-502baa1986e2?q=800&auto=format&fit=crop", "topicos": ["Você é importante", "Cuide da sua saúde mental", "Boas festas e um excelente 2027!"], "notas": "Encerrar com acolhimento e votos de boas festas." }
   ]
 };
 
@@ -1132,6 +1066,67 @@ export const SLIDES_CAPOEIRA = [
       dicaProfessor: 'Explique que a próxima aula explorará a Luta Marajoara para concluir o ciclo das lutas do Brasil!'
     }
 ];
+
+export const CORPO_MIDIA_SLIDES = [
+  {
+    type: 'capa',
+    title: 'Debate: Corpo e Mídia',
+    subtitle: 'Desconstruindo estereótipos com Frantz Fanon e Cida Bento.',
+    imagem_url: 'https://images.unsplash.com/photo-1544027993-37dbfe43562a?q=80&w=1200&auto=format&fit=crop'
+  },
+  {
+    type: 'texto_simples',
+    title: 'O Ponto de Partida',
+    subtitle: 'Uma reflexão sociológica',
+    points: [
+      'Como a TV e a internet limitam as narrativas sobre corpos negros e periféricos.',
+      'O olhar colonizado sobre a estética.'
+    ],
+    imagem_url: 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=800&auto=format&fit=crop'
+  },
+  {
+    type: 'conceito',
+    title: 'Nossos Guias Teóricos',
+    subtitle: 'Fanon e Cida Bento',
+    points: [
+      'Frantz Fanon: O corpo negro objetificado pelo olhar racista.',
+      'Cida Bento: O Pacto Narcísico da Branquitude e o silenciamento.'
+    ],
+    imagem_url: 'https://images.unsplash.com/photo-1531384441138-2736e62e0919?q=80&w=800&auto=format&fit=crop'
+  },
+  {
+    type: 'conceito',
+    title: 'Como o Estereótipo Atua?',
+    subtitle: 'Os três pilares da desumanização',
+    points: [
+      'Hipersexualização: Redução ao físico como objeto de desejo.',
+      'Marginalização: Associação frequente a papéis de violência.',
+      'Subserviência: Limitação a papéis de serviço e subordinação.'
+    ],
+    imagem_url: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop'
+  },
+  {
+    type: 'fechamento',
+    title: 'Conclusão e Debate',
+    subtitle: 'Descolonizar o olhar',
+    points: [
+      'Como podemos descolonizar o nosso olhar midiático?',
+      'O direito de ser visto em toda a sua complexidade.'
+    ],
+    imagem_url: 'https://images.unsplash.com/photo-1493836512294-502baa1986e2?q=80&w=1200&auto=format&fit=crop'
+  }
+];
+
+export const SLIDES_3TRI: Record<string, any[]> = {
+  'Gênero, Sociedade e Esporte': [{ id: 1, type: 'capa', title: 'Gênero, Sociedade e Esporte', points: [] }],
+  'O Apagamento Invisível': [{ id: 1, type: 'capa', title: 'O Apagamento Invisível', points: [] }],
+  'Divisão Sexista do Corpo': [{ id: 1, type: 'capa', title: 'Divisão Sexista do Corpo', points: [] }],
+  'Hipersexualização e Espetáculo': [{ id: 1, type: 'capa', title: 'Hipersexualização e Espetáculo', points: [] }],
+  'Equidade Salarial no Esporte': [{ id: 1, type: 'capa', title: 'Equidade Salarial no Esporte', points: [] }],
+  'As Pioneiras Olímpicas': [{ id: 1, type: 'capa', title: 'As Pioneiras Olímpicas', points: [] }],
+  'Debate Integrador': [{ id: 1, type: 'capa', title: 'Debate Integrador', points: [] }],
+  'Síntese Final': [{ id: 1, type: 'capa', title: 'Síntese Final', points: [] }],
+};
 
 export { 
   AULAS_SETEMBRO_AMARELO, 
