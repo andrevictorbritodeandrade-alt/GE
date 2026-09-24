@@ -41,13 +41,13 @@ export const SlidePlayer: React.FC<SlidePlayerProps> = ({
     }
 
     // Setembro Amarelo direct mappings
-    if (selectedAulaData === 'aula_1' || selectedAulaData === 'setembro_amarelo_aula_1' || selectedAulaData === 'setembro_amarelo_05/09' || selectedAulaData === 'ilgch_05/09') {
+    if (selectedAulaData === 'aula_1' || selectedAulaData === 'setembro_amarelo_aula_1' || selectedAulaData === 'setembro_amarelo_19/09' || selectedAulaData === 'setembro_amarelo_05/09' || selectedAulaData === 'ilgch_19/09' || selectedAulaData === 'ilgch_05/09') {
       return SLIDES_AULA_1_SETEMBRO_AMARELO;
     }
-    if (selectedAulaData === 'aula_2' || selectedAulaData === 'setembro_amarelo_aula_2' || selectedAulaData === 'setembro_amarelo_12/09' || selectedAulaData === 'ilgch_12/09') {
+    if (selectedAulaData === 'aula_2' || selectedAulaData === 'setembro_amarelo_aula_2' || selectedAulaData === 'setembro_amarelo_25/09' || selectedAulaData === 'setembro_amarelo_12/09' || selectedAulaData === 'ilgch_25/09' || selectedAulaData === 'ilgch_12/09') {
       return SLIDES_AULA_2_SETEMBRO_AMARELO;
     }
-    if (selectedAulaData === 'aula_3' || selectedAulaData === 'setembro_amarelo_aula_3' || selectedAulaData === 'setembro_amarelo_19/09' || selectedAulaData === 'ilgch_19/09') {
+    if (selectedAulaData === 'aula_3' || selectedAulaData === 'setembro_amarelo_aula_3' || selectedAulaData === 'setembro_amarelo_03/10' || selectedAulaData === 'ilgch_03/10') {
       return SLIDES_AULA_3_SETEMBRO_AMARELO;
     }
 
@@ -1513,12 +1513,13 @@ export const SlidePlayer: React.FC<SlidePlayerProps> = ({
           </div>
         );
 
+      case 'retomada':
       case 'discussao':
         return (
           <div className="w-full h-full flex flex-col lg:flex-row items-center justify-between p-6 md:p-12 lg:p-14 bg-gradient-to-br from-amber-50/70 via-white to-amber-100/40 min-h-[450px] gap-8">
             <div className="w-full lg:w-3/5 flex flex-col justify-center">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-amber-100 text-amber-950 border border-amber-300 font-black text-xs uppercase tracking-wider mb-4 w-fit shadow-sm">
-                🗣️ RODA DE CONVERSA & DEBATE
+                {slideAtual.tipo === 'retomada' ? '🔄 RETOMADA & CONEXÃO PEDAGÓGICA' : '🗣️ RODA DE CONVERSA & DEBATE'}
               </div>
               <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-3 tracking-tight leading-tight">
                 {slideAtual.title || slideAtual.titulo}

@@ -52,7 +52,7 @@ export interface Slide {
 }
 
 export const slidesData: Record<string, Slide[]> = {
-  // CRONOGRAMA 3º TRI - SETEMBRO A DEZEMBRO (14 AULAS COMPLETAS)
+  // CRONOGRAMA 3º TRI - SETEMBRO A DEZEMBRO (11 AULAS COMPLETAS)
   'aula_1': (CRONOGRAMA_3TRI_AULAS[0]?.slides || SLIDES_AULA_1_SETEMBRO_AMARELO) as any,
   'aula_2': (CRONOGRAMA_3TRI_AULAS[1]?.slides || SLIDES_AULA_2_SETEMBRO_AMARELO) as any,
   'aula_3': (CRONOGRAMA_3TRI_AULAS[2]?.slides || SLIDES_AULA_3_SETEMBRO_AMARELO) as any,
@@ -64,55 +64,49 @@ export const slidesData: Record<string, Slide[]> = {
   'aula_9': CRONOGRAMA_3TRI_AULAS[8]?.slides as any,
   'aula_10': CRONOGRAMA_3TRI_AULAS[9]?.slides as any,
   'aula_11': CRONOGRAMA_3TRI_AULAS[10]?.slides as any,
-  'aula_12': CRONOGRAMA_3TRI_AULAS[11]?.slides as any,
-  'aula_13': CRONOGRAMA_3TRI_AULAS[12]?.slides as any,
-  'aula_14': CRONOGRAMA_3TRI_AULAS[13]?.slides as any,
 
   // ALIASES POR DATA E PREFIXOS
+  'setembro_amarelo_19/09': CRONOGRAMA_3TRI_AULAS[0]?.slides as any,
+  'setembro_amarelo_25/09': CRONOGRAMA_3TRI_AULAS[1]?.slides as any,
+  'setembro_amarelo_03/10': CRONOGRAMA_3TRI_AULAS[2]?.slides as any,
+  'setembro_amarelo_10/10': CRONOGRAMA_3TRI_AULAS[3]?.slides as any,
+  'setembro_amarelo_17/10': CRONOGRAMA_3TRI_AULAS[4]?.slides as any,
+  'setembro_amarelo_31/10': CRONOGRAMA_3TRI_AULAS[5]?.slides as any,
+  'setembro_amarelo_07/11': CRONOGRAMA_3TRI_AULAS[6]?.slides as any,
+  'setembro_amarelo_14/11': CRONOGRAMA_3TRI_AULAS[7]?.slides as any,
+  'setembro_amarelo_21/11': CRONOGRAMA_3TRI_AULAS[8]?.slides as any,
+  'setembro_amarelo_28/11': CRONOGRAMA_3TRI_AULAS[9]?.slides as any,
+  'setembro_amarelo_05/12': CRONOGRAMA_3TRI_AULAS[10]?.slides as any,
+
+  'cronograma_3tri_19/09': CRONOGRAMA_3TRI_AULAS[0]?.slides as any,
+  'cronograma_3tri_25/09': CRONOGRAMA_3TRI_AULAS[1]?.slides as any,
+  'cronograma_3tri_03/10': CRONOGRAMA_3TRI_AULAS[2]?.slides as any,
+  'cronograma_3tri_10/10': CRONOGRAMA_3TRI_AULAS[3]?.slides as any,
+  'cronograma_3tri_17/10': CRONOGRAMA_3TRI_AULAS[4]?.slides as any,
+  'cronograma_3tri_31/10': CRONOGRAMA_3TRI_AULAS[5]?.slides as any,
+  'cronograma_3tri_07/11': CRONOGRAMA_3TRI_AULAS[6]?.slides as any,
+  'cronograma_3tri_14/11': CRONOGRAMA_3TRI_AULAS[7]?.slides as any,
+  'cronograma_3tri_21/11': CRONOGRAMA_3TRI_AULAS[8]?.slides as any,
+  'cronograma_3tri_28/11': CRONOGRAMA_3TRI_AULAS[9]?.slides as any,
+  'cronograma_3tri_05/12': CRONOGRAMA_3TRI_AULAS[10]?.slides as any,
+
+  'ilgch_19/09': CRONOGRAMA_3TRI_AULAS[0]?.slides as any,
+  'ilgch_25/09': CRONOGRAMA_3TRI_AULAS[1]?.slides as any,
+  'ilgch_03/10': CRONOGRAMA_3TRI_AULAS[2]?.slides as any,
+  'ilgch_10/10': CRONOGRAMA_3TRI_AULAS[3]?.slides as any,
+  'ilgch_17/10': CRONOGRAMA_3TRI_AULAS[4]?.slides as any,
+  'ilgch_31/10': CRONOGRAMA_3TRI_AULAS[5]?.slides as any,
+  'ilgch_07/11': CRONOGRAMA_3TRI_AULAS[6]?.slides as any,
+  'ilgch_14/11': CRONOGRAMA_3TRI_AULAS[7]?.slides as any,
+  'ilgch_21/11': CRONOGRAMA_3TRI_AULAS[8]?.slides as any,
+  'ilgch_28/11': CRONOGRAMA_3TRI_AULAS[9]?.slides as any,
+  'ilgch_05/12': CRONOGRAMA_3TRI_AULAS[10]?.slides as any,
+
+  // Fallback para datas anteriores
   'setembro_amarelo_05/09': CRONOGRAMA_3TRI_AULAS[0]?.slides as any,
   'setembro_amarelo_12/09': CRONOGRAMA_3TRI_AULAS[1]?.slides as any,
-  'setembro_amarelo_19/09': CRONOGRAMA_3TRI_AULAS[2]?.slides as any,
-  'setembro_amarelo_26/09': CRONOGRAMA_3TRI_AULAS[3]?.slides as any,
-  'setembro_amarelo_03/10': CRONOGRAMA_3TRI_AULAS[4]?.slides as any,
-  'setembro_amarelo_10/10': CRONOGRAMA_3TRI_AULAS[5]?.slides as any,
-  'setembro_amarelo_17/10': CRONOGRAMA_3TRI_AULAS[6]?.slides as any,
-  'setembro_amarelo_24/10': CRONOGRAMA_3TRI_AULAS[7]?.slides as any,
-  'setembro_amarelo_31/10': CRONOGRAMA_3TRI_AULAS[8]?.slides as any,
-  'setembro_amarelo_07/11': CRONOGRAMA_3TRI_AULAS[9]?.slides as any,
-  'setembro_amarelo_14/11': CRONOGRAMA_3TRI_AULAS[10]?.slides as any,
-  'setembro_amarelo_21/11': CRONOGRAMA_3TRI_AULAS[11]?.slides as any,
-  'setembro_amarelo_28/11': CRONOGRAMA_3TRI_AULAS[12]?.slides as any,
-  'setembro_amarelo_05/12': CRONOGRAMA_3TRI_AULAS[13]?.slides as any,
-
-  'cronograma_3tri_05/09': CRONOGRAMA_3TRI_AULAS[0]?.slides as any,
-  'cronograma_3tri_12/09': CRONOGRAMA_3TRI_AULAS[1]?.slides as any,
-  'cronograma_3tri_19/09': CRONOGRAMA_3TRI_AULAS[2]?.slides as any,
-  'cronograma_3tri_26/09': CRONOGRAMA_3TRI_AULAS[3]?.slides as any,
-  'cronograma_3tri_03/10': CRONOGRAMA_3TRI_AULAS[4]?.slides as any,
-  'cronograma_3tri_10/10': CRONOGRAMA_3TRI_AULAS[5]?.slides as any,
-  'cronograma_3tri_17/10': CRONOGRAMA_3TRI_AULAS[6]?.slides as any,
-  'cronograma_3tri_24/10': CRONOGRAMA_3TRI_AULAS[7]?.slides as any,
-  'cronograma_3tri_31/10': CRONOGRAMA_3TRI_AULAS[8]?.slides as any,
-  'cronograma_3tri_07/11': CRONOGRAMA_3TRI_AULAS[9]?.slides as any,
-  'cronograma_3tri_14/11': CRONOGRAMA_3TRI_AULAS[10]?.slides as any,
-  'cronograma_3tri_21/11': CRONOGRAMA_3TRI_AULAS[11]?.slides as any,
-  'cronograma_3tri_28/11': CRONOGRAMA_3TRI_AULAS[12]?.slides as any,
-  'cronograma_3tri_05/12': CRONOGRAMA_3TRI_AULAS[13]?.slides as any,
-
   'ilgch_05/09': CRONOGRAMA_3TRI_AULAS[0]?.slides as any,
   'ilgch_12/09': CRONOGRAMA_3TRI_AULAS[1]?.slides as any,
-  'ilgch_19/09': CRONOGRAMA_3TRI_AULAS[2]?.slides as any,
-  'ilgch_26/09': CRONOGRAMA_3TRI_AULAS[3]?.slides as any,
-  'ilgch_03/10': CRONOGRAMA_3TRI_AULAS[4]?.slides as any,
-  'ilgch_10/10': CRONOGRAMA_3TRI_AULAS[5]?.slides as any,
-  'ilgch_17/10': CRONOGRAMA_3TRI_AULAS[6]?.slides as any,
-  'ilgch_24/10': CRONOGRAMA_3TRI_AULAS[7]?.slides as any,
-  'ilgch_31/10': CRONOGRAMA_3TRI_AULAS[8]?.slides as any,
-  'ilgch_07/11': CRONOGRAMA_3TRI_AULAS[9]?.slides as any,
-  'ilgch_14/11': CRONOGRAMA_3TRI_AULAS[10]?.slides as any,
-  'ilgch_21/11': CRONOGRAMA_3TRI_AULAS[11]?.slides as any,
-  'ilgch_28/11': CRONOGRAMA_3TRI_AULAS[12]?.slides as any,
-  'ilgch_05/12': CRONOGRAMA_3TRI_AULAS[13]?.slides as any,
 
 
   // AULA 1 & 2: INTRO / O QUE É ILGCH / CULTURA CORPORAL
@@ -167,16 +161,6 @@ export const slidesData: Record<string, Slide[]> = {
       dicaProfessor: 'Deixe claro que haverá espaço seguro para eles expressarem opiniões contrárias, desde que com base e respeito.'
     }
   ],
-
-  // AULAS 3º TRIMESTRE
-  'ilgch_11/09': SLIDES_3TRI['Gênero, Sociedade e Esporte'].map(s => ({...s, tipo: s.type || 'texto'})),
-  'ilgch_18/09': SLIDES_3TRI['O Apagamento Invisível'].map(s => ({...s, tipo: s.type || 'texto'})),
-  'ilgch_25/09': SLIDES_3TRI['Divisão Sexista do Corpo'].map(s => ({...s, tipo: s.type || 'texto'})),
-  'ilgch_09/10': SLIDES_3TRI['Hipersexualização e Espetáculo'].map(s => ({...s, tipo: s.type || 'texto'})),
-  'ilgch_16/10': SLIDES_3TRI['Equidade Salarial no Esporte'].map(s => ({...s, tipo: s.type || 'texto'})),
-  'ilgch_23/10': SLIDES_3TRI['As Pioneiras Olímpicas'].map(s => ({...s, tipo: s.type || 'texto'})),
-  'ilgch_13/11': SLIDES_3TRI['Debate Integrador'].map(s => ({...s, tipo: s.type || 'texto'})),
-  'ilgch_27/11': SLIDES_3TRI['Síntese Final'].map(s => ({...s, tipo: s.type || 'texto'})),
 
   // POVOS ORIGINÁRIOS
   'ilgch_26/06': SLIDES_POVOS_ORIGINARIOS.map(s => ({...s, tipo: s.type || 'texto_simples'})),

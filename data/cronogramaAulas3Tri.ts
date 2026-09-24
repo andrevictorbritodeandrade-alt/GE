@@ -34,8 +34,8 @@ export const CRONOGRAMA_3TRI_AULAS: AulaItem[] = [
     titulo: "AULA 1",
     titulo_aula: "HOMEM NÃO CHORA?",
     subtitulo: "Saúde Mental e Valorização da Vida",
-    data: "05/09",
-    tags: ["SETEMBRO AMARELO", "GÊNERO"],
+    data: "19/09",
+    tags: ["SETEMBRO AMARELO", "GÊNERO", "SAÚDE MENTAL"],
     status: "CONCLUÍDA",
     descricao: "Desconstrução de estereótipos de gênero e introdução à saúde mental.",
     modulo: "Setembro Amarelo",
@@ -50,56 +50,184 @@ export const CRONOGRAMA_3TRI_AULAS: AulaItem[] = [
     id: "aula_2",
     titulo: "AULA 2",
     titulo_aula: "AS RAÍZES DO SILÊNCIO",
-    subtitulo: "Marcadores Sociais e Sofrimento",
-    data: "12/09",
-    tags: ["SETEMBRO AMARELO", "SAÚDE MENTAL"],
+    subtitulo: "Marcadores Sociais e Sofrimento Psíquico",
+    data: "25/09",
+    tags: ["SETEMBRO AMARELO", "SAÚDE MENTAL", "RACISMO"],
     status: "CONCLUÍDA",
     descricao: "Marcadores sociais, racismo e o sofrimento psíquico com base em Conceição Evaristo.",
     modulo: "Setembro Amarelo",
     slides: [
-      { id: 1, tipo: "capa", titulo: "As Raízes do Silêncio", subtitulo: "Marcadores Sociais e Sofrimento Psíquico", imagem_url: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop", notas: "Aula sobre dados sociológicos." },
-      { id: 2, tipo: "literatura", titulo: "Literatura como Espelho", subtitulo: "Conceição Evaristo", imagem_url: "https://images.unsplash.com/photo-1476820865390-c52aeebb9891?q=80&w=800&auto=format&fit=crop", topicos: ["Escrevivência", "Couraças que impedem o choro"], notas: "Força da literatura periférica." },
-      { id: 3, tipo: "dados", titulo: "Determinantes Sociais", subtitulo: "O contexto adoece", imagem_url: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=800&auto=format&fit=crop", topicos: ["Desemprego", "Violência", "Racismo Institucional"], notas: "Problematizar a culpabilização individual." },
-      { id: 4, tipo: "fechamento", titulo: "Fechamento", subtitulo: "Cuidado Comunitário", imagem_url: "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?q=80&w=1200&auto=format&fit=crop", topicos: ["Afeto como tecnologia de sobrevivência"], notas: "Mensagem de solidariedade." }
+      {
+        id: 1,
+        tipo: "capa",
+        titulo: "As Raízes do Silêncio",
+        subtitulo: "Marcadores Sociais e Sofrimento Psíquico",
+        imagem_url: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop",
+        topicos: [],
+        notas: "Retomar o clima de respeito da aula anterior. Avisar que a aula traz dados, literatura e discussão social. Dizer que pode ser um tema pesado e que todos podem se sentir à vontade para falar ou apenas ouvir."
+      },
+      {
+        id: 2,
+        tipo: "objetivos",
+        titulo: "Objetivos da Aula",
+        subtitulo: "",
+        imagem_url: "",
+        topicos: [
+          "Compreender como fatores sociais, raciais e econômicos afetam a saúde mental",
+          "Conhecer dados sobre suicídio entre jovens negros e indígenas",
+          "Refletir sobre a literatura de Conceição Evaristo como espelho da realidade",
+          "Entender o conceito de interseccionalidade"
+        ],
+        notas: "Apresentar rapidamente. Dizer que a aula conecta o que foi visto na Aula 1 com a realidade social brasileira."
+      },
+      {
+        id: 3,
+        tipo: "retomada",
+        titulo: "De onde vem o silêncio?",
+        subtitulo: "",
+        imagem_url: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800&auto=format&fit=crop",
+        topicos: [
+          "Na Aula 1, falamos sobre gênero e repressão dos sentimentos",
+          "Vimos que homens são ensinados a 'engolir o choro'",
+          "Mas será que esse silêncio atinge todo mundo da mesma forma?",
+          "Hoje vamos olhar para raça, classe, etnia, gênero e sexualidade"
+        ],
+        notas: "Perguntar o que os alunos lembram da aula anterior. Conectar com o novo tema."
+      },
+      {
+        id: 4,
+        tipo: "conceito",
+        titulo: "O Sofrimento Não é Só Individual",
+        subtitulo: "",
+        imagem_url: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=800&auto=format&fit=crop",
+        topicos: [
+          "A dor psicológica tem raízes sociais",
+          "Racismo, pobreza, violência e discriminação adoecem",
+          "O que parece 'problema pessoal' muitas vezes é reflexo de uma estrutura",
+          "Prevenir o suicídio é também enfrentar essas estruturas"
+        ],
+        notas: "Explicar que não é para culpar o indivíduo. É para ampliar o olhar. Dizer que a sociedade adoece as pessoas."
+      },
+      {
+        id: 5,
+        tipo: "literatura",
+        titulo: "Literatura como Espelho",
+        subtitulo: "Conceição Evaristo – Canção para Ninar Menino Grande",
+        imagem_url: "https://images.unsplash.com/photo-1532012197267-da84d127e765?q=80&w=800&auto=format&fit=crop",
+        topicos: [
+          "Conceição Evaristo é uma das maiores escritoras brasileiras",
+          "O livro conta a história de Fio Jasmim, um homem negro",
+          "Desde a infância, sua subjetividade é marcada por tensões e silêncios",
+          "O silêncio é a resposta que ele encontra para sobreviver"
+        ],
+        notas: "Apresentar a autora e o livro. Dizer que é ficção, mas fala de realidades. Perguntar se alguém já leu algo dela."
+      },
+      {
+        id: 6,
+        tipo: "discussao",
+        titulo: "Lendo Fio Jasmim",
+        subtitulo: "",
+        imagem_url: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop",
+        topicos: [
+          "Trecho selecionado do livro (ler em voz alta)",
+          "Por que Fio Jasmim não fala sobre o que sente?",
+          "O que o silêncio dele representa?",
+          "Quem mais na sociedade é silenciado?"
+        ],
+        notas: "Ler um trecho curto e impactante. Deixar os alunos falarem. Mediar para não romantizar o silêncio. Conectar com a Aula 1 (homem não chora)."
+      },
+      {
+        id: 7,
+        tipo: "dados",
+        titulo: "Jovens Negros e Suicídio",
+        subtitulo: "Os números da desigualdade",
+        imagem_url: "https://images.unsplash.com/photo-1531384441138-2736e62e0919?q=80&w=800&auto=format&fit=crop",
+        topicos: [
+          "A cada 10 jovens que tiram a própria vida no Brasil, 6 são negros",
+          "Homens negros de 10 a 29 anos têm 45% mais risco de suicídio",
+          "A taxa entre jovens negros é de 31,2 por 100 mil habitantes",
+          "O racismo estrutural e a discriminação cotidiana adoecem"
+        ],
+        notas: "Apresentar os dados com cuidado e seriedade. Explicar que o racismo é um determinante social de saúde. Não deixar a discussão virar apenas número: são vidas."
+      },
+      {
+        id: 8,
+        tipo: "dados",
+        titulo: "Povos Indígenas e Saúde Mental",
+        subtitulo: "A maior taxa do país",
+        imagem_url: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=800&auto=format&fit=crop",
+        topicos: [
+          "A taxa de suicídio entre indígenas é a maior do Brasil: 62,7 por 100 mil",
+          "Entre homens indígenas de 20 a 24 anos, a taxa chega a 107,9 por 100 mil",
+          "Causas: perda de território, marginalização, violência, apagamento cultural",
+          "O risco de suicídio é 10,7 vezes maior após sofrer violência interpessoal"
+        ],
+        notas: "Contextualizar com o histórico de violência contra os povos originários. Destacar que a perda da terra e da identidade é uma dor coletiva. Conectar com a resistência indígena."
+      },
+      {
+        id: 9,
+        tipo: "conceito",
+        titulo: "Interseccionalidade",
+        subtitulo: "A multiplicação das vulnerabilidades",
+        imagem_url: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=800&auto=format&fit=crop",
+        topicos: [
+          "Conceito criado por Kimberlé Crenshaw e desenvolvido por Akotirene no Brasil",
+          "Os marcadores sociais não operam isolados: raça, classe, gênero, sexualidade e território se cruzam",
+          "A combinação desses fatores potencializa o sofrimento e a vulnerabilidade",
+          "Exemplo: um jovem negro, pobre e LGBTQIA+ enfrenta barreiras multiplicadas"
+        ],
+        notas: "Explicar o conceito de forma simples e visual. Usar o exemplo do cruzamento de ruas (de onde vem a palavra). Mostrar que não é uma 'soma' de preconceitos, mas uma experiência única de opressão."
+      },
+      {
+        id: 10,
+        tipo: "atividade",
+        titulo: "Atividade em Duplas: Mapeando os Silêncios",
+        subtitulo: "",
+        imagem_url: "",
+        topicos: [
+          "Em duplas, conversem e anotem:",
+          "1. Quais grupos na nossa sociedade têm mais dificuldade de ter sua dor ouvida?",
+          "2. Que 'frases prontas' a sociedade costuma usar para desvalorizar a dor dessas pessoas? (Ex: 'é mimimi', 'frescura', 'falta de Deus')",
+          "3. O que a escola e a comunidade podem fazer para quebrar esses silêncios?"
+        ],
+        notas: "Dar 10 minutos para as duplas conversarem. Circular pela sala. Ouvir 3 ou 4 duplas no fechamento."
+      },
+      {
+        id: 11,
+        tipo: "fechamento",
+        titulo: "Fechamento",
+        subtitulo: "O Sofrimento é Social, o Cuidado Também",
+        imagem_url: "https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?q=80&w=800&auto=format&fit=crop",
+        topicos: [
+          "Prevenir o suicídio é cuidar do indivíduo, mas também lutar contra as desigualdades",
+          "Reconhecer que certas dores têm cor, classe e gênero é o primeiro passo para o acolhimento",
+          "Próxima aula: O que é ser Cidadão? – Direitos e Participação Política",
+          "CVV: Ligue 188 (ligação gratuita e 24h)"
+        ],
+        notas: "Encerrar reforçando a importância da empatia e da escuta. Lembrar que ninguém precisa aguentar tudo sozinho. Deixar o número do CVV visível."
+      }
     ]
   },
   {
     id: "aula_3",
     titulo: "AULA 3",
-    titulo_aula: "TECER A REDE",
-    subtitulo: "Autocuidado e Ação Coletiva",
-    data: "19/09",
-    tags: ["SETEMBRO AMARELO", "ACOLHIMENTO"],
-    status: "AULA ATUAL",
-    descricao: "Autocuidado, redes de apoio e construção de um mural coletivo.",
-    modulo: "Setembro Amarelo",
-    slides: [
-      { id: 1, tipo: "capa", titulo: "Tecer a Rede", subtitulo: "Autocuidado e Ação Coletiva", imagem_url: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1200&auto=format&fit=crop", notas: "Prática e acolhimento." },
-      { id: 2, tipo: "conceito", titulo: "Autocuidado Real", subtitulo: "Além do comercial", imagem_url: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=800&auto=format&fit=crop", topicos: ["Sono reparador", "Dizer não", "Laços comunitários"], notas: "Autocuidado é autopreservação." },
-      { id: 3, tipo: "atividade", titulo: "Nossa Caixa de Ferramentas", subtitulo: "Estratégias", imagem_url: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=800&auto=format&fit=crop", topicos: ["Respiração quadrada", "Bilhetes de apoio"], notas: "Prática de respiração." },
-      { id: 4, tipo: "fechamento", titulo: "Mural da Vida", subtitulo: "Apoio contínuo", imagem_url: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=1200&auto=format&fit=crop", topicos: ["CVV 188", "Canais de ajuda"], notas: "Fixar recados no mural." }
-    ]
-  },
-  {
-    id: "aula_4",
-    titulo: "AULA 4",
     titulo_aula: "O QUE É SER CIDADÃO?",
     subtitulo: "Direitos e Participação",
     data: "03/10",
     tags: ["CIDADANIA", "DIREITOS"],
-    status: "AGUARDANDO",
+    status: "AULA ATUAL",
     descricao: "Introdução ao conceito de cidadania, direitos e deveres na sociedade.",
     modulo: "Cidadania e Política",
     slides: [
-      { id: 1, tipo: "capa", titulo: "O que é ser Cidadão?", subtitulo: "Direitos e Participação", imagem_url: "https://images.unsplash.com/photo-1541872703-74c5e44368f9?q=80&w=1200&auto=format&fit=crop", notas: "Transição para o tema de Outubro." },
+      { id: 1, tipo: "capa", titulo: "O que é ser Cidadão?", subtitulo: "Direitos e Participação", imagem_url: "https://images.unsplash.com/photo-1541872703-74c5e44368f9?q=80&w=1200&auto=format&fit=crop", notas: "Transição para o tema de Cidadania e Política." },
       { id: 2, tipo: "discussao", titulo: "O que é ser cidadão?", subtitulo: "", imagem_url: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=800&auto=format&fit=crop", topicos: ["É só ter CPF?", "É só votar?", "É ter acesso a direitos?"], notas: "Cidadania vai além do voto." },
       { id: 3, tipo: "conceito", titulo: "Cidadania Formal vs Real", subtitulo: "", imagem_url: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=800&auto=format&fit=crop", topicos: ["O que está na lei", "O que vivemos de fato"], notas: "Luta por direitos constante." },
       { id: 4, tipo: "fechamento", titulo: "Fechamento", subtitulo: "Cidadania é ação", imagem_url: "https://images.unsplash.com/photo-1493836512294-502baa1986e2?q=80&w=800&auto=format&fit=crop", topicos: ["Como exercer cidadania na escola?"], notas: "Cidadania no cotidiano." }
     ]
   },
   {
-    id: "aula_5",
-    titulo: "AULA 5",
+    id: "aula_4",
+    titulo: "AULA 4",
     titulo_aula: "ELEIÇÕES E DEMOCRACIA",
     subtitulo: "O Poder do Voto",
     data: "10/10",
@@ -115,8 +243,8 @@ export const CRONOGRAMA_3TRI_AULAS: AulaItem[] = [
     ]
   },
   {
-    id: "aula_6",
-    titulo: "AULA 6",
+    id: "aula_5",
+    titulo: "AULA 5",
     titulo_aula: "FAKE NEWS E POLÍTICA",
     subtitulo: "Desinformação e Democracia",
     data: "17/10",
@@ -132,8 +260,8 @@ export const CRONOGRAMA_3TRI_AULAS: AulaItem[] = [
     ]
   },
   {
-    id: "aula_7",
-    titulo: "AULA 7",
+    id: "aula_6",
+    titulo: "AULA 6",
     titulo_aula: "DIREITOS E DEVERES",
     subtitulo: "A Constituição Cidadã",
     data: "31/10",
@@ -149,8 +277,8 @@ export const CRONOGRAMA_3TRI_AULAS: AulaItem[] = [
     ]
   },
   {
-    id: "aula_8",
-    titulo: "AULA 8",
+    id: "aula_7",
+    titulo: "AULA 7",
     titulo_aula: "IDENTIDADE E AUTODECLARAÇÃO",
     subtitulo: "Quem eu sou?",
     data: "07/11",
@@ -166,8 +294,8 @@ export const CRONOGRAMA_3TRI_AULAS: AulaItem[] = [
     ]
   },
   {
-    id: "aula_9",
-    titulo: "AULA 9",
+    id: "aula_8",
+    titulo: "AULA 8",
     titulo_aula: "RACISMO ESTRUTURAL E RECREATIVO",
     subtitulo: "Invisível e Cruel",
     data: "14/11",
@@ -183,8 +311,8 @@ export const CRONOGRAMA_3TRI_AULAS: AulaItem[] = [
     ]
   },
   {
-    id: "aula_10",
-    titulo: "AULA 10",
+    id: "aula_9",
+    titulo: "AULA 9",
     titulo_aula: "CULTURA E REPRESENTATIVIDADE",
     subtitulo: "Apropriação vs Intercâmbio",
     data: "21/11",
@@ -200,8 +328,8 @@ export const CRONOGRAMA_3TRI_AULAS: AulaItem[] = [
     ]
   },
   {
-    id: "aula_11",
-    titulo: "AULA 11",
+    id: "aula_10",
+    titulo: "AULA 10",
     titulo_aula: "DIA DA CONSCIÊNCIA NEGRA",
     subtitulo: "Resistência de Palmares",
     data: "28/11",
@@ -217,8 +345,8 @@ export const CRONOGRAMA_3TRI_AULAS: AulaItem[] = [
     ]
   },
   {
-    id: "aula_12",
-    titulo: "AULA 12",
+    id: "aula_11",
+    titulo: "AULA 11",
     titulo_aula: "SÍNTESE E ENCERRAMENTO",
     subtitulo: "Até logo!",
     data: "05/12",

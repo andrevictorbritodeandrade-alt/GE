@@ -32,9 +32,9 @@ export const AULAS_SETEMBRO_AMARELO: AulaItem[] = [
     id: "aula_1",
     titulo: "Aula 1: Homem Não Chora? Desconstruindo Estigmas",
     subtitulo: "Saúde Mental e Valorização da Vida",
-    data: "05/09",
+    data: "19/09",
     tags: ["Gênero", "Saúde Mental", "Setembro Amarelo"],
-    status: "Aula Atual",
+    status: "Concluída",
     descricao: "Reflexão sobre estereótipos de gênero, repressão de sentimentos e introdução à saúde mental.",
     modulo: "Setembro Amarelo",
     slides: [
@@ -148,12 +148,12 @@ export const AULAS_SETEMBRO_AMARELO: AulaItem[] = [
   },
   {
     id: "aula_2",
-    titulo: "Aula 2: As Raízes do Silêncio",
+    titulo: "AULA 2: As Raízes do Silêncio",
     subtitulo: "Marcadores Sociais e Sofrimento Psíquico",
-    data: "12/09",
-    tags: ["Racismo", "Desigualdade", "Literatura"],
-    status: "Aguardando",
-    descricao: "Análise de como raça, classe, etnia e gênero atravessam a saúde mental, com base em Conceição Evaristo.",
+    data: "25/09",
+    tags: ["SETEMBRO AMARELO", "SAÚDE MENTAL", "RACISMO"],
+    status: "Concluída",
+    descricao: "Marcadores sociais, racismo e o sofrimento psíquico com base em Conceição Evaristo.",
     modulo: "Setembro Amarelo",
     slides: [
       {
@@ -163,168 +163,209 @@ export const AULAS_SETEMBRO_AMARELO: AulaItem[] = [
         subtitulo: "Marcadores Sociais e Sofrimento Psíquico",
         imagem_url: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop",
         topicos: [],
-        notas: "Retomar clima de respeito. Avisar que a aula traz dados e literatura."
+        notas: "Retomar o clima de respeito da aula anterior. Avisar que a aula traz dados, literatura e discussão social. Dizer que pode ser um tema pesado e que todos podem se sentir à vontade para falar ou apenas ouvir."
       },
       {
         id: 2,
+        tipo: "objetivos",
+        titulo: "Objetivos da Aula",
+        subtitulo: "",
+        imagem_url: "",
+        topicos: [
+          "Compreender como fatores sociais, raciais e econômicos afetam a saúde mental",
+          "Conhecer dados sobre suicídio entre jovens negros e indígenas",
+          "Refletir sobre a literatura de Conceição Evaristo como espelho da realidade",
+          "Entender o conceito de interseccionalidade"
+        ],
+        notas: "Apresentar rapidamente. Dizer que a aula conecta o que foi visto na Aula 1 com a realidade social brasileira."
+      },
+      {
+        id: 3,
+        tipo: "retomada",
+        titulo: "De onde vem o silêncio?",
+        subtitulo: "",
+        imagem_url: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800&auto=format&fit=crop",
+        topicos: [
+          "Na Aula 1, falamos sobre gênero e repressão dos sentimentos",
+          "Vimos que homens são ensinados a 'engolir o choro'",
+          "Mas será que esse silêncio atinge todo mundo da mesma forma?",
+          "Hoje vamos olhar para raça, classe, etnia, gênero e sexualidade"
+        ],
+        notas: "Perguntar o que os alunos lembram da aula anterior. Conectar com o novo tema."
+      },
+      {
+        id: 4,
+        tipo: "conceito",
+        titulo: "O Sofrimento Não é Só Individual",
+        subtitulo: "",
+        imagem_url: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=800&auto=format&fit=crop",
+        topicos: [
+          "A dor psicológica tem raízes sociais",
+          "Racismo, pobreza, violência e discriminação adoecem",
+          "O que parece 'problema pessoal' muitas vezes é reflexo de uma estrutura",
+          "Prevenir o suicídio é também enfrentar essas estruturas"
+        ],
+        notas: "Explicar que não é para culpar o indivíduo. É para ampliar o olhar. Dizer que a sociedade adoece as pessoas."
+      },
+      {
+        id: 5,
         tipo: "literatura",
         titulo: "Literatura como Espelho",
         subtitulo: "Conceição Evaristo – Canção para Ninar Menino Grande",
         imagem_url: "https://images.unsplash.com/photo-1532012197267-da84d127e765?q=80&w=800&auto=format&fit=crop",
         topicos: [
-          "Fio Jasmim: infância marcada por tensões",
-          "Silêncio como resposta",
-          "Masculinidade negra e opressões",
-          "O livro dá rosto ao que os dados mostram"
+          "Conceição Evaristo é uma das maiores escritoras brasileiras",
+          "O livro conta a história de Fio Jasmim, um homem negro",
+          "Desde a infância, sua subjetividade é marcada por tensões e silêncios",
+          "O silêncio é a resposta que ele encontra para sobreviver"
         ],
-        notas: "Apresentar a autora. Dizer que é ficção, mas fala de realidades."
-      },
-      {
-        id: 3,
-        tipo: "dados",
-        titulo: "Jovens Negros e Suicídio",
-        subtitulo: "Os números da desigualdade",
-        imagem_url: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop",
-        topicos: [
-          "A cada 10 jovens que tiram a própria vida, 6 são negros",
-          "Homens negros de 10 a 29 anos: 45% mais risco",
-          "Racismo estrutural adoece",
-          "Discriminação cotidiana gera desesperança"
-        ],
-        notas: "Apresentar dados com cuidado. Explicar que racismo é determinante social."
-      },
-      {
-        id: 4,
-        tipo: "dados",
-        titulo: "Povos Indígenas",
-        subtitulo: "A maior taxa do país",
-        imagem_url: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=800&auto=format&fit=crop",
-        topicos: [
-          "Taxa de suicídio: 62,7 por 100 mil",
-          "Entre homens indígenas de 20 a 24 anos: 107,9 por 100 mil",
-          "Causas: marginalização, perda de território, violência",
-          "Risco 10,7 vezes maior após violência"
-        ],
-        notas: "Contextualizar histórico de violência e resistência."
-      },
-      {
-        id: 5,
-        tipo: "conceito",
-        titulo: "Interseccionalidade",
-        subtitulo: "A multiplicação de opressões",
-        imagem_url: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=800&auto=format&fit=crop",
-        topicos: [
-          "Marcadores se cruzam: raça, classe, gênero, sexualidade",
-          "Combinação potencializa vulnerabilidade",
-          "Exemplo: jovem negro, pobre e LGBTQIA+",
-          "Não é soma, é multiplicação de opressões"
-        ],
-        notas: "Explicar conceito de forma simples. Dar exemplos do cotidiano."
+        notas: "Apresentar a autora e o livro. Dizer que é ficção, mas fala de realidades. Perguntar se alguém já leu algo dela."
       },
       {
         id: 6,
-        tipo: "fechamento",
-        titulo: "Sofrimento é Social",
-        subtitulo: "Prevenção exige enfrentamento",
-        imagem_url: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=800&auto=format&fit=crop",
+        tipo: "discussao",
+        titulo: "Lendo Fio Jasmim",
+        subtitulo: "",
+        imagem_url: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop",
         topicos: [
-          "Prevenção exige acolhimento individual",
-          "E também enfrentamento do racismo, da pobreza e da violência",
-          "Ninguém deveria ter que ser forte o tempo todo",
-          "Próxima aula: tecer a rede de apoio"
+          "Trecho selecionado do livro (ler em voz alta)",
+          "Por que Fio Jasmim não fala sobre o que sente?",
+          "O que o silêncio dele representa?",
+          "Quem mais na sociedade é silenciado?"
         ],
-        notas: "Reforçar que a aula não é para culpar alunos. É para ampliar olhar."
+        notas: "Ler um trecho curto e impactante. Deixar os alunos falarem. Mediar para não romantizar o silêncio. Conectar com a Aula 1 (homem não chora)."
+      },
+      {
+        id: 7,
+        tipo: "dados",
+        titulo: "Jovens Negros e Suicídio",
+        subtitulo: "Os números da desigualdade",
+        imagem_url: "https://images.unsplash.com/photo-1531384441138-2736e62e0919?q=80&w=800&auto=format&fit=crop",
+        topicos: [
+          "A cada 10 jovens que tiram a própria vida no Brasil, 6 são negros",
+          "Homens negros de 10 a 29 anos têm 45% mais risco de suicídio",
+          "A taxa entre jovens negros é de 31,2 por 100 mil habitantes",
+          "O racismo estrutural e a discriminação cotidiana adoecem"
+        ],
+        notas: "Apresentar os dados com cuidado e seriedade. Explicar que o racismo é um determinante social de saúde. Não deixar a discussão virar apenas número: são vidas."
+      },
+      {
+        id: 8,
+        tipo: "dados",
+        titulo: "Povos Indígenas e Saúde Mental",
+        subtitulo: "A maior taxa do país",
+        imagem_url: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=800&auto=format&fit=crop",
+        topicos: [
+          "A taxa de suicídio entre indígenas é a maior do Brasil: 62,7 por 100 mil",
+          "Entre homens indígenas de 20 a 24 anos, a taxa chega a 107,9 por 100 mil",
+          "Causas: perda de território, marginalização, violência, apagamento cultural",
+          "O risco de suicídio é 10,7 vezes maior após sofrer violência interpessoal"
+        ],
+        notas: "Contextualizar com o histórico de violência contra os povos originários. Destacar que a perda da terra e da identidade é uma dor coletiva. Conectar com a resistência indígena."
+      },
+      {
+        id: 9,
+        tipo: "conceito",
+        titulo: "Interseccionalidade",
+        subtitulo: "A multiplicação das vulnerabilidades",
+        imagem_url: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=800&auto=format&fit=crop",
+        topicos: [
+          "Conceito criado por Kimberlé Crenshaw e desenvolvido por Akotirene no Brasil",
+          "Os marcadores sociais não operam isolados: raça, classe, gênero, sexualidade e território se cruzam",
+          "A combinação desses fatores potencializa o sofrimento e a vulnerabilidade",
+          "Exemplo: um jovem negro, pobre e LGBTQIA+ enfrenta barreiras multiplicadas"
+        ],
+        notas: "Explicar o conceito de forma simples e visual. Usar o exemplo do cruzamento de ruas (de onde vem a palavra). Mostrar que não é uma 'soma' de preconceitos, mas uma experiência única de opressão."
+      },
+      {
+        id: 10,
+        tipo: "atividade",
+        titulo: "Atividade em Duplas: Mapeando os Silêncios",
+        subtitulo: "",
+        imagem_url: "",
+        topicos: [
+          "Em duplas, conversem e anotem:",
+          "1. Quais grupos na nossa sociedade têm mais dificuldade de ter sua dor ouvida?",
+          "2. Que 'frases prontas' a sociedade costuma usar para desvalorizar a dor dessas pessoas? (Ex: 'é mimimi', 'frescura', 'falta de Deus')",
+          "3. O que a escola e a comunidade podem fazer para quebrar esses silêncios?"
+        ],
+        notas: "Dar 10 minutos para as duplas conversarem. Circular pela sala. Ouvir 3 ou 4 duplas no fechamento."
+      },
+      {
+        id: 11,
+        tipo: "fechamento",
+        titulo: "Fechamento",
+        subtitulo: "O Sofrimento é Social, o Cuidado Também",
+        imagem_url: "https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?q=80&w=800&auto=format&fit=crop",
+        topicos: [
+          "Prevenir o suicídio é cuidar do indivíduo, mas também lutar contra as desigualdades",
+          "Reconhecer que certas dores têm cor, classe e gênero é o primeiro passo para o acolhimento",
+          "Próxima aula: Tecer a Rede – Estratégias de Cuidado, Rede de Apoio e Mural da Vida",
+          "CVV: Ligue 188 (ligação gratuita e 24h)"
+        ],
+        notas: "Encerrar reforçando a importância da empatia e da escuta. Lembrar que ninguém precisa aguentar tudo sozinho. Deixar o número do CVV visível."
       }
     ]
   },
   {
     id: "aula_3",
-    titulo: "Aula 3: Tecer a Rede",
-    subtitulo: "Autocuidado, Apoio e Ação Coletiva",
-    data: "19/09",
-    tags: ["Autocuidado", "Rede de Apoio", "CVV"],
-    status: "Aguardando",
-    descricao: "Apresentação de redes de apoio, estratégias de autocuidado e construção de um mural coletivo.",
-    modulo: "Setembro Amarelo",
+    titulo: "Aula 3: O que é ser Cidadão?",
+    subtitulo: "Direitos, Deveres e Participação Social",
+    data: "03/10",
+    tags: ["Cidadania", "Direitos", "Participação"],
+    status: "Aula Atual",
+    descricao: "Introdução ao conceito de cidadania, direitos fundamentais e participação na sociedade.",
+    modulo: "Cidadania e Política",
     slides: [
       {
         id: 1,
         tipo: "capa",
-        titulo: "Tecer a Rede",
-        subtitulo: "Autocuidado, Apoio e Ação Coletiva",
-        imagem_url: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1200&auto=format&fit=crop",
+        titulo: "O que é ser Cidadão?",
+        subtitulo: "Direitos e Participação Social",
+        imagem_url: "https://images.unsplash.com/photo-1541872703-74c5e44368f9?q=80&w=1200&auto=format&fit=crop",
         topicos: [],
-        notas: "Última aula. Momento de prática e acolhimento."
+        notas: "Introduzir a transição de temas: da saúde mental e valorização da vida para os direitos de cidadania."
       },
       {
         id: 2,
-        tipo: "conceito",
-        titulo: "O que é Autocuidado?",
-        subtitulo: "Não é luxo, é necessidade",
-        imagem_url: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=800&auto=format&fit=crop",
+        tipo: "discussao",
+        titulo: "O que é ser cidadão?",
+        subtitulo: "Mais do que um documento ou o ato de votar",
+        imagem_url: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=800&auto=format&fit=crop",
         topicos: [
-          "Estratégias para regular emoções",
-          "Pode ser individual ou coletivo",
-          "Buscar ajuda profissional também é autocuidado",
-          "Dizer não, descansar, pedir ajuda"
+          "É só ter CPF e RG?",
+          "É só votar a cada dois anos?",
+          "Ou é ter acesso pleno à saúde, educação e dignidade?",
+          "Como a cidadania se expressa na nossa escola e no bairro?"
         ],
-        notas: "Desmistificar que autocuidado é só spa."
+        notas: "Ouvir a turma. Registrar palavras-chave no quadro."
       },
       {
         id: 3,
-        tipo: "atividade",
-        titulo: "Nossa Caixa de Ferramentas",
-        subtitulo: "O que te faz bem?",
-        imagem_url: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=800&auto=format&fit=crop",
+        tipo: "conceito",
+        titulo: "Cidadania Formal vs. Cidadania Real",
+        subtitulo: "A distância entre a lei e o cotidiano",
+        imagem_url: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=800&auto=format&fit=crop",
         topicos: [
-          "O que te faz bem quando está triste ou ansioso?",
-          "Escreva em um post-it",
-          "Vamos montar um painel coletivo",
-          "Exemplos: música, esporte, conversa, natureza"
+          "Cidadania Formal: o que está escrito nas leis e na Constituição de 1988",
+          "Cidadania Real: o que o cidadão de fato vivencia nas periferias",
+          "A conquista de direitos como processo histórico contínuo",
+          "Nenhum direito foi dado de graça: todos foram conquistados"
         ],
-        notas: "Distribuir post-its. Colar em cartolina. Valorizar todas as respostas."
+        notas: "Explicar a importância da consciência crítica para a exigência de direitos."
       },
       {
         id: 4,
-        tipo: "conceito",
-        titulo: "Rede de Apoio",
-        subtitulo: "Onde buscar ajuda",
-        imagem_url: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=800&auto=format&fit=crop",
-        topicos: [
-          "CVV: 188 – gratuito, sigiloso, 24h",
-          "CAPS: Centros de Atenção Psicossocial",
-          "UBS: Unidades Básicas de Saúde",
-          "Na escola: professores, orientação, coordenação"
-        ],
-        notas: "Distribuir cartão com contatos. Dizer que pedir ajuda não é fraqueza."
-      },
-      {
-        id: 5,
-        tipo: "atividade",
-        titulo: "Caixa do Incentivo à Vida",
-        subtitulo: "Mensagens de esperança",
-        imagem_url: "https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?q=80&w=800&auto=format&fit=crop",
-        topicos: [
-          "Escreva uma mensagem anônima de apoio",
-          "Pode ser frase, verso, desenho",
-          "Depois, cada um retira uma mensagem",
-          "Vamos criar o Mural da Vida"
-        ],
-        notas: "Preparar caixa decorada. Garantir que todos participem."
-      },
-      {
-        id: 6,
         tipo: "fechamento",
-        titulo: "Mensagem Final",
-        subtitulo: "Você não está sozinho",
+        titulo: "Fechamento",
+        subtitulo: "Cidadania é Ação Coletiva",
         imagem_url: "https://images.unsplash.com/photo-1493836512294-502baa1986e2?q=80&w=800&auto=format&fit=crop",
         topicos: [
-          "Falar salva",
-          "CVV: 188",
-          "Setembro Amarelo: todos os dias",
-          "A escola é um espaço de apoio"
+          "Ser cidadão é cuidar de si e da comunidade",
+          "Próxima aula: Eleições e Democracia – O Poder do Voto",
+          "Como podemos exercer cidadania hoje na escola?"
         ],
-        notas: "Encerrar com acolhimento. Disponibilizar-se para conversas individuais."
+        notas: "Finalizar incentivando a participação ativa dos estudantes."
       }
     ]
   }
