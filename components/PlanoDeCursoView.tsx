@@ -29,7 +29,7 @@ export const PlanoDeCursoView: React.FC<PlanoDeCursoViewProps> = ({ onBack }) =>
     'eo_fundamental': {
       id: 'eo_fundamental',
       gradeLabel: '8º e 9º Anos do Ensino Fundamental',
-      title: 'Plano de Curso: Estudos Orientados — Ensino Fundamental',
+      title: 'Currículo: Estudos Orientados — Ensino Fundamental',
       subtitle: 'Organização, Rotinas de Estudo e Autonomia da Aprendizagem',
       period: 'Ano Letivo 2026 • SEEDUC-RJ',
       schools: [
@@ -67,7 +67,7 @@ export const PlanoDeCursoView: React.FC<PlanoDeCursoViewProps> = ({ onBack }) =>
     'eo_1ano_em': {
       id: 'eo_1ano_em',
       gradeLabel: '1ª Série do Ensino Médio',
-      title: 'Plano de Curso: Estudos Orientados — 1ª Série do Ensino Médio',
+      title: 'Currículo: Estudos Orientados — 1ª Série do Ensino Médio',
       subtitle: 'Transição, Metodologias Científicas e Curadoria Crítica da Informação',
       period: 'Ano Letivo 2026 • SEEDUC-RJ',
       schools: [
@@ -105,7 +105,7 @@ export const PlanoDeCursoView: React.FC<PlanoDeCursoViewProps> = ({ onBack }) =>
     'eo_2ano_em': {
       id: 'eo_2ano_em',
       gradeLabel: '2ª Série do Ensino Médio',
-      title: 'Plano de Curso: Estudos Orientados — 2ª Série do Ensino Médio',
+      title: 'Currículo: Estudos Orientados — 2ª Série do Ensino Médio',
       subtitle: 'Aprofundamento Acadêmico, Foco no ENEM e Autonomia Avançada',
       period: 'Ano Letivo 2026 • SEEDUC-RJ',
       schools: [
@@ -143,7 +143,7 @@ export const PlanoDeCursoView: React.FC<PlanoDeCursoViewProps> = ({ onBack }) =>
     'eo_eja': {
       id: 'eo_eja',
       gradeLabel: 'EJA — Educação de Jovens e Adultos (Fase I / Ensino Médio)',
-      title: 'Plano de Curso: Estudos Orientados — EJA Ensino Médio',
+      title: 'Currículo: Estudos Orientados — EJA Ensino Médio',
       subtitle: 'Reorganização do Tempo, Autonomia e Letramento Digital do Trabalhador',
       period: 'Ano Letivo 2026 • SEEDUC-RJ',
       schools: [
@@ -187,7 +187,7 @@ export const PlanoDeCursoView: React.FC<PlanoDeCursoViewProps> = ({ onBack }) =>
     'reforco_fundamental': {
       id: 'reforco_fundamental',
       gradeLabel: '8º e 9º Anos do Ensino Fundamental',
-      title: 'Plano de Curso: Reforço Escolar — Ensino Fundamental',
+      title: 'Currículo: Reforço Escolar — Ensino Fundamental',
       subtitle: 'Nivelamento de Linguagens, Raciocínio Lógico e Matemática com Movimento',
       period: 'Ano Letivo 2026 • SEEDUC-RJ',
       schools: [
@@ -225,7 +225,7 @@ export const PlanoDeCursoView: React.FC<PlanoDeCursoViewProps> = ({ onBack }) =>
     'reforco_em': {
       id: 'reforco_em',
       gradeLabel: '1ª e 2ª Séries do Ensino Médio',
-      title: 'Plano de Curso: Reforço Escolar — Ensino Médio',
+      title: 'Currículo: Reforço Escolar — Ensino Médio',
       subtitle: 'Recuperação de Habilidades Críticas da BNCC: Argumentação e Lógica',
       period: 'Ano Letivo 2026 • SEEDUC-RJ',
       schools: [
@@ -263,7 +263,7 @@ export const PlanoDeCursoView: React.FC<PlanoDeCursoViewProps> = ({ onBack }) =>
     'reforco_eja': {
       id: 'reforco_eja',
       gradeLabel: 'EJA — Educação de Jovens e Adultos',
-      title: 'Plano de Curso: Reforço Escolar — EJA Ensino Médio',
+      title: 'Currículo: Reforço Escolar — EJA Ensino Médio',
       subtitle: 'Matemática Financeira do Cotidiano, Leitura Cidadã e Direitos',
       period: 'Ano Letivo 2026 • SEEDUC-RJ',
       schools: [
@@ -307,44 +307,50 @@ export const PlanoDeCursoView: React.FC<PlanoDeCursoViewProps> = ({ onBack }) =>
     'cordelia_8ano': {
       id: 'cordelia_8ano',
       badge: 'Ensino Fundamental • 8º Ano',
-      title: 'Plano de Curso: Educação Física — 8º Ano do Ensino Fundamental',
-      subtitle: 'Cultura Corporal, Esportes de Rede/Parede, Handebol, Jogos do Mundo e Saúde',
-      period: 'Ano Letivo 2026 • SEEDUC-RJ',
+      title: 'Currículo: Educação Física — 8º Ano do Ensino Fundamental',
+      subtitle: 'Cultura Corporal em Sala de Aula: Esportes de Areia Adaptados, Jogos do Mundo, Lutas Brasileiras/Indígenas, Paralimpíadas, Danças Urbanas e Ginástica',
+      period: 'Ano Letivo 2026 • SEEDUC-RJ • Resolução Nº 6392/2025',
       schools: [
-        { name: 'Colégio Estadual Cordélia Paiva', classes: ['Turma 801', 'Turma 802', 'Turma 803'] }
+        { name: 'EE Professora Cordélia Paiva', classes: ['Turma 801', 'Turma 802', 'Turma 803'] }
       ],
-      ementa: 'Vivência e reflexão crítica sobre as práticas corporais da cultura de movimento no 8º ano do EF. Aborda esportes de rede/parede (Altinha e Futevôlei), esportes de invasão (Handebol, Basquete, Futsal), jogos de tabuleiro e concentração de matrizes mundiais (África, Ásia e Europa), manifestações rítmicas, práticas corporais inclusivas e promoção de hábitos de vida ativa.',
+      ementa: 'Planejamento curricular oficial de Educação Física adaptado rigorosamente à realidade estrutural da EE Professora Cordélia Paiva (unidade escolar sem quadra esportiva). O curso foi integralmente desenvolvido dentro de sala de aula e espaços alternativos, combinando fundamentos teóricos registrados no quadro a partir de slides, oficinas manuais com materiais reciclados (construção de tabuleiros de damas com papelão e tampinhas), práticas pré-desportivas adaptadas ao espaço reduzido (fundamentos de toque e passe da Altinha e Futevôlei), resgate dos Jogos do Mundo e do Brasil, Lutas Nacionais e Indígenas (Huka-Huka, Jiu-Jitsu Brasileiro, Luta Livre), vivências táteis e sensoriais de Esportes Paralímpicos (Goalball, Vôlei Sentado, Bocha), Danças Urbanas (Hip Hop/Breaking), design de jogos de tabuleiro e elaboração de Trabalhos de Pesquisa Científico-Cultural manuscritos com normas formais.',
       objetivos: [
-        'Apropriar-se dos fundamentos técnicos e táticos da Altinha e do Futevôlei (toque, passe, controle na areia/quadra).',
-        'Compreender as regras, história e dinâmica coletiva do Handebol e esportes de invasão.',
-        'Resgatar e confeccionar jogos de tabuleiro e cartas de diferentes partes do mundo (mancala, damas com material reciclável, xadrez).',
-        'Debater a importância da atividade física, nutrição saudável e respeito à diversidade corporal.'
+        'Adaptar as práticas corporais e a reflexão da cultura de movimento à realidade de sala de aula sem prejuízo ao rigor pedagógico e científico.',
+        'Compreender as regras, história, contexto cultural carioca e fundamentos técnicos da Altinha e do Futevôlei por meio de teoria estruturada e práticas pré-desportivas adaptadas.',
+        'Confeccionar artesanalmente e vivenciar jogos de tabuleiro e cartas de matrizes mundiais (damas com material reciclável, jogos africanos e asiáticos), estimulando raciocínio lógico e concentração.',
+        'Analisar as lutas como patrimônio cultural brasileiro e dos povos originários (o ritual do Kuarup e a luta Huka-Huka no Xingu; o BJJ e a Luta Livre no Rio de Janeiro), combatendo o preconceito.',
+        'Vivenciar de forma sensorial e inclusiva modalidades paralímpicas adaptadas (Goalball com privação visual, Vôlei Sentado e Bocha), promovendo a empatia e acessibilidade.',
+        'Desenvolver autonomia na pesquisa acadêmica manuscrita através do Trabalho Oficial de Ginástica (história no Brasil, seleção brasileira e gabarito das 7 modalidades FIG e GPT).'
       ],
       avaliacaoWeights: [
-        { name: 'Vivência Prática & Cooperação', percent: 40, color: 'bg-amber-600', text: 'Participação ativa nos treinos, jogos pré-desportivos e fair play' },
-        { name: 'Trabalho do 2º Trimestre (Jogos do Mundo)', percent: 30, color: 'bg-orange-600', text: 'Trabalho manuscrito (capa, intro, desenv, refs) e apresentação prática de jogos de tabuleiro' },
-        { name: 'Avaliação Teórica & Caderno', percent: 30, color: 'bg-red-600', text: 'Provas trimestrais de regras/fundamentos e anotações teóricas do quadro' }
+        { name: 'Participação & Práticas em Sala (2,0 pts)', percent: 20, color: 'bg-emerald-600', text: 'Engajamento nas dinâmicas de sala, confecção de tabuleiros e respeito às regras de convivência' },
+        { name: 'Trabalho de Pesquisa Manuscrito (3,0 pts)', percent: 30, color: 'bg-amber-600', text: 'Trabalho com normas formais (Capa, Introdução, Desenvolvimento, Gabarito e Referências)' },
+        { name: 'Avaliação Escrita / Teórica (5,0 pts)', percent: 50, color: 'bg-blue-600', text: 'Verificação de aprendizagem dos conteúdos teóricos trabalhados no quadro e nos slides' }
       ],
       unidades: [
         {
-          bimestre: '1º Trimestre (05/02 a 18/05) — Diagnóstico e Fundamentos',
+          bimestre: '1º Trimestre (05/02 a 18/05) — Acolhimento, Diagnóstico e Dinâmicas em Sala',
           items: [
-            { titulo: 'Unidade 1: Corpo, Saúde e Diagnóstico Motor', desc: 'Medição antropométrica básica, resistência aeróbica e introdução às regras de convivência e segurança na quadra.' },
-            { titulo: 'Unidade 2: Esportes Coletivos de Invasão', desc: 'Fundamentos de passe, drible e marcação; importância do trabalho em equipe e combate ao preconceito.' }
+            { titulo: 'Unidade 1: Acolhimento das Turmas e Contrato de Convivência', desc: 'Início das atividades pedagógicas do docente em 11/05/2026; diagnóstico das turmas 801, 802 e 803; pactuação de regras para aulas em sala de aula e fechamento avaliativo do 1º trimestre.' }
           ]
         },
         {
-          bimestre: '2º Trimestre (19/05 a 04/09) — Altinha, Futevôlei & Jogos do Mundo',
+          bimestre: '2º Trimestre (19/05 a 04/09) — Altinha, Futevôlei, Jogos do Mundo e Oficina de Tabuleiros',
           items: [
-            { titulo: 'Unidade 3: Esportes de Rede e Areia (Altinha e Futevôlei)', desc: 'História, regras, toque de pé, coxa, peito e cabeça; jogos pré-desportivos e fute-mesa adaptado.' },
-            { titulo: 'Unidade 4: Jogos de Tabuleiro, Concentração e Culturas do Mundo', desc: 'Pesquisa e confecção de tabuleiros de damas e jogos tradicionais africanos e asiáticos com tampinhas e papelão.' }
+            { titulo: 'Unidade 2: Esportes de Rede e Areia Adaptados em Sala (Altinha e Futevôlei)', desc: 'História e cultura da orla do RJ; registro teórico no quadro (slides págs. 1 a 7); fundamentos de toque de pé, coxa, peito e cabeça; jogos pré-desportivos de passe e cooperação adaptados ao espaço de sala.' },
+            { titulo: 'Unidade 3: Jogos Tradicionais do Mundo e Oficina de Reciclagem', desc: 'Pesquisa teórica de jogos da África, Ásia e Europa; oficina prática de construção de tabuleiros de Damas em quartetos (papelão, tampinhas de garrafa clara/escura e canetinhas).' },
+            { titulo: 'Unidade 4: Trabalho do 2º Trimestre & Avaliação Teórica', desc: 'Produção manuscrita e apresentação prática em sala de jogos de tabuleiro e concentração; aplicação de prova escrita de verificação de aprendizagem.' }
           ]
         },
         {
-          bimestre: '3º Trimestre (08/09 a 22/12) — Handebol, Inclusão Paralímpica e Vida Ativa',
+          bimestre: '3º Trimestre (08/09 a 22/12) — Lutas Nacionais, Paralimpíadas, Danças Urbanas e Ginástica',
           items: [
-            { titulo: 'Unidade 5: Handebol Técnico-Tático', desc: 'Recepção, passe ombro, arremesso em suspensão, sistema defensivo 6:0 e regras oficiais.' },
-            { titulo: 'Unidade 6: Esporte Paralímpico e Plano de Vida Ativa', desc: 'Vivências de goalball, vôlei sentado e elaboração do plano individual de prática sustentável de exercícios.' }
+            { titulo: 'Unidade 5: Lançamento do Trabalho de Pesquisa de Ginástica (Aula 16)', desc: 'Lançamento oficial das diretrizes do Trabalho de Pesquisa de Ginástica (3,0 pontos): História da Ginástica no Brasil, trajetória da Seleção Brasileira e o Gabarito das 7 Modalidades (Competitivas FIG e Não Competitiva GPT).' },
+            { titulo: 'Unidade 6: Lutas I — Huka-Huka e Cosmologia Indígena (Aula 17)', desc: 'A luta ritualística dos povos do Alto Xingu no ritual do Kuarup; regras tradicionais, cosmologia dos povos originários e valorização da ancestralidade indígena.' },
+            { titulo: 'Unidade 7: Lutas II — Jiu-Jitsu Brasileiro (BJJ) e Luta Livre (Aula 18)', desc: 'Origem histórica no Rio de Janeiro, evolução das artes marciais brasileiras, princípio da física e alavancas mecânicas, defesa pessoal e valorização cultural.' },
+            { titulo: 'Unidade 8: Esportes Adaptados & Inclusão Paralímpica (Aula 20)', desc: 'Vivências sensoriais em sala de Goalball (bola sonora e privação visual), Voleibol Sentado e Bocha Paralímpica; reflexão sobre acessibilidade e inclusão escolar.' },
+            { titulo: 'Unidade 9: Danças Urbanas e Cultura de Rua (Aula 21)', desc: 'História do Hip Hop, elementos do Breaking (toprock, footwork, freeze, power moves), inserção olímpica e expressão corporal juvenil em sala.' },
+            { titulo: 'Unidade 10: Gamificação, Avaliação Escrita e Encerramento (Aulas 23 a 25)', desc: 'Oficina de design e criação de jogos de tabuleiro temáticos em sala; aplicação da Avaliação Escrita do 3º Trimestre (5,0 pts); confraternização pedagógica e fechamento do ano letivo.' }
           ]
         }
       ]
@@ -352,7 +358,7 @@ export const PlanoDeCursoView: React.FC<PlanoDeCursoViewProps> = ({ onBack }) =>
     'ciep229_eja': {
       id: 'ciep229_eja',
       badge: 'EJA • Ensino Médio Fase I',
-      title: 'Plano de Curso: Educação Física — EJA Ensino Médio',
+      title: 'Currículo: Educação Física — EJA Ensino Médio',
       subtitle: 'Ergonomia, Saúde do Trabalhador, Lazer Ativo e Qualidade de Vida',
       period: 'Ano Letivo 2026 • SEEDUC-RJ',
       schools: [
@@ -397,11 +403,11 @@ export const PlanoDeCursoView: React.FC<PlanoDeCursoViewProps> = ({ onBack }) =>
     'ilgch_1001': {
       id: 'ilgch_1001',
       badge: 'Itinerário Formativo • 1ª Série EM',
-      title: 'Plano de Curso: ILGCH — Decolonização de Corpos, Estética, Mídia e Espaços',
+      title: 'Currículo: ILGCH — Decolonização de Corpos, Estética, Mídia e Espaços',
       subtitle: 'Itinerário Formativo de Linguagens e Ciências Humanas e Sociais Aplicadas',
       period: 'Ano Letivo 2026 • SEEDUC-RJ (Lei 10.639/03 e 11.645/08)',
       schools: [
-        { name: 'CE Doutor Ignácio B. Menezes', classes: ['Turma ILGCH 1001'] }
+        { name: 'CIEP 476 Elias Lazaroni', classes: ['Turma ILGCH 1001'] }
       ],
       ementa: 'Análise crítica e decolonial da cultura corporal e das representações estéticas nos meios de comunicação de massa e mídias digitais. Fundamentado na Lei Federal 10.639/03 e 11.645/08 e autores como Frantz Fanon, Lélia Gonzalez e Silvio Almeida, o curso investiga o racismo estético, a hipersexualização, a padronização eurocêntrica, o colorismo, os filtros digitais e valoriza as epistemologias e práticas corporais afrodiaspóricas e originárias.',
       objetivos: [
@@ -442,7 +448,7 @@ export const PlanoDeCursoView: React.FC<PlanoDeCursoViewProps> = ({ onBack }) =>
     'iffc_2001': {
       id: 'iffc_2001',
       badge: 'Itinerário Formativo • 2ª Série EM',
-      title: 'Plano de Curso: IFFC — Iniciação Filosófico-Científica e Formação Científica',
+      title: 'Currículo: IFFC — Iniciação Filosófico-Científica e Formação Científica',
       subtitle: 'Itinerário Formativo de Aprofundamento Científico e Filosófico (SEEDUC-RJ)',
       period: 'Ano Letivo 2026 • SEEDUC-RJ',
       schools: [
@@ -487,7 +493,7 @@ export const PlanoDeCursoView: React.FC<PlanoDeCursoViewProps> = ({ onBack }) =>
     'ifla_2002': {
       id: 'ifla_2002',
       badge: 'Itinerário Formativo • 2ª Série EM',
-      title: 'Plano de Curso: IFLA — Iniciação Filosófico-Literária e Artes',
+      title: 'Currículo: IFLA — Iniciação Filosófico-Literária e Artes',
       subtitle: 'Itinerário Formativo de Linguagens, Literatura e Expressões Artísticas (SEEDUC-RJ)',
       period: 'Ano Letivo 2026 • SEEDUC-RJ',
       schools: [
@@ -549,8 +555,8 @@ export const PlanoDeCursoView: React.FC<PlanoDeCursoViewProps> = ({ onBack }) =>
           onBack={onBack}
           badge="SEEDUC-RJ • 2026"
           statusBadge="RESOLUÇÃO Nº 6392/2025"
-          title="PLANO DE CURSO OFICIAL"
-          subtitle="Planejamento curricular completo por componente, unidade escolar e ano de escolaridade"
+          title="CURRÍCULO ESCOLAR OFICIAL"
+          subtitle="Matriz curricular e planejamento completo por componente, unidade escolar e ano de escolaridade"
           actions={
             <button 
               onClick={handlePrint}
@@ -697,7 +703,7 @@ export const PlanoDeCursoView: React.FC<PlanoDeCursoViewProps> = ({ onBack }) =>
                   }`}
                 >
                   <School size={14} />
-                  <span>CE Cordélia Paiva • 801, 802 e 803 (8º Ano EF)</span>
+                  <span>EE Cordélia Paiva • 801, 802 e 803 (8º Ano EF)</span>
                 </button>
 
                 <button
@@ -721,7 +727,7 @@ export const PlanoDeCursoView: React.FC<PlanoDeCursoViewProps> = ({ onBack }) =>
                   }`}
                 >
                   <Sparkles size={14} />
-                  <span>ILGCH • 1001 (CE Dr. Ignácio)</span>
+                  <span>ILGCH • 1001 (CIEP 476 Elias Lazaroni)</span>
                 </button>
 
                 <button

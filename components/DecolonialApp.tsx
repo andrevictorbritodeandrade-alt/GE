@@ -4,8 +4,10 @@ import { safeLocalStorage } from '../utils/storage';
 import { 
   BookOpen, Presentation, ChevronLeft, ChevronRight, Home, 
   Info, Printer, LayoutGrid, Calendar, Activity, Shield, 
-  Zap, Search, CheckCircle2, FileText, Map, Projector, ShieldAlert, BarChart3, ClipboardList, RotateCcw, Sparkles
+  Zap, Search, CheckCircle2, FileText, Map, Projector, ShieldAlert, BarChart3, ClipboardList, RotateCcw, Sparkles,
+  School, GraduationCap, Layers
 } from 'lucide-react';
+import { ScreenHeader } from './ScreenHeader';
 import { PE_PLAN } from '../data/planosPE';
 import { PlanoAnualPE } from './PlanoAnualPE';
 import { OcorrenciasView } from './OcorrenciasView';
@@ -597,7 +599,7 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
           {[
             {
               id: 'planejamento',
-              title: 'PLANEJAMENTO',
+              title: 'PLANOS DE AULA',
               subtitle: 'Cronograma oficial e resumos.',
               icon: <Calendar className="w-24 h-24 text-white/20 group-hover:text-emerald-400/40 transition-colors duration-500 absolute -bottom-4 -right-4 rotate-12" />,
               gradient: 'from-blue-900 to-blue-950',
@@ -606,7 +608,7 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
             },
             {
               id: 'plano_anual',
-              title: 'PLANO ANUAL',
+              title: 'PLANO DE CURSO',
               subtitle: 'Gestão completa das aulas de PE.',
               icon: <Map className="w-24 h-24 text-white/20 group-hover:text-emerald-400/40 transition-colors duration-500 absolute -bottom-4 -right-4 -rotate-12" />,
               gradient: 'from-emerald-900 to-emerald-950',
@@ -687,71 +689,283 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
     </div>
   );
 
-  // --- HELPER: DATASHOW HEADER ---
-  const DatashowHeader = ({ title, sub }: { title: string, sub?: string }) => (
-    <header className="w-full mb-10 pb-6 border-b-2 border-slate-200 flex flex-col md:flex-row items-center justify-between gap-6 px-4">
-      {/* Rio de Janeiro Gov Logo */}
-      <div className="flex-shrink-0 w-32 h-16 flex items-center justify-center bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
-        <img 
-          src="https://logodownload.org/wp-content/uploads/2017/02/governo-estado-rio-de-janeiro-logo.png" 
-          alt="Governo RJ" 
-          className="max-w-[90%] max-h-[80%] object-contain"
-        />
-      </div>
-
-      <div className="flex flex-col items-center text-center max-w-2xl">
-        <h2 className="text-3xl md:text-5xl font-black text-slate-900 uppercase tracking-tighter drop-shadow-sm leading-tight">
-          {title}
-        </h2>
-        <p className="text-slate-500 mt-2 font-black uppercase tracking-[0.2em] text-[10px] md:text-xs">
-          {sub || 'Secretaria de Estado de Educação - Rio de Janeiro'}
-        </p>
-      </div>
-
-      {/* SEEDUC Logo */}
-      <div className="flex-shrink-0 w-32 h-16 flex items-center justify-center bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
-        <img 
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Logotipo_da_SEEDUC-RJ.png/1200px-Logotipo_da_SEEDUC-RJ.png" 
-          alt="SEEDUC RJ" 
-          className="max-w-[90%] max-h-[80%] object-contain"
-        />
-      </div>
-    </header>
-  );
-
   const renderPlanejamentoMenu = () => (
-    <div className="p-8 md:p-12 font-sans bg-white/70 backdrop-blur-md rounded-3xl min-h-[600px] border border-slate-300 flex flex-col items-center">
-      <div className="mb-8 self-start">
-        <BackButton onClick={() => { onBack(); setPlanningSubView(null); }} label="Voltar" />
+    <div className="w-full max-w-6xl mx-auto space-y-6 animate-fade-in pb-20 select-none font-sans">
+      {/* Header Padrão Unificado */}
+      <ScreenHeader
+        onBack={() => { onBack(); setPlanningSubView(null); }}
+        badge="SEEDUC-RJ • 2026"
+        statusBadge="PLANOS DE AULA"
+        title="PLANOS DE AULA: ESCOLHA A TURMA"
+        subtitle="Cronograma oficial, objetivos pedagógicos e planejamento detalhado de aulas por escola e turma"
+      />
+
+      {/* Overview Banner */}
+      <div className="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 rounded-3xl p-6 sm:p-8 border border-white/10 shadow-2xl text-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 p-8 text-8xl opacity-10 pointer-events-none select-none">
+          📋
+        </div>
+        <div className="relative z-10 max-w-2xl">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-bold uppercase tracking-wider border border-blue-500/30 mb-3">
+            <Sparkles className="w-3.5 h-3.5" />
+            Organização por Escola & Componente Curricular
+          </div>
+          <h2 className="text-xl sm:text-2xl font-black uppercase tracking-tight text-white mb-2">
+            Selecione a Unidade Escolar e Turma
+          </h2>
+          <p className="text-sm text-slate-300 font-medium leading-relaxed">
+            Consulte o cronograma estruturado aula a aula, incluindo temas de Datashow, objetivos, dinâmicas práticas adaptadas e pautas de registro pedagógico.
+          </p>
+        </div>
       </div>
 
-      <DatashowHeader title="Escolha a Turma" />
-      
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl mt-4">
-        {[
-          { id: 'setembro_amarelo', label: '💛 3º Trimestre Completo', sub: '14 Aulas (Set-Dez): Saúde Mental, Cidadania & Consciência Negra' },
-          { id: '8ano', label: '801 - 802 - 803', sub: 'EE Profª Cordelia Paiva' },
-          { id: 'ap', label: 'AP (SEGUNDAS)', sub: 'CE Dr. Ignacio Bezerra de Menezes' },
-          { id: 'ap_sexta', label: 'AP (SEXTAS)', sub: 'CE Dr. Ignacio Bezerra de Menezes' },
-          { id: 'gestao', label: 'ILGCH 1001 / IFFC 2001 / IFLA 2002', sub: 'CE Dr. Ignacio Bezerra de Menezes' },
-          { id: 'ciep476', label: 'ILGCH 1007', sub: 'CIEP 476 Elias Lazaroni' },
-          { id: 'ejanem', label: 'EJANEM I01', sub: 'CIEP 229 Cândido Portinari - Noturno' },
-          { id: 'ciep369', label: 'AP201', sub: 'CIEP 369' }
-        ].map((turma, idx) => (
-          <button 
-            key={idx}
-            onClick={() => setPlanningSubView(turma.id as any)}
-            className="p-8 bg-white hover:bg-slate-50 transition-all text-slate-800 rounded-3xl border-2 border-slate-200 hover:border-blue-500 shadow-md flex flex-col items-center justify-center text-center gap-4 group hover:scale-[1.02] active:scale-[0.98]"
-          >
-            <div className="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center text-slate-400 group-hover:bg-blue-100 group-hover:text-blue-600 transition-colors">
-              <span className="font-black text-lg">{idx + 1}</span>
+      {/* Grid de Escolas e Turmas - Estilo Plano de Curso */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 pt-2">
+        {/* 1. Cordélia Paiva */}
+        <div
+          onClick={() => setPlanningSubView('8ano')}
+          className="group relative bg-white rounded-3xl p-6 border-2 border-slate-200 hover:border-amber-500 shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between hover:-translate-y-1 active:scale-[0.98]"
+        >
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <span className="px-3 py-1 bg-amber-50 text-amber-700 font-black text-xs uppercase tracking-wider rounded-xl border border-amber-200">
+                8º Ano EF
+              </span>
+              <div className="w-10 h-10 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center group-hover:bg-amber-600 group-hover:text-white transition-all shadow-sm">
+                <School className="w-5 h-5" />
+              </div>
             </div>
-            <div className="flex flex-col gap-1">
-              <span className="font-black text-xl group-hover:text-blue-700 transition-colors uppercase tracking-tighter leading-tight">{turma.label}</span>
-              <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">{turma.sub}</span>
+
+            <div>
+              <h3 className="text-xl font-black text-slate-900 uppercase tracking-tight group-hover:text-amber-700 transition-colors">
+                EE Professora Cordélia Paiva
+              </h3>
+              <p className="text-xs font-bold text-amber-600 mt-1 uppercase tracking-wide">
+                Educação Física em Sala de Aula
+              </p>
             </div>
-          </button>
-        ))}
+
+            <p className="text-xs text-slate-500 font-medium leading-relaxed">
+              Altinha e Futevôlei adaptados, Jogos do Mundo, Lutas Nacionais (Huka-Huka e BJJ), Oficina de Tabuleiros e Paralimpíadas.
+            </p>
+          </div>
+
+          <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+            <div className="flex items-center gap-1.5 flex-wrap">
+              {['801', '802', '803'].map(t => (
+                <span key={t} className="px-2.5 py-0.5 bg-slate-100 text-slate-700 text-[11px] font-black rounded-lg">
+                  {t}
+                </span>
+              ))}
+            </div>
+            <span className="text-xs font-black text-amber-600 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+              Ver Planos <ChevronRight className="w-4 h-4" />
+            </span>
+          </div>
+        </div>
+
+        {/* 2. CIEP 476 Elias Lazaroni */}
+        <div
+          onClick={() => setPlanningSubView('ciep476')}
+          className="group relative bg-white rounded-3xl p-6 border-2 border-slate-200 hover:border-purple-500 shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between hover:-translate-y-1 active:scale-[0.98]"
+        >
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <span className="px-3 py-1 bg-purple-50 text-purple-700 font-black text-xs uppercase tracking-wider rounded-xl border border-purple-200">
+                1ª Série EM
+              </span>
+              <div className="w-10 h-10 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center group-hover:bg-purple-600 group-hover:text-white transition-all shadow-sm">
+                <Layers className="w-5 h-5" />
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-black text-slate-900 uppercase tracking-tight group-hover:text-purple-700 transition-colors">
+                CIEP 476 Elias Lazaroni
+              </h3>
+              <p className="text-xs font-bold text-purple-600 mt-1 uppercase tracking-wide">
+                ILGCH • Decolonização e Cultura Corporal
+              </p>
+            </div>
+
+            <p className="text-xs text-slate-500 font-medium leading-relaxed">
+              Mídia, algoritmos, padrões corporais, estética periférica e práticas corporais afrodiaspóricas e originárias (Leis 10.639 e 11.645).
+            </p>
+          </div>
+
+          <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+            <div className="flex items-center gap-1.5 flex-wrap">
+              {['1001', '1007'].map(t => (
+                <span key={t} className="px-2.5 py-0.5 bg-slate-100 text-slate-700 text-[11px] font-black rounded-lg">
+                  {t}
+                </span>
+              ))}
+            </div>
+            <span className="text-xs font-black text-purple-600 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+              Ver Planos <ChevronRight className="w-4 h-4" />
+            </span>
+          </div>
+        </div>
+
+        {/* 3. CE Dr. Ignácio Bezerra de Menezes */}
+        <div
+          onClick={() => setPlanningSubView('gestao')}
+          className="group relative bg-white rounded-3xl p-6 border-2 border-slate-200 hover:border-blue-500 shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between hover:-translate-y-1 active:scale-[0.98]"
+        >
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <span className="px-3 py-1 bg-blue-50 text-blue-700 font-black text-xs uppercase tracking-wider rounded-xl border border-blue-200">
+                2ª Série EM
+              </span>
+              <div className="w-10 h-10 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all shadow-sm">
+                <GraduationCap className="w-5 h-5" />
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-black text-slate-900 uppercase tracking-tight group-hover:text-blue-700 transition-colors">
+                CE Dr. Ignácio Bezerra
+              </h3>
+              <p className="text-xs font-bold text-blue-600 mt-1 uppercase tracking-wide">
+                IFFC & IFLA • Iniciação Científica & Artes
+              </p>
+            </div>
+
+            <p className="text-xs text-slate-500 font-medium leading-relaxed">
+              Epistemologia da ciência, bioética, pesquisa acadêmica escolar, poéticas urbanas fluminenses e estética literária.
+            </p>
+          </div>
+
+          <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+            <div className="flex items-center gap-1.5 flex-wrap">
+              {['2001', '2002'].map(t => (
+                <span key={t} className="px-2.5 py-0.5 bg-slate-100 text-slate-700 text-[11px] font-black rounded-lg">
+                  {t}
+                </span>
+              ))}
+            </div>
+            <span className="text-xs font-black text-blue-600 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+              Ver Planos <ChevronRight className="w-4 h-4" />
+            </span>
+          </div>
+        </div>
+
+        {/* 4. CIEP 229 Cândido Portinari */}
+        <div
+          onClick={() => setPlanningSubView('ejanem')}
+          className="group relative bg-white rounded-3xl p-6 border-2 border-slate-200 hover:border-emerald-500 shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between hover:-translate-y-1 active:scale-[0.98]"
+        >
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <span className="px-3 py-1 bg-emerald-50 text-emerald-700 font-black text-xs uppercase tracking-wider rounded-xl border border-emerald-200">
+                EJA Noturno
+              </span>
+              <div className="w-10 h-10 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition-all shadow-sm">
+                <Activity className="w-5 h-5" />
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-black text-slate-900 uppercase tracking-tight group-hover:text-emerald-700 transition-colors">
+                CIEP 229 Cândido Portinari
+              </h3>
+              <p className="text-xs font-bold text-emerald-600 mt-1 uppercase tracking-wide">
+                Educação Física do Trabalhador
+              </p>
+            </div>
+
+            <p className="text-xs text-slate-500 font-medium leading-relaxed">
+              Ergonomia ocupacional, prevenção de lesões (LER/DORT), séries de alongamento, relaxamento e lazer ativo.
+            </p>
+          </div>
+
+          <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+            <span className="px-2.5 py-0.5 bg-slate-100 text-slate-700 text-[11px] font-black rounded-lg">
+              EJANEM I01
+            </span>
+            <span className="text-xs font-black text-emerald-600 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+              Ver Planos <ChevronRight className="w-4 h-4" />
+            </span>
+          </div>
+        </div>
+
+        {/* 5. CIEP 369 Jornalista Sandro Moreyra */}
+        <div
+          onClick={() => setPlanningSubView('ciep369')}
+          className="group relative bg-white rounded-3xl p-6 border-2 border-slate-200 hover:border-teal-500 shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between hover:-translate-y-1 active:scale-[0.98]"
+        >
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <span className="px-3 py-1 bg-teal-50 text-teal-700 font-black text-xs uppercase tracking-wider rounded-xl border border-teal-200">
+                2º Ano EM
+              </span>
+              <div className="w-10 h-10 rounded-2xl bg-teal-50 text-teal-600 flex items-center justify-center group-hover:bg-teal-600 group-hover:text-white transition-all shadow-sm">
+                <Zap className="w-5 h-5" />
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-black text-slate-900 uppercase tracking-tight group-hover:text-teal-700 transition-colors">
+                CIEP 369 Sandro Moreyra
+              </h3>
+              <p className="text-xs font-bold text-teal-600 mt-1 uppercase tracking-wide">
+                Atividades Práticas de Movimento
+              </p>
+            </div>
+
+            <p className="text-xs text-slate-500 font-medium leading-relaxed">
+              Circuitos funcionais, dinâmicas corporais integradoras e vivências esportivas adaptadas.
+            </p>
+          </div>
+
+          <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+            <span className="px-2.5 py-0.5 bg-slate-100 text-slate-700 text-[11px] font-black rounded-lg">
+              AP 201
+            </span>
+            <span className="text-xs font-black text-teal-600 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+              Ver Planos <ChevronRight className="w-4 h-4" />
+            </span>
+          </div>
+        </div>
+
+        {/* 6. Projetos Especiais (Setembro Amarelo & 3º Trimestre) */}
+        <div
+          onClick={() => setPlanningSubView('setembro_amarelo')}
+          className="group relative bg-gradient-to-br from-amber-500 to-yellow-600 rounded-3xl p-6 text-white shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col justify-between hover:-translate-y-1 active:scale-[0.98]"
+        >
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <span className="px-3 py-1 bg-white/20 backdrop-blur-md text-white font-black text-xs uppercase tracking-wider rounded-xl border border-white/30">
+                Transversal
+              </span>
+              <div className="w-10 h-10 rounded-2xl bg-white/20 backdrop-blur-md text-white flex items-center justify-center group-hover:bg-white group-hover:text-yellow-600 transition-all shadow-sm">
+                <Sparkles className="w-5 h-5" />
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-black text-white uppercase tracking-tight">
+                💛 3º Trimestre Especial
+              </h3>
+              <p className="text-xs font-bold text-yellow-100 mt-1 uppercase tracking-wide">
+                Saúde Mental & Consciência Negra
+              </p>
+            </div>
+
+            <p className="text-xs text-yellow-100/90 font-medium leading-relaxed">
+              14 Aulas sequenciais (Setembro a Dezembro): Valorização da Vida, Cidadania, Direitos Humanos e Consciência Negra.
+            </p>
+          </div>
+
+          <div className="mt-6 pt-4 border-t border-white/20 flex items-center justify-between">
+            <span className="px-2.5 py-0.5 bg-white/20 text-white text-[11px] font-black rounded-lg">
+              Todas as Turmas
+            </span>
+            <span className="text-xs font-black text-white flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+              Acessar Aulas <ChevronRight className="w-4 h-4" />
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -1017,13 +1231,12 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
 
     return (
       <div className="p-4 md:p-8 font-sans text-slate-800 relative bg-slate-50 rounded-2xl shadow-2xl">
-        <div className="mb-6">
-          <BackButton onClick={() => setPlanningSubView(null)} label="Voltar" />
-        </div>
-
-        <DatashowHeader 
-          title={title} 
-          sub="Cronograma de Educação Física e Cultura Corporal" 
+        <ScreenHeader 
+          onBack={() => setPlanningSubView(null)}
+          title={title.toUpperCase()} 
+          subtitle="Cronograma oficial de aulas e cultura corporal • SEEDUC-RJ 2026" 
+          badge="SEEDUC-RJ • 2026"
+          statusBadge="PLANOS DE AULA"
         />
 
         {turma === '8ano' && (
@@ -1076,13 +1289,12 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
 
     return (
       <div className="p-4 md:p-8 font-sans text-slate-800 relative bg-slate-50 rounded-2xl shadow-2xl">
-        <div className="mb-6">
-          <BackButton onClick={() => setPlanningSubView(null)} label="Voltar" />
-        </div>
-
-        <DatashowHeader 
-          title="Planejamento: CE Dr. Ignacio Bezerra de Menezes" 
-          sub="ILGCH 1001 / IFFC 2001 / IFLA 2002 • Cultura Corporal e Educação em Direitos Humanos" 
+        <ScreenHeader 
+          onBack={() => setPlanningSubView(null)}
+          title="PLANEJAMENTO: CE DR. IGNÁCIO BEZERRA DE MENEZES" 
+          subtitle="ILGCH 1001 / IFFC 2001 / IFLA 2002 • Cultura Corporal e Educação em Direitos Humanos" 
+          badge="SEEDUC-RJ • 2026"
+          statusBadge="MÉDIO & ITINERÁRIOS"
         />
 
         {/* Conteúdo do Planejamento */}
@@ -1133,13 +1345,12 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
 
     return (
       <div className="p-4 md:p-8 font-sans text-slate-800 relative bg-slate-50 rounded-2xl shadow-2xl">
-        <div className="mb-6">
-          <BackButton onClick={() => setPlanningSubView(null)} label="Voltar" />
-        </div>
-
-        <DatashowHeader 
-          title="Planejamento: CIEP 476 Elias Lazaroni" 
-          sub="ILGCH 1007 • Cultura Corporal e Educação em Direitos Humanos" 
+        <ScreenHeader 
+          onBack={() => setPlanningSubView(null)}
+          title="PLANEJAMENTO: CIEP 476 ELIAS LAZARONI" 
+          subtitle="ILGCH 1001 / 1007 • Cultura Corporal e Educação em Direitos Humanos" 
+          badge="SEEDUC-RJ • 2026"
+          statusBadge="1ª SÉRIE EM"
         />
 
         {/* Conteúdo do Planejamento */}

@@ -9,15 +9,22 @@ import { BackButton } from './BackButton';
 interface StatisticsViewProps {
   classData?: ClassDataMap;
   onBack: () => void;
+  initialViewMode?: 'dashboard' | 'school_select' | 'class_select' | 'details' | 'full_report';
 }
 
-export const StatisticsView: React.FC<StatisticsViewProps> = ({ classData, onBack }) => {
+export const StatisticsView: React.FC<StatisticsViewProps> = ({ classData, onBack, initialViewMode = 'dashboard' }) => {
   const [loading, setLoading] = useState(true);
 
   // Drill Down State for History View
-  const [viewMode, setViewMode] = useState<'dashboard' | 'school_select' | 'class_select' | 'details' | 'full_report'>('dashboard');
+  const [viewMode, setViewMode] = useState<'dashboard' | 'school_select' | 'class_select' | 'details' | 'full_report'>(initialViewMode);
   const [selectedGrade, setSelectedGrade] = useState<string | null>(null); // Reusing as School Name
   const [selectedClassId, setSelectedClassId] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (initialViewMode) {
+      setViewMode(initialViewMode);
+    }
+  }, [initialViewMode]);
 
   // --- CÁLCULOS DINÂMICOS ---
   const classStats = useMemo(() => {

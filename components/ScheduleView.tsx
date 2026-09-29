@@ -144,7 +144,7 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({ onBack }) => {
                   mon: { 
                     school: 'EE PROFESSORA CORDELIA PAIVA', 
                     class: 'Turma 802', 
-                    code: '802-182106', 
+                    code: '802', 
                     tag: '8º Ano EF', 
                     color: 'blue' 
                   }, 
@@ -162,7 +162,7 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({ onBack }) => {
                   mon: { 
                     school: 'EE PROFESSORA CORDELIA PAIVA', 
                     class: 'Turma 803', 
-                    code: '803-182106', 
+                    code: '803', 
                     tag: '8º Ano EF', 
                     color: 'blue' 
                   }, 
@@ -180,12 +180,12 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({ onBack }) => {
                   mon: { 
                     school: 'EE PROFESSORA CORDELIA PAIVA', 
                     class: 'Turma 801', 
-                    code: '801-182106', 
+                    code: '801', 
                     tag: '8º Ano EF', 
                     color: 'blue' 
                   }, 
                   fri: { 
-                    school: 'CE DOUTOR IGNACIO BEZERRA DE MENEZES', 
+                    school: 'CIEP 476 ELIAS LAZARONI', 
                     class: 'ILGCH 1001', 
                     code: 'ILGCH_1001', 
                     tag: '1ª Série EM', 

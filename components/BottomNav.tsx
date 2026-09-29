@@ -21,9 +21,9 @@ export const BottomNav: React.FC<BottomNavProps> = ({ currentView, setView }) =>
       </button>
 
       <button 
-        onClick={() => setView('classes')}
+        onClick={() => setView('diario_hub')}
         className={`flex flex-col items-center justify-center gap-1 flex-1 py-1 transition-all rounded-xl ${
-          currentView === 'classes' ? 'bg-slate-300/50 text-sky-600 shadow-inner' : 'text-slate-500'
+          currentView === 'diario_hub' || currentView === 'classes' || currentView === 'grades' ? 'bg-slate-300/50 text-sky-600 shadow-inner' : 'text-slate-500'
         }`}
       >
         <div className="relative">
@@ -31,7 +31,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({ currentView, setView }) =>
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-7h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
           </svg>
         </div>
-        <span className="text-[10px] font-black uppercase tracking-widest">Escolas & Chamada</span>
+        <span className="text-[10px] font-black uppercase tracking-widest">Diário & Turmas</span>
       </button>
     </div>
   );

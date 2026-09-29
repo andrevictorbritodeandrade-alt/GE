@@ -37,12 +37,9 @@ export function normalizeSchoolName(school: string | undefined | null): AllowedS
 export const PURGED_CLASS_IDS = new Set([
   "CIEP369_AP",
   "CIEP369_AP101",
-  "CE_IGNACIO_1001",
-  "CE_IGNACIO_2001",
-  "CE_IGNACIO_2002",
   "CE_IGNACIO_AP_SEG",
   "CE_IGNACIO_AP_SEX",
-  "CIEP476_1001",
+  "CE_IGNACIO_1001",
   "CIEP476_1002",
   "CIEP476_1003",
   "CIEP476_2001"
@@ -65,7 +62,25 @@ export function sanitizeAndNormalizeClassData(data: ClassDataMap): { sanitized: 
 
     let updatedCls = { ...cls };
 
-    // Clean up numerical suffixes or specific names
+    // Strip any -182106 or -181016 or numerical suffixes from names
+    if (updatedCls.name && /-18\d+/.test(updatedCls.name)) {
+      updatedCls.name = updatedCls.name.replace(/-18\d+/g, '').trim();
+      changed = true;
+    }
+
+    // Clean up specific class names
+    if (id === '801' && updatedCls.name !== '801') {
+      updatedCls.name = '801';
+      changed = true;
+    }
+    if (id === '802' && updatedCls.name !== '802') {
+      updatedCls.name = '802';
+      changed = true;
+    }
+    if (id === '803' && updatedCls.name !== '803') {
+      updatedCls.name = '803';
+      changed = true;
+    }
     if (id === 'CIEP369_AP201') {
       if (updatedCls.name !== 'AP 201') {
         updatedCls.name = 'AP 201';
@@ -75,6 +90,12 @@ export function sanitizeAndNormalizeClassData(data: ClassDataMap): { sanitized: 
     if (id === 'CIEP476_1007') {
       if (updatedCls.name !== 'ILG CH 1007') {
         updatedCls.name = 'ILG CH 1007';
+        changed = true;
+      }
+    }
+    if (id === 'CIEP476_1001') {
+      if (updatedCls.name !== '1001') {
+        updatedCls.name = '1001';
         changed = true;
       }
     }
@@ -353,7 +374,7 @@ const createStudents = (rawList: string[], classId: string) => {
 export const initialClassData: ClassDataMap = {
   "801": { 
     id: "801", 
-    name: "801-182106", 
+    name: "801", 
     grade: "8", 
     school: "EE PROFESSORA CORDELIA PAIVA",
     discipline: "Educação Física",
@@ -387,40 +408,6 @@ export const initialClassData: ClassDataMap = {
                   "trimestreGrades": {
                         "2": {
                               "assignment": 3,
-                              "participation": 2,
-                              "exam": 5
-                        }
-                  }
-            },
-            {
-                  "id": 80102,
-                  "name": "Ana Cristina Silva Pereira",
-                  "status": "cancelado",
-                  "enrolledTrimesters": [
-                        1,
-                        2,
-                        3
-                  ],
-                  "attendance": {
-                        "08/05": "P",
-                        "18/05": "P",
-                        "25/05": "P",
-                        "01/06": "P",
-                        "06/06": "P",
-                        "08/06": "F",
-                        "15/06": "F",
-                        "22/06": "F",
-                        "06/07": "F",
-                        "27/07": "F",
-                        "03/08": "F",
-                        "10/08": "F",
-                        "17/08": "F",
-                        "24/08": "F",
-                        "31/08": "F"
-                  },
-                  "trimestreGrades": {
-                        "2": {
-                              "assignment": 0,
                               "participation": 2,
                               "exam": 5
                         }
@@ -971,40 +958,6 @@ export const initialClassData: ClassDataMap = {
                   }
             },
             {
-                  "id": 80119,
-                  "name": "Ezequiel Lima de Oliveira",
-                  "status": "cancelado",
-                  "enrolledTrimesters": [
-                        1,
-                        2,
-                        3
-                  ],
-                  "attendance": {
-                        "08/05": "P",
-                        "18/05": "F",
-                        "25/05": "F",
-                        "01/06": "F",
-                        "06/06": "F",
-                        "08/06": "F",
-                        "15/06": "F",
-                        "22/06": "F",
-                        "06/07": "F",
-                        "27/07": "F",
-                        "03/08": "F",
-                        "10/08": "F",
-                        "17/08": "F",
-                        "24/08": "F",
-                        "31/08": "F"
-                  },
-                  "trimestreGrades": {
-                        "2": {
-                              "assignment": 0,
-                              "participation": 2,
-                              "exam": 5
-                        }
-                  }
-            },
-            {
                   "id": 80120,
                   "name": "Fernanda Honorato Sabino da Silva",
                   "enrolledTrimesters": [
@@ -1528,7 +1481,7 @@ export const initialClassData: ClassDataMap = {
   },
   "802": { 
     id: "802", 
-    name: "802-182106", 
+    name: "802", 
     grade: "8", 
     school: "EE PROFESSORA CORDELIA PAIVA",
     discipline: "Educação Física",
@@ -2830,1108 +2783,555 @@ export const initialClassData: ClassDataMap = {
   },
   "803": { 
     id: "803", 
-    name: "803-182106", 
+    name: "803", 
     grade: "8", 
     school: "EE PROFESSORA CORDELIA PAIVA",
     discipline: "Educação Física",
     students: [
-          {
-                "id": 80301,
-                "name": "Adrieli Vitória dos Santos da Silva",
-                "enrolledTrimesters": [
-                      1,
-                      2,
-                      3
-                ],
-                "attendance": {
-                      "11/05": "P",
-                      "18/05": "P",
-                      "25/05": "P",
-                      "01/06": "F",
-                      "08/06": "P",
-                      "15/06": "P",
-                      "22/06": "P",
-                      "06/07": "P",
-                      "27/07": "P",
-                      "03/08": "P",
-                      "10/08": "F",
-                      "17/08": "P",
-                      "24/08": "P",
-                      "31/08": "P",
-                      "14/09": "F"
-                },
-                "trimestreGrades": {
-                      "1": {
-                            "participation": 2,
-                            "assignment": 2,
-                            "exam": 3
-                      },
-                      "2": {
-                            "assignment": 0,
-                            "participation": 2,
-                            "exam": 5
-                      }
-                }
+      {
+        id: 80301,
+        name: "Micaella Moraes Lourenço da Silva",
+        enrolledTrimesters: [1, 2, 3],
+        attendance: {
+          "11/05": "P",
+          "18/05": "P",
+          "25/05": "P",
+          "01/06": "P",
+          "08/06": "P",
+          "15/06": "P",
+          "22/06": "F",
+          "06/07": "P",
+          "27/07": "P",
+          "03/08": "P",
+          "10/08": "F",
+          "17/08": "P",
+          "24/08": "P",
+          "31/08": "P",
+          "14/09": "P"
+        },
+        trimestreGrades: {
+          "1": {
+            participation: 2,
+            assignment: 2,
+            exam: 3
           },
-          {
-                "id": 80302,
-                "name": "Ana Clara de Jesus Pereira",
-                "enrolledTrimesters": [
-                      1,
-                      2,
-                      3
-                ],
-                "attendance": {
-                      "11/05": "P",
-                      "18/05": "P",
-                      "25/05": "P",
-                      "01/06": "F",
-                      "08/06": "P",
-                      "15/06": "P",
-                      "22/06": "P",
-                      "06/07": "P",
-                      "27/07": "P",
-                      "03/08": "P",
-                      "10/08": "P",
-                      "17/08": "P",
-                      "24/08": "P",
-                      "31/08": "P",
-                      "14/09": "P"
-                },
-                "trimestreGrades": {
-                      "1": {
-                            "participation": 2,
-                            "assignment": 2,
-                            "exam": 3
-                      },
-                      "2": {
-                            "assignment": 0,
-                            "participation": 2,
-                            "exam": 5
-                      }
-                }
-          },
-          {
-                "id": 80303,
-                "name": "Danilo Ribeiro Feliciano",
-                "enrolledTrimesters": [
-                      1,
-                      2,
-                      3
-                ],
-                "attendance": {
-                      "11/05": "P",
-                      "18/05": "P",
-                      "25/05": "P",
-                      "01/06": "P",
-                      "08/06": "P",
-                      "15/06": "P",
-                      "22/06": "P",
-                      "06/07": "P",
-                      "27/07": "P",
-                      "03/08": "P",
-                      "10/08": "F",
-                      "17/08": "P",
-                      "24/08": "P",
-                      "31/08": "P",
-                      "14/09": "P"
-                },
-                "trimestreGrades": {
-                      "1": {
-                            "participation": 2,
-                            "assignment": 2,
-                            "exam": 3
-                      },
-                      "2": {
-                            "assignment": 0,
-                            "participation": 2,
-                            "exam": 5
-                      }
-                }
-          },
-          {
-                "id": 80304,
-                "name": "Esther Nunes da Costa",
-                "status": "cancelado",
-                "enrolledTrimesters": [
-                      1,
-                      2,
-                      3
-                ],
-                "attendance": {
-                      "11/05": "P",
-                      "18/05": "P",
-                      "25/05": "F",
-                      "01/06": "F",
-                      "08/06": "F",
-                      "15/06": "F",
-                      "22/06": "F",
-                      "06/07": "F",
-                      "27/07": "F",
-                      "03/08": "F",
-                      "10/08": "F",
-                      "17/08": "F",
-                      "24/08": "F",
-                      "31/08": "F"
-                },
-                "trimestreGrades": {
-                      "1": {
-                            "participation": 2,
-                            "assignment": 2,
-                            "exam": 3
-                      },
-                      "2": {
-                            "assignment": 0,
-                            "participation": 2,
-                            "exam": 0
-                      }
-                }
-          },
-          {
-                "id": 80305,
-                "name": "Felipe Santos Vital Guimarães",
-                "enrolledTrimesters": [
-                      1,
-                      2,
-                      3
-                ],
-                "attendance": {
-                      "11/05": "P",
-                      "18/05": "P",
-                      "25/05": "P",
-                      "01/06": "P",
-                      "08/06": "P",
-                      "15/06": "P",
-                      "22/06": "P",
-                      "06/07": "P",
-                      "27/07": "P",
-                      "03/08": "P",
-                      "10/08": "P",
-                      "17/08": "P",
-                      "24/08": "P",
-                      "31/08": "P",
-                      "14/09": "F"
-                },
-                "trimestreGrades": {
-                      "1": {
-                            "participation": 2,
-                            "assignment": 2,
-                            "exam": 3
-                      },
-                      "2": {
-                            "assignment": 0,
-                            "participation": 2,
-                            "exam": 5
-                      }
-                }
-          },
-          {
-                "id": 80306,
-                "name": "Ítalo Silva de Almeida",
-                "status": "cancelado",
-                "enrolledTrimesters": [
-                      1,
-                      2,
-                      3
-                ],
-                "attendance": {
-                      "11/05": "P",
-                      "18/05": "P",
-                      "25/05": "F",
-                      "01/06": "F",
-                      "08/06": "F",
-                      "15/06": "F",
-                      "22/06": "F",
-                      "06/07": "F",
-                      "27/07": "F",
-                      "03/08": "F",
-                      "10/08": "F",
-                      "17/08": "F",
-                      "24/08": "F",
-                      "31/08": "F"
-                },
-                "trimestreGrades": {
-                      "1": {
-                            "participation": 2,
-                            "assignment": 2,
-                            "exam": 3
-                      },
-                      "2": {
-                            "assignment": 0,
-                            "participation": 2,
-                            "exam": 0
-                      }
-                }
-          },
-          {
-                "id": 80307,
-                "name": "João Paulo Lima da Silva",
-                "status": "cancelado",
-                "enrolledTrimesters": [
-                      1,
-                      2,
-                      3
-                ],
-                "attendance": {
-                      "11/05": "P",
-                      "18/05": "P",
-                      "25/05": "F",
-                      "01/06": "P",
-                      "08/06": "P",
-                      "15/06": "P",
-                      "22/06": "P",
-                      "06/07": "F",
-                      "27/07": "P",
-                      "03/08": "F",
-                      "10/08": "P",
-                      "17/08": "P",
-                      "24/08": "P",
-                      "31/08": "F",
-                      "14/09": "F"
-                },
-                "trimestreGrades": {
-                      "1": {
-                            "participation": 2,
-                            "assignment": 2,
-                            "exam": 3
-                      },
-                      "2": {
-                            "assignment": 0,
-                            "participation": 2,
-                            "exam": 5
-                      }
-                }
-          },
-          {
-                "id": 80308,
-                "name": "Matheus Araujo da Silva",
-                "enrolledTrimesters": [
-                      1,
-                      2,
-                      3
-                ],
-                "attendance": {
-                      "11/05": "P",
-                      "18/05": "P",
-                      "25/05": "P",
-                      "01/06": "P",
-                      "08/06": "P",
-                      "15/06": "P",
-                      "22/06": "P",
-                      "06/07": "P",
-                      "27/07": "P",
-                      "03/08": "F",
-                      "10/08": "P",
-                      "17/08": "P",
-                      "24/08": "P",
-                      "31/08": "P",
-                      "14/09": "P"
-                },
-                "trimestreGrades": {
-                      "1": {
-                            "participation": 2,
-                            "assignment": 2,
-                            "exam": 3
-                      },
-                      "2": {
-                            "assignment": 0,
-                            "participation": 2,
-                            "exam": 5
-                      }
-                }
-          },
-          {
-                "id": 80309,
-                "name": "Matheus Severiano Galdino da Silva",
-                "enrolledTrimesters": [
-                      1,
-                      2,
-                      3
-                ],
-                "attendance": {
-                      "11/05": "P",
-                      "18/05": "P",
-                      "25/05": "F",
-                      "01/06": "P",
-                      "08/06": "P",
-                      "15/06": "P",
-                      "22/06": "P",
-                      "06/07": "P",
-                      "27/07": "P",
-                      "03/08": "P",
-                      "10/08": "P",
-                      "17/08": "P",
-                      "24/08": "P",
-                      "31/08": "P",
-                      "14/09": "P"
-                },
-                "trimestreGrades": {
-                      "1": {
-                            "participation": 2,
-                            "assignment": 2,
-                            "exam": 3
-                      },
-                      "2": {
-                            "assignment": 0,
-                            "participation": 2,
-                            "exam": 5
-                      }
-                }
-          },
-          {
-                "id": 80310,
-                "name": "Micaella Moraes Lourenço da Silva",
-                "enrolledTrimesters": [
-                      1,
-                      2,
-                      3
-                ],
-                "attendance": {
-                      "11/05": "P",
-                      "18/05": "P",
-                      "25/05": "P",
-                      "01/06": "P",
-                      "08/06": "P",
-                      "15/06": "P",
-                      "22/06": "F",
-                      "06/07": "P",
-                      "27/07": "P",
-                      "03/08": "P",
-                      "10/08": "F",
-                      "17/08": "P",
-                      "24/08": "P",
-                      "31/08": "P",
-                      "14/09": "P"
-                },
-                "trimestreGrades": {
-                      "1": {
-                            "participation": 2,
-                            "assignment": 2,
-                            "exam": 3
-                      },
-                      "2": {
-                            "assignment": 3,
-                            "participation": 2,
-                            "exam": 5
-                      }
-                }
-          },
-          {
-                "id": 80311,
-                "name": "Micaelly Vitória Alves de França",
-                "enrolledTrimesters": [
-                      1,
-                      2,
-                      3
-                ],
-                "attendance": {
-                      "11/05": "P",
-                      "18/05": "P",
-                      "25/05": "P",
-                      "01/06": "P",
-                      "08/06": "P",
-                      "15/06": "F",
-                      "22/06": "P",
-                      "06/07": "P",
-                      "27/07": "P",
-                      "03/08": "P",
-                      "10/08": "P",
-                      "17/08": "P",
-                      "24/08": "P",
-                      "31/08": "P",
-                      "14/09": "F"
-                },
-                "trimestreGrades": {
-                      "1": {
-                            "participation": 2,
-                            "assignment": 2,
-                            "exam": 3
-                      },
-                      "2": {
-                            "assignment": 0,
-                            "participation": 2,
-                            "exam": 5
-                      }
-                }
-          },
-          {
-                "id": 80312,
-                "name": "Miguel Lucas Vicente Gomes",
-                "enrolledTrimesters": [
-                      1,
-                      2,
-                      3
-                ],
-                "attendance": {
-                      "11/05": "P",
-                      "18/05": "P",
-                      "25/05": "P",
-                      "01/06": "F",
-                      "08/06": "F",
-                      "15/06": "F",
-                      "22/06": "P",
-                      "06/07": "F",
-                      "27/07": "F",
-                      "03/08": "F",
-                      "10/08": "F",
-                      "17/08": "P",
-                      "24/08": "F",
-                      "31/08": "P",
-                      "14/09": "P"
-                },
-                "trimestreGrades": {
-                      "1": {
-                            "participation": 2,
-                            "assignment": 2,
-                            "exam": 3
-                      },
-                      "2": {
-                            "assignment": 0,
-                            "participation": 2,
-                            "exam": 5
-                      }
-                }
-          },
-          {
-                "id": 80313,
-                "name": "Milena Vitória Tavares de Jesus",
-                "enrolledTrimesters": [
-                      1,
-                      2,
-                      3
-                ],
-                "attendance": {
-                      "11/05": "P",
-                      "18/05": "P",
-                      "25/05": "P",
-                      "01/06": "P",
-                      "08/06": "F",
-                      "15/06": "P",
-                      "22/06": "P",
-                      "06/07": "P",
-                      "27/07": "P",
-                      "03/08": "P",
-                      "10/08": "P",
-                      "17/08": "P",
-                      "24/08": "P",
-                      "31/08": "P",
-                      "14/09": "P"
-                },
-                "trimestreGrades": {
-                      "1": {
-                            "participation": 2,
-                            "assignment": 2,
-                            "exam": 3
-                      },
-                      "2": {
-                            "assignment": 3,
-                            "participation": 2,
-                            "exam": 5
-                      }
-                }
-          },
-          {
-                "id": 80314,
-                "name": "Nicole Archanjo Santos",
-                "enrolledTrimesters": [
-                      1,
-                      2,
-                      3
-                ],
-                "attendance": {
-                      "11/05": "P",
-                      "18/05": "P",
-                      "25/05": "F",
-                      "01/06": "P",
-                      "08/06": "P",
-                      "15/06": "P",
-                      "22/06": "P",
-                      "06/07": "P",
-                      "27/07": "P",
-                      "03/08": "P",
-                      "10/08": "P",
-                      "17/08": "P",
-                      "24/08": "P",
-                      "31/08": "P",
-                      "14/09": "P"
-                },
-                "trimestreGrades": {
-                      "1": {
-                            "participation": 2,
-                            "assignment": 2,
-                            "exam": 3
-                      },
-                      "2": {
-                            "assignment": 0,
-                            "participation": 2,
-                            "exam": 4.8
-                      }
-                }
-          },
-          {
-                "id": 80315,
-                "name": "Pedro Henryk dos Santos Coelho",
-                "enrolledTrimesters": [
-                      1,
-                      2,
-                      3
-                ],
-                "attendance": {
-                      "11/05": "P",
-                      "18/05": "P",
-                      "25/05": "P",
-                      "01/06": "F",
-                      "08/06": "P",
-                      "15/06": "P",
-                      "22/06": "P",
-                      "06/07": "P",
-                      "27/07": "P",
-                      "03/08": "P",
-                      "10/08": "F",
-                      "17/08": "P",
-                      "24/08": "F",
-                      "31/08": "F",
-                      "14/09": "F"
-                },
-                "trimestreGrades": {
-                      "1": {
-                            "participation": 2,
-                            "assignment": 2,
-                            "exam": 3
-                      },
-                      "2": {
-                            "assignment": 0,
-                            "participation": 2,
-                            "exam": 4.9
-                      }
-                }
-          },
-          {
-                "id": 80316,
-                "name": "Pietro Vitor Santos Braga",
-                "enrolledTrimesters": [
-                      1,
-                      2,
-                      3
-                ],
-                "attendance": {
-                      "11/05": "P",
-                      "18/05": "P",
-                      "25/05": "F",
-                      "01/06": "F",
-                      "08/06": "P",
-                      "15/06": "P",
-                      "22/06": "P",
-                      "06/07": "P",
-                      "27/07": "P",
-                      "03/08": "P",
-                      "10/08": "P",
-                      "17/08": "P",
-                      "24/08": "P",
-                      "31/08": "P",
-                      "14/09": "F"
-                },
-                "trimestreGrades": {
-                      "1": {
-                            "participation": 2,
-                            "assignment": 2,
-                            "exam": 3
-                      },
-                      "2": {
-                            "assignment": 0,
-                            "participation": 2,
-                            "exam": 4.8
-                      }
-                }
-          },
-          {
-                "id": 80317,
-                "name": "Rafaela Lourenço da Silva Camilo",
-                "enrolledTrimesters": [
-                      1,
-                      2,
-                      3
-                ],
-                "attendance": {
-                      "11/05": "P",
-                      "18/05": "P",
-                      "25/05": "P",
-                      "01/06": "P",
-                      "08/06": "P",
-                      "15/06": "P",
-                      "22/06": "P",
-                      "06/07": "P",
-                      "27/07": "P",
-                      "03/08": "P",
-                      "10/08": "P",
-                      "17/08": "P",
-                      "24/08": "P",
-                      "31/08": "P",
-                      "14/09": "P"
-                },
-                "trimestreGrades": {
-                      "1": {
-                            "participation": 2,
-                            "assignment": 2,
-                            "exam": 3
-                      },
-                      "2": {
-                            "assignment": 3,
-                            "participation": 2,
-                            "exam": 5
-                      }
-                }
-          },
-          {
-                "id": 80318,
-                "name": "Rafaelle dos Santos Almeida",
-                "enrolledTrimesters": [
-                      1,
-                      2,
-                      3
-                ],
-                "attendance": {
-                      "11/05": "P",
-                      "18/05": "P",
-                      "25/05": "P",
-                      "01/06": "P",
-                      "08/06": "P",
-                      "15/06": "P",
-                      "22/06": "P",
-                      "06/07": "P",
-                      "27/07": "P",
-                      "03/08": "P",
-                      "10/08": "F",
-                      "17/08": "P",
-                      "24/08": "P",
-                      "31/08": "P",
-                      "14/09": "P"
-                },
-                "trimestreGrades": {
-                      "1": {
-                            "participation": 2,
-                            "assignment": 2,
-                            "exam": 3
-                      },
-                      "2": {
-                            "assignment": 3,
-                            "participation": 2,
-                            "exam": 5
-                      }
-                }
-          },
-          {
-                "id": 80319,
-                "name": "Ray Bomfim Pereira",
-                "status": "cancelado",
-                "enrolledTrimesters": [
-                      1,
-                      2,
-                      3
-                ],
-                "attendance": {
-                      "11/05": "P",
-                      "18/05": "P",
-                      "25/05": "F",
-                      "01/06": "P",
-                      "08/06": "P",
-                      "15/06": "P",
-                      "22/06": "F",
-                      "06/07": "F",
-                      "27/07": "F",
-                      "03/08": "F",
-                      "10/08": "F",
-                      "17/08": "F",
-                      "24/08": "F",
-                      "31/08": "F"
-                },
-                "trimestreGrades": {
-                      "1": {
-                            "participation": 2,
-                            "assignment": 2,
-                            "exam": 3
-                      },
-                      "2": {
-                            "assignment": 0,
-                            "participation": 2,
-                            "exam": 0
-                      }
-                }
-          },
-          {
-                "id": 80320,
-                "name": "Richard Reis Costa",
-                "enrolledTrimesters": [
-                      1,
-                      2,
-                      3
-                ],
-                "attendance": {
-                      "11/05": "P",
-                      "18/05": "P",
-                      "25/05": "F",
-                      "01/06": "P",
-                      "08/06": "P",
-                      "15/06": "F",
-                      "22/06": "P",
-                      "06/07": "P",
-                      "27/07": "P",
-                      "03/08": "P",
-                      "10/08": "P",
-                      "17/08": "F",
-                      "24/08": "P",
-                      "31/08": "P",
-                      "14/09": "F"
-                },
-                "trimestreGrades": {
-                      "1": {
-                            "participation": 2,
-                            "assignment": 2,
-                            "exam": 3
-                      },
-                      "2": {
-                            "assignment": 0,
-                            "participation": 2,
-                            "exam": 5
-                      }
-                }
-          },
-          {
-                "id": 80321,
-                "name": "Riquelme Oliveira Carlos",
-                "enrolledTrimesters": [
-                      1,
-                      2,
-                      3
-                ],
-                "attendance": {
-                      "11/05": "P",
-                      "18/05": "P",
-                      "25/05": "P",
-                      "01/06": "F",
-                      "08/06": "P",
-                      "15/06": "P",
-                      "22/06": "P",
-                      "06/07": "P",
-                      "27/07": "P",
-                      "03/08": "P",
-                      "10/08": "P",
-                      "17/08": "P",
-                      "24/08": "P",
-                      "31/08": "P",
-                      "14/09": "P"
-                },
-                "trimestreGrades": {
-                      "1": {
-                            "participation": 2,
-                            "assignment": 2,
-                            "exam": 3
-                      },
-                      "2": {
-                            "assignment": 3,
-                            "participation": 2,
-                            "exam": 5
-                      }
-                }
-          },
-          {
-                "id": 80322,
-                "name": "Roberta Flôr de Liz Araujo da Silva",
-                "enrolledTrimesters": [
-                      1,
-                      2,
-                      3
-                ],
-                "attendance": {
-                      "11/05": "P",
-                      "18/05": "P",
-                      "25/05": "P",
-                      "01/06": "P",
-                      "08/06": "P",
-                      "15/06": "P",
-                      "22/06": "P",
-                      "06/07": "P",
-                      "27/07": "P",
-                      "03/08": "P",
-                      "10/08": "P",
-                      "17/08": "P",
-                      "24/08": "P",
-                      "31/08": "P",
-                      "14/09": "P"
-                },
-                "trimestreGrades": {
-                      "1": {
-                            "participation": 2,
-                            "assignment": 2,
-                            "exam": 3
-                      },
-                      "2": {
-                            "assignment": 3,
-                            "participation": 2,
-                            "exam": 5
-                      }
-                }
-          },
-          {
-                "id": 80323,
-                "name": "Ryan Lucas Soares Velasco",
-                "enrolledTrimesters": [
-                      1,
-                      2,
-                      3
-                ],
-                "attendance": {
-                      "11/05": "P",
-                      "18/05": "P",
-                      "25/05": "P",
-                      "01/06": "P",
-                      "08/06": "P",
-                      "15/06": "P",
-                      "22/06": "F",
-                      "06/07": "P",
-                      "27/07": "P",
-                      "03/08": "P",
-                      "10/08": "P",
-                      "17/08": "P",
-                      "24/08": "P",
-                      "31/08": "P",
-                      "14/09": "F"
-                },
-                "trimestreGrades": {
-                      "1": {
-                            "participation": 2,
-                            "assignment": 2,
-                            "exam": 3
-                      },
-                      "2": {
-                            "assignment": 0,
-                            "participation": 2,
-                            "exam": 4.9
-                      }
-                }
-          },
-          {
-                "id": 80324,
-                "name": "Sarah Rafaela de Souza Ferreira",
-                "enrolledTrimesters": [
-                      1,
-                      2,
-                      3
-                ],
-                "attendance": {
-                      "11/05": "P",
-                      "18/05": "P",
-                      "25/05": "P",
-                      "01/06": "F",
-                      "08/06": "P",
-                      "15/06": "P",
-                      "22/06": "P",
-                      "06/07": "P",
-                      "27/07": "P",
-                      "03/08": "P",
-                      "10/08": "P",
-                      "17/08": "P",
-                      "24/08": "P",
-                      "31/08": "P",
-                      "14/09": "P"
-                },
-                "trimestreGrades": {
-                      "1": {
-                            "participation": 2,
-                            "assignment": 2,
-                            "exam": 3
-                      },
-                      "2": {
-                            "assignment": 0,
-                            "participation": 2,
-                            "exam": 5
-                      }
-                }
-          },
-          {
-                "id": 80325,
-                "name": "Sofia Nascimento de Araujo",
-                "enrolledTrimesters": [
-                      1,
-                      2,
-                      3
-                ],
-                "attendance": {
-                      "11/05": "P",
-                      "18/05": "P",
-                      "25/05": "P",
-                      "01/06": "P",
-                      "08/06": "P",
-                      "15/06": "P",
-                      "22/06": "P",
-                      "06/07": "P",
-                      "27/07": "P",
-                      "03/08": "P",
-                      "10/08": "P",
-                      "17/08": "P",
-                      "24/08": "P",
-                      "31/08": "F",
-                      "14/09": "F"
-                },
-                "trimestreGrades": {
-                      "1": {
-                            "participation": 2,
-                            "assignment": 2,
-                            "exam": 3
-                      },
-                      "2": {
-                            "assignment": 3,
-                            "participation": 2,
-                            "exam": 5
-                      }
-                }
-          },
-          {
-                "id": 80326,
-                "name": "Sophia Quaresma Jeronymo",
-                "enrolledTrimesters": [
-                      1,
-                      2,
-                      3
-                ],
-                "attendance": {
-                      "11/05": "P",
-                      "18/05": "P",
-                      "25/05": "P",
-                      "01/06": "P",
-                      "08/06": "P",
-                      "15/06": "P",
-                      "22/06": "P",
-                      "06/07": "P",
-                      "27/07": "P",
-                      "03/08": "P",
-                      "10/08": "P",
-                      "17/08": "P",
-                      "24/08": "P",
-                      "31/08": "P",
-                      "14/09": "P"
-                },
-                "trimestreGrades": {
-                      "1": {
-                            "participation": 2,
-                            "assignment": 2,
-                            "exam": 3
-                      },
-                      "2": {
-                            "assignment": 0,
-                            "participation": 2,
-                            "exam": 5
-                      }
-                }
-          },
-          {
-                "id": 80327,
-                "name": "Vitor Manoel Gomes da Silva",
-                "enrolledTrimesters": [
-                      1,
-                      2,
-                      3
-                ],
-                "attendance": {
-                      "11/05": "P",
-                      "18/05": "P",
-                      "25/05": "F",
-                      "01/06": "F",
-                      "08/06": "P",
-                      "15/06": "P",
-                      "22/06": "P",
-                      "06/07": "P",
-                      "27/07": "F",
-                      "03/08": "P",
-                      "10/08": "F",
-                      "17/08": "P",
-                      "24/08": "F",
-                      "31/08": "P",
-                      "14/09": "F"
-                },
-                "trimestreGrades": {
-                      "1": {
-                            "participation": 2,
-                            "assignment": 2,
-                            "exam": 3
-                      },
-                      "2": {
-                            "assignment": 0,
-                            "participation": 2,
-                            "exam": 4.9
-                      }
-                }
-          },
-          {
-                "id": 80328,
-                "name": "Mariana Dias Araújo",
-                "enrolledTrimesters": [
-                      2,
-                      3
-                ],
-                "attendance": {
-                      "06/07": "P",
-                      "27/07": "F",
-                      "03/08": "F",
-                      "10/08": "F",
-                      "17/08": "P",
-                      "24/08": "P",
-                      "31/08": "F",
-                      "14/09": "P"
-                },
-                "trimestreGrades": {
-                      "2": {
-                            "assignment": 3,
-                            "participation": 2,
-                            "exam": 4.5
-                      }
-                },
-                "status": "entrante"
-          },
-          {
-                "id": 80329,
-                "name": "Gustavo Cipriano",
-                "enrolledTrimesters": [
-                      2,
-                      3
-                ],
-                "attendance": {
-                      "17/08": "P",
-                      "24/08": "P",
-                      "31/08": "P",
-                      "14/09": "P"
-                },
-                "trimestreGrades": {
-                      "2": {
-                            "assignment": 0,
-                            "participation": 2,
-                            "exam": 4.5
-                      }
-                },
-                "status": "entrante"
-          },
-          {
-                "id": 80330,
-                "name": "Kauê Nunes da Silva Curcio",
-                "enrolledTrimesters": [
-                      2,
-                      3
-                ],
-                "attendance": {
-                      "17/08": "P",
-                      "24/08": "P",
-                      "31/08": "F",
-                      "14/09": "P"
-                },
-                "trimestreGrades": {
-                      "2": {
-                            "assignment": 0,
-                            "participation": 2,
-                            "exam": 4.5
-                      }
-                },
-                "status": "entrante"
+          "2": {
+            assignment: 3,
+            participation: 2,
+            exam: 5
           }
+        }
+      },
+      {
+        id: 80302,
+        name: "Micaelly Vitória Alves de França",
+        enrolledTrimesters: [1, 2, 3],
+        attendance: {
+          "11/05": "P",
+          "18/05": "P",
+          "25/05": "P",
+          "01/06": "P",
+          "08/06": "P",
+          "15/06": "F",
+          "22/06": "P",
+          "06/07": "P",
+          "27/07": "P",
+          "03/08": "P",
+          "10/08": "P",
+          "17/08": "P",
+          "24/08": "P",
+          "31/08": "P",
+          "14/09": "F"
+        },
+        trimestreGrades: {
+          "1": {
+            participation: 2,
+            assignment: 2,
+            exam: 3
+          },
+          "2": {
+            assignment: 0,
+            participation: 2,
+            exam: 5
+          }
+        }
+      },
+      {
+        id: 80303,
+        name: "Miguel Lucas Vicente Gomes",
+        enrolledTrimesters: [1, 2, 3],
+        attendance: {
+          "11/05": "P",
+          "18/05": "P",
+          "25/05": "P",
+          "01/06": "F",
+          "08/06": "F",
+          "15/06": "F",
+          "22/06": "P",
+          "06/07": "F",
+          "27/07": "F",
+          "03/08": "F",
+          "10/08": "F",
+          "17/08": "P",
+          "24/08": "F",
+          "31/08": "P",
+          "14/09": "P"
+        },
+        trimestreGrades: {
+          "1": {
+            participation: 2,
+            assignment: 2,
+            exam: 3
+          },
+          "2": {
+            assignment: 0,
+            participation: 2,
+            exam: 5
+          }
+        }
+      },
+      {
+        id: 80304,
+        name: "Milena Vitória Tavares de Jesus",
+        enrolledTrimesters: [1, 2, 3],
+        attendance: {
+          "11/05": "P",
+          "18/05": "P",
+          "25/05": "P",
+          "01/06": "P",
+          "08/06": "F",
+          "15/06": "P",
+          "22/06": "P",
+          "06/07": "P",
+          "27/07": "P",
+          "03/08": "P",
+          "10/08": "P",
+          "17/08": "P",
+          "24/08": "P",
+          "31/08": "P",
+          "14/09": "P"
+        },
+        trimestreGrades: {
+          "1": {
+            participation: 2,
+            assignment: 2,
+            exam: 3
+          },
+          "2": {
+            assignment: 3,
+            participation: 2,
+            exam: 5
+          }
+        }
+      },
+      {
+        id: 80305,
+        name: "Nicole Archanjo Santos",
+        enrolledTrimesters: [1, 2, 3],
+        attendance: {
+          "11/05": "P",
+          "18/05": "P",
+          "25/05": "F",
+          "01/06": "P",
+          "08/06": "P",
+          "15/06": "P",
+          "22/06": "P",
+          "06/07": "P",
+          "27/07": "P",
+          "03/08": "P",
+          "10/08": "P",
+          "17/08": "P",
+          "24/08": "P",
+          "31/08": "P",
+          "14/09": "P"
+        },
+        trimestreGrades: {
+          "1": {
+            participation: 2,
+            assignment: 2,
+            exam: 3
+          },
+          "2": {
+            assignment: 0,
+            participation: 2,
+            exam: 4.8
+          }
+        }
+      },
+      {
+        id: 80306,
+        name: "Pedro Henryk dos Santos Coelho",
+        enrolledTrimesters: [1, 2, 3],
+        attendance: {
+          "11/05": "P",
+          "18/05": "P",
+          "25/05": "P",
+          "01/06": "F",
+          "08/06": "P",
+          "15/06": "P",
+          "22/06": "P",
+          "06/07": "P",
+          "27/07": "P",
+          "03/08": "P",
+          "10/08": "F",
+          "17/08": "P",
+          "24/08": "F",
+          "31/08": "F",
+          "14/09": "F"
+        },
+        trimestreGrades: {
+          "1": {
+            participation: 2,
+            assignment: 2,
+            exam: 3
+          },
+          "2": {
+            assignment: 0,
+            participation: 2,
+            exam: 4.9
+          }
+        }
+      },
+      {
+        id: 80307,
+        name: "Pietro Vitor Santos Braga",
+        enrolledTrimesters: [1, 2, 3],
+        attendance: {
+          "11/05": "P",
+          "18/05": "P",
+          "25/05": "F",
+          "01/06": "F",
+          "08/06": "P",
+          "15/06": "P",
+          "22/06": "P",
+          "06/07": "P",
+          "27/07": "P",
+          "03/08": "P",
+          "10/08": "P",
+          "17/08": "P",
+          "24/08": "P",
+          "31/08": "P",
+          "14/09": "F"
+        },
+        trimestreGrades: {
+          "1": {
+            participation: 2,
+            assignment: 2,
+            exam: 3
+          },
+          "2": {
+            assignment: 0,
+            participation: 2,
+            exam: 4.8
+          }
+        }
+      },
+      {
+        id: 80308,
+        name: "Rafaella Lourenço da Silva Camilo",
+        enrolledTrimesters: [1, 2, 3],
+        attendance: {
+          "11/05": "P",
+          "18/05": "P",
+          "25/05": "P",
+          "01/06": "P",
+          "08/06": "P",
+          "15/06": "P",
+          "22/06": "P",
+          "06/07": "P",
+          "27/07": "P",
+          "03/08": "P",
+          "10/08": "P",
+          "17/08": "P",
+          "24/08": "P",
+          "31/08": "P",
+          "14/09": "P"
+        },
+        trimestreGrades: {
+          "1": {
+            participation: 2,
+            assignment: 2,
+            exam: 3
+          },
+          "2": {
+            assignment: 3,
+            participation: 2,
+            exam: 5
+          }
+        }
+      },
+      {
+        id: 80309,
+        name: "Richard Reis Costa",
+        enrolledTrimesters: [1, 2, 3],
+        attendance: {
+          "11/05": "P",
+          "18/05": "P",
+          "25/05": "F",
+          "01/06": "P",
+          "08/06": "P",
+          "15/06": "F",
+          "22/06": "P",
+          "06/07": "P",
+          "27/07": "P",
+          "03/08": "P",
+          "10/08": "P",
+          "17/08": "F",
+          "24/08": "P",
+          "31/08": "P",
+          "14/09": "F"
+        },
+        trimestreGrades: {
+          "1": {
+            participation: 2,
+            assignment: 2,
+            exam: 3
+          },
+          "2": {
+            assignment: 0,
+            participation: 2,
+            exam: 5
+          }
+        }
+      },
+      {
+        id: 80310,
+        name: "Riquelme Oliveira Carlos",
+        enrolledTrimesters: [1, 2, 3],
+        attendance: {
+          "11/05": "P",
+          "18/05": "P",
+          "25/05": "P",
+          "01/06": "F",
+          "08/06": "P",
+          "15/06": "P",
+          "22/06": "P",
+          "06/07": "P",
+          "27/07": "P",
+          "03/08": "P",
+          "10/08": "P",
+          "17/08": "P",
+          "24/08": "P",
+          "31/08": "P",
+          "14/09": "P"
+        },
+        trimestreGrades: {
+          "1": {
+            participation: 2,
+            assignment: 2,
+            exam: 3
+          },
+          "2": {
+            assignment: 3,
+            participation: 2,
+            exam: 5
+          }
+        }
+      },
+      {
+        id: 80311,
+        name: "Roberta Flôr de Liz Araujo da Silva",
+        enrolledTrimesters: [1, 2, 3],
+        attendance: {
+          "11/05": "P",
+          "18/05": "P",
+          "25/05": "P",
+          "01/06": "P",
+          "08/06": "P",
+          "15/06": "P",
+          "22/06": "P",
+          "06/07": "P",
+          "27/07": "P",
+          "03/08": "P",
+          "10/08": "P",
+          "17/08": "P",
+          "24/08": "P",
+          "31/08": "P",
+          "14/09": "P"
+        },
+        trimestreGrades: {
+          "1": {
+            participation: 2,
+            assignment: 2,
+            exam: 3
+          },
+          "2": {
+            assignment: 3,
+            participation: 2,
+            exam: 5
+          }
+        }
+      },
+      {
+        id: 80312,
+        name: "Ryan Lucas Soares Velasco",
+        enrolledTrimesters: [1, 2, 3],
+        attendance: {
+          "11/05": "P",
+          "18/05": "P",
+          "25/05": "P",
+          "01/06": "P",
+          "08/06": "P",
+          "15/06": "P",
+          "22/06": "F",
+          "06/07": "P",
+          "27/07": "P",
+          "03/08": "P",
+          "10/08": "P",
+          "17/08": "P",
+          "24/08": "P",
+          "31/08": "P",
+          "14/09": "F"
+        },
+        trimestreGrades: {
+          "1": {
+            participation: 2,
+            assignment: 2,
+            exam: 3
+          },
+          "2": {
+            assignment: 0,
+            participation: 2,
+            exam: 4.9
+          }
+        }
+      },
+      {
+        id: 80313,
+        name: "Sarah Rafaela de Souza Ferreira",
+        enrolledTrimesters: [1, 2, 3],
+        attendance: {
+          "11/05": "P",
+          "18/05": "P",
+          "25/05": "P",
+          "01/06": "F",
+          "08/06": "P",
+          "15/06": "P",
+          "22/06": "P",
+          "06/07": "P",
+          "27/07": "P",
+          "03/08": "P",
+          "10/08": "P",
+          "17/08": "P",
+          "24/08": "P",
+          "31/08": "P",
+          "14/09": "P"
+        },
+        trimestreGrades: {
+          "1": {
+            participation: 2,
+            assignment: 2,
+            exam: 3
+          },
+          "2": {
+            assignment: 0,
+            participation: 2,
+            exam: 5
+          }
+        }
+      },
+      {
+        id: 80314,
+        name: "Sofia Nascimento de Araujo",
+        enrolledTrimesters: [1, 2, 3],
+        attendance: {
+          "11/05": "P",
+          "18/05": "P",
+          "25/05": "P",
+          "01/06": "P",
+          "08/06": "P",
+          "15/06": "P",
+          "22/06": "P",
+          "06/07": "P",
+          "27/07": "P",
+          "03/08": "P",
+          "10/08": "P",
+          "17/08": "P",
+          "24/08": "P",
+          "31/08": "F",
+          "14/09": "F"
+        },
+        trimestreGrades: {
+          "1": {
+            participation: 2,
+            assignment: 2,
+            exam: 3
+          },
+          "2": {
+            assignment: 3,
+            participation: 2,
+            exam: 5
+          }
+        }
+      },
+      {
+        id: 80315,
+        name: "Sophia Quaresma Jeronymo",
+        enrolledTrimesters: [1, 2, 3],
+        attendance: {
+          "11/05": "P",
+          "18/05": "P",
+          "25/05": "P",
+          "01/06": "P",
+          "08/06": "P",
+          "15/06": "P",
+          "22/06": "P",
+          "06/07": "P",
+          "27/07": "P",
+          "03/08": "P",
+          "10/08": "P",
+          "17/08": "P",
+          "24/08": "P",
+          "31/08": "P",
+          "14/09": "P"
+        },
+        trimestreGrades: {
+          "1": {
+            participation: 2,
+            assignment: 2,
+            exam: 3
+          },
+          "2": {
+            assignment: 0,
+            participation: 2,
+            exam: 5
+          }
+        }
+      },
+      {
+        id: 80316,
+        name: "Vitor Manoel Gomes da Silva",
+        enrolledTrimesters: [1, 2, 3],
+        attendance: {
+          "11/05": "P",
+          "18/05": "P",
+          "25/05": "F",
+          "01/06": "F",
+          "08/06": "P",
+          "15/06": "P",
+          "22/06": "P",
+          "06/07": "P",
+          "27/07": "F",
+          "03/08": "P",
+          "10/08": "F",
+          "17/08": "P",
+          "24/08": "F",
+          "31/08": "P",
+          "14/09": "F"
+        },
+        trimestreGrades: {
+          "1": {
+            participation: 2,
+            assignment: 2,
+            exam: 3
+          },
+          "2": {
+            assignment: 0,
+            participation: 2,
+            exam: 4.9
+          }
+        }
+      }
     ],
     schedule: "08:40 – 10:20",
     days: ["Segunda"],
@@ -4032,16 +3432,22 @@ export const initialClassData: ClassDataMap = {
       }
     ],
     students: [
-      { id: 369201, name: "Alerrandro de Oliveira", enrolledTrimesters: [1, 2, 3], attendance: {} },
-      { id: 369202, name: "Brenda Luíza Santos", enrolledTrimesters: [1, 2, 3], attendance: {} },
-      { id: 369203, name: "Caio Cesar Viana", enrolledTrimesters: [1, 2, 3], attendance: {} },
-      { id: 369204, name: "Daniela Cristina", enrolledTrimesters: [1, 2, 3], attendance: {} },
-      { id: 369205, name: "Erick Silva", enrolledTrimesters: [1, 2, 3], attendance: {} },
-      { id: 369206, name: "Fernanda Lima", enrolledTrimesters: [1, 2, 3], attendance: {} },
-      { id: 369207, name: "Gabriel de Jesus", enrolledTrimesters: [1, 2, 3], attendance: {} },
-      { id: 369208, name: "Hugo Leonardo", enrolledTrimesters: [1, 2, 3], attendance: {} },
-      { id: 369209, name: "Isabela Rangel", enrolledTrimesters: [1, 2, 3], attendance: {} },
-      { id: 369210, name: "Jonathan Souza", enrolledTrimesters: [1, 2, 3], attendance: {} }
+      { id: 369201, name: "Arthur Mendonça Dias Moreno", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 369202, name: "Arthur Peçanha dos Santos Fernandes", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 369203, name: "Bruno Coutinho Oliveira", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 369204, name: "Gabryel Hamurabi do Rosario Barbosa", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 369205, name: "Giovanna Vittorya Viana Rodrigues", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 369206, name: "Isaac da Silva Pinho", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 369207, name: "Jullya Evelly da Silva Rosa", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 369208, name: "Kaio Ryan Martins Teixeira", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 369209, name: "Kayke Santos Machado", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 369210, name: "Marco Aurélio Ferreira dos Santos", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 369211, name: "Miguel Ribeiro Pinto", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 369212, name: "Nicolly Dias de Souza Fabrício", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 369213, name: "Rhyan Enzo Portela da Silva de Lima", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 369214, name: "Samara Galasso Sodre", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 369215, name: "Sergio Lucas Santos de Almeida", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 369216, name: "Victor Hugo Pecanha Guida", enrolledTrimesters: [1, 2, 3], attendance: {} }
     ]
   },
   "CIEP476_1007": {
@@ -4094,17 +3500,18 @@ export const initialClassData: ClassDataMap = {
       }
     ],
     students: [
-      { id: 100701, name: "Ana Beatriz Ferreira Santos", enrolledTrimesters: [1, 2, 3], attendance: { "29/05": "P" } },
-      { id: 100702, name: "Ana Clara Mendonça Guimarães", enrolledTrimesters: [1, 2, 3], attendance: { "29/05": "P" } },
-      { id: 100703, name: "Anna Giulia de Félix", enrolledTrimesters: [1, 2, 3], attendance: { "29/05": "P" } },
-      { id: 100704, name: "Anny Camilly Gomes da Silva", enrolledTrimesters: [1, 2, 3], attendance: { "29/05": "P" } },
-      { id: 100705, name: "João Pedro Samara Soares", enrolledTrimesters: [1, 2, 3], attendance: { "29/05": "P" } },
-      { id: 100706, name: "Júlio César", enrolledTrimesters: [1, 2, 3], attendance: { "29/05": "P" } },
-      { id: 100707, name: "Ketelyn Vitória Fernandes Nascimento", enrolledTrimesters: [1, 2, 3], attendance: { "29/05": "P" } },
-      { id: 100708, name: "Maria Eduarda da Silva Gonçalves", enrolledTrimesters: [1, 2, 3], attendance: { "29/05": "P" } },
-      { id: 100709, name: "Maria Vitória Fonseca", enrolledTrimesters: [1, 2, 3], attendance: { "29/05": "P" } },
-      { id: 100710, name: "Rhyan Pereira", enrolledTrimesters: [1, 2, 3], attendance: { "29/05": "P" } },
-      { id: 100711, name: "Yuri Yohan Ferreira Rodrigues", enrolledTrimesters: [1, 2, 3], attendance: { "29/05": "P" } }
+      { id: 100701, name: "Gabriel Luiz de Souza Bezerra", enrolledTrimesters: [1, 2, 3], attendance: { "29/05": "P" } },
+      { id: 100702, name: "Rhyan Pereira Cazimiro", enrolledTrimesters: [1, 2, 3], attendance: { "29/05": "P" } },
+      { id: 100703, name: "Pablo da Silva Rios", enrolledTrimesters: [1, 2, 3], attendance: { "29/05": "P" } },
+      { id: 100704, name: "João Pedro Samora Soares", enrolledTrimesters: [1, 2, 3], attendance: { "29/05": "P" } },
+      { id: 100705, name: "Ketelyn Vitória Vieira Fernandes Nascimento", enrolledTrimesters: [1, 2, 3], attendance: { "29/05": "P" } },
+      { id: 100706, name: "Breno Gabriel Santos Reis Ruas", enrolledTrimesters: [1, 2, 3], attendance: { "29/05": "P" } },
+      { id: 100707, name: "Anny Camilly Gomes da Silva", enrolledTrimesters: [1, 2, 3], attendance: { "29/05": "P" } },
+      { id: 100708, name: "Julio Cesar de Sousa Costa", enrolledTrimesters: [1, 2, 3], attendance: { "29/05": "P" } },
+      { id: 100709, name: "Andre Luiz Borges da Rocha Filho", enrolledTrimesters: [1, 2, 3], attendance: { "29/05": "P" } },
+      { id: 100710, name: "Ana Clara Mendonça Guimarães", enrolledTrimesters: [1, 2, 3], attendance: { "29/05": "P" } },
+      { id: 100711, name: "Rafael Santos Pereira da Silva", enrolledTrimesters: [1, 2, 3], attendance: { "29/05": "P" } },
+      { id: 100712, name: "Vitor Hugo Santos Nascimento", enrolledTrimesters: [1, 2, 3], attendance: { "29/05": "P" } }
     ]
   },
   "CIEP229_EJA": { 
@@ -4116,24 +3523,134 @@ export const initialClassData: ClassDataMap = {
     schedule: "19:40 – 21:20",
     days: ["Segunda"],
     students: [
-      { id: 229001, name: "Adenilson Ferreira da Silva", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "27/07": "P" } },
-      { id: 229002, name: "Benedita de Souza Oliveira", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "27/07": "P" } },
-      { id: 229003, name: "Carlos Roberto dos Santos Filho", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "F", "15/06": "P", "22/06": "P", "27/07": "P" } },
-      { id: 229004, name: "Dilma Maria da Conceição", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "27/07": "P" } },
-      { id: 229005, name: "Edmilson Pereira de Castro", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "27/07": "P" } },
-      { id: 229006, name: "Francinete Barbosa de Lima", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "27/07": "P" } },
-      { id: 229007, name: "Geraldo Magela de Andrade", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "F", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "27/07": "P" } },
-      { id: 229008, name: "Iracema Rodrigues de Santana", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "27/07": "P" } },
-      { id: 229009, name: "Jorge Luiz Nascimento Costa", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "27/07": "P" } },
-      { id: 229010, name: "Katia Cilene Martins Ramos", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "27/07": "P" } },
-      { id: 229011, name: "Lindomar Alves dos Santos", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "F", "22/06": "P", "27/07": "P" } },
-      { id: 229012, name: "Marivalda Gomes dos Santos", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "27/07": "P" } },
-      { id: 229013, name: "Nilson Ferreira de Almeida", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "27/07": "P" } },
-      { id: 229014, name: "Oziel Batista de Medeiros", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "27/07": "P" } },
-      { id: 229015, name: "Regina Celia Guimarães Farias", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "27/07": "P" } },
-      { id: 229016, name: "Sebastião Vicente de Souza", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "27/07": "P" } },
-      { id: 229017, name: "Terezinha de Jesus Carvalho", enrolledTrimesters: [1, 2, 3], attendance: { "11/05": "P", "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "27/07": "P" } },
-      { id: 229018, name: "Valdemar Silva Nascimento", enrolledTrimesters: [2, 3], status: 'entrante', attendance: { "18/05": "P", "25/05": "P", "01/06": "P", "08/06": "P", "15/06": "P", "22/06": "P", "27/07": "P" } }
+      { id: 229001, name: "Mylena Carapina Duarte", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 229002, name: "Vanessa da Silva de Lima", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 229003, name: "Regilângela Soares de Souza", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 229004, name: "Aparecida de Jesus Silva", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 229005, name: "Janaína Gomes Lima da Silva", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 229006, name: "Felipe da Silva Santos", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 229007, name: "Paola da Paz Santos Pinto", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 229008, name: "Anderson Amantino da Silva", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 229009, name: "Kauan de Castro Marcelino", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 229010, name: "Wellington Vinicius Silva da Cruz", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 229011, name: "Francisca Nayara Batista Teixeira", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 229012, name: "Phelipe da Silva Porcino", socialName: "Melyssa da Silva", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 229013, name: "Almir Tavares Nunes", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 229014, name: "Edineide Alves de Oliveira", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 229015, name: "Jozias Ribeiro da Silva", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 229016, name: "Rayssa Santos Ramos", enrolledTrimesters: [1, 2, 3], attendance: {} }
+    ]
+  },
+  "CE_IGNACIO_2001": {
+    id: "CE_IGNACIO_2001",
+    name: "2001",
+    grade: "2ª Série EM",
+    school: "CE DR. IGNACIO BEZERRA DE MENEZES",
+    discipline: "IFFC / Educação Física",
+    schedule: "10:40 – 12:20",
+    days: ["Terça", "Sexta"],
+    assignments: [
+      {
+        id: "IGNACIO_2001_TRAB_1",
+        title: "Pesquisa Temática: Identidade, Cultura Corporal e Sociedade",
+        discipline: "Educação Física",
+        description: "Pesquisa individual e análise crítica sobre as manifestações corporais, lutas e esportes na contemporaneidade.",
+        totalPoints: 3,
+        format: "Individual - Escrito",
+        dueDate: "26/10/2026"
+      }
+    ],
+    students: [
+      { id: 200101, name: "Allyson Davi Costa da Silva", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 200102, name: "Ana Julia Lourenço dos Santos", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 200103, name: "Fellipe Deyvis Teixeira Felix", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 200104, name: "Giullia Vitor Domingos Barbosa", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 200105, name: "Hemilly Victória Carvalho Amorim Veloso", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 200106, name: "João Ghabriel Lourenço de Souza", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 200107, name: "Kamily Vitória Brandão da Silva", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 200108, name: "Kauã Anderson Pereira da Silva", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 200109, name: "Kauê Miguel Álvaro dos Santos", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 200110, name: "Luiz Fernando Araújo da Silva", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 200111, name: "Maria Eduarda Alves da Silva", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 200112, name: "Maryanna Nascimento Martins", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 200113, name: "Matheus Filipi Ferreira da Silva", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 200114, name: "Melki Abraão da Conceição Pereira", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 200115, name: "Miguel de Oliveira Santos", enrolledTrimesters: [1, 2, 3], attendance: {} }
+    ]
+  },
+  "CE_IGNACIO_2002": {
+    id: "CE_IGNACIO_2002",
+    name: "2002",
+    grade: "2ª Série EM",
+    school: "CE DR. IGNACIO BEZERRA DE MENEZES",
+    discipline: "IFLA / Educação Física",
+    schedule: "10:40 – 12:20",
+    days: ["Terça", "Sexta"],
+    assignments: [
+      {
+        id: "IGNACIO_2002_TRAB_1",
+        title: "Pesquisa Temática: Identidade, Cultura Corporal e Sociedade",
+        discipline: "Educação Física",
+        description: "Pesquisa individual e análise crítica sobre as manifestações corporais, lutas e esportes na contemporaneidade.",
+        totalPoints: 3,
+        format: "Individual - Escrito",
+        dueDate: "26/10/2026"
+      }
+    ],
+    students: [
+      { id: 200201, name: "Akilis Rafael de Carvalho Souza", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 200202, name: "Alex José Luiza da Cruz", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 200203, name: "Alexya Alcântara Pereira", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 200204, name: "Andrey Vitor Farias Conrado", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 200205, name: "Annanda Victoria Santos da Silva", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 200206, name: "Artur Dias Vieira", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 200207, name: "Breno Willians de Carvalho Antero Alves", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 200208, name: "Cayo Daniel Ferreira Satiro", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 200209, name: "Daniel Alexander dos Santos Martins", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 200210, name: "Darlany Alves da Silva", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 200211, name: "Gabriela do Nascimento Bragança", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 200212, name: "Geovanna Lourenço dos Santos", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 200213, name: "Gessica da Cruz Munhoes", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 200214, name: "Gian Cordeiro Nascimento da Silva", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 200215, name: "Giulya Duarte Borges", enrolledTrimesters: [1, 2, 3], attendance: {} }
+    ]
+  },
+  "CIEP476_1001": {
+    id: "CIEP476_1001",
+    name: "1001",
+    grade: "1ª Série EM",
+    school: "CIEP 476 ELIAS LAZARONI",
+    discipline: "ILGCH (Linguagens e Ciências Humanas)",
+    schedule: "07:00 – 08:40",
+    days: ["Terça", "Sexta"],
+    assignments: [
+      {
+        id: "CIEP476_1001_TRAB_1",
+        title: "Pesquisa Temática: Decolonização de Corpos, Estética e Mídia",
+        discipline: "ILGCH",
+        description: "Pesquisa individual e análise crítica sobre padrões de corpo, mídias e manifestações corporais.",
+        totalPoints: 3,
+        format: "Individual - Escrito",
+        dueDate: "26/10/2026"
+      }
+    ],
+    students: [
+      { id: 100101, name: "Ana Júlia de Souza Santos", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100102, name: "Cristhian Henrique Pessanha de Paula Mattos", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100103, name: "Gilberto da Silva Ferreira", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100104, name: "Kauê da Silva Lage", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100105, name: "Kauhe do Valle Oliveira", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100106, name: "Kaylane do Nascimento Corrêa", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100107, name: "Larissa Fernanda Rodrigues dos Santos", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100108, name: "Laura Stelet Coelho", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100109, name: "Layane Santiago de Almeida", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100110, name: "Lohany Moraes Mathias", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100111, name: "Lucas Gabriel Tavares da Silva", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100112, name: "Luiz Fellipe Gomes Pereira", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100113, name: "Maicon Douglas da Silva Rocha", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100114, name: "Maicon Ferreira dos Santos", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100115, name: "Maria Eduarda Silva de Souza", enrolledTrimesters: [1, 2, 3], attendance: {} },
+      { id: 100116, name: "Maycon Alexandre de Carvalho Antero Circuncizão", enrolledTrimesters: [1, 2, 3], attendance: {} }
     ]
   }
 };

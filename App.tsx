@@ -7,6 +7,9 @@ import { StatisticsView } from './components/StatisticsView';
 import { ClassesView } from './components/ClassesView';
 import { EmentaView } from './components/EmentaView';
 import { PlanoDeCursoView } from './components/PlanoDeCursoView';
+import { CurriculoEmentaHubView } from './components/CurriculoEmentaHubView';
+import { DiarioNotasHubView } from './components/DiarioNotasHubView';
+import { PlanosAulasHubView } from './components/PlanosAulasHubView';
 import { ScheduleView } from './components/ScheduleView';
 import { GalleryView } from './components/GalleryView';
 import { DecolonialApp } from './components/DecolonialApp';
@@ -161,8 +164,8 @@ const App: React.FC = () => {
       if (!base[id]) {
         base[id] = { ...initialClassData[id] };
       } else {
-        // For Cordelia classes (801, 802, 803), enforce the exact authoritative roster from initialClassData
-        if (id === '801' || id === '802' || id === '803') {
+        // For Cordelia (801, 802, 803), Ignacio (2001, 2002), CIEP 229 (EJA), CIEP 369 (AP 201) and CIEP 476 (1001, 1007), enforce the exact authoritative roster from initialClassData
+        if (id === '801' || id === '802' || id === '803' || id === 'CE_IGNACIO_2001' || id === 'CE_IGNACIO_2002' || id === 'CIEP229_EJA' || id === 'CIEP369_AP201' || id === 'CIEP476_1007' || id === 'CIEP476_1001') {
           const initList = initialClassData[id].students || [];
           const currentStuds = base[id].students || [];
           base[id].students = initList.map((initS: any) => {
@@ -757,12 +760,35 @@ const App: React.FC = () => {
   const renderView = () => {
     switch(currentView) {
       case 'home': return <DashboardView setView={setViewWithHistory} classData={classData} />;
-      case 'statistics': return <StatisticsView classData={classData} onBack={goBack} />;
+      case 'statistics': return (
+        <GradesView 
+          onBack={goBack} 
+          classData={classData} 
+          setClassData={setClassData}
+          onSave={handleSaveClasses}
+          initialHubMode="estatisticas"
+        />
+      );
+      case 'diario_hub': return (
+        <DiarioNotasHubView 
+          onBack={goBack}
+          onSelectFrequencias={() => setView('classes')}
+          onSelectNotas={() => setView('grades')}
+        />
+      );
       case 'classes': return (
         <ClassesView 
           classData={classData} 
           setClassData={setClassData} 
-          onBack={goBack}
+          onBack={() => {
+            if (selectedClassId) {
+              setSelectedClassId(null);
+            } else if (selectedGrade) {
+              setSelectedGrade(null);
+            } else {
+              setView('diario_hub');
+            }
+          }}
           selectedGrade={selectedGrade}
           setSelectedGrade={setSelectedGrade}
           selectedClassId={selectedClassId}
@@ -771,8 +797,15 @@ const App: React.FC = () => {
           syncStatus={syncStatus}
         />
       );
-      case 'ementa': return <EmentaView onBack={goBack} />;
-      case 'plano': return <PlanoDeCursoView onBack={goBack} />;
+      case 'curriculo_hub': return (
+        <CurriculoEmentaHubView 
+          onBack={goBack} 
+          onSelectEmenta={() => setView('ementa')}
+          onSelectCurriculo={() => setView('plano')}
+        />
+      );
+      case 'ementa': return <EmentaView onBack={() => setView('curriculo_hub')} />;
+      case 'plano': return <PlanoDeCursoView onBack={() => setView('curriculo_hub')} />;
       case 'schedule': return <ScheduleView onBack={goBack} />;
       case 'gallery': return (
         <GalleryView 
@@ -800,21 +833,30 @@ const App: React.FC = () => {
           classData={classData}
         />
       );
+      case 'planos_aulas_hub': return (
+        <PlanosAulasHubView 
+          onBack={goBack}
+          onSelectPlanoDeCurso={() => setView('plano_anual_pe')}
+          onSelectPlanosDeAula={() => setView('planejamento')}
+          onSelectAulasDatashow={() => setView('repositorio_aulas')}
+          onSelectRepositorioProvas={() => setView('repositorio_provas')}
+        />
+      );
       case 'planejamento': return (
         <DecolonialApp 
           initialView="planejamento"
-          onBack={goBack} 
+          onBack={() => setView('planos_aulas_hub')} 
           setSlideViewerOpen={setSlideViewerOpen} 
           classData={classData}
           setClassData={setClassData}
           onSave={handleSaveClasses}
         />
       );
-      case 'plano_anual_pe': return <PlanoAnualPE onBack={goBack} />;
+      case 'plano_anual_pe': return <PlanoAnualPE onBack={() => setView('planos_aulas_hub')} />;
       case 'repositorio_aulas': return (
         <DecolonialApp 
           initialView="repositorio_aulas"
-          onBack={goBack} 
+          onBack={() => setView('planos_aulas_hub')} 
           setSlideViewerOpen={setSlideViewerOpen} 
           classData={classData}
           setClassData={setClassData}
@@ -822,13 +864,13 @@ const App: React.FC = () => {
         />
       );
       case 'ocorrencias': return <OcorrenciasView onBack={goBack} />;
-      case 'repositorio_provas': return <ExamRepositoryView onBack={goBack} />;
+      case 'repositorio_provas': return <ExamRepositoryView onBack={() => setView('planos_aulas_hub')} />;
       case 'calendar': return <CalendarView onBack={goBack} />;
       case 'grades': return (
         <GradesView 
-          onBack={goBack} 
+          onBack={() => setView('diario_hub')} 
           classData={classData} 
-          setClassData={setClassData}
+          setClassData={setClassData} 
           onSave={handleSaveClasses}
         />
       );
@@ -871,13 +913,16 @@ const App: React.FC = () => {
         if (selectedClassId && classData[selectedClassId]) return classData[selectedClassId].name.toUpperCase();
         if (selectedGrade) return `${selectedGrade}º ANO`;
         return 'Turmas';
+      case 'diario_hub': return 'Frequências & Notas';
+      case 'curriculo_hub': return 'Currículo & Ementa';
       case 'ementa': return 'Ementa Escolar';
-      case 'plano': return 'Plano de Curso';
+      case 'plano': return 'Currículo';
       case 'schedule': return 'Quadro de Horários';
       case 'gallery': return 'Galeria';
       case 'profile': return 'Perfil';
-      case 'planejamento': return 'Planejamento';
-      case 'plano_anual_pe': return 'Plano Anual';
+      case 'planos_aulas_hub': return 'Planos & Aulas';
+      case 'planejamento': return 'Planos de Aula';
+      case 'plano_anual_pe': return 'Plano de Curso';
       case 'repositorio_aulas': return 'Aulas (Datashow)';
       case 'ocorrencias': return 'Ocorrências';
       case 'repositorio_provas': return 'Repositório de Provas';

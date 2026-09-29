@@ -1,5 +1,5 @@
 
-export type ViewState = 'home' | 'statistics' | 'classes' | 'grades' | 'profile' | 'ementa' | 'plano' | 'lesson-content' | 'schedule' | 'gallery' | 'assignments' | 'biblioteca' | 'register-activities' | 'decolonial' | 'calendar' | 'daily-activities' | 'alunos-view' | 'planejamento' | 'plano_anual_pe' | 'repositorio_aulas' | 'ocorrencias' | 'repositorio_provas' | 'assignment-print';
+export type ViewState = 'home' | 'statistics' | 'classes' | 'grades' | 'profile' | 'ementa' | 'plano' | 'curriculo_hub' | 'diario_hub' | 'planos_aulas_hub' | 'lesson-content' | 'schedule' | 'gallery' | 'assignments' | 'biblioteca' | 'register-activities' | 'decolonial' | 'calendar' | 'daily-activities' | 'alunos-view' | 'planejamento' | 'plano_anual_pe' | 'repositorio_aulas' | 'ocorrencias' | 'repositorio_provas' | 'assignment-print';
 
 export interface UserProfile {
   id: string;
@@ -32,6 +32,7 @@ export interface TrimestreGrade {
 export interface Student {
   id: number;
   name: string;
+  socialName?: string;
   attendance: { [date: string]: 'P' | 'F' | null };
   grades?: { [assignmentId: string]: number };
   trimestreGrades?: { [trimestre: string]: TrimestreGrade };

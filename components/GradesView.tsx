@@ -25,6 +25,7 @@ import { ScreenHeader } from './ScreenHeader';
 import { BackButton } from './BackButton';
 import { initialClassData } from '../constants';
 import { calculateExpectedClassesForTrimester, getAnnualTeachingStats } from '../utils/teachingCalendar';
+import { StatisticsView } from './StatisticsView';
 
 export interface SchoolGroupDef {
   id: string;
@@ -270,13 +271,15 @@ interface GradesViewProps {
   classData?: ClassDataMap;
   setClassData?: React.Dispatch<React.SetStateAction<ClassDataMap>>;
   onSave?: (newData: ClassDataMap) => void;
+  initialHubMode?: 'diarios' | 'estatisticas' | 'relatorio';
 }
 
 export const GradesView: React.FC<GradesViewProps> = ({ 
   onBack, 
   classData, 
   setClassData, 
-  onSave 
+  onSave,
+  initialHubMode = 'diarios'
 }) => {
   // Sync state between props and local state
   const [localClassData, setLocalClassData] = useState<ClassDataMap>(() => {
@@ -290,6 +293,15 @@ export const GradesView: React.FC<GradesViewProps> = ({
       setLocalClassData(classData);
     }
   }, [classData]);
+
+  // Hub mode: Diários vs Estatísticas & Assiduidade vs Relatório
+  const [hubMode, setHubMode] = useState<'diarios' | 'estatisticas' | 'relatorio'>(initialHubMode);
+
+  useEffect(() => {
+    if (initialHubMode) {
+      setHubMode(initialHubMode);
+    }
+  }, [initialHubMode]);
 
   // Hub views
   const [activeHubView, setActiveHubView] = useState<'schools' | 'classes'>('classes');
@@ -1180,13 +1192,80 @@ export const GradesView: React.FC<GradesViewProps> = ({
           onBack={onBack}
           badge="NOTAS & AVALIAÇÕES • 2026"
           statusBadge="SEEDUC-RJ ATIVO"
-          title="DIÁRIO DE NOTAS & AVALIAÇÕES"
-          subtitle={`Professor Regente: ${PROFESSOR_REGENTE_NAME} • Acompanhamento e lançamento de notas da Rede SEEDUC-RJ`}
+          title="NOTAS, MÉDIAS & ESTATÍSTICAS"
+          subtitle={`Professor Regente: ${PROFESSOR_REGENTE_NAME} • Gestão completa de diários, médias e assiduidade escolar`}
           rightTitle="RESOLUÇÃO SEEDUC Nº 6392/2025"
           rightSubtitle="Part (2.0) • Trab (3.0) • Prova (5.0) • Média: 6.0"
           rightExtra="Aprovação Anual: 18.0 pontos"
         />
 
+        {/* Navigation Selector: Diários vs Estatísticas & Assiduidade vs Relatório Consolidado */}
+        <div className="bg-white p-2.5 rounded-3xl border-2 border-slate-200 shadow-sm flex flex-col sm:flex-row gap-3 items-center justify-between">
+          <div className="flex flex-wrap gap-1.5 p-1 bg-slate-100 rounded-2xl w-full sm:w-auto">
+            <button
+              onClick={() => setHubMode('diarios')}
+              className={`flex-1 sm:flex-initial px-4 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all flex items-center justify-center gap-2 ${
+                hubMode === 'diarios'
+                  ? 'bg-amber-500 text-white shadow-md'
+                  : 'text-slate-600 hover:bg-slate-200/70 hover:text-slate-900'
+              }`}
+            >
+              <FileSpreadsheet className="w-4 h-4" />
+              <span>Diários de Notas & Turmas</span>
+            </button>
+            <button
+              onClick={() => setHubMode('estatisticas')}
+              className={`flex-1 sm:flex-initial px-4 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all flex items-center justify-center gap-2 ${
+                hubMode === 'estatisticas'
+                  ? 'bg-indigo-600 text-white shadow-md'
+                  : 'text-slate-600 hover:bg-slate-200/70 hover:text-slate-900'
+              }`}
+            >
+              <BarChart3 className="w-4 h-4" />
+              <span>Estatísticas & Assiduidade</span>
+            </button>
+            <button
+              onClick={() => setHubMode('relatorio')}
+              className={`flex-1 sm:flex-initial px-4 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all flex items-center justify-center gap-2 ${
+                hubMode === 'relatorio'
+                  ? 'bg-blue-600 text-white shadow-md'
+                  : 'text-slate-600 hover:bg-slate-200/70 hover:text-slate-900'
+              }`}
+            >
+              <Printer className="w-4 h-4" />
+              <span>Relatório Consolidado</span>
+            </button>
+          </div>
+
+          <div className="hidden lg:flex items-center gap-2 text-xs font-bold text-slate-500 pr-3">
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span className="uppercase text-[11px] font-extrabold text-slate-700">Módulo Integrado de Notas & Estatísticas</span>
+          </div>
+        </div>
+
+        {/* View Mode: Statistics Dashboard or Consolidated Report */}
+        {hubMode === 'estatisticas' && (
+          <div className="animate-fade-in">
+            <StatisticsView 
+              classData={localClassData} 
+              onBack={() => setHubMode('diarios')} 
+              initialViewMode="dashboard" 
+            />
+          </div>
+        )}
+
+        {hubMode === 'relatorio' && (
+          <div className="animate-fade-in">
+            <StatisticsView 
+              classData={localClassData} 
+              onBack={() => setHubMode('diarios')} 
+              initialViewMode="full_report" 
+            />
+          </div>
+        )}
+
+        {hubMode === 'diarios' && (
+          <>
         {/* Quadro Oficial: Professor Regente & Datas de Início e Fechamento dos Trimestres */}
         <div className="bg-white rounded-3xl border-2 border-slate-200 shadow-md overflow-hidden">
           {/* Header strip */}
@@ -1706,6 +1785,8 @@ export const GradesView: React.FC<GradesViewProps> = ({
               })}
           </div>
         </div>
+        </>
+        )}
       </div>
     );
   }

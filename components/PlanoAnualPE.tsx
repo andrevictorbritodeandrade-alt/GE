@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, Info, X, Filter, Users, BookOpen, ClipboardList, CheckCircle, Bell, Download, ChevronLeft, Presentation } from 'lucide-react';
+import { 
+  Calendar, Info, X, Filter, Users, BookOpen, ClipboardList, 
+  CheckCircle, Bell, Download, ChevronLeft, Presentation,
+  Dumbbell, Compass, Brain, School, Sparkles, Microscope, 
+  Palette, Layers, Printer, Activity, Check, AlertTriangle,
+  RotateCcw, Target
+} from 'lucide-react';
 import { PE_PLAN } from '../data/planosPE';
 import { safeLocalStorage } from '../utils/storage';
 import { ScreenHeader } from './ScreenHeader';
 import { BackButton } from './BackButton';
+import { InteractiveCalendar } from './InteractiveCalendar';
 
 // Mapeamento de IDs de turma para chaves do plano
 const CLASS_PLAN_MAP: Record<string, string> = {
@@ -206,57 +213,76 @@ const SCHEDULE_MONDAY = [
     'CIEP369': AULA_POSTURA, 
     'AP198': AULA_POSTURA, 
   }},
-  { date: '28/09', type: 'event', title: 'ENEM' },
-  { date: '05/10', type: 'class', activities: { 
-    '802': AULA_OLIMPIADAS, 
-    '803': AULA_OLIMPIADAS, 
-    '801': AULA_OLIMPIADAS, 
-    'CIEP369': AULA_OLIMPIADAS, 
-    'AP198': AULA_OLIMPIADAS, 
+  { date: '28/09', subtitle: 'Aula 16 - Lançamento do Trabalho', type: 'class', activities: { 
+    '802': { title: 'Aula 16: Aula Livre / Recreativa', description: 'Lançamento do Trabalho de Pesquisa de Ginástica (3,0 pts).\n\nInstruções do Trabalho passadas em sala.', assignment: { type: 'passar', points: 3, deadline: '26/10', title: 'Trabalho de Pesquisa: A Ginástica', text: 'Pesquisa sobre História da Ginástica no Brasil, Seleção Brasileira e Modalidades.' } },
+    '803': { title: 'Aula 16: Aula Livre / Recreativa', description: 'Lançamento do Trabalho de Pesquisa de Ginástica (3,0 pts).\n\nInstruções do Trabalho passadas em sala.', assignment: { type: 'passar', points: 3, deadline: '26/10', title: 'Trabalho de Pesquisa: A Ginástica', text: 'Pesquisa sobre História da Ginástica no Brasil, Seleção Brasileira e Modalidades.' } },
+    '801': { title: 'Aula 16: Aula Livre / Recreativa', description: 'Lançamento do Trabalho de Pesquisa de Ginástica (3,0 pts).\n\nInstruções do Trabalho passadas em sala.', assignment: { type: 'passar', points: 3, deadline: '26/10', title: 'Trabalho de Pesquisa: A Ginástica', text: 'Pesquisa sobre História da Ginástica no Brasil, Seleção Brasileira e Modalidades.' } },
+    'CIEP369': { title: 'Aula 16: Aula Livre / Recreativa', description: 'Lançamento do Trabalho de Pesquisa (3,0 pts).', assignment: { type: 'passar', points: 3, deadline: '26/10', title: 'Trabalho de Pesquisa: A Ginástica', text: 'Pesquisa sobre História da Ginástica no Brasil, Seleção Brasileira e Modalidades.' } },
+    'AP198': { title: 'Aula 16: Aula Livre / Recreativa', description: 'Lançamento do Trabalho de Pesquisa (3,0 pts).', assignment: { type: 'passar', points: 3, deadline: '26/10', title: 'Trabalho de Pesquisa: A Ginástica', text: 'Pesquisa sobre História da Ginástica no Brasil, Seleção Brasileira e Modalidades.' } },
+  }},
+  { date: '05/10', subtitle: 'Aula 17 - Conteúdo 1', type: 'class', activities: { 
+    '802': { title: 'Aula 17: Lutas I – Huka-Huka', description: 'A Luta Ritualística indígena do Xingu (Kuarup). Regras e filosofia ancestral.' },
+    '803': { title: 'Aula 17: Lutas I – Huka-Huka', description: 'A Luta Ritualística indígena do Xingu (Kuarup). Regras e filosofia ancestral.' },
+    '801': { title: 'Aula 17: Lutas I – Huka-Huka', description: 'A Luta Ritualística indígena do Xingu (Kuarup). Regras e filosofia ancestral.' },
+    'CIEP369': { title: 'Aula 17: Lutas I – Huka-Huka', description: 'A Luta Ritualística indígena do Xingu (Kuarup).' },
+    'AP198': { title: 'Aula 17: Lutas I – Huka-Huka', description: 'A Luta Ritualística indígena do Xingu (Kuarup).' },
   }},
   { date: '12/10', type: 'event', title: 'FERIADO NOSSA SRª APARECIDA' },
-  { date: '19/10', type: 'class', activities: { 
-    '802': AULA_DOMINO, 
-    '803': AULA_DOMINO, 
-    '801': AULA_DOMINO, 
-    'CIEP369': AULA_DOMINO, 
-    'AP198': AULA_DOMINO, 
+  { date: '19/10', subtitle: 'Aula 18 - Conteúdo 2', type: 'class', activities: { 
+    '802': { title: 'Aula 18: Lutas II – Jiu-Jitsu & Luta Livre', description: 'Evolução das artes suaves e lutas nacionais (Jiu-Jitsu Brasileiro e Luta Livre Esportiva).' },
+    '803': { title: 'Aula 18: Lutas II – Jiu-Jitsu & Luta Livre', description: 'Evolução das artes suaves e lutas nacionais (Jiu-Jitsu Brasileiro e Luta Livre Esportiva).' },
+    '801': { title: 'Aula 18: Lutas II – Jiu-Jitsu & Luta Livre', description: 'Evolução das artes suaves e lutas nacionais (Jiu-Jitsu Brasileiro e Luta Livre Esportiva).' },
+    'CIEP369': { title: 'Aula 18: Lutas II – Jiu-Jitsu & Luta Livre', description: 'Evolução das artes suaves e lutas nacionais.' },
+    'AP198': { title: 'Aula 18: Lutas II – Jiu-Jitsu & Luta Livre', description: 'Evolução das artes suaves e lutas nacionais.' },
   }},
-  { date: '26/10', subtitle: 'Novembro Negro', type: 'class', activities: { 
-    '802': { ...AULA_APARTHEID_BASE(), assignment: { type: 'passar', points: 3, deadline: '30/11', title: 'Atletas contra o Racismo', text: 'Buscar a história de um atleta negro ou indígena que lutou contra o racismo.'} }, 
-    '803': { ...AULA_APARTHEID_BASE(), assignment: { type: 'passar', points: 3, deadline: '30/11', title: 'Atletas contra o Racismo', text: 'Buscar a história de um atleta negro ou indígena que lutou contra o racismo.'} }, 
-    '801': { ...AULA_APARTHEID_BASE(), assignment: { type: 'passar', points: 3, deadline: '30/11', title: 'Atletas contra o Racismo', text: 'Buscar a história de um atleta negro ou indígena que lutou contra o racismo.'} }, 
-    'CIEP369': { ...AULA_APARTHEID_BASE(), assignment: { type: 'passar', points: 3, deadline: '30/11', title: 'Atletas contra o Racismo', text: 'Buscar a história de um atleta negro ou indígena que lutou contra o racismo.'} }, 
-    'AP198': { ...AULA_APARTHEID_BASE(), assignment: { type: 'passar', points: 3, deadline: '30/11', title: 'Atletas contra o Racismo', text: 'Buscar a história de um atleta negro ou indígena que lutou contra o racismo.'} }, 
+  { date: '26/10', subtitle: 'Aula 19 - DATA LIMITE TRABALHO', type: 'class', activities: { 
+    '802': { title: 'Aula 19: Aula Livre / Recreativa', description: 'DATA LIMITE DE ENTREGA DO TRABALHO DE GINÁSTICA (3,0 pts).', assignment: { type: 'receber', points: 3, title: 'Receber: Trabalho de Pesquisa de Ginástica' } },
+    '803': { title: 'Aula 19: Aula Livre / Recreativa', description: 'DATA LIMITE DE ENTREGA DO TRABALHO DE GINÁSTICA (3,0 pts).', assignment: { type: 'receber', points: 3, title: 'Receber: Trabalho de Pesquisa de Ginástica' } },
+    '801': { title: 'Aula 19: Aula Livre / Recreativa', description: 'DATA LIMITE DE ENTREGA DO TRABALHO DE GINÁSTICA (3,0 pts).', assignment: { type: 'receber', points: 3, title: 'Receber: Trabalho de Pesquisa de Ginástica' } },
+    'CIEP369': { title: 'Aula 19: Aula Livre / Recreativa', description: 'DATA LIMITE DE ENTREGA DO TRABALHO DE GINÁSTICA.', assignment: { type: 'receber', points: 3, title: 'Receber: Trabalho de Pesquisa de Ginástica' } },
+    'AP198': { title: 'Aula 19: Aula Livre / Recreativa', description: 'DATA LIMITE DE ENTREGA DO TRABALHO DE GINÁSTICA.', assignment: { type: 'receber', points: 3, title: 'Receber: Trabalho de Pesquisa de Ginástica' } },
   }},
-  { date: '16/11', type: 'event', title: 'AVALIAÇÃO DIAGNÓSTICA' },
-  { date: '23/11', subtitle: 'Consciência Negra', type: 'class', activities: { 
-    '802': AULA_MUSICA, 
-    '803': AULA_MUSICA, 
-    '801': AULA_MUSICA, 
-    'CIEP369': AULA_MUSICA, 
-    'AP198': AULA_MUSICA, 
+  { date: '09/11', subtitle: 'Aula 20 - Conteúdo 1', type: 'class', activities: { 
+    '802': { title: 'Aula 20: Ginástica I – Conscientização Corporal', description: 'História e origem da ginástica no Brasil, influência militar/séc. XIX e ergonomia.' },
+    '803': { title: 'Aula 20: Ginástica I – Conscientização Corporal', description: 'História e origem da ginástica no Brasil, influência militar/séc. XIX e ergonomia.' },
+    '801': { title: 'Aula 20: Ginástica I – Conscientização Corporal', description: 'História e origem da ginástica no Brasil, influência militar/séc. XIX e ergonomia.' },
+    'CIEP369': { title: 'Aula 20: Ginástica I – Conscientização Corporal', description: 'História e origem da ginástica no Brasil e ergonomia.' },
+    'AP198': { title: 'Aula 20: Ginástica I – Conscientização Corporal', description: 'História e origem da ginástica no Brasil e ergonomia.' },
   }},
-  { date: '30/11', type: 'class', activities: { 
-    '802': { ...AULA_DIREITO_BASE(), assignment: { type: 'receber', points: 3, title: 'Receber: Atletas vs Racismo'} }, 
-    '803': { ...AULA_DIREITO_BASE(), assignment: { type: 'receber', points: 3, title: 'Receber: Atletas vs Racismo'} }, 
-    '801': { ...AULA_DIREITO_BASE(), assignment: { type: 'receber', points: 3, title: 'Receber: Atletas vs Racismo'} }, 
-    'CIEP369': { ...AULA_DIREITO_BASE(), assignment: { type: 'receber', points: 3, title: 'Receber: Atletas vs Racismo'} }, 
-    'AP198': { ...AULA_DIREITO_BASE(), assignment: { type: 'receber', points: 3, title: 'Receber: Atletas vs Racismo'} }, 
+  { date: '16/11', subtitle: 'Aula 21 - Conteúdo 2', type: 'class', activities: { 
+    '802': { title: 'Aula 21: Esportes Adaptados – Rede e Parede', description: 'Rede e parede adaptados no espaço de sala (Inclusão e Dinâmica de Sala).' },
+    '803': { title: 'Aula 21: Esportes Adaptados – Rede e Parede', description: 'Rede e parede adaptados no espaço de sala (Inclusão e Dinâmica de Sala).' },
+    '801': { title: 'Aula 21: Esportes Adaptados – Rede e Parede', description: 'Rede e parede adaptados no espaço de sala (Inclusão e Dinâmica de Sala).' },
+    'CIEP369': { title: 'Aula 21: Esportes Adaptados – Rede e Parede', description: 'Esportes de rede/parede adaptados.' },
+    'AP198': { title: 'Aula 21: Esportes Adaptados – Rede e Parede', description: 'Esportes de rede/parede adaptados.' },
   }},
-  { date: '07/12', type: 'class', activities: { 
-    '802': AULA_AVALIACAO, 
-    '803': AULA_AVALIACAO, 
-    '801': AULA_AVALIACAO, 
-    'CIEP369': AULA_AVALIACAO, 
-    'AP198': AULA_AVALIACAO, 
+  { date: '23/11', subtitle: 'Aula 22 - Recreativa', type: 'class', activities: { 
+    '802': { title: 'Aula 22: Aula Livre / Recreativa', description: 'Tempo recreativo e acolhimento dos alunos.' },
+    '803': { title: 'Aula 22: Aula Livre / Recreativa', description: 'Tempo recreativo e acolhimento dos alunos.' },
+    '801': { title: 'Aula 22: Aula Livre / Recreativa', description: 'Tempo recreativo e acolhimento dos alunos.' },
+    'CIEP369': { title: 'Aula 22: Aula Livre / Recreativa', description: 'Tempo recreativo.' },
+    'AP198': { title: 'Aula 22: Aula Livre / Recreativa', description: 'Tempo recreativo.' },
   }},
-  { date: '14/12', subtitle: 'Encerramento', type: 'class', activities: { 
-    '802': AULA_AUTOAVALIACAO, 
-    '803': AULA_AUTOAVALIACAO, 
-    '801': AULA_AUTOAVALIACAO, 
-    'CIEP369': AULA_AUTOAVALIACAO, 
-    'AP198': AULA_AUTOAVALIACAO, 
+  { date: '30/11', subtitle: 'Aula 23 - Conteúdo 1', type: 'class', activities: { 
+    '802': { title: 'Aula 23: Dança e Jogos', description: 'Danças Urbanas (Hip Hop) e criação gamificada de tabuleiros em sala.' },
+    '803': { title: 'Aula 23: Dança e Jogos', description: 'Danças Urbanas (Hip Hop) e criação gamificada de tabuleiros em sala.' },
+    '801': { title: 'Aula 23: Dança e Jogos', description: 'Danças Urbanas (Hip Hop) e criação gamificada de tabuleiros em sala.' },
+    'CIEP369': { title: 'Aula 23: Dança e Jogos', description: 'Danças urbanas e criação de tabuleiros.' },
+    'AP198': { title: 'Aula 23: Dança e Jogos', description: 'Danças urbanas e criação de tabuleiros.' },
+  }},
+  { date: '07/12', subtitle: 'Aula 24 - Conteúdo 2', type: 'class', activities: { 
+    '802': { title: 'Aula 24: Avaliação Escrita', description: 'Verificação de aprendizagem do trimestre em sala de aula.' },
+    '803': { title: 'Aula 24: Avaliação Escrita', description: 'Verificação de aprendizagem do trimestre em sala de aula.' },
+    '801': { title: 'Aula 24: Avaliação Escrita', description: 'Verificação de aprendizagem do trimestre em sala de aula.' },
+    'CIEP369': { title: 'Aula 24: Avaliação Escrita', description: 'Verificação de aprendizagem do trimestre.' },
+    'AP198': { title: 'Aula 24: Avaliação Escrita', description: 'Verificação de aprendizagem do trimestre.' },
+  }},
+  { date: '14/12', subtitle: 'Aula 25 - Encerramento', type: 'class', activities: { 
+    '802': { title: 'Aula 25: Aula Livre / Encerramento', description: 'Retrospectiva e fechamento do ano letivo de 2026.' },
+    '803': { title: 'Aula 25: Aula Livre / Encerramento', description: 'Retrospectiva e fechamento do ano letivo de 2026.' },
+    '801': { title: 'Aula 25: Aula Livre / Encerramento', description: 'Retrospectiva e fechamento do ano letivo de 2026.' },
+    'CIEP369': { title: 'Aula 25: Aula Livre / Encerramento', description: 'Retrospectiva e encerramento do ano letivo.' },
+    'AP198': { title: 'Aula 25: Aula Livre / Encerramento', description: 'Retrospectiva e encerramento do ano letivo.' },
   }}
 ];
 
@@ -501,10 +527,10 @@ export const PlanoAnualPE: React.FC<{ onBack: () => void }> = ({ onBack }) => {
     <div className="space-y-6 max-w-7xl mx-auto pb-16 font-sans">
       <ScreenHeader
         onBack={onBack}
-        badge="PLANEJAMENTO ANUAL • 2026"
+        badge="PLANO DE CURSO • 2026"
         statusBadge="EDUCAÇÃO FÍSICA"
-        title="CALENDÁRIO DE EDUCAÇÃO FÍSICA"
-        subtitle="Cronograma anual de aulas práticas e teóricas, entregas e eventos por turma"
+        title="PLANO DE CURSO (PE)"
+        subtitle="Cronograma detalhado de aulas práticas e teóricas, entregas e eventos por turma"
       />
 
       {/* PAINEL DE CONTROLE: ABAS E FILTROS */}
@@ -581,133 +607,142 @@ export const PlanoAnualPE: React.FC<{ onBack: () => void }> = ({ onBack }) => {
         <div className="flex items-center gap-2"><div className="w-2.5 h-2.5 bg-red-500 rounded-sm"></div> <span>Receber Trabalho</span></div>
       </div>
 
-      {/* GRADE DO CALENDÁRIO */}
-      <div className="max-w-7xl mx-auto bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden flex flex-col">
-        <div className="overflow-x-auto">
-          <table className="w-full border-collapse text-sm text-left table-fixed">
-            <thead className="bg-gray-50 border-b border-gray-200">
-              <tr>
-                <th className="sticky left-0 bg-gray-50 z-20 border-r border-gray-200 p-4 w-[240px] min-w-[240px] max-w-[240px] shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)]">
-                  <div className="font-black uppercase tracking-tighter text-slate-800 flex items-center gap-2 text-lg">
-                    <Users size={20} className="text-indigo-600"/> Turmas
-                  </div>
-                </th>
-                
-                {scheduleToRender.map((day, idx) => (
-                  <th key={idx} className="p-4 border-r border-gray-200 w-[220px] min-w-[220px] max-w-[220px] align-top text-center bg-white">
-                    <div className="font-black text-slate-900 text-xl tracking-tighter">{day.date}</div>
-                    {day.subtitle && (
-                      <div className="text-[10px] font-black uppercase tracking-widest text-white mt-1 bg-indigo-600 inline-block px-2 py-0.5 rounded shadow-sm">
-                        {day.subtitle}
-                      </div>
-                    )}
+      {/* GRADE DO CALENDÁRIO OU VISTA INTERATIVA */}
+      <div className="max-w-7xl mx-auto space-y-6">
+        <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-lg">
+          <h2 className="text-xl font-black text-slate-800 uppercase tracking-tighter mb-4 flex items-center gap-2">
+            <Calendar className="text-indigo-600" /> CALENDÁRIO ESCOLAR 2026
+          </h2>
+          <InteractiveCalendar />
+        </div>
+
+        <div className="bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden flex flex-col">
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse text-sm text-left table-fixed">
+              <thead className="bg-gray-50 border-b border-gray-200">
+                <tr>
+                  <th className="sticky left-0 bg-gray-50 z-20 border-r border-gray-200 p-4 w-[240px] min-w-[240px] max-w-[240px] shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)]">
+                    <div className="font-black uppercase tracking-tighter text-slate-800 flex items-center gap-2 text-lg">
+                      <Users size={20} className="text-indigo-600"/> Turmas
+                    </div>
                   </th>
-                ))}
-              </tr>
-            </thead>
-            
-            <tbody>
-              {classesToRender.map((classInfo) => (
-                <tr key={classInfo.id} className="border-b border-gray-200 last:border-0 group">
-                  <td className="sticky left-0 bg-white z-10 border-r border-gray-200 p-4 font-medium shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)] group-hover:bg-gray-50 transition-colors w-[240px] min-w-[240px] max-w-[240px]">
-                    <div className="text-slate-900 font-black uppercase tracking-tighter text-lg leading-tight" title={classInfo.name}>{classInfo.name}</div>
-                    <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mt-1 truncate" title={classInfo.segment.name}>{classInfo.segment.name}</div>
-                  </td>
                   
-                  {scheduleToRender.map((day, idx) => {
-                    if (day.type === 'event') {
-                      return (
-                        <td key={idx} className="p-2 border-r border-gray-200 bg-slate-50 w-[220px] min-w-[220px] max-w-[220px]">
-                          <div className="w-full h-24 flex items-center justify-center p-3 rounded-xl bg-slate-200/50 text-slate-500 font-black uppercase tracking-widest text-[10px] text-center border-2 border-dashed border-slate-300">
-                            {(day as any).title}
-                          </div>
-                        </td>
-                      );
-                    }
-
-                    const planKey = CLASS_PLAN_MAP[classInfo.id] || '8ano';
-                    const planList = PE_PLAN[planKey] || [];
-                    const lessonIndex = planList.findIndex(a => a.data === day.date);
-                    const activityFromPlano = lessonIndex !== -1 && lessonIndex !== undefined ? planList[lessonIndex] : null;
+                  {scheduleToRender.map((day, idx) => (
+                    <th key={idx} className="p-4 border-r border-gray-200 w-[220px] min-w-[220px] max-w-[220px] align-top text-center bg-white">
+                      <div className="font-black text-slate-900 text-xl tracking-tighter">{day.date}</div>
+                      {day.subtitle && (
+                        <div className="text-[10px] font-black uppercase tracking-widest text-white mt-1 bg-indigo-600 inline-block px-2 py-0.5 rounded shadow-sm">
+                          {day.subtitle}
+                        </div>
+                      )}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              
+              <tbody>
+                {classesToRender.map((classInfo) => (
+                  <tr key={classInfo.id} className="border-b border-gray-200 last:border-0 group">
+                    <td className="sticky left-0 bg-white z-10 border-r border-gray-200 p-4 font-medium shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)] group-hover:bg-gray-50 transition-colors w-[240px] min-w-[240px] max-w-[240px]">
+                      <div className="text-slate-900 font-black uppercase tracking-tighter text-lg leading-tight" title={classInfo.name}>{classInfo.name}</div>
+                      <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mt-1 truncate" title={classInfo.segment.name}>{classInfo.segment.name}</div>
+                    </td>
                     
-                    const activity = activityFromPlano 
-                      ? { 
-                          title: `Aula ${lessonIndex + 1}: ${activityFromPlano.titulo}`, 
-                          description: activityFromPlano.desc,
-                          assignment: activityFromPlano.trabalho ? { 
-                            type: activityFromPlano.trabalho, 
-                            title: activityFromPlano.titulo,
-                            points: 3,
-                            text: activityFromPlano.desc,
-                            deadline: ''
-                          } : undefined
-                        } 
-                      : (day.activities as any)?.[classInfo.id];
+                    {scheduleToRender.map((day, idx) => {
+                      if (day.type === 'event') {
+                        return (
+                          <td key={idx} className="p-2 border-r border-gray-200 bg-slate-50 w-[220px] min-w-[220px] max-w-[220px]">
+                            <div className="w-full h-24 flex items-center justify-center p-3 rounded-xl bg-slate-200/50 text-slate-500 font-black uppercase tracking-widest text-[10px] text-center border-2 border-dashed border-slate-300">
+                              {(day as any).title}
+                            </div>
+                          </td>
+                        );
+                      }
 
-                    let isCompleted = activity ? completedClasses.includes(`${classInfo.id}-${day.date}`) : false;
-                    if (activity && !isCompleted) {
-                      const parts = day.date.split('/');
-                      if (parts.length === 2) {
-                        const classDate = new Date(2026, parseInt(parts[1]) - 1, parseInt(parts[0]), 23, 59, 59);
-                        if (classDate.getTime() < new Date('2026-06-07T20:01:27Z').getTime()) {
-                          isCompleted = true;
+                      const planKey = CLASS_PLAN_MAP[classInfo.id] || '8ano';
+                      const planList = PE_PLAN[planKey] || [];
+                      const lessonIndex = planList.findIndex(a => a.data === day.date);
+                      const activityFromPlano = lessonIndex !== -1 && lessonIndex !== undefined ? planList[lessonIndex] : null;
+                      
+                      const activity = activityFromPlano 
+                        ? { 
+                            title: `Aula ${lessonIndex + 1}: ${activityFromPlano.titulo}`, 
+                            description: activityFromPlano.desc,
+                            assignment: activityFromPlano.trabalho ? { 
+                              type: activityFromPlano.trabalho, 
+                              title: activityFromPlano.titulo,
+                              points: 3,
+                              text: activityFromPlano.desc,
+                              deadline: ''
+                            } : undefined
+                          } 
+                        : (day.activities as any)?.[classInfo.id];
+
+                      let isCompleted = activity ? completedClasses.includes(`${classInfo.id}-${day.date}`) : false;
+                      if (activity && !isCompleted) {
+                        const parts = day.date.split('/');
+                        if (parts.length === 2) {
+                          const classDate = new Date(2026, parseInt(parts[1]) - 1, parseInt(parts[0]), 23, 59, 59);
+                          if (classDate.getTime() < new Date('2026-06-07T20:01:27Z').getTime()) {
+                            isCompleted = true;
+                          }
                         }
                       }
-                    }
 
-                    return (
-                      <td key={idx} className="p-2 border-r border-gray-200 align-top w-[220px] min-w-[220px] max-w-[220px]">
-                        {activity ? (
-                          <button
-                            onClick={() => setModalData({
-                              classId: classInfo.id,
-                              date: day.date,
-                              subtitle: day.subtitle,
-                              className: classInfo.name,
-                              segment: classInfo.segment,
-                              activity: {
-                                ...activity,
-                                fullData: activityFromPlano // Pass reference to full data if available
-                              }
-                            })}
-                            className={`relative w-full h-24 p-3 flex flex-col justify-center items-center text-center rounded-xl border-2 transition-all cursor-pointer shadow-sm
-                              ${isCompleted ? 'bg-emerald-50 border-emerald-500 ring-2 ring-emerald-200 ring-offset-1' : `${classInfo.segment.color} ${classInfo.segment.hover}`} 
-                              focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 overflow-hidden group/card`}
-                          >
-                            {/* O Certificado Verde da aula concluída */}
-                            {isCompleted && (
-                              <div className="absolute top-1 right-1 flex items-center gap-1 bg-emerald-600 text-white text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded shadow-sm z-10">
-                                <CheckCircle size={10} /> DADA
+                      return (
+                        <td key={idx} className="p-2 border-r border-gray-200 align-top w-[220px] min-w-[220px] max-w-[220px]">
+                          {activity ? (
+                            <button
+                              onClick={() => setModalData({
+                                classId: classInfo.id,
+                                date: day.date,
+                                subtitle: day.subtitle,
+                                className: classInfo.name,
+                                segment: classInfo.segment,
+                                activity: {
+                                  ...activity,
+                                  fullData: activityFromPlano // Pass reference to full data if available
+                                }
+                              })}
+                              className={`relative w-full h-24 p-3 flex flex-col justify-center items-center text-center rounded-xl border-2 transition-all cursor-pointer shadow-sm
+                                ${isCompleted ? 'bg-emerald-50 border-emerald-500 ring-2 ring-emerald-200 ring-offset-1' : `${classInfo.segment.color} ${classInfo.segment.hover}`} 
+                                focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 overflow-hidden group/card`}
+                            >
+                              {/* O Certificado Verde da aula concluída */}
+                              {isCompleted && (
+                                <div className="absolute top-1 right-1 flex items-center gap-1 bg-emerald-600 text-white text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded shadow-sm z-10">
+                                  <CheckCircle size={10} /> DADA
+                                </div>
+                              )}
+
+                              {/* Alerta de Trabalho Escolar */}
+                              {activity.assignment && !isCompleted && (
+                                <div className={`absolute top-1 right-1 flex items-center gap-1 text-white text-[9px] uppercase font-black tracking-widest px-2 py-0.5 rounded shadow-sm z-10
+                                  ${activity.assignment.type === 'passar' ? 'bg-orange-500 ring-2 ring-orange-200 shadow-orange-200' : 'bg-red-500 ring-2 ring-red-200 shadow-red-200'}`}>
+                                  {activity.assignment.type === 'passar' ? '📢 Passar' : '📥 Receber'}
+                                </div>
+                              )}
+
+                              <span className={`line-clamp-3 text-xs font-black uppercase tracking-tight leading-tight w-full ${isCompleted ? 'text-emerald-900' : ''}`}>
+                                {activity.title}
+                              </span>
+                              <div className="mt-1 text-[8px] font-bold opacity-0 group-hover/card:opacity-100 transition-opacity uppercase tracking-widest text-indigo-600 bg-white/50 px-2 py-0.5 rounded-full">
+                                 Clique p/ Detalhes
                               </div>
-                            )}
-
-                            {/* Alerta de Trabalho Escolar */}
-                            {activity.assignment && !isCompleted && (
-                              <div className={`absolute top-1 right-1 flex items-center gap-1 text-white text-[9px] uppercase font-black tracking-widest px-2 py-0.5 rounded shadow-sm z-10
-                                ${activity.assignment.type === 'passar' ? 'bg-orange-500 ring-2 ring-orange-200 shadow-orange-200' : 'bg-red-500 ring-2 ring-red-200 shadow-red-200'}`}>
-                                {activity.assignment.type === 'passar' ? '📢 Passar' : '📥 Receber'}
-                              </div>
-                            )}
-
-                            <span className={`line-clamp-3 text-xs font-black uppercase tracking-tight leading-tight w-full ${isCompleted ? 'text-emerald-900' : ''}`}>
-                              {activity.title}
-                            </span>
-                            <div className="mt-1 text-[8px] font-bold opacity-0 group-hover/card:opacity-100 transition-opacity uppercase tracking-widest text-indigo-600 bg-white/50 px-2 py-0.5 rounded-full">
-                               Clique p/ Detalhes
+                            </button>
+                          ) : (
+                            <div className="w-full h-24 p-3 rounded-xl border border-dashed border-gray-200 bg-gray-50/50 text-gray-300 flex items-center justify-center text-center italic text-[10px] font-black uppercase tracking-widest">
+                              Vazio
                             </div>
-                          </button>
-                        ) : (
-                          <div className="w-full h-24 p-3 rounded-xl border border-dashed border-gray-200 bg-gray-50/50 text-gray-300 flex items-center justify-center text-center italic text-[10px] font-black uppercase tracking-widest">
-                            Vazio
-                          </div>
-                        )}
-                      </td>
-                    );
-                  })}
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                          )}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 
