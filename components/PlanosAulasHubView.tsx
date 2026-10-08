@@ -4,7 +4,7 @@ import planoAnualImg from '../src/assets/images/plano_anual_capa_1788477231515.j
 import planejamentoImg from '../src/assets/images/planejamento_capa_1788477213719.jpg';
 import aulasDatashowImg from '../src/assets/images/aulas_datashow_capa_1788477246185.jpg';
 import repositorioProvasImg from '../src/assets/images/repositorio_provas_capa_1788477270457.jpg';
-import { ChevronRight, Sparkles } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 
 interface PlanosAulasHubViewProps {
   onBack: () => void;
@@ -31,25 +31,6 @@ export const PlanosAulasHubView: React.FC<PlanosAulasHubViewProps> = ({
         title="PLANOS & AULAS"
         subtitle="Plano de curso, planos de aula, apresentações em Datashow e repositório de provas teóricas"
       />
-
-      {/* Overview Banner */}
-      <div className="bg-gradient-to-r from-slate-900 via-emerald-950 to-slate-900 rounded-3xl p-6 sm:p-8 border border-white/10 shadow-2xl text-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 p-8 text-8xl opacity-10 pointer-events-none select-none">
-          📑
-        </div>
-        <div className="relative z-10 max-w-2xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold uppercase tracking-wider border border-emerald-500/30 mb-3">
-            <Sparkles className="w-3.5 h-3.5" />
-            Recursos Didáticos e Pedagógicos
-          </div>
-          <h2 className="text-xl sm:text-2xl font-black uppercase tracking-tight text-white mb-2">
-            Gestão Pedagógica de Ensino
-          </h2>
-          <p className="text-sm text-slate-300 font-medium leading-relaxed">
-            Acesse o <strong>Plano de Curso</strong> com o planejamento anual de PE, os <strong>Planos de Aula</strong> detalhados, os slides interativos para <strong>Datashow</strong> e o <strong>Repositório de Provas</strong> oficiais.
-          </p>
-        </div>
-      </div>
 
       {/* 4 Cards Grid - 2x2 Layout */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 pt-2">
