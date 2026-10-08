@@ -498,7 +498,7 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
   const [selectedAulaData, setSelectedAulaData] = useState<string | null>(() => {
     return safeLocalStorage.getItem('decolonial_selectedAulaData') || null;
   });
-  const [planningSubView, setPlanningSubView] = useState<null | '8ano' | 'ap' | 'ap_sexta' | 'gestao' | 'ciep476' | 'ejanem' | 'ciep369' | 'setembro_amarelo'>(() => {
+  const [planningSubView, setPlanningSubView] = useState<null | '8ano' | 'ap' | 'ap_sexta' | 'gestao' | 'ciep476' | 'ejanem' | 'ciep369'>(() => {
     return (safeLocalStorage.getItem('decolonial_planningSubView') as any) || 'ciep476';
   });
   const [selectedAulaPlan, setSelectedAulaPlan] = useState<any>(() => {
@@ -931,6 +931,45 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
             </span>
           </div>
         </div>
+
+        {/* 6. CE Dr. Ignácio Bezerra - Atividades Práticas */}
+        <div
+          onClick={() => setPlanningSubView('ap_sexta')}
+          className="group relative bg-white rounded-3xl p-6 border-2 border-slate-200 hover:border-indigo-500 shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between hover:-translate-y-1 active:scale-[0.98]"
+        >
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <span className="px-3 py-1 bg-indigo-50 text-indigo-700 font-black text-xs uppercase tracking-wider rounded-xl border border-indigo-200">
+                Atividades Práticas
+              </span>
+              <div className="w-10 h-10 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center group-hover:bg-indigo-600 group-hover:text-white transition-all shadow-sm">
+                <Activity className="w-5 h-5" />
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-black text-slate-900 uppercase tracking-tight group-hover:text-indigo-700 transition-colors">
+                CE Dr. Ignácio (Práticas)
+              </h3>
+              <p className="text-xs font-bold text-indigo-600 mt-1 uppercase tracking-wide">
+                Handebol, Altinha e Futevôlei
+              </p>
+            </div>
+
+            <p className="text-xs text-slate-500 font-medium leading-relaxed">
+              Aulas práticas de quadra e campo, modalidades desportivas coletivas, fundamentos técnicos e jogos adaptados.
+            </p>
+          </div>
+
+          <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+            <span className="px-2.5 py-0.5 bg-slate-100 text-slate-700 text-[11px] font-black rounded-lg">
+              Sextas-feiras
+            </span>
+            <span className="text-xs font-black text-indigo-600 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+              Ver Planos <ChevronRight className="w-4 h-4" />
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -1324,6 +1363,7 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
       { id: '8ano', label: 'EE Cordélia Paiva' },
       { id: 'ejanem', label: 'CIEP 229 EJA' },
       { id: 'ciep369', label: 'CIEP 369 Sandro Moreyra' },
+      { id: 'ap_sexta', label: 'Ignácio (Práticas)' },
     ];
 
     return (
@@ -1559,7 +1599,6 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
       
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-5xl">
         {[
-          { id: 'setembro_amarelo', label: '💛 Setembro Amarelo', sub: 'Saúde Mental e Valorização da Vida (3 Aulas)' },
           { id: '8ano', label: '801 - 802 - 803', sub: 'EE Profª Cordelia Paiva' },
           { id: 'ciep369', label: 'AP201', sub: 'CIEP 369' },
           { id: 'gestao', label: 'ILGCH 1001 / IFFC 2001 / IFLA 2002', sub: 'CE Dr. Ignacio Bezerra' },
@@ -1592,7 +1631,6 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
         <header className="mb-8 flex flex-col items-center text-center">
           <h2 className="text-4xl md:text-5xl font-black text-slate-900 flex items-center gap-4 uppercase tracking-tighter drop-shadow-[0_4px_4px_rgba(0,0,0,0.15)]">
             <LayoutGrid className="text-blue-600 drop-shadow-sm" size={40} /> AULAS PRONTAS ({
-              planningSubView === 'setembro_amarelo' ? 'SETEMBRO AMARELO / SAÚDE MENTAL' :
               planningSubView === 'gestao' ? 'ILGCH / DR. IGNACIO' : 
               planningSubView === 'ciep476' ? 'ILGCH 1007 / CIEP 476' : 
               planningSubView === 'ciep369' ? 'AP201 / CIEP 369' : 

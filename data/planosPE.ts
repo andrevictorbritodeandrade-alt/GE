@@ -309,115 +309,9 @@ Compreender a Luta Marajoara como patrimônio cultural imaterial brasileiro e pa
         ...CRONOGRAMA_3TRI_PE_PLAN
     ],
     'ilgch': [
-        // 1º TRIMESTRE (05/02 a 18/05) • Cultura Corporal e Desconstrução de Padrões
-        {
-            data: '06/02', tri: '1º Tri', modulo: 'Acolhimento', titulo: 'Apresentação: Itinerário Formativo ILGCH / IFFC / IFLA', desc: 'Apresentação da ementa, dinâmica pedagógica e contrato de convivência.',
-            resumo: `🎯 **Objetivo da Aula:** Apresentar a ementa de Linguagens e Ciências Humanas e estabelecer acordos pedagógicos.\n\n🗣️ **Dinâmica:**\n• Roda de conversa diagnóstica sobre expectativas profissionais e acadêmicas.\n• Apresentação dos eixos estruturantes da SEEDUC-RJ.`
-        },
-        {
-            data: '20/02', tri: '1º Tri', modulo: 'Corporeidade', titulo: 'O Corpo como Território e Memória Cultural', desc: 'Análise do corpo como espaço histórico, geográfico e político além do eurocentrismo.',
-            resumo: `🎯 **Objetivo da Aula:** Compreender que o corpo expressa cultura, ancestralidade e relações sociais de poder.\n\n🗣️ **Dinâmica:**\n• Mapeamento corporal no caderno: 'Todo corpo é um mapa'.\n• Análise de narrativas autobiográficas.`
-        },
-        {
-            data: '27/02', tri: '1º Tri', modulo: 'Estética', titulo: 'Quem Define o Belo? A Indústria dos Padrões Estéticos', desc: 'Origens históricas dos padrões eurocêntricos e a imposição da beleza universal.',
-            resumo: `🎯 **Objetivo da Aula:** Desconstruir a universalidade da beleza eurocêntrica e questionar a indústria cosmética.\n\n🗣️ **Dinâmica:**\n• Debate sobre capas de revistas históricas e evolução do conceito de beleza no século XX e XXI.`
-        },
-        {
-            data: '06/03', tri: '1º Tri', modulo: 'Mídia', titulo: 'Mídia, Publicidade e Construção do Desejo', desc: 'Como os comerciais e marcas produzem insegurança corporal na juventude.',
-            resumo: `🎯 **Objetivo da Aula:** Identificar mecanismos publicitários de indução ao consumo e insatisfação corporal.\n\n🗣️ **Dinâmica:**\n• Análise semiótica de comerciais de TV e anúncios digitais.`
-        },
-        {
-            data: '13/03', tri: '1º Tri', modulo: 'Relações Étnico-Raciais', titulo: 'Branquitude como Norma Universal e Racismo Estético', desc: 'Conceitos de Lélia Gonzalez e Silvio Almeida sobre racismo institucional e estético.',
-            resumo: `🎯 **Objetivo da Aula:** Compreender o conceito de branquitude e o racismo por denegação (Lei 10.639/03).\n\n🗣️ **Dinâmica:**\n• Leitura compartilhada de trechos acessíveis de Lélia Gonzalez e roda de debate.`
-        },
-        {
-            data: '20/03', tri: '1º Tri', modulo: 'Relações Étnico-Raciais', titulo: 'Colorismo e Passabilidade no Brasil', desc: 'As nuances da discriminação racial e hierarquias sociais baseadas no fenótipo.',
-            resumo: `🎯 **Objetivo da Aula:** Analisar como o tom de pele e traços influenciam o tratamento social e a autoestima.\n\n🗣️ **Dinâmica:**\n• Estudo de casos da mídia brasileira e debate sobre representatividade.`
-        },
-        {
-            data: '27/03', tri: '1º Tri', modulo: 'Cultura Urbana', titulo: 'O Corpo Periférico: Linguagens e Resistências', desc: 'Expressões artísticas e corporais das periferias e favelas fluminenses.',
-            resumo: `🎯 **Objetivo da Aula:** Valorizar manifestações culturais suburbanas e periféricas como epistemologias válidas.\n\n🗣️ **Dinâmica:**\n• Análise de letras de rap, funk consciente e slam de poesia.`
-        },
-        {
-            data: '10/04', tri: '1º Tri', modulo: 'Laboratório Crítico', titulo: 'Desconstrução de Peças Publicitárias', desc: 'Oficina prática de análise crítica de imagens e discursos da mídia.',
-            resumo: `🎯 **Objetivo da Aula:** Produzir contra-narrativas e reescritas de anúncios discriminatórios.\n\n🗣️ **Dinâmica:**\n• Atividade em duplas: recriação de slogans com mensagens inclusivas e decoloniais.`
-        },
-        {
-            data: '17/04', tri: '1º Tri', modulo: 'Práticas Corporais', titulo: 'Danças e Práticas Corporais da Juventude', desc: 'Vivência teórica e reflexiva sobre o passinho e as danças urbanas.',
-            resumo: `🎯 **Objetivo da Aula:** Reconhecer o passinho carioca como patrimônio cultural imaterial do Estado do RJ.\n\n🗣️ **Dinâmica:**\n• Exibição de trechos documentais e análise da técnica motora sincopada.`
-        },
-        {
-            data: '24/04', tri: '1º Tri', modulo: 'Avaliação', titulo: 'Seminário de Avaliação do 1º Trimestre', desc: 'Apresentação dos trabalhos em grupo e debates conceituais.',
-            resumo: `🎯 **Objetivo da Aula:** Avaliar a apropriação dos conceitos de mídia, padrões corporais e decolonização.\n\n🗣️ **Dinâmica:**\n• Apresentação de cartazes e mapas conceituais produzidos pelos estudantes.`
-        },
-        {
-            data: '08/05', tri: '1º Tri', modulo: 'Fechamento', titulo: 'Síntese do 1º Trimestre e Autoavaliação', desc: 'Devolutiva pedagógica, sistematização das aprendizagens e COC 1.',
-            resumo: `🎯 **Objetivo da Aula:** Consolidar notas do 1º Trimestre e orientar estudantes em defasagem pedagógica.\n\n🗣️ **Dinâmica:**\n• Autoavaliação individual e fechamento de portfólios.`
-        },
-        {
-            data: '15/05', tri: '1º Tri', modulo: 'Recuperação', titulo: 'Recuperação Paralela e Alinhamento Curricular', desc: 'Atividades individualizadas de recuperação processual.',
-            resumo: `🎯 **Objetivo da Aula:** Garantir a recuperação de conteúdos fundamentais antes do Conselho de Classe.\n\n🗣️ **Dinâmica:**\n• Plantão de dúvidas e exercícios direcionados.`
-        },
-
-        // 2º TRIMESTRE (19/05 a 04/09) • Algoritmos, Ancestralidade e Práticas Corporais
-        {
-            data: '22/05', tri: '2º Tri', modulo: 'Mundo Digital', titulo: 'Algoritmos e Filtros Digitais: O Branqueamento Virtual', desc: 'Como os filtros de redes sociais refinam traços e reforçam padrões eurocêntricos.',
-            resumo: `🎯 **Objetivo da Aula:** Analisar o impacto psicológico dos filtros estéticos no TikTok e Instagram.\n\n🗣️ **Dinâmica:**\n• Demonstração prática em slides sobre a arquitetura de filtros faciais.`
-        },
-        {
-            data: '29/05', tri: '2º Tri', modulo: 'Tecnologia & Ética', titulo: 'Inteligência Artificial e Viés Racial', desc: 'A reprodução de discriminações e exclusões em sistemas automatizados.',
-            resumo: `🎯 **Objetivo da Aula:** Compreender o que é viés algorítmico e como a tecnologia não é neutra.\n\n🗣️ **Dinâmica:**\n• Análise de reportagens sobre falhas de reconhecimento facial no Brasil.`
-        },
-        {
-            data: '05/06', tri: '2º Tri', modulo: 'Povos Originários', titulo: 'Práticas Corporais Indígenas: Jogos Ancestrais (Lei 11.645/08)', desc: 'Xikunahity (futebol de cabeça), Corrida de Tora e relação com a natureza.',
-            resumo: `🎯 **Objetivo da Aula:** Conhecer modalidades corporais indígenas e sua filosofia comunitária.\n\n🗣️ **Dinâmica:**\n• Estudo dos Jogos dos Povos Indígenas e comparação com o esporte mercantilizado.`
-        },
-        {
-            data: '12/06', tri: '2º Tri', modulo: 'Ancestralidade Africana', titulo: 'Capoeira: Dança, Luta e Pedagogia de Resistência (Lei 10.639/03)', desc: 'A malícia, o berimbau e a superação da opressão nas senzalas e quilombos.',
-            resumo: `🎯 **Objetivo da Aula:** Compreender a Capoeira como patrimônio imaterial da humanidade e tática de autodefesa.\n\n🗣️ **Dinâmica:**\n• Análise da música e dos instrumentos da orquestra de capoeira.`
-        },
-        {
-            data: '19/06', tri: '2º Tri', modulo: 'Patrimônio Imaterial', titulo: 'Luta Marajoara: Tradição Corporal do Pará', desc: 'Origens na Ilha de Marajó, respeito à integridade física e ética do combate.',
-            resumo: `🎯 **Objetivo da Aula:** Valorizar manifestações corporais genuinamente nacionais e caboclas.\n\n🗣️ **Dinâmica:**\n• Apresentação em Datashow das regras oficiais e lema 'quem cai, levanta'.`
-        },
-        {
-            data: '26/06', tri: '2º Tri', modulo: 'Sociedade & Cultura', titulo: 'Apropriação Cultural vs. Intercâmbio Cultural', desc: 'Diferenças entre apreciação respeitosa e mercantilização de símbolos sagrados.',
-            resumo: `🎯 **Objetivo da Aula:** Refletir criticamente sobre o uso de elementos afro-indígenas no mercado da moda.\n\n🗣️ **Dinâmica:**\n• Análise de casos reais da indústria da moda e debate coletivo.`
-        },
-        {
-            data: '03/07', tri: '2º Tri', modulo: 'Estudos de Gênero', titulo: 'Gênero e Espaço Público: O Direito à Cidade e ao Lazer', desc: 'Apropriação dos espaços urbanos e segurança para mulheres e juventudes.',
-            resumo: `🎯 **Objetivo da Aula:** Investigar a ocupação desigual de quadras, praças e ruas.\n\n🗣️ **Dinâmica:**\n• Mapeamento de praças e equipamentos esportivos do bairro dos alunos.`
-        },
-        {
-            data: '31/07', tri: '2º Tri', modulo: 'Inclusão & Acessibilidade', titulo: 'Retorno das Férias: Esporte Paralímpico e Inclusão Escolar', desc: 'Categorias funcionais, superação do capacitismo e adaptações de acessibilidade.',
-            resumo: `🎯 **Objetivo da Aula:** Promover a empatia e a inclusão de pessoas com deficiência na escola e sociedade.\n\n🗣️ **Dinâmica:**\n• Roda de acolhimento e discussão sobre barreiras arquitetônicas e atitudinais.`
-        },
-        {
-            data: '07/08', tri: '2º Tri', modulo: 'Crítica de Mídia', titulo: 'Hipersexualização dos Corpos na Era dos Algoritmos', desc: 'A objetificação corporal e pressões sobre adolescentes em redes sociais.',
-            resumo: `🎯 **Objetivo da Aula:** Desenvolver olhar crítico sobre conteúdos que reduzem pessoas a objetos de visualização.\n\n🗣️ **Dinâmica:**\n• Debate orientado em grupos sobre limites entre expressão individual e exploração.`
-        },
-        {
-            data: '14/08', tri: '2º Tri', modulo: 'Avaliação', titulo: 'Avaliação Teórica e Produção de Portfólio', desc: 'Verificação formal dos conteúdos de mídia, algoritmos e cultura corporal.',
-            resumo: `🎯 **Objetivo da Aula:** Avaliar a capacidade de argumentação escrita e conceitual dos estudantes.\n\n🗣️ **Dinâmica:**\n• Prova escrita individual com questões dissertativas contextualizadas.`
-        },
-        {
-            data: '21/08', tri: '2º Tri', modulo: 'Seminário', titulo: 'Apresentação de Pesquisas de Campo sobre Mídia Local', desc: 'Compartilhamento das investigações realizadas pelos alunos na comunidade.',
-            resumo: `🎯 **Objetivo da Aula:** Estimular a oralidade acadêmica e o protagonismo estudantil.\n\n🗣️ **Dinâmica:**\n• Sessão aberta de apresentações com intervenções do professor.`
-        },
-        { 
-            data: '28/08', tri: '2º Tri', modulo: 'Institucional', titulo: 'Aulas Suspensas por Força Maior', desc: 'Registro oficial de suspensão de atividades no diário pedagógico.', 
-            status: 'concluido', 
-            resumo: `🎯 **Objetivo da Aula:** Sem aula por motivo de força maior com respaldo da direção escolar.` 
-        },
-        { 
-            data: '04/09', tri: '2º Tri', modulo: 'Transição Curricular', titulo: 'Fechamento do 2º Trimestre e Preparação para o 3º Trimestre', desc: 'Sistematização do percurso formativo e introdução aos temas de Setembro.', 
-            status: 'concluido', 
-            resumo: `🎯 **Objetivo da Aula:** Apresentar a disciplina e seus eixos formativos para o 3º trimestre.\n\n🗣️ **Dinâmica:**\n• O que significa Itinerário Formativo?\n• Ciências Humanas e Sociais Aplicadas.\n\n📜 **Reflexão:** Qual a importância das disciplinas eletivas na formação do aluno?` 
-        },
-
-        // 3º TRIMESTRE (08/09 a 22/12) • AULAS PLANEJADAS DE SETEMBRO A DEZEMBRO (SETEMBRO AMARELO & CONSCIÊNCIA NEGRA)
         ...CRONOGRAMA_3TRI_PE_PLAN
-    ]
+    ],
+
 };
 
 PE_PLAN['ciep476'] = PE_PLAN['ilgch'];
@@ -425,6 +319,5 @@ PE_PLAN['gestao'] = PE_PLAN['ilgch'];
 PE_PLAN['ciep369'] = PE_PLAN['8ano'];
 PE_PLAN['ejanem'] = PE_PLAN['ap_sexta'] || PE_PLAN['ap'];
 PE_PLAN['correcao_fluxo'] = PE_PLAN['ap'];
-PE_PLAN['setembro_amarelo'] = CRONOGRAMA_3TRI_PE_PLAN;
 PE_PLAN['cronograma_3tri'] = CRONOGRAMA_3TRI_PE_PLAN;
 

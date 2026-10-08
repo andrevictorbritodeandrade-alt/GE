@@ -176,8 +176,8 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ setView, classData
         </div>
       </div>
 
-      {/* 8 Square Cards Grid (4x2 on desktop, 2x4 on mobile) - Guaranteed to fit on one screen */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 md:gap-3.5 w-full">
+      {/* 6 Square Cards Grid (3x2 on desktop) - Guaranteed to fit on one screen */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-3 md:gap-3.5 w-full">
         {menuCards.map((card) => (
           <div 
             key={card.id}
