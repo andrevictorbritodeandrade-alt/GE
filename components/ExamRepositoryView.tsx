@@ -27,6 +27,81 @@ interface Exam {
 
 const EXAMS: Exam[] = [
   {
+    id: 'exam_8ano_cordelia',
+    title: 'Avaliação Teórica Consolidada: Conteúdos de Educação Física (Turmas 801, 802, 803 - EE Cordélia Paiva)',
+    subject: 'Educação Física',
+    classes: ['Turmas 801, 802, 803 - EE Cordélia Paiva'],
+    trimester: '2º / 3º Trimestre',
+    totalPoints: 5.0,
+    questions: [
+      {
+        id: 'q1',
+        type: 'multiple_choice',
+        text: 'A Capoeira é muito mais do que uma prática corporal ou uma dança rítmica; ela é um monumento vivo de resistência política e cultural forjada por africanos escravizados no Brasil. No período colonial e imperial, os praticantes enfrentaram severa perseguição e criminalização, culminando na proibição explícita da capoeira no Código Penal da República de 1890. Apenas na década de 1930, com a valorização promovida por Mestre Bimba e a posterior chancela da UNESCO como Patrimônio Imaterial da Humanidade, essa manifestação ganhou o reconhecimento oficial que merece em nossa sociedade.\n\nCom base no texto acima e nos estudos sobre as Lutas do Brasil, qual foi o principal papel histórico atribuído à ginga e aos movimentos corporais da capoeira durante o período de escravidão?',
+        options: [
+          'A) Servir exclusivamente como entretenimento festivo nas senzalas sem qualquer propósito de autodefesa marcial.',
+          'B) Disfarçar o treinamento físico de autodefesa e resistência tática sob a aparência de uma dança cultural para enganar os feitores.',
+          'C) Funcionar como uma regra obrigatória imposta pelo governo imperial para selecionar soldados para o exército.',
+          'D) Substituir os jogos de tabuleiro africanos nas praças públicas do Rio de Janeiro.'
+        ],
+        correctAnswer: 'B',
+        points: 1.0
+      },
+      {
+        id: 'q2',
+        type: 'multiple_choice',
+        text: 'Praticada tradicionalmente nas festividades e comunidades da Ilha de Marajó, no Pará, a Luta Marajoara é uma das expressões corporais mais nobres e antigas do Brasil, inspirada na observação da força e do equilíbrio dos búfalos-d\'água. Diferente de brigas callejeras ou de esportes violentos sem regulamentação, essa arte marcial possui regras rígidas de grappling onde socos, chutes e estrangulamentos são terminantemente proibidos. O combate ocorre em círculos na areia ou na lama, tendo como objetivo supremo derrubar o oponente fazendo-o encostar as costas no chão, guiada pelo lema ético de que "quem cai, levanta".\n\nConsiderando o texto e os fundamentos éticos da Luta Marajoara estudados em aula, qual é o critério principal para definir a vitória em um combate oficial?',
+        options: [
+          'A) Aplicar um golpe traumático de soco ou chute direto no rosto do adversário.',
+          'B) Forçar o oponente a cair de joelhos ou de bruços no centro da arena circular.',
+          'C) Desequilibrar o oponente e fazer com que ele encoste as costas ou os ombros no chão (queda limpa dorsal).',
+          'D) Manter o adversário imobilizado pelo pescoço por mais de um minuto contínuo.'
+        ],
+        correctAnswer: 'C',
+        points: 1.0
+      },
+      {
+        id: 'q3',
+        type: 'multiple_choice',
+        text: 'O estudo dos jogos de salão e de tabuleiro no planejamento trimestral da Educação Física escolar vai muito além do simples lazer recreativo nas carteiras. Através de tabuleiros tradicionais de origem africana e indígena, como a Mancala e o Shisima, os estudantes exercitam o raciocínio lógico, a estratégia tática e o reconhecimento de matrizes civilizatórias não eurocêntricas. A Mancala, por exemplo, originária da África, simula a distribuição de sementes e o ciclo agrícola, provando que o desenvolvimento cognitivo e matemático esteve presente em civilizações milenares antes mesmo da invenção dos computadores modernos.\n\nCom base na leitura acima e nas aulas sobre Jogos de Tabuleiro, qual é o principal objetivo pedagógico e cultural do uso da Mancala nas escolas?',
+        options: [
+          'A) Ensinar técnicas de combate físico e manuseio de armas brancas antigas.',
+          'B) Valorizar as matrizes civilizatórias africanas e desenvolver o raciocínio tático-matemático através de uma tradição milenar.',
+          'C) Treinar os alunos exclusivamente para competições olímpicas de xadrez profissional.',
+          'D) Substituir as aulas teóricas de matemática por regras de jogos de azar comerciais.'
+        ],
+        correctAnswer: 'B',
+        points: 1.0
+      },
+      {
+        id: 'q4',
+        type: 'multiple_choice',
+        text: 'A prática do Futevôlei adaptada ao ambiente escolar e urbano nos desafia a repensar a infraestrutura tradicional das aulas de Educação Física. Nascido nas praias cariocas, o esporte exige dos praticantes alto controle motor, domínio de espaço reduzido e precisão técnica, uma vez que o uso das mãos e braços é totalmente proibido pelas regras oficiais. Ao levarmos essa modalidade para a sala de aula ou pátio sem quadras de areia oficiais, discutimos a criatividade como ferramenta de resistência e inclusão frente às limitações estruturais das escolas públicas.\n\nDe acordo com o texto e as regras fundamentais do Futevôlei discutidas nas aulas da turma 8º ano, qual característica técnica diferencia este esporte do Voleibol tradicional?',
+        options: [
+          'A) A permissão para segurar a bola com as mãos antes de efetuar o passe para o companheiro.',
+          'B) A proibição do uso de mãos e braços, exigindo o toque com os pés, coxas, peito e cabeça.',
+          'C) A obrigação de que a bola bata no chão duas vezes antes de cada rebatida.',
+          'D) A ausência de qualquer rede divisória entre as equipes participantes.'
+        ],
+        correctAnswer: 'B',
+        points: 1.0
+      },
+      {
+        id: 'q5',
+        type: 'multiple_choice',
+        text: 'As lutas dos povos originários do Brasil possuem profundo significado ritualístico, espiritual e comunitário, estando integradas às celebrações tradicionais como o Kuarup, no Alto Xingu. A Huka-Huka, por exemplo, é uma luta corporal praticada entre aldeias para homenagear os mortos ilustres e testar a força, a agilidade e o respeito mútuo entre os jovens guerreiros. Iniciada sempre de joelhos, com o abraço inicial obrigatório e sem nenhum tipo de golpe traumático de impacto, essa manifestação cumpre rigorosamente as diretrizes da Lei 11.645/08 na valorização da história e cultura indígena brasileira.\n\nAnalisando o texto acima sobre a Huka-Huka e as tradições do Xingu, assinale a alternativa que descreve corretamente o início e a dinâmica dessa luta ritualística:',
+        options: [
+          'A) Os lutadores começam em pé, trocando socos e chutes com luvas de proteção pesadas.',
+          'B) Os atletas iniciam a disputa de joelhos no centro da arena, utilizando um abraço inicial e buscando o desequilíbrio sem golpes de impacto.',
+          'C) A luta ocorre apenas no período noturno com o uso de zarabatanas e arcos de precisão.',
+          'D) O combate é individual e tem como único objetivo eliminar fisicamente o adversário da tribo rival.'
+        ],
+        correctAnswer: 'B',
+        points: 1.0
+      }
+    ]
+  },
+  {
     id: 'exam_esportes_ap',
     title: 'Avaliação Teórica: Esportes de Quadra e Rede (Handebol, Futsal e Vôlei)',
     subject: 'Educação Física',

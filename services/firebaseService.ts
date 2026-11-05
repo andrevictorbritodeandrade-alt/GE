@@ -264,6 +264,36 @@ export const saveSingleClassToFirestore = async (classId: string, classData: any
   }
 };
 
+export const getSingleClassFromFirestore = async (classId: string) => {
+  if (!db) initFirebase();
+  if (!db) return null;
+  try {
+    const docRef = doc(db, 'classes', classId);
+    const docSnap = await getDocFromServer(docRef);
+    if (docSnap.exists()) {
+      return docSnap.data();
+    }
+    return null;
+  } catch (error) {
+    handleFirestoreError(error, OperationType.GET, `classes/${classId}`);
+    return null;
+  }
+};
+
+export const enrollStudentInClass = async (classId: string, studentName: string) => {
+  const classData = await getSingleClassFromFirestore(classId);
+  if (!classData) return;
+  
+  const newStudent = {
+    id: Date.now(), 
+    name: studentName,
+    attendance: {}
+  };
+  
+  const updatedStudents = [...(classData.students || []), newStudent];
+  await saveSingleClassToFirestore(classId, { ...classData, students: updatedStudents });
+};
+
 export const saveClassesToFirestore = async (data: ClassDataMap) => {
   if (isQuotaCurrentlyExceeded()) return;
   if (!db) initFirebase();

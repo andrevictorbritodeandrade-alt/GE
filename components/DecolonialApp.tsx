@@ -1396,7 +1396,7 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
         {renderAulaModal()}
         {activeSub === 'gestao' && renderPlanejamentoGestao()}
         {activeSub === 'ciep476' && renderPlanejamentoCiep476()}
-        {(activeSub === '8ano' || activeSub === 'ap' || activeSub === 'ap_sexta' || activeSub === 'ejanem' || activeSub === 'ciep369' || activeSub === 'setembro_amarelo') && renderPlanejamentoClasses(activeSub)}
+        {(activeSub === '8ano' || activeSub === 'ap' || activeSub === 'ap_sexta' || activeSub === 'ejanem' || activeSub === 'ciep369') && renderPlanejamentoClasses(activeSub)}
       </div>
     );
   };
@@ -1653,9 +1653,8 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
                 <span className="text-[10px] font-black uppercase tracking-widest text-amber-300 bg-amber-400/20 px-2.5 py-0.5 rounded-full border border-amber-400/30">
                   Início de Turma
                 </span>
-                <span className="text-[10px] font-black uppercase tracking-widest text-blue-200 bg-blue-800/60 px-2 py-0.5 rounded-full border border-blue-600">
-                  {planningSubView === 'setembro_amarelo' ? 'Setembro Amarelo & Direitos Humanos' :
-                   planningSubView === 'gestao' ? 'CE Dr. Ignacio Bezerra' : 
+                 <span className="text-[10px] font-black uppercase tracking-widest text-blue-200 bg-blue-800/60 px-2 py-0.5 rounded-full border border-blue-600">
+                  {planningSubView === 'gestao' ? 'CE Dr. Ignacio Bezerra' : 
                    planningSubView === 'ciep476' ? 'CIEP 476 Elias Lazaroni' :
                    planningSubView === '8ano' ? 'EE Profª Cordélia Paiva' :
                    planningSubView === 'ciep369' ? 'CIEP 369' :
@@ -1665,8 +1664,7 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
                 </span>
               </div>
               <h3 className="text-lg font-black text-white leading-tight mt-1">
-                {planningSubView === 'setembro_amarelo' ? 'Saúde Mental e Valorização da Vida (3 Aulas com Imagens)' :
-                 planningSubView === 'gestao' ? 'ILGCH 1001 / IFFC / IFLA' : 
+                {planningSubView === 'gestao' ? 'ILGCH 1001 / IFFC / IFLA' : 
                  planningSubView === 'ciep476' ? 'ILGCH 1007' : 
                  planningSubView === '8ano' ? '801 - 802 - 803' :
                  planningSubView === 'ciep369' ? 'AP201' :
